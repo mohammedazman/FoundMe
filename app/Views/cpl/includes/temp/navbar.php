@@ -113,7 +113,7 @@
                 <div class="list-group">
                     <a href="index.html" class="list-group-item list-group-item-action  list-group-item-secondary active btn-scondry" style="color:greenyellow">  <span class="fa fa-cogs text-right" style="color:#fff;"></span> Dashboard </a>
                     <a href="#" class="list-group-item list-group-item-action"><span class="fa fa-sticky-note "></span> Pages <span class="badge float-right" style="background:green;color:#fff;">15</span></a>
-                    <a href="#" class="list-group-item list-group-item-action"> <span class="fa fa-outdent"></span> Compains <span class="badge float-right" style="background:orange;color:#fff;">12</span></a>
+                    <a href="compagin.php" class="list-group-item list-group-item-action"> <span class="fa fa-outdent"></span> Compains <span class="badge float-right" style="background:orange;color:#fff;">12</span></a>
                     <a href="#" class="list-group-item list-group-item-action"> <span class="fa fa-comments"></span> comments <span class="badge float-right" style="background:brown;color:#fff;">20</span></a>
                     <a href="#" class="list-group-item list-group-item-action"> <span class=" fa fa-users"></span> Users <span class="badge float-right" style="background:gray;color:#fff;">220</span> </a>
                     <a href="#" class="list-group-item list-group-item-action" tabindex="-1"><span class=" fa  fa-wrench"></span>  Sttings</a>

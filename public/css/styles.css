@@ -1,0 +1,296 @@
+/* body */
+body {
+  font-family: 'Tajawal', sans-serif;
+/* font-family: 'Vibes', cursive;
+font-family: 'Amiri', serif; */
+
+    background: #ffffff;
+}
+
+html, body {
+    height: 100%;
+}
+.clear{
+
+}
+.cat_header{
+  width: 40%;
+  text-align: center;
+
+  display: block;
+  float:none;
+  margin: 0 auto;
+  position: relative;
+  clear: both;
+}
+
+/* attaching footer to bottom */
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    text-align: center;
+    margin: 0 auto -70px; /* the bottom margin is the negative value of the footer
+    /'s height */
+
+}
+.wrapper::after{
+  clear: both;
+  display: table;
+  content: "";
+}
+
+footer, .push {
+    height: 80px; /* .push must be the same height as .footer */
+}
+
+footer {
+    padding-top: 20px;
+    font-size: 28px;
+    text-align: center;
+    background: #000000;
+    width: 100%;
+    position: fixed;
+    bottom: -50;
+}
+
+a {
+    color: red;
+}
+
+a:hover {
+    color: blue;
+}
+
+h2{
+    text-align: center;
+}
+
+h4 {
+    color: red;
+    margin: 0 0 0 0.8%;
+}
+
+h1 {
+    color: red;
+    text-align: center;
+}
+
+h5 {
+    color: antiquewhite;
+    margin-left: 20px;
+}
+/* list of articles on index page */
+
+.articles, .articlesurl {
+    text-align: center;
+    font-size: 16px;
+    color: silver;
+}
+
+/* styling search results */
+
+.searchRes{
+    margin-left: 10%;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+/* login & register table */
+
+.loginForm {
+    display: table;
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin-left: 42%;
+}
+
+.cell {
+    margin-bottom: 10px;
+    display: table-row;
+}
+
+.newArt {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Formatting search box */
+.searchf{
+  float:left;
+  width: 60%;
+}
+.search-box {
+    position: relative;
+}
+
+.result {
+    position: absolute;
+    z-index: 999;
+}
+
+.search-box button {
+    width: 30%;
+    line-height: 34px;
+    margin: 0% 0% 0.2% 0%;
+    padding: 0% 0% 0% 0%;
+}
+
+.btn-primary {
+    background: #848587;
+    border-color: #02164F;
+}
+
+.searchInput {
+    width: 65%;
+    line-height: 32px;
+    margin: 0% 0% 0% 0.8%;
+    padding: 0% 0% 0% 0%;
+}
+
+.admin {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+/* Formatting result items */
+.result p {
+    width: 100%;
+    margin: 0 10% 0 10%;
+    padding: 10px 40px 10px 40px;
+    border: 1px solid #848587;
+    border-top: none;
+    cursor: pointer;
+    background: #848587;
+    text-align: center;
+}
+
+.result p:hover {
+    background: #D3D3D3;
+}
+
+/* navbar */
+
+.navbar {
+    margin: 0% 0% 2px 0%;
+}
+
+/* buttons */
+
+#carousel {
+    margin: 0 9% 2px 0.8%;
+    background: #757575;
+}
+
+.carousel-control, .sr-only {
+    background: #000000;
+}
+
+/* pagination */
+
+.pagination {
+    margin-left: 10%;
+}
+
+/* article style */
+
+.postText {
+    text-align: justify;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 60px;
+    letter-spacing: 0.1em;
+    word-spacing: 0.4em;
+    line-height: 1.5;
+}
+
+.image {
+    text-align: center;
+}
+
+.tags {
+    margin-left: 40px;
+    font-size: 15px;
+}
+
+/* class note is for styling VIEWERS NOW and TOTAL notes */
+.note {
+    margin-left: 40px;
+}
+
+.comment {
+    margin-left: 40px;
+    font-size: 18px;
+    border: solid silver;
+    margin-right: 60px;
+}
+
+/* like & dislike buttons */
+.block {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.glyphicon-minus, .glyphicon-heart {
+    background: #848587;
+    border-color: #02164F;
+}
+
+.newComment {
+    margin-left: 40px;
+}
+.form_group_img {
+    position: relative;
+    border: 1px solid black;
+    display: block;
+    margin: 50px auto;
+    clear: both;
+    background-color: #fffdfd;
+    padding: 10px;
+    border-radius: 10PX;
+    height: 130px;
+
+}
+
+
+.form_group_img img {
+    float: right;
+    width:70%;
+    height:100px;
+    border: 1px dashed #BBB;
+
+}
+.comment{
+  box-shadow:  -1px;
+}
+.like, .dislike {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background: lightgreen;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 4px;
+}
+.qty1, .qty2 {
+
+    border: none;
+    width:20px;
+    background: transparent;
+
+}

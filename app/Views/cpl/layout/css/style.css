@@ -1,0 +1,166 @@
+body
+{
+	background:#ccc;
+}
+
+/* ..... Navbar ......*/
+
+.navbar
+{
+	min-height:33px !important;
+	padding-top:0;
+	margin-bottom:0;
+	border-radius:0;
+
+}
+
+.navbar-nav > li a, .navbar-brand
+{
+	padding-top:4px !important;
+	padding-bottom:0 !important;
+	height:33px;
+	color:green;
+}
+
+
+.clnav
+{
+	margin-left:5%
+}
+
+.clnav-n
+{
+	margin-left:780%
+}
+
+/* ..... Navbar ......*/
+
+
+
+
+/* ..... Header ......*/
+
+#header
+{
+	background:#333;
+	color:#fff;
+	padding-bottom:10px;
+	margin-bottom:15px;
+}
+
+
+#header .create 
+{
+	padding-top:20px;
+}
+/* ..... Header ......*/
+
+
+
+
+
+
+
+/* ..... breadcrumb ......*/
+
+#breadcrumb
+{
+		background:#ccc;
+		color:#333;
+
+}
+
+#breadcrumb a
+{
+		
+		color:#333;
+
+}
+
+
+/* ..... breadcrumb ......*/
+
+
+
+
+/* ..... content......*/
+..panel
+{
+
+		background:#fff;
+		border-radius:3px;
+		padding:0px;
+		height:150px;
+		.box-shadow:1px  0px 15px;
+
+
+		
+
+}
+.panel-title
+{
+
+		color:#fff;
+		padding:5px;
+		border-radius:3px;
+		.border-top-right-radius:3px;
+		padding-left:23px;
+		font-size:16px;
+
+}
+
+.col-md-3
+{
+	float:left;
+}
+.stat
+{
+	margin:2px;
+	padding:2px;
+	margin-left:40px; 
+	border-radius:10px;
+
+}
+
+.home-stats .stat
+{
+	background:#eee;
+
+}
+
+.home-stats .stat span
+{
+	display:block;
+	font-size:20px;
+}
+
+
+
+
+/* ..... content......*/
+
+
+
+/* ..... footer ......*/
+
+
+#footer
+{
+	background:gray;
+	color:#fff;
+
+	margin-top:75px;
+}
+
+
+
+/* ..... footer ......*/
+
+
+
+
+
+
+
+
+

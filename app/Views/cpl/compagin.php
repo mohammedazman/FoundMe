@@ -11,11 +11,7 @@
 <!-- content -->
 
 <div class="col-md-9">
-
-
-    dddd
-
-
+<h4>Mange Compagin page </h4>
 </div>
 
 

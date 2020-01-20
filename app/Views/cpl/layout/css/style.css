@@ -11,17 +11,15 @@ body
 	padding-top:0;
 	margin-bottom:0;
 	border-radius:0;
-
 }
 
-.navbar-nav > li a, .navbar-brand
+.navbar-nav > li a .navbar-brand
 {
 	padding-top:4px !important;
 	padding-bottom:0 !important;
 	height:33px;
 	color:green;
 }
-
 
 .clnav
 {
@@ -153,14 +151,65 @@ body
 }
 
 
-
 /* ..... footer ......*/
 
 
+.menu-icon
+{
+	position: fixed;
+	top:240px;
+	left:470px;
+	height:40px;
+	width:40px;
+	padding: 4px 8px;
+	background:#262626;
+	box-sizing: border-box;
+	cursor:pointer;
+	color:#fff;
+	-webkit-border-radius:20px ;
+	-moz-border-radius:20px ;
+	-o-border-radius:20px ;
+	border-radius: 10px;
+}
 
+.menu-icon span
+{
+	width:100%;
+	height:4px;
+	display:block;
+	background:#fff;
+	margin:6px 0;
+	transition:.5s;
 
+}
+.menu-icon .active span
+{
+	position: absolute;
+	width: calc(100% - 16px);
+	top:calc(50% - 8px);
+}
 
+.menu-icon .active span:nth-child(1)
+{
+	transform: rotate(45deg);
+}
+.menu-icon .active span:nth-child(3)
+{
+	transform: rotate(-45deg);
+}
 
+.menu-icon .active span:nth-child(2)
+{
+	display:none;
+}
 
+.sidebar
+{
+	.position: fixed;
+	left:-300px;
+}
+.sidebar.active
+{
+	left: 0;
 
-
+}

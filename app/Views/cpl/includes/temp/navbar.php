@@ -110,7 +110,7 @@
 
             <div class="col-md-3">
 
-                <div class="list-group">
+                <div class="list-group sidebar">
                     <a href="dash.php" class="list-group-item list-group-item-action  list-group-item-secondary active btn-scondry" style="color:greenyellow">  <span class="fa fa-cogs text-right" style="color:#fff;"></span> Dashboard </a>
                     <a href="#" class="list-group-item list-group-item-action"><span class="fa fa-envelope "></span> Messages <span class="badge float-right" style="background:green;color:#fff;">15</span></a>
                     <a href="compagin.php" class="list-group-item list-group-item-action"> <span class="fa fa-outdent"></span> Compains <span class="badge float-right" style="background:orange;color:#fff;">12</span></a>
@@ -142,3 +142,8 @@
             </div>
 
 
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>

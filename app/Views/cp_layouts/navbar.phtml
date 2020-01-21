@@ -1,0 +1,32 @@
+
+<div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand topbar mb-4 static-top" style="background-color: #fff; border-left:1px solid #f1f1f1;">
+          <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3" >
+            <i class="fa fa-bars small-icon"></i>
+          </button>
+          <ul class="navbar-nav " style="position: absolute;right:20px;">
+          <li class="nav-item dropdown clnav-n">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+          <i class="fa fa-bell"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+        </div>
+      </li>
+
+      	<li class="nav-item dropdown clnav">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <i class="fa fa-user"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/auth/logout">Logout</a>
+
+      </li>
+
+          </ul>
+        </nav>
+        <!-- Topbar -->
+        <?php echo Message::check('main');  ?>

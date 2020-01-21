@@ -18,7 +18,7 @@ abstract class Session
     public static function loggIn(array $user)
     {
             $_SESSION['userID'] = $user['id'];
-            $_SESSION['userName'] = $user['username'];
+            // $_SESSION['userName'] = $user['username'];
             $_SESSION['type'] = $user['type'];
 
 

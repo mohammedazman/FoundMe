@@ -4,6 +4,7 @@
  *
  */
  //
+
 class Application
 {
   protected $controller='homeController';
@@ -65,6 +66,7 @@ class Application
 
       $this->controller=isset($url[0])?$url[0].'Controller':'homeController';
       $this->action=isset($url[1])?$url[1]:'index';
+      
 
        # delete controller and action from url array
       unset($url[0],$url[1]);

@@ -13,7 +13,7 @@
      * @param $key
      * @param $value
      */
-     private static $rules=['Admin'=>'homeController','user'=>'homeController'];
+     private static $rules=['Admin'=>'adminController','user'=>'adminController'];
      private static $user;
      private static $instance;
 

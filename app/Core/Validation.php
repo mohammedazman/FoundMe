@@ -12,24 +12,35 @@ class Validation
   }
   public static function required($input=[])
   {
-    $error='all field ok';
+    $data=[];
     $status=1;
     foreach ($_REQUEST as $key => $value) {
 
       if (array_search($key,$input)) {
-      if (empty($value)) {
-        $error="يجب تضمين ال  ".$key;
+              if (empty($value)) {
+                $error="you most fill  ".$key;
 
-        Message::setMessage(0,'main','يجب ملاء جميع الحقول');
-        Message::setMessage($key,$error);
-        $status=0;
-        return(['status'=>$status]);
+                Message::setMessage(0,'main','you most fill all field');
+                Message::setMessage(0,$key,$error);
+                $status=0;
+                return(['status'=>$status]);
 
+              }
       }
-      }
+
+      $data[':'.$key.'']=self::test_input($value);
+
 
     }
-    return (['status'=>$status,'error'=>$error]);
+    return (['status'=>$status,'data'=>$data]);
+  }
+
+
+public static  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
   }
 }
 

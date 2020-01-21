@@ -1,0 +1,71 @@
+<?php
+
+  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
+<body  class="bg-blue">
+   <!-- start Sign Up -->
+   <section>
+			<div class="container register">
+					<div class="row">
+						<div class="col-md-12 register-left">
+							<img src="/imges/logo.png" alt=""/>
+							<!-- <img src="/https://image.ibb.co/n7oTvU/logo_white.png" alt=""/> -->
+							<h3>Welcome</h3>
+							<p>Be one of us! <br>
+								foundMe
+							</p>
+							<!-- <input type="submit" name="" value="Login"/><br/> -->
+						</div>
+						<div class="col-md-12 register-right">
+
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+									<h3 class="register-heading">Fill this Form</h3>
+                  <form class="" action="" method="post">
+
+
+									<div class="row register-form">
+										<div class="col-md-6">
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="First Name *" name="first_name" value="" />
+                          <?php echo Message::check('first_name');  ?>
+											</div>
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="Last Name *" name="last_name" value="" />
+                          <?php echo Message::check('last_name');  ?>
+											</div>
+											<div class="form-group">
+												<input type="password" class="form-control" placeholder="Password *" name="password" value="" />
+                          <?php echo Message::check('password');  ?>
+											</div>
+
+
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<input type="email" name="email" class="form-control" placeholder="Your Email *" value="" />
+                          <?php echo Message::check('email');  ?>
+											</div>
+											<div class="form-group">
+												<input type="text" minlength="10" maxlength="10" name="phone" class="form-control" placeholder="Your Phone *" value="" />
+                          <?php echo Message::check('phone');  ?>
+											</div>
+											<div class="form-group">
+													<input type="password" class="form-control" name="confirm_password"  placeholder="Confirm Password *" value="" />
+                            <?php echo Message::check('confirm_password');  ?>
+												</div>
+											<p class="p-login">You have already account! <a href="login.html">LogIn</a></p>
+
+											<input type="submit" class="btnRegister"  value="Register"/>
+										</div>
+									</div>
+								</div>
+</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+    </section>
+    <!-- end Sign Up -->
+
+<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

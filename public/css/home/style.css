@@ -1,0 +1,186 @@
+/* header start */
+.bg-blue{
+background-color:  #3aa3a9;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: #fff;;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+}
+/* header end */
+
+/* slider strat */
+.carousel-item {
+    height: 700px;
+}
+.bg-black{
+    background-color: black;
+}
+.opacity-5{
+    opacity: 0.5;
+}
+
+.btn-blue {
+    color: #fbfcfd;
+    background-color: #f8f9fa00;
+    width: 120px;
+    border: 2px solid #3aa3a9;
+    font-size: 18px;
+}
+
+.btn:hover {
+    color: #3aa3a9;
+    text-decoration: none;
+    background-color: #ffffff;
+}
+
+
+.carousel-caption {
+    top: 36%;
+}
+.margin-b-slide{
+    margin-bottom: 2.5rem;
+}
+/* slider end */
+
+/* register form start */
+
+.register{
+    /* background: -webkit-linear-gradient(left, #3aa3a9, #7dcdd1); */
+    margin-top: 3%;
+    padding: 3%;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: -6%;
+    padding-right: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    background: #f8f9fa;
+    /* border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%; */
+    border-radius: 50px;
+}
+.register-left img{
+    /* margin-top: 15%;
+    margin-bottom: 5%; */
+    width: 10%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+.register-left p{
+    font-weight: lighter;
+    /* padding: 12%;
+    margin-top: -9%; */
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    float: right;
+    margin-top: 10%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #3aa3a9;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #0062cc;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    color: #0062cc;
+    border: 2px solid #0062cc;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: -15%;
+    color: #495057;
+}
+/* register form End */
+
+
+.bg-blue{
+    background: -webkit-linear-gradient(left, #2b9096, #7dcdd1);
+
+}
+
+
+.p-login{
+    position: absolute;
+    left: 200px;
+    top: 250px;
+}
+
+.p-login a{
+    color: #3aa3a9;
+}
+
+.p-login a:hover {
+    color: #b0c4da;
+    text-decoration: none;
+}
+
+
+
+.p-login-forget {
+    position: absolute;
+    left: 540px;
+    top: 145px;}
+
+.p-login-forget  a{
+    color: #3aa3a9;
+}
+    
+.p-login-forget a:hover {
+        color: #b0c4da;
+        text-decoration: none;
+}

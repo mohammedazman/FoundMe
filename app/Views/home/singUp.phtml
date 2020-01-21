@@ -19,48 +19,44 @@
 							<div class="tab-content" id="myTabContent">
 								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 									<h3 class="register-heading">Fill this Form</h3>
+									<form class="" action="" method="post">
 									<div class="row register-form wow flipInX">
-										<div class="col-md-6">
+									<div class="col-md-6">
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="First Name *" value="" required />
+												<input type="text" class="form-control" placeholder="First Name *" name="first_name" value="" />
+                          <?php echo Message::check('first_name');  ?>
 											</div>
 											<div class="form-group">
-												<input type="text" class="form-control" placeholder="Last Name *" value="" required />
+												<input type="text" class="form-control" placeholder="Last Name *" name="last_name" value="" />
+                          <?php echo Message::check('last_name');  ?>
 											</div>
 											<div class="form-group">
-												<input type="password" class="form-control" placeholder="Password *" value="" required />
+												<input type="password" class="form-control" placeholder="Password *" name="password" value="" />
+                          <?php echo Message::check('password');  ?>
 											</div>
-											
-											<div class="form-group">
-												<div class="maxl">
-													<label class="radio inline"> Male
-														<input type="radio" name="gender" value="male" checked required>
-														<span class="checkmark">  </span> 
-													</label>
-													<label class="radio inline"> Female
-														<input type="radio" name="gender" value="female" required>
-														<span class="checkmark"> </span> 
-													</label>
-												</div>
-											</div>
+
+
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<input type="email" class="form-control" placeholder="Your Email *" value="" required/>
+												<input type="email" name="email" class="form-control" placeholder="Your Email *" value="" />
+                          <?php echo Message::check('email');  ?>
 											</div>
 											<div class="form-group">
-												<input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" required />
+												<input type="text" minlength="10" maxlength="10" name="phone" class="form-control" placeholder="Your Phone *" value="" />
+                          <?php echo Message::check('phone');  ?>
 											</div>
 											<div class="form-group">
-															<input type="password" class="form-control" name="confirm_password"  placeholder="Confirm Password *" value="" />
+													<input type="password" class="form-control" name="confirm_password"  placeholder="Confirm Password *" value="" />
                             <?php echo Message::check('confirm_password');  ?>
 												</div>
-											<p class="p-login">You have already account! <a href="/auth/login">LogIn</a></p>
+											<!-- <p class="p-login">You have already account! <a href="login.html">LogIn</a></p> -->
 
-											<input type="submit" class=" btnRegister"  value="Register"/>
+											<input type="submit" class="btnRegister"  value="Register"/>
 										</div>
 									</div>
 								</div>
+</form>	
 							
 							</div>
 						</div>

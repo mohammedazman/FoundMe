@@ -6,14 +6,14 @@ class DB {
 
   public const DB_USER = 'root';
   private const DB_PASS = '';
-    private  $dsn="mysql:host=localhost;dbname=news";
+    private  $dsn="mysql:host=localhost;dbname=FoundMe";
     private static $PDO_OBJECT;
 
 
 
     public function __construct() {
       try {
-        $this->dsn="mysql:host=localhost;dbname=news";
+        $this->dsn="mysql:host=localhost;dbname=FoundMe";
           self::$PDO_OBJECT=new PDO($this->dsn,DB::DB_USER,DB::DB_PASS);
 
           self::$PDO_OBJECT->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

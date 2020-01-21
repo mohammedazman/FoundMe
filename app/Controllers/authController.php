@@ -28,7 +28,7 @@ class authController extends Controller
           $validate=Validation::required(['','email','password']);
 
                if ($validate['status'] == 0){
-                   Helpert;
+                   Helper::back();
                    return;
                    }
 
@@ -41,7 +41,7 @@ class authController extends Controller
            if ($user['status']==0) {
 
              Message::setMessage(0,'main','لم يتم تسجيل الدخول بنجاح الرجاء المحاولة مرة اخرى');
-             $this->index();
+             Helper::back();
              return;
            }
 

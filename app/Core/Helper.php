@@ -54,47 +54,47 @@
  #return COUNT of news
    public static function  countNews()
    {
-     $db= new Model();
-     $counter =$db->query("select count(*) as count from news");
+     $db= new DB();
+     $counter =$db->QueryCrud("select count(*) as count from news");
      return $counter[0]['count'];
    }
 
    #return COUNT of comments
      public static function  countComment()
      {
-       $db= new Model();
-       $counter =$db->query("select count(*) as count from comments");
+       $db= new DB();
+       $counter =$db->QueryCrud("select count(*) as count from comments");
        return $counter[0]['count'];
      }
 
      #return COUNT of activities
        public static function  countlikes()
        {
-         $db= new Model();
-         $counter =$db->query("select count(likes) as count from likes");
+          $db= new DB();
+         $counter =$db->QueryCrud("select count(likes) as count from likes");
          return $counter[0]['count'];
        }
        #return COUNT of activities
          public static function  countdislikes()
          {
-           $db= new Model();
-           $counter =$db->query("select count(dislikes) as count from likes");
+            $db= new DB();
+           $counter =$db->QueryCrud("select count(dislikes) as count from likes");
            return $counter[0]['count'];
          }
 
        #return COUNT of users
          public static function  countUsers()
          {
-           $db= new Model();
-           $counter =$db->query("select count(*) as count from users");
+            $db= new DB();
+           $counter =$db->QueryCrud("select count(*) as count from users");
            return $counter[0]['count'];
          }
 
          #return COUNT of categories
            public static function  countCategories()
            {
-             $db= new Model();
-             $counter =$db->query("select count(*) as count from categories");
+              $db= new DB();
+             $counter =$db->QueryCrud("select count(*) as count from categories");
              return $counter[0]['count'];
            }
 
@@ -126,7 +126,7 @@
    public static function catName($id)
    {
 
-     $counter =DB::init()->query("SELECT *  FROM categories WHERE id = $id ");
+     $counter =DB::init()->QueryCrud("SELECT *  FROM categories WHERE id = $id ");
      if (!empty($counter)) {
        return $counter[0]['cat_title'];
      }
@@ -138,7 +138,7 @@
    public static function countComments($id)
    {
 
-     $counter =DB::init()->query("SELECT COUNT(*) AS count FROM comments WHERE news_id= $id ");
+     $counter =DB::init()->QueryCrud("SELECT COUNT(*) AS count FROM comments WHERE news_id= $id ");
 
        return $counter[0]['count'];
 
@@ -149,7 +149,7 @@
       public static function countposts($id)
       {
 
-        $counter =DB::init()->query("SELECT COUNT(*) AS count FROM news WHERE category= $id ");
+        $counter =DB::init()->QueryCrud("SELECT COUNT(*) AS count FROM news WHERE category= $id ");
 
           return $counter[0]['count'];
 
@@ -160,7 +160,7 @@
       public static function userName($id)
       {
 
-        $username =DB::init()->query("SELECT *  FROM users WHERE id = $id ");
+        $username =DB::init()->QueryCrud("SELECT *  FROM users WHERE id = $id ");
         if (!empty($username)) {
           return $username[0]['username'];
         }

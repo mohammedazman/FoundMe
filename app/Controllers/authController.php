@@ -4,47 +4,44 @@
  */
 class authController extends Controller
 {
-
+  protected $modelObj;
+  public function __construct()
+    {
+        $this->model('Users');
+        $this->modelObj= $this->model->getModel();
+    }
 
   public function index($id='',$name='')
   {
-
-
     $this->view('home'.DIRECTORY_SEPARATOR.'index');
     $this->view->pageTitle='Found Me';
     $this->view->render();
 
   }
 
-
-
-
   public function login()
     {
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      //do validation to POST
-
           $validate=Validation::required(['','email','password']);
 
                if ($validate['status'] == 0){
-                   Helpert;
+                   Helper::back();
                    return;
                    }
 
-             $password=Hashing::init($validate['data'][':password'])->__toString();
-            $userForm= array(':email' =>$validate['data'][':email'] ,':password' =>$password);
-            $this->model('Users');
-           $user=$this->model->checkLogin($userForm);
-
-
-           if ($user['status']==0) {
+            $password=Hashing::init($validate['data'][':password'])->__toString();
+            $userForm= array($validate['data'][':email'] ,$password);
+            // $this->model('Users');
+           $user=$this->modelObj->checkLogin($userForm);
+          //  print_r($user);
+           if ($user[0]['status']==0) {
 
              Message::setMessage(0,'main','لم يتم تسجيل الدخول بنجاح الرجاء المحاولة مرة اخرى');
              $this->index();
              return;
            }
-
 
            Session::loggIn($user);
            Message::setMessage(1,'main','لقد تم تسجيل الدخول بنجاح');
@@ -56,21 +53,7 @@ class authController extends Controller
 
 
              }
-
-
-
-
-
-
-
-
-
    }
-
-
-
-
-
        $this->view('home'.DIRECTORY_SEPARATOR.'login');
        $this->view->pageTitle='Log In Page';
        $this->view->render();
@@ -78,59 +61,42 @@ class authController extends Controller
 
   }
 
-
-
-
-
-
-
-
-
-
   public function signUp($id='',$name='')
   {
-
-
       // check if there submit
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $request= Validation::required(['','password','email','phone','first_name','last_name']); //sure that first element in array most be null
 
-
     if ($request['status']==1) {
-              $user=$this->model('Users');
+              // $user=$this->model('Users');
 
-             $params[':email']=$request['data'][':email'];
-             $params[':password']=Hashing::init($request['data'][':password'])->__toString();
-             $params[':status']=1;
-             $params[':type']='User';
+             $params[]=$request['data'][':email'];
+             $params[]=Hashing::init($request['data'][':password'])->__toString();
+             $params[]=1;
+             $params[]='User';
 
 
-                   if ($user->add($params)) {
-                    $profile=$this->model('Profiles');
+                   if ($this->modelObj->add($params)) {
+                     $this->model('Profiles');
+                     $profile=$this->model->getModel();
 
-                     $profile->add([':name'=>'First Name',':value'=>$request['data'][':first_name'],'user_id'=>$user->lastID()['id']]);
-                     $profile->add([':name'=>'Last Name',':value'=>$request['data'][':last_name'],'user_id'=>$user->lastID()['id']]);
-                     $profile->add([':name'=>'Phone',':value'=>$request['data'][':phone'],'user_id'=>$user->lastID()['id']]);
+                     $profile->add(['First Name',$request['data'][':first_name'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['Last Name',$request['data'][':last_name'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['Phone',$request['data'][':phone'],$this->modelObj->lastID()['id']]);
 
                      Message::setMessage(1,'main',' add new account have be done ');
                      header('Location:/home/index');
                                             }
                                             }
-
-
-
-
   }
   $this->view('home'.DIRECTORY_SEPARATOR.'singUp');
   $this->view->pageTitle='Sign Up Page';
   $this->view->render();
 }
 
-
 public function logout()
 {
-
   Session::destroy();
   $this->index();
 }

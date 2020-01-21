@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Alata&display=swap');
+
+body{
+    /* font-family: 'Alata', sans-serif; */
+    font-family: 'Quicksand', sans-serif;
+
+}
 /* header start */
-.bg-blue{
+.bg-green{
 background-color:  #3aa3a9;
 }
 
@@ -14,7 +21,7 @@ background-color:  #3aa3a9;
 
 /* slider strat */
 .carousel-item {
-    height: 700px;
+    height: 760px;
 }
 .bg-black{
     background-color: black;
@@ -26,23 +33,39 @@ background-color:  #3aa3a9;
 .btn-blue {
     color: #fbfcfd;
     background-color: #f8f9fa00;
-    width: 120px;
+    width: 25%;
     border: 2px solid #3aa3a9;
     font-size: 18px;
+    border-radius: 22px;
+
+}
+.btn-white {
+    color: #3aa3a9;
+    background-color: #fbfcfd;
+    width: auto;
+    border: 2px solid #fbfcfd;
+    font-size: 18px;
+    border-radius: 22px;
+
 }
 
 .btn:hover {
     color: #3aa3a9;
     text-decoration: none;
     background-color: #ffffff;
+    border: 2px solid #ffffff;
 }
 
 
 .carousel-caption {
-    top: 36%;
+    top: 48%;
 }
-.margin-b-slide{
-    margin-bottom: 2.5rem;
+.h1-slide {
+    margin-bottom: 1.5rem;
+    font-size: 36px;
+}
+.p-slide{
+    text-shadow: 1px 2px #353333;
 }
 /* slider end */
 
@@ -150,18 +173,12 @@ background-color:  #3aa3a9;
 
 .bg-blue{
     background: -webkit-linear-gradient(left, #2b9096, #7dcdd1);
+    overflow: hidden;
 
-}
-
-
-.p-login{
-    position: absolute;
-    left: 200px;
-    top: 250px;
 }
 
 .p-login a{
-    color: #3aa3a9;
+    color: #f5e720;
 }
 
 .p-login a:hover {
@@ -169,18 +186,691 @@ background-color:  #3aa3a9;
     text-decoration: none;
 }
 
-
-
 .p-login-forget {
-    position: absolute;
-    left: 540px;
-    top: 145px;}
+    text-align: center;
+    padding-top: 14px;
+    font-size: 18px;
+}
 
 .p-login-forget  a{
-    color: #3aa3a9;
+    color: #d97777;
 }
     
 .p-login-forget a:hover {
         color: #b0c4da;
         text-decoration: none;
 }
+.btnlogin {
+    float: right;
+    margin-top: 2%;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1%;
+    background: #3aa3a9;
+    color: #fff;
+    font-weight: 600;
+    width: 28%;
+    font-size: 18px;
+}
+.text-blue{
+    color: #3aa3a9;
+}
+
+.p-section {
+    padding: 130px 0;
+    overflow: hidden;
+}
+
+.navbar-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -ms-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+}
+header {
+    width: 100%;
+    z-index: 99;
+}
+
+.no-pg-color{
+    background-color: none !important;
+}
+
+.bg-transparent {
+    background-color: transparent;
+}
+
+header nav {
+    width: 100%;
+    top: 0px;
+    z-index: 99;
+    margin-bottom: 0;
+    display: table;
+}
+
+.display-table-cell {
+    display: table-cell !important;
+}
+
+.feature-box-1 .char-value {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.servic-num{
+    font-size: 50px;
+    padding: 0px 20px 16px 0px;
+}
+
+.text-size-22px{
+    font-size: 22px;
+}
+
+
+
+.a-link li a{
+    color: #fff;
+    font-size: 22px;
+}
+    
+.a-link li a:hover {
+        color: #3aa3a9;
+        text-decoration: none;
+}
+
+.modal-content {
+    background-color: #b9aeae00;
+    border: 1px solid #b9aeae00;
+    border-bottom: 2px solid #fff;
+    border-radius: 0;
+
+}
+
+
+/* //.....................profile ...................// */
+html *{
+    -webkit-font-smoothing: antialiased;
+}
+
+.h6, h6 {
+    font-size: .75rem !important;
+    font-weight: 500;
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    line-height: 1.5em;
+    text-transform: uppercase;
+}
+
+.name h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+a .material-icons {
+    vertical-align: middle;
+}
+
+.fixed-top {
+    position: fixed;
+    z-index: 1030;
+    left: 0;
+    right: 0;
+}
+
+.profile-page .page-header {
+    height: 380px;
+    background-position:center;
+}
+
+.page-header {
+    height: 100vh;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    align-items: center;
+}
+
+.header-filter:after, .header-filter:before {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    content: "";
+}
+
+.header-filter::before {
+    background: rgba(0,0,0,.5);
+}
+
+.main-raised {
+    margin: -60px 30px 0;
+    border-radius: 6px;
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.main {
+    background: #FFF;
+    position: relative;
+    z-index: 3;
+    margin-top: 120px;
+}
+
+.profile-page .profile {
+    text-align: center;
+}
+
+.profile-page .profile img {
+    max-width: 160px;
+    width: 100%;
+    margin: 0 auto;
+    -webkit-transform: translate3d(0,-50%,0);
+    -moz-transform: translate3d(0,-50%,0);
+    -o-transform: translate3d(0,-50%,0);
+    -ms-transform: translate3d(0,-50%,0);
+    transform: translate3d(0,-50%,0);
+}
+
+.img-raised {
+    box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.rounded-circle {
+    border-radius: 50%!important;
+}
+
+.img-fluid, .img-thumbnail {
+    max-width: 100%;
+    height: auto;
+}
+
+.title {
+    margin-top: 30px;
+    margin-bottom: 25px;
+    min-height: 32px;
+    color: #3C4858;
+    font-weight: 700;
+    font-family: "Roboto Slab","Times New Roman",serif;
+}
+
+.profile-page .description {
+    margin: 1.071rem auto 0;
+    max-width: 600px;
+    color: #999;
+    font-weight: 300;
+}
+
+.nots-p-reg {
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+
+.profile-page .profile-tabs {
+    margin-top: 4.284rem;
+}
+
+.nav-pills, .nav-tabs {
+    border: 0;
+    border-radius: 3px;
+    padding: 0 15px;
+}
+
+.nav .nav-item {
+    position: relative;
+    margin: 0 2px;
+}
+
+.nav-pills.nav-pills-icons .nav-item .nav-link {
+    border-radius: 4px;
+}
+
+.nav-pills .nav-item .nav-link.active {
+    color: #fff;
+    font-size: 18px;
+    background-color: #3aa3a9;
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(156,39,176,.6);
+}
+
+.nav-pills .nav-item .nav-link {
+    line-height: 24px;
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 100px;
+    color: #555;
+    transition: all .3s;
+    border-radius: 30px;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.nav-pills .nav-item .nav-link:not(.active):hover {
+    background-color: rgba(200,200,200,.2);
+}
+
+
+.nav-pills .nav-item i {
+    display: block;
+    font-size: 30px;
+    padding: 15px 0;
+}
+
+.tab-space {
+    padding: 20px 0 50px;
+}
+
+.profile-page .gallery {
+    margin-top: 3.213rem;
+    padding-bottom: 50px;
+}
+
+.profile-page .gallery img {
+    width: 100%;
+    margin-bottom: 2.142rem;
+}
+.profile-page .profile .name{
+    margin-top: -80px;
+}
+
+img.rounded {
+    border-radius: 6px!important;
+}
+
+.tab-content>.active {
+    display: block;
+}
+
+/*buttons*/
+.btn-profile {
+    position: relative;
+    padding: 12px 30px;
+    margin: .3125rem 1px;
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.428571;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    border: 0;
+    border-radius: .2rem;
+    outline: 0;
+    transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1);
+    will-change: box-shadow,transform;
+}
+
+.btn-profile.btn-just-icon {
+    font-size: 20px;
+    height: 41px;
+    min-width: 41px;
+    width: 41px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    line-height: 41px;
+}
+
+.btn-profile.btn-just-icon fa{
+    margin-top: 0;
+    position: absolute;
+    width: 100%;
+    transform: none;
+    left: 0;
+    top: 0;
+    height: 100%;
+    line-height: 41px;
+    font-size: 20px;
+}
+.btn-profile.btn-link{
+    background-color: transparent;
+    color: #999;
+}
+
+
+/* footer */
+
+footer{
+    margin-top: 10px;
+    color: #555;
+    padding: 25px;
+    font-weight: 300;
+    
+}
+.footer p{
+    margin-bottom: 0;
+    font-size: 14px;
+    margin: 0 0 10px;
+    font-weight: 300;
+}
+footer p a{
+    color: #3aa3a9;
+    font-weight: 400;
+}
+
+footer p a:hover {
+    color: #555;
+    text-decoration: none;
+}
+
+
+/* photo pages */
+.background-position-top {
+    background-position: center top !important;
+}
+.opacity-medium {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.75;
+    top: 0;
+    right: 0;
+}
+.cover-background {
+    position: relative !important;
+    background-size: cover !important;
+    overflow: hidden !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.top-space{
+    padding-top: 235px;
+}
+
+.bg-gray{
+    background-color:  rgba(0, 0, 0, 0.56);
+
+}
+.page-title{
+    padding-bottom: 70px;
+}
+
+.text-shadow-black{
+    text-shadow: 2px 2px #3c3c3c;
+
+}
+
+
+/* radio start */
+
+.radio {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    padding-right: 16px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .radio:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .radio input:checked ~ .checkmark {
+    background-color: #3aa3a9;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .radio input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .radio .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  }
+
+  .maxl{
+    display: inline-flex;
+
+  }
+/* radio end */
+
+
+.float-none{
+    float: none !important;
+}
+
+.right-menu{
+    position: absolute;
+    right: 0;
+}
+
+
+/* scroll down start */
+.demo a {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    z-index: 2;
+    display: inline-block;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    color: #fff;
+    font : normal 400 20px/1 'Josefin Sans', sans-serif;
+    letter-spacing: .1em;
+    text-decoration: none;
+    transition: opacity .3s;
+  }
+  .demo a:hover {
+    opacity: .5;
+  }
+
+  #numone a {
+    padding-top: 60px;
+  }
+  #numone a span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    box-sizing: border-box;
+  }
+  
+.shadow-div{
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+}  
+.border-50{
+    border-radius: 50px;
+}
+.mt-50px{
+    margin-top: -50px;
+}
+  
+/* scroll down end */
+@media (max-width: 640px){
+    .carousel-item {
+        height: 639px;
+    }
+    /* for images in the phone */
+    .w-100 {
+        width: 300%!important;
+    }
+
+    .register-left {
+        margin-top: 10%;
+    }
+    .bg-blue {
+        overflow: auto;
+    }
+    .btnRegister {
+        float: none;
+        margin-left: 64px;
+    }
+    .register {
+        padding: 6%;
+    }
+    .register-left img {
+        width: 18%;
+    }
+}
+
+
+
+
+
+/* profile change */
+  /* .profile-pic {
+      max-width: 200px;
+      max-height: 200px;
+      display: block;
+  } */
+  
+  .file-upload {
+      display: none;
+  }
+  /* .circle {
+      border-radius: 1000px !important;
+      overflow: hidden;
+      width: 128px;
+      height: 128px;
+      border: 8px solid rgba(255, 255, 255, 0.7);
+      position: absolute;
+      top: 72px;
+  } */
+  /* img {
+      max-width: 100%;
+      height: auto;
+  } */
+  .p-image {
+    position: absolute;
+    top: 167px;
+    right: 222px;
+    background-color: #3aa3a9;
+    border-radius: 38px;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  }
+  .p-image:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  }
+  .upload-button {
+    width: 36px;
+  }
+  
+  .upload-button:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    color: #999;
+  }
+
+
+/* file img upload */
+.img-file-input {
+    color: transparent;
+}
+.img-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.img-file-input::before {
+    content: 'Select some files';
+    color: #3aa3a9;
+    display: inline-block;
+    /* background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); */
+    /* border: 1px solid #999; */
+    /* border-radius: 3px; */
+    padding: 1px -22px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 11pt;
+    /* margin-left: -20px; */
+}
+.img-file-input:hover::before {
+    border-color: black;
+}
+.img-file-input:active {
+    outline: 0;
+}
+.img-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+}
+/* file img upload */
+
+
+/* file pdf upload */
+.pdf-file-input {
+    color: transparent;
+}
+.pdf-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.pdf-file-input::before {
+    content: 'Select Your PDF ';
+    color: #3aa3a9;
+    display: inline-block;
+    /* background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); */
+    /* border: 1px solid #999; */
+    /* border-radius: 3px; */
+    padding: 1px -22px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 11pt;
+    /* margin-left: -20px; */
+}
+.pdf-file-input:hover::before {
+    border-color: black;
+}
+.pdf-file-input:active {
+    outline: 0;
+}
+.pdf-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+}
+/* file pdf upload */
+
+  

@@ -5,18 +5,17 @@
 
 class Profiles
 {
-  protected  $data_file;
   protected $db;
-  protected $inventory=[ ];
+  // protected $inventory=[ ];
 
   function __construct()
   {
-       $this->db=new Model();
+    $this->db=new DB();
   }
 // return all row of table of users
 public function all()
 {
-  return $this->db->query("SELECT * FROM `profiles`");
+  return $this->db->QueryCrud("SELECT * FROM `profiles`");
 }
 
 //add new row to users table
@@ -24,18 +23,17 @@ public function add(array $aData)
 {
 
       $oStmt = 'INSERT INTO profiles ( name, value, user_id)
-                VALUES ( :name, :value, :user_id)';
-
-          return $this->db->execution($oStmt,$aData);
+                VALUES ( ?,?,?)';
+          return $this->db->QueryCrud($oStmt,$aData,0);
 
   }
 
   // find user by ID
 public function checkLogin(array $aData)
 {
-  $oStmt = 'SELECT * FROM profiles WHERE email =:email AND password =:password ';
+  $oStmt = 'SELECT * FROM profiles WHERE email =? AND password =? ';
 
-      return $this->db->execution($oStmt,$aData)->fetch();
+      return $this->db->QueryCrud($oStmt,$aData);
 
 }
 
@@ -44,7 +42,7 @@ public function delete($id)
 {
   $oStmt = 'DELETE FROM profiles WHERE id=?';
 
-      return $this->db->execution($oStmt,$id);
+      return $this->db->QueryCrud($oStmt,$id);
 }
 
 
@@ -54,8 +52,8 @@ public function update($aData)
 {
         $oStmt = 'UPDATE  profiles
                  SET   name=:name, value=:value
-                WHERE id=:id ';
-        return $this->db->execution($oStmt,$aData);
+                WHERE id=?';
+        return $this->db->QueryCrud($oStmt,$aData,0);
 
 }
 
@@ -64,10 +62,8 @@ public function update($aData)
 public function find($aData)
 {
 
-
-  $oStmt = $this->db->preparation('SELECT * FROM profiles WHERE id =?');
-$oStmt->execute($aData);
-      return $oStmt->fetch();
+   $oStmt ='SELECT * FROM profiles WHERE id =?';
+    return $this->db->QueryCrud($oStmt,$aData);
 
 }
 

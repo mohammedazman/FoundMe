@@ -1,64 +1,27 @@
 <?php
 
-class Model {
+class Model{
 
+    protected $model_file;
+    // protected $model_data;
 
-      protected $pdoObject;
-      protected $dsn;
+    public function __construct($model_file)
+    {
+        $this->model_file=$model_file;
 
-      const DB_USER = 'root';
-      const DB_PASS = '';
+    
+    }
 
+    public function getModel(){
 
-      public function __construct() {
-        try {
-          $this->dsn="mysql:host=localhost;dbname=FoundMe";
-            $this->pdoObject=new PDO($this->dsn,Model::DB_USER,Model::DB_PASS);
+        if (file_exists(MODEL. $this->model_file.'.php')) {
 
-            $this->pdoObject->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo 'Connection failed: ' . $e->getMessage();
+            require MODEL.$this->model_file.'.php';
+            $this->modelObj= new $this->model_file;
+              return $this->modelObj;
+     }
+}
 }
 
 
-           $this->pdoObject->exec("SET NAMES utf8");
-
-          if( !$this->pdoObject ) {
-              throw new Exception('Could not connect to DB ');
-          }
-      }
-
-      public function query($sql){
-          if ( !$this->pdoObject ){
-
-              return false;
-          }
-
-          $result = $this->pdoObject->query($sql);
-
-          $data = array();
-          while ($row = $result->fetch()) {
-            $data[] = $row;
-          }
-
-
-          return $data;
-      }
-
-      public function escape($str){
-          return $this->pdoObject->quote($str);
-      }
-
-
-      # this function in test
-            public  function execution($str,$arge){
-
-                $stmt = $this->pdoObject->prepare($str);
-                return $stmt->execute($arge);
-            }
-
-      public function preparation($str){
-          $stmt = $this->pdoObject->prepare($str);
-          return $stmt;
-      }
-}
+?>

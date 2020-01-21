@@ -1,35 +1,28 @@
-
 <?php
-// static class for database using singletone pattern
+
 class DB {
-  private static $instance;
+      protected $pdoObject;
+      private static $instance;
 
-  public const DB_USER = 'root';
-  private const DB_PASS = '';
-    private  $dsn="mysql:host=localhost;dbname=news";
-    private static $PDO_OBJECT;
+      const DBUSER = 'root';
+      const DBPASS = '';
+      const DNS="mysql:host=localhost;dbname=FoundMe;charset=UTF8";
 
+      public function __construct() {
+        try {
+          $this->pdoObject=new PDO(DB::DNS,DB::DBUSER,DB::DBPASS);
+          $this->pdoObject->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
+          $this->pdoObject->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          } catch (PDOException $e) {
+              echo 'Connection failed: ' . $e->getMessage();
+             }
+      
+          if( !$this->pdoObject ) {
+              throw new Exception('Could not connect to DB ');
+          }
+      }
 
-
-    public function __construct() {
-      try {
-        $this->dsn="mysql:host=localhost;dbname=news";
-          self::$PDO_OBJECT=new PDO($this->dsn,DB::DB_USER,DB::DB_PASS);
-
-          self::$PDO_OBJECT->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } catch (PDOException $e) {
-  echo 'Connection failed: ' . $e->getMessage();
-  }
-
-
-         self::$PDO_OBJECT->exec("SET NAMES utf8");
-
-        if( !self::$PDO_OBJECT ) {
-            throw new Exception('Could not connect to DB ');
-        }
-    }
-// init instance of this class to allow access for all function like static function
-  public static function init()
+      public static function init()
     {
       if ( is_null( self::$instance ) )
       {
@@ -38,40 +31,25 @@ class DB {
       return self::$instance;
     }
 
-
-
-
-
-
-
-
-
-
-      public  function query($sql){
-          if ( !self::$PDO_OBJECT ){
-
-              return false;
-          }
-
-          $result = self::$PDO_OBJECT->query($sql);
-
-          $data = array();
-          while ($row = $result->fetch()) {
-            $data[] = $row;
-          }
-
-
-          return $data;
+      public function escape($str){
+          return $this->pdoObject->quote($str);
       }
 
 
-      public  function escape($str){
-          return self::$PDO_OBJECT->quote($str);
-      }
-# this function in test
-      public  function execution($str,$arge){
-          $stmt = self::$PDO_OBJECT->prepare($str);
-          $stmt->execute($arge);
-          return $stmt;
-      }
+      public function QueryCrud ($sql,$args=array(),$type=1){
+        $query=$this->pdoObject->prepare($sql);
+        $query->execute($args);
+        if($type){
+          $data=$query->fetchAll();
+        // // echo"$sql"."<br>";
+        // // print_r($args);
+        // // print_r($data);
+        // if(sizeof($data)>0)
+        // {
+               return $data;
+        }
+        else
+            return true;
+    }
+   
 }

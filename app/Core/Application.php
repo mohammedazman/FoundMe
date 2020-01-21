@@ -12,30 +12,18 @@ class Application
   protected $params=[];
   public function __construct()
   {
-
-
-              session_start();
-
+            session_start();
 
             $this->prepareURL();
 
-
             if (file_exists(CONTROLLER.$this->controller.'.php')) {
 
-
                             if (Privilege::init()->checkCont($this->controller) ) {
-
-                                              $this->controller=new $this->controller;
-
-                                            if ( ! method_exists($this->controller,$this->action)) {
-
-                                                          $this->action='index';
-
-                                                        }
-
-                                              call_user_func_array([$this->controller,$this->action],$this->params);
-
-
+                                  $this->controller=new $this->controller;
+                                  if(method_exists($this->controller,$this->action))
+                                      call_user_func_array([$this->controller,$this->action],$this->params);
+                                  else
+                                      call_user_func_array([$this->controller,'index'],$this->params);
                             }
                             else
                            {
@@ -43,14 +31,11 @@ class Application
                                       call_user_func_array([$this->controller,'index'],$this->params);
 
                                       Message::setMessage(0,'main','لاتملك صلاحية وصول');
-
                             }
-
-
               }
               else {
-                $this->controller=new homeController;
-              call_user_func_array([$this->controller,'index'],$this->params);
+                    $this->controller=new homeController;
+                    call_user_func_array([$this->controller,'index'],$this->params);
               }
   }# end of __construct
 

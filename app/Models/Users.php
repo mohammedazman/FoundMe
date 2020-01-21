@@ -5,28 +5,28 @@
 
 class Users
 {
-  protected  $data_file;
   protected $db;
-  protected $inventory=[ ];
+  // protected $inventory=[ ];
 
   function __construct()
   {
-       $this->db=new Model();
+    $this->db=new DB();
   }
 // return all row of table of users
 public function all()
 {
-  return $this->db->query("select * from users");
+  return $this->db->QueryCrud("select * from users");
 }
 
 //add new row to users table
 public function add(array $aData)
 {
 
-      $oStmt = 'INSERT INTO users ( email,password, status, type)
-                VALUES ( :email, :password, :status, :type)';
+      $oStmt = 'INSERT INTO users (email,password, status, type)
+                VALUES ( ?, ?, ?, ?)';
 
-          return $this->db->execution($oStmt,$aData);
+             
+          return $this->db->QueryCrud($oStmt,$aData,0);
 
   }
 
@@ -35,10 +35,8 @@ public function checkLogin(array $aData)
 {
 
 
-  $oStmt = $this->db->preparation('SELECT * FROM users WHERE email =:email AND password =:password ');
-  $oStmt->execute($aData);
-  return $oStmt->fetch();
-
+  $oStmt ='SELECT * FROM users WHERE email =? AND password =? ';
+  return  $this->db->QueryCrud($oStmt,$aData);
 }
 
 //
@@ -46,7 +44,7 @@ public function delete($id)
 {
   $oStmt = 'DELETE FROM users WHERE id=?';
 
-      return $this->db->execution($oStmt,$id);
+      return $this->db->QueryCrud($oStmt,$id,0);
 }
 
 
@@ -55,9 +53,9 @@ public function delete($id)
 public function update($aData)
 {
         $oStmt = 'UPDATE  users
-                 SET   email=:email, username=:username, password=:password, type=:type, status=:status
-                WHERE id=:id ';
-        return $this->db->execution($oStmt,$aData);
+                 SET   email=?, username=?, password=?, type=?, status=?
+                WHERE id=? ';
+        return $this->db->QueryCrud($oStmt,$aData,0);
 
 }
 
@@ -65,25 +63,17 @@ public function update($aData)
 
 public function find($aData)
 {
-
-
-  $oStmt = $this->db->preparation('SELECT * FROM users WHERE id =?');
-$oStmt->execute($aData);
-      return $oStmt->fetch();
+  $oStmt = 'SELECT * FROM users WHERE id =?';
+      return $this->db->QueryCrud($oStmt,$aData);
 
 }
 
 public function lastID()
 {
 
-  $oStmt = $this->db->preparation('SELECT MAX(id) as id FROM users ');
-$oStmt->execute();
-      return $oStmt->fetch();
-
-
-
+  $oStmt ='SELECT MAX(id) as id FROM users ';
+        return $this->db->QueryCrud($oStmt)[0];
 }
-
 
 }
 

@@ -195,7 +195,7 @@ background-color:  #3aa3a9;
 .p-login-forget  a{
     color: #d97777;
 }
-    
+
 .p-login-forget a:hover {
         color: #b0c4da;
         text-decoration: none;
@@ -277,7 +277,7 @@ header nav {
     color: #fff;
     font-size: 22px;
 }
-    
+
 .a-link li a:hover {
         color: #3aa3a9;
         text-decoration: none;
@@ -539,7 +539,7 @@ footer{
     color: #555;
     padding: 25px;
     font-weight: 300;
-    
+
 }
 .footer p{
     margin-bottom: 0;
@@ -611,14 +611,14 @@ footer p a:hover {
     -ms-user-select: none;
     user-select: none;
   }
-  
+
   /* Hide the browser's default radio button */
   .radio input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
   }
-  
+
   /* Create a custom radio button */
   .checkmark {
     position: absolute;
@@ -629,29 +629,29 @@ footer p a:hover {
     background-color: #eee;
     border-radius: 50%;
   }
-  
+
   /* On mouse-over, add a grey background color */
   .radio:hover input ~ .checkmark {
     background-color: #ccc;
   }
-  
+
   /* When the radio button is checked, add a blue background */
   .radio input:checked ~ .checkmark {
     background-color: #3aa3a9;
   }
-  
+
   /* Create the indicator (the dot/circle - hidden when not checked) */
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
-  
+
   /* Show the indicator (dot/circle) when checked */
   .radio input:checked ~ .checkmark:after {
     display: block;
   }
-  
+
   /* Style the indicator (dot/circle) */
   .radio .checkmark:after {
        top: 9px;
@@ -714,17 +714,17 @@ footer p a:hover {
     transform: rotate(-45deg);
     box-sizing: border-box;
   }
-  
+
 .shadow-div{
     box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
-}  
+}
 .border-50{
     border-radius: 50px;
 }
 .mt-50px{
     margin-top: -50px;
 }
-  
+
 /* scroll down end */
 @media (max-width: 640px){
     .carousel-item {
@@ -763,7 +763,7 @@ footer p a:hover {
       max-height: 200px;
       display: block;
   } */
-  
+
   .file-upload {
       display: none;
   }
@@ -794,8 +794,7 @@ footer p a:hover {
   .upload-button {
     width: 36px;
   }
-  
+
   .upload-button:hover {
     transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-    color: #999;
-  }
+    color: #999;}

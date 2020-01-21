@@ -38,13 +38,13 @@ class authController extends Controller
           //  print_r($user);
            if ($user[0]['status']==0) {
 
-             Message::setMessage(0,'main','لم يتم تسجيل الدخول بنجاح الرجاء المحاولة مرة اخرى');
+             Message::setMessage(0,'main','failed to log in pleas try agin');
              Helper::back();
              return;
            }
 
            Session::loggIn($user);
-           Message::setMessage(1,'main','لقد تم تسجيل الدخول بنجاح');
+           Message::setMessage(1,'main','loged in succesfuly');
              if (Session::get('type')=='Admin') {
 
                 $adminController=new adminController();
@@ -98,6 +98,7 @@ class authController extends Controller
 public function logout()
 {
   Session::destroy();
+  Message::setMessage(1,'main',' Log Out succesfuly ');
   $this->index();
 }
 

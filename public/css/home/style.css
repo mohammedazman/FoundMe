@@ -195,7 +195,7 @@ background-color:  #3aa3a9;
 .p-login-forget  a{
     color: #d97777;
 }
-    
+
 .p-login-forget a:hover {
         color: #b0c4da;
         text-decoration: none;
@@ -277,7 +277,7 @@ header nav {
     color: #fff;
     font-size: 22px;
 }
-    
+
 .a-link li a:hover {
         color: #3aa3a9;
         text-decoration: none;
@@ -361,7 +361,6 @@ a .material-icons {
     background: #FFF;
     position: relative;
     z-index: 3;
-    margin-top: 120px;
 }
 
 .profile-page .profile {
@@ -540,7 +539,7 @@ footer{
     color: #555;
     padding: 25px;
     font-weight: 300;
-    
+
 }
 .footer p{
     margin-bottom: 0;
@@ -612,14 +611,14 @@ footer p a:hover {
     -ms-user-select: none;
     user-select: none;
   }
-  
+
   /* Hide the browser's default radio button */
   .radio input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
   }
-  
+
   /* Create a custom radio button */
   .checkmark {
     position: absolute;
@@ -630,29 +629,29 @@ footer p a:hover {
     background-color: #eee;
     border-radius: 50%;
   }
-  
+
   /* On mouse-over, add a grey background color */
   .radio:hover input ~ .checkmark {
     background-color: #ccc;
   }
-  
+
   /* When the radio button is checked, add a blue background */
   .radio input:checked ~ .checkmark {
     background-color: #3aa3a9;
   }
-  
+
   /* Create the indicator (the dot/circle - hidden when not checked) */
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
-  
+
   /* Show the indicator (dot/circle) when checked */
   .radio input:checked ~ .checkmark:after {
     display: block;
   }
-  
+
   /* Style the indicator (dot/circle) */
   .radio .checkmark:after {
        top: 9px;
@@ -715,17 +714,17 @@ footer p a:hover {
     transform: rotate(-45deg);
     box-sizing: border-box;
   }
-  
+
 .shadow-div{
     box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
-}  
+}
 .border-50{
     border-radius: 50px;
 }
 .mt-50px{
     margin-top: -50px;
 }
-  
+
 /* scroll down end */
 @media (max-width: 640px){
     .carousel-item {
@@ -764,7 +763,7 @@ footer p a:hover {
       max-height: 200px;
       display: block;
   } */
-  
+
   .file-upload {
       display: none;
   }
@@ -795,82 +794,7 @@ footer p a:hover {
   .upload-button {
     width: 36px;
   }
-  
+
   .upload-button:hover {
     transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-    color: #999;
-  }
-
-
-/* file img upload */
-.img-file-input {
-    color: transparent;
-}
-.img-file-input::-webkit-file-upload-button {
-    visibility: hidden;
-}
-.img-file-input::before {
-    content: 'Select some files';
-    color: #3aa3a9;
-    display: inline-block;
-    /* background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); */
-    /* border: 1px solid #999; */
-    /* border-radius: 3px; */
-    padding: 1px -22px;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    cursor: pointer;
-    text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 11pt;
-    /* margin-left: -20px; */
-}
-.img-file-input:hover::before {
-    border-color: black;
-}
-.img-file-input:active {
-    outline: 0;
-}
-.img-file-input:active::before {
-    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
-}
-/* file img upload */
-
-
-/* file pdf upload */
-.pdf-file-input {
-    color: transparent;
-}
-.pdf-file-input::-webkit-file-upload-button {
-    visibility: hidden;
-}
-.pdf-file-input::before {
-    content: 'Select Your PDF ';
-    color: #3aa3a9;
-    display: inline-block;
-    /* background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3); */
-    /* border: 1px solid #999; */
-    /* border-radius: 3px; */
-    padding: 1px -22px;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    cursor: pointer;
-    text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 11pt;
-    /* margin-left: -20px; */
-}
-.pdf-file-input:hover::before {
-    border-color: black;
-}
-.pdf-file-input:active {
-    outline: 0;
-}
-.pdf-file-input:active::before {
-    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
-}
-/* file pdf upload */
-
-  
+    color: #999;}

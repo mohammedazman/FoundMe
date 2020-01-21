@@ -39,7 +39,7 @@ class authController extends Controller
            if ($user[0]['status']==0) {
 
              Message::setMessage(0,'main','لم يتم تسجيل الدخول بنجاح الرجاء المحاولة مرة اخرى');
-             $this->index();
+             Helper::back();
              return;
            }
 

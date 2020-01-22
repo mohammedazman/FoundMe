@@ -24,7 +24,7 @@ class authController extends Controller
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      //do validation to POST
-          $validate=Validation::required(['','email','password']);
+          $validate=Validation::required(['email','password']);
 
                if ($validate['status'] == 0){
                    Helper::back();
@@ -68,8 +68,7 @@ class authController extends Controller
       // check if there submit
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $request= Validation::required(['','password','email','phone','first_name','last_name']); //sure that first element in array most be null
-
+    $request= Validation::required(['password','email','phone','first_name','last_name']); 
     if ($request['status']==1) {
               // $user=$this->model('Users');
 

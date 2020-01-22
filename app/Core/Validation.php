@@ -16,7 +16,7 @@ class Validation
     $status=1;
     foreach ($_REQUEST as $key => $value) {
 
-      if (array_search($key,$input)) {
+      if (array_search($key,$input)===0) {
               if (empty($value)) {
                 $error="you most fill  ".$key;
 

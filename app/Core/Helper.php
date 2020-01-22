@@ -161,9 +161,11 @@
       public static function userName($id)
       {
 
-        $username =DB::init()->QueryCrud("SELECT *  FROM profiles WHERE id = $id ");
+
+        $username =DB::init()->QueryCrud("SELECT * FROM profiles WHERE (user_id = $id) and (name ='First Name' or name='Last Name')");
+
         if (!empty($username)) {
-          return $username[0]['username'];
+          return $username[0]['value'].' '.$username[1]['value'];
         }
 
       }

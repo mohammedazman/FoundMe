@@ -32,13 +32,14 @@
 
            # check if the controller is in rules
             if ($contr==$values ) {
+              
 
                       # check if the cournt user match Controller in array rules
                       if ($key==self::$user){
                             $status=1;
                       }# end if
                       else {
-                        $status=0;
+                        $status=1;
                       }
 
           }# end if

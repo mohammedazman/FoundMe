@@ -12,7 +12,55 @@
 
 
     <link rel="shortcut icon" type="image/icon" href="/css/home/images/logo.png" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/tinymce/jquery.tinymce.min.js"></script>
+    <script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+          selector : '#mytextarea',
+          plugins : 'image',
+          toolbar : 'image',
+      
+          images_upload_url : 'tinyupload.php',
+          automatic_uploads : false,
+      
+          images_upload_handler : function(blobInfo, success, failure) {
+            var xhr, formData;
+      
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', 'tinyupload.php');
+      
+            xhr.onload = function() {
+              var json;
+      
+              if (xhr.status != 200) {
+                failure('HTTP Error: ' + xhr.status);
+                return;
+              }
+      
+              json = JSON.parse(xhr.responseText);
+      
+              if (!json || typeof json.file_path != 'string') {
+                failure('Invalid JSON: ' + xhr.responseText);
+                return;
+              }
+      
+              success(json.file_path);
+            };
+      
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+      
+            xhr.send(formData);
+          },
+        });
+        
+      </script>
+
     <title> <?php echo  $this->pageTitle; ?></title>
 </head>
-<body class="bg-blue">
 <?php echo Message::check('main');  ?>

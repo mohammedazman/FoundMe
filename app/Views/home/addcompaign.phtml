@@ -1,0 +1,88 @@
+<?php
+
+include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml'; 
+include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
+  
+<body>
+
+  <!-- start pages photo -->
+  <section class="cover-background top-space" style="background-image:url('/images/1(1).jpg');">
+        <div class="opacity-medium bg-gray"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
+                    <div class="vertical-align-middle text-center">
+                        <!-- start sub title -->
+                        <span class="text-white text-shadow-black">Add Compigan</span> 
+                        <!-- end sub title -->
+                        <!-- start page title -->
+                        <h1 class="text-white text-shadow-black">Welcome to My Compigans</h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end pages photo - -->
+
+
+  <!-- profile page start-->
+  <!-- <div class="main main-raised border-50 shadow-div col-md-12"> -->
+	<section>
+			<div class="container register">
+					<div class="row">
+						<div class="col-md-12 register-right shadow-div">
+							
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+									<h3 class="register-heading">Add Your Compagin</h3>
+									<div class="row register-form wow fadeIn">
+
+										<div class="col-md-12">
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="Title" value="" required />
+                      </div>
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="Tags" value="" required />
+                      </div>
+                      <div class="form-group">
+                        <input type="number" class="form-control"  placeholder="Amount of the donation" value="" required/>
+                      </div>
+                      <div class="form-group">
+                        <input type="date" class="form-control"  placeholder="Add Deuration" value="" required/>
+                      </div>
+                      <div class="form-group">
+                      <input type="file" multiple class="form-control img-file-input" id="gallery-photo-add"> 
+                      
+                        <div class="container">
+                          <div class="row">
+                            <div class="gallery"></div>
+
+                          </div>
+                        </div>
+                      
+                      </div>
+                      <div class="form-group">
+                      <input type="file" class="form-control pdf-file-input">
+                      </div>
+                      <div class="form-group">
+                      <textarea rows="4" cols="50" class="form-control" id="mytextarea"> you will learn how to make a website. We offer free tutorials in all web development technologies.
+                      </textarea>
+                      </div>
+                      <center>
+                      <input type="submit" class="btnadd"  value="Add"/>
+                      </center>        
+										</div>
+									</div>
+								</div>
+							
+							</div>
+						</div>
+					</div>
+	
+				</div>
+  </section>
+	<!-- </div> -->
+	<!-- profile page end -->
+
+<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

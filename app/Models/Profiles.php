@@ -29,9 +29,9 @@ public function add(array $aData)
   }
 
   // find user by ID
-public function checkLogin(array $aData)
+public function FindUser(array $aData)
 {
-  $oStmt = 'SELECT * FROM profiles WHERE email =? AND password =? ';
+  $oStmt = 'SELECT * FROM profiles WHERE user_id =?';
 
       return $this->db->QueryCrud($oStmt,$aData);
 

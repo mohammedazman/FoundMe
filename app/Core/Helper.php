@@ -145,6 +145,7 @@
 
    }
 
+
    #return COUNT of news for category @param is id of category
       public static function countposts($id)
       {
@@ -160,7 +161,7 @@
       public static function userName($id)
       {
 
-        $username =DB::init()->QueryCrud("SELECT *  FROM users WHERE id = $id ");
+        $username =DB::init()->QueryCrud("SELECT *  FROM profiles WHERE id = $id ");
         if (!empty($username)) {
           return $username[0]['username'];
         }

@@ -53,6 +53,8 @@ class authController extends Controller
 
 
              }
+             header('Location:/home/index');
+
    }
        $this->view('home'.DIRECTORY_SEPARATOR.'login');
        $this->view->pageTitle='Log In Page';

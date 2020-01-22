@@ -8,23 +8,22 @@
     <link rel="stylesheet" href="/css/home/bootstrap.min.css">
     <link rel="stylesheet" href="/css/home/animate.css">
     <link rel="stylesheet" href="/css/home/style.css">
-    <link rel="shortcut icon" type="image/icon" href="/imges/home/logo.png" />
-
-
-    <link rel="shortcut icon" type="image/icon" href="/css/home/images/logo.png" />
+    <link rel="shortcut icon" type="/image/icon" href="/imges/home/logo.png" />
+    <link rel="shortcut icon" type="/image/icon" href="/css/home/images/logo.png" />
+    <script src="/js/home/jquery-3.4.1.slim.min.js"></script>
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="js/tinymce/jquery.tinymce.min.js"></script>
-    <script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.11.3.js"></script> -->
+    <script type="text/javascript" src="/js/home/tinymce/jquery.tinymce.min.js"></script>
+    <script type="text/javascript" src="/js/home/tinymce/tinymce.min.js"></script>
     <script>
         tinymce.init({
           selector : '#mytextarea',
           plugins : 'image',
           toolbar : 'image',
       
-          images_upload_url : 'tinyupload.php',
+          images_upload_url :'/tiny',
           automatic_uploads : false,
       
           images_upload_handler : function(blobInfo, success, failure) {
@@ -32,7 +31,7 @@
       
             xhr = new XMLHttpRequest();
             xhr.withCredentials = false;
-            xhr.open('POST', 'tinyupload.php');
+            xhr.open('POST','/tiny');
       
             xhr.onload = function() {
               var json;

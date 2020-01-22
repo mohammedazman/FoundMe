@@ -2,73 +2,7 @@
 
   include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml'; ?>
 <!-- Modals -->
-<!-- Modal search start -->
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-
-        <div class="modal-body">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name *" value="" />
-              </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-<!-- Modal search end-->
-
-
-    <!-- start header -->
-    <header>
-            <nav class="navbar navbar-expand-lg navbar-top chang-color">
-                    <a class="navbar-brand" href="#">
-                        <img src="/images/home/logo.png" width="60" height="60" class="d-inline-block align-top" alt="">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav mr-auto a-link">
-                        <li class="nav-item active">
-                          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="signup.html">Sing Up</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="login.html">LogIn</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="profile.html">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#"  data-toggle="modal" data-target="#exampleModal">Search</a>
-                        </li>
-
-
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                          </a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-            </nav>
-    </header>
-    <!-- end header -->
-
-
+<body>
     <!-- start pages photo -->
     <section class="cover-background top-space" style="background-image:url('/images/home/1(1).jpg');">
         <div class="opacity-medium bg-gray"></div>
@@ -88,7 +22,6 @@
         </div>
     </section>
     <!-- end pages photo - -->
-
 
     <!-- profile page start-->
     <div class="main main-raised border-50">
@@ -147,32 +80,17 @@
                           <div class="row text-center">
                             <?php
                              if (array_key_exists('profiles',$this->view_data)){
-
                               $html='';
-
                               foreach ($this->view_data['profiles'] as $profile) {
                                       $html.='<div class="col-md-6">';
                                         $html.=$profile['name'];
                                   $html.='</div>  <div class="col-md-6">';
                                         $html.=$profile['value'];
                                       $html.='</div>';
-
-
                               }
-
-
                             echo $html;
                             }
-
-
-
-
-
-
                               ?>
-
-
-
                           </div>
                         </div>
                       </div>
@@ -214,11 +132,7 @@
 	</div>
 	<!-- profile page end -->
 
-<!-- footer start -->
-<footer class="footer text-center ">
-    <p><a href="home.html" target="_blank">&copy; 2020 foundme.com</a></p>
-</footer>
-<!-- footer end -->
+
 
 <script src="/js/home/jquery-3.4.1.slim.min.js"></script>
 <script src="/js/home/js.js"></script>

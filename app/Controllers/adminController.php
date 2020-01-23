@@ -17,7 +17,7 @@ class adminController extends Controller
   {
 
     $this->view('cp'.DIRECTORY_SEPARATOR.'users');
-    $this->view->pageTitle='Found Me Admin';
+    $this->view->pageTitle='Manage Users';
     $this->view->render();
 
   }

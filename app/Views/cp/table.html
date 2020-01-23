@@ -13,17 +13,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-    
+
 </head>
   <body>
-   
+
 <div class="select">
     <select class="form-control" id="locale">
       <option value="ar-SA">ar-SA</option>
       <option value="en-US" selected>en-US</option>
     </select>
   </div>
-  
+
   <div id="toolbar">
     <button id="remove" class="btn btn-danger" disabled>
       <i class="glyphicon glyphicon-remove"></i> Delete
@@ -39,7 +39,7 @@
     data-show-columns="true"
     data-show-columns-toggle-all="true"
     data-detail-view="true"
-    data-show-export="true"
+
     data-click-to-select="true"
     data-detail-formatter="detailFormatter"
     data-minimum-count-columns="2"
@@ -51,26 +51,27 @@
     data-side-pagination="server"
     data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
     data-response-handler="responseHandler">
-  </table>
   
+  </table>
+
   <script>
     var $table = $('#table')
     var $remove = $('#remove')
     var selections = []
-  
+
     function getIdSelections() {
       return $.map($table.bootstrapTable('getSelections'), function (row) {
         return row.id
       })
     }
-  
+
     function responseHandler(res) {
       $.each(res.rows, function (i, row) {
         row.state = $.inArray(row.id, selections) !== -1
       })
       return res
     }
-  
+
     function detailFormatter(index, row) {
       var html = []
       $.each(row, function (key, value) {
@@ -78,7 +79,7 @@
       })
       return html.join('')
     }
-  
+
     function operateFormatter(value, row, index) {
       return [
         '<a class="like" href="javascript:void(0)" title="Like">',
@@ -89,7 +90,7 @@
         '</a>'
       ].join('')
     }
-  
+
     window.operateEvents = {
       'click .like': function (e, value, row, index) {
         alert('You click like action, row: ' + JSON.stringify(row))
@@ -101,15 +102,15 @@
         })
       }
     }
-  
+
     function totalTextFormatter(data) {
       return 'Total'
     }
-  
+
     function totalNameFormatter(data) {
       return data.length
     }
-  
+
     function totalPriceFormatter(data) {
       var field = this.field
       return '$' + data.map(function (row) {
@@ -118,7 +119,7 @@
         return sum + i
       }, 0)
     }
-  
+
     function initTable() {
       $table.bootstrapTable('destroy').bootstrapTable({
         height: 550,
@@ -182,7 +183,7 @@
         'check-all.bs.table uncheck-all.bs.table',
       function () {
         $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
-  
+
         // save your data, here just save the current page
         selections = getIdSelections()
         // push or splice the selections if you want to save all data selections
@@ -199,10 +200,10 @@
         $remove.prop('disabled', true)
       })
     }
-  
+
     $(function() {
       initTable()
-  
+
       $('#locale').change(initTable)
     })
   </script>

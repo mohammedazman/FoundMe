@@ -42,8 +42,9 @@ class authController extends Controller
              Helper::back();
              return;
            }
-
+       
            Session::loggIn($user);
+
            Message::setMessage(1,'main','loged in succesfuly');
              if (Session::get('type')=='Admin') {
 
@@ -68,7 +69,7 @@ class authController extends Controller
       // check if there submit
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $request= Validation::required(['password','email','phone','first_name','last_name']); 
+    $request= Validation::required(['password','email','phone','first_name','last_name']);
     if ($request['status']==1) {
               // $user=$this->model('Users');
 

@@ -30,11 +30,10 @@ public function add(array $aData)
 
   }
 
-  // for check log in
+  // for check login
 public function checkLogin(array $aData)
+
 {
-
-
   $oStmt ='SELECT * FROM users WHERE email =? AND password =? ';
   return  $this->db->QueryCrud($oStmt,$aData);
 }
@@ -78,4 +77,4 @@ public function lastID()
 }
 
 
- ?>
+

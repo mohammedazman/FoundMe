@@ -4,19 +4,19 @@ require_once   VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'header.phtml';
 require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'fixedBar.phtml';
 require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 ?>
+
+
+
  <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <h1 class="h3 mb-0 text-gray-800">Manage Users</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+              <li class="breadcrumb-item active" aria-current="page">Active Users</li>
             </ol>
           </div>
- 
-
   <div class="user" style="background-color: #fff; padding:50px;border-radius: 40px; " >
-<div class="select">
-<div class="select">
+  <div class="select">
     <select class="form-control" id="locale">
       <option value="ar-SA">ar-SA</option>
       <option value="en-US" selected>en-US</option>
@@ -25,32 +25,60 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
   
   <div id="toolbar">
     <button id="remove" class="btn btn-danger" disabled>
-      <i class="glyphicon glyphicon-remove"></i> Delete
+      <i class="glyphicon glyphicon-remove"></i> Delete Users
     </button>
   </div>
   <table
-    id="table"
-    data-toolbar="#toolbar"
-    data-search="true"
-    data-show-refresh="true"
-    data-show-toggle="true"
-    data-show-fullscreen="true"
-    data-show-columns="true"
-    data-show-columns-toggle-all="true"
-    data-detail-view="true"
-    data-show-export="true"
-    data-click-to-select="true"
-    data-detail-formatter="detailFormatter"
-    data-minimum-count-columns="2"
-    data-show-pagination-switch="true"
-    data-pagination="true"
-    data-id-field="id"
-    data-page-list="[10, 25, 50, 100, all]"
-    data-show-footer="true"
-    data-side-pagination="server"
-    data-response-handler="responseHandler">
+  id="table"
+  data-toolbar="#toolbar"
+  data-search="true"
+  data-show-toggle="true"
+  data-show-fullscreen="true"
+  data-show-columns="true"
+  data-show-columns-toggle-all="true"
+  data-detail-view="true"
+  data-show-export="true"
+  data-click-to-select="true"
+  data-detail-formatter="detailFormatter"
+  data-minimum-count-columns="2"
+  data-show-pagination-switch="true"
+  data-pagination="true"
+  data-id-field="id"
+  data-page-list="[10, 25, 50, 100, all]"
+
+  >
   </table>
-  
+</div>
+
+
+
+<!-- model  -->
+
+<div id="deleteUsers" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+						
+					<div class="modal-header">						
+						<h4 class="modal-title "> Change user status</h4>
+						<button type="button" class="close mr-5" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" id="id_d" name="id" class="form-control">					
+						<input type="hidden" id="state_d" name="state" class="form-control">					
+						<p>Are you sure to continue this process?</p>
+						
+					</div>
+					<div class="modal-footer">
+					<input type="button" class="btn btn-info" id="delete" onclick="deleteU()" value="Confirm">
+						<button type="button" class="btn btn-danger"  data-dismiss="modal">cancel</button>
+					</div>
+				</form>
+			</div>
+		</div>
+  </div>
+<!-- model -->
+
   <script>
     var $table = $('#table')
     var $remove = $('#remove')
@@ -88,17 +116,59 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
       ].join('')
     }
   
+
+  // delete fun
+  function deleteU(){
+    $.ajax({
+      url: "/manageusers",
+        type: "POST",
+        cache: false,
+        data:{
+            type:2,
+            ids: $("#id_d").val(),
+            state:0,
+            
+        },
+        success: function(dataResult){
+            var dataResult = JSON.parse(dataResult);
+            if(dataResult.statusCode==200){
+                $('#deleteUsers').modal('hide');
+                alert(dataResult.message)
+                // sucMsg(dataResult.message);
+                load_data()						
+            }
+            else if(dataResult.statusCode==201){
+               alert(dataResult);
+            }
+    }
+    });
+}
+
+
+
     window.operateEvents = {
       'click .like': function (e, value, row, index) {
         alert('You click like action, row: ' + JSON.stringify(row))
       },
       'click .remove': function (e, value, row, index) {
-        $table.bootstrapTable('remove', {
-          field: 'id',
-          values: [row.id]
-        })
-      }
-    }
+        // alert (row.id)
+
+    $('#id_d').val(row.id);
+    $('#state_d').val(row.status);
+    $('#deleteUsers').modal('show');
+
+  }
+  
+
+
+}
+ 
+
+
+        // $table.bootstrapTable('remove', {
+        //   field: 'id',
+        //   values: [row.id]
+     
   
     function totalTextFormatter(data) {
       return 'Total'
@@ -117,10 +187,12 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
       }, 0)
     }
   
-    function initTable() {
+    function initTable(users) {
       $table.bootstrapTable('destroy').bootstrapTable({
         height: 550,
         locale: $('#locale').val(),
+        pagination: true,
+        search: true,
         columns: [
           [{
             field: 'state',
@@ -148,19 +220,19 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             footerFormatter: totalNameFormatter,
             align: 'center'
           }, {
-            field: 'price',
+            field: 'email',
             title: 'User Email',
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter
           }, {
-            field: 'price',
+            field: 'status',
             title: 'User State',
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter
           },{
-            field: 'price',
+            field: 'type',
             title: 'User Type',
             sortable: true,
             align: 'center',
@@ -174,8 +246,11 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             events: window.operateEvents,
             formatter: operateFormatter
           }]
-        ]
+        ],
+        data:users
+       
       })
+    }
       $table.on('check.bs.table uncheck.bs.table ' +
         'check-all.bs.table uncheck-all.bs.table',
       function () {
@@ -190,40 +265,45 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
       })
       $remove.click(function () {
         var ids = getIdSelections()
-        $table.bootstrapTable('remove', {
-          field: 'id',
-          values: ids
-        })
-        $remove.prop('disabled', true)
+        $('#id_d').val( ids);
+    $('#deleteUsers').modal('show');
+       
+       
       })
-    }
+    
   
-    $(function() {
-      initTable()
+    // $(function() {
+    //   initTable()
   
-      $('#locale').change(initTable)
-    })
+    //   $('#locale').change(initTable)
+    // })
+
+
+ $(document).ready(function(){  
+      	load_data();
+  });  
+
+
+ function load_data(){
+		$.ajax({
+			url:"/manageusers",
+			method:"POST",
+      data:{type:"1"},
+			success:function(data)
+			{
+        var userInfo=JSON.parse(data);
+        // alert(d)
+        initTable(userInfo.data);
+        $('#locale').change(initTable)
+      }
+
+        
+		       });
+}
+
+
+
   </script>
 
-    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table-locale-all.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/export/bootstrap-table-export.min.js"></script>
-    <script>
-
-// Toggle the side navigation
-$("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
-  $("body").toggleClass("sidebar-toggled");
-  $(".sidebar").toggleClass("toggled");
-  if ($(".sidebar").hasClass("toggled")) {
-    $('.sidebar .collapse').collapse('hide');
-  };
-});
-
-  </script>
-
-  <!-- table important script -->
-  
 </body>
 </html>
-

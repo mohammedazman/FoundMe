@@ -190,7 +190,17 @@
 
 
 
+      //for mearge full name from profile to users 
+
+
+      public function merageUserInfo($baiscInfo){
+        $result = array();
+        foreach($baiscInfo as $details){
+          $info = $details;
+          $info['name']=self::userName($details['id']);
+          $result[]= $info;
+        }
+        return $result;
+      }
  }
-
-
  ?>

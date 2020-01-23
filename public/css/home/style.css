@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Alata&display=swap');
 
+
 body{
     /* font-family: 'Alata', sans-serif; */
     font-family: 'Quicksand', sans-serif;
@@ -74,7 +75,7 @@ background-color:  #3aa3a9;
 .register{
     /* background: -webkit-linear-gradient(left, #3aa3a9, #7dcdd1); */
     margin-top: 3%;
-    padding: 3%;
+    padding: 6% 9%;
 }
 .register-left{
     text-align: center;
@@ -123,7 +124,7 @@ background-color:  #3aa3a9;
     margin-top: -9%; */
 }
 .register .register-form{
-    padding: 10%;
+    padding: 10% 21%;
     margin-top: 10%;
 }
 .btnRegister{
@@ -192,6 +193,7 @@ background-color:  #3aa3a9;
     text-align: center;
     padding-top: 14px;
     font-size: 18px;
+    color: #737070;
 }
 
 .p-login-forget  a{
@@ -912,4 +914,29 @@ footer p a:hover {
     border-color: #3aa3a9;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgb(58, 163, 169);
+}
+
+.form-control {
+    border-radius: 17px;
+    margin-top: 30px;
+    color: #495057;
+    background-color: #a992921a;
+    border: 1px solid #ced4da0d;
+    padding: 25px;
+
+}
+
+
+
+.navbar-container.fixed-theme {
+    padding: 0;
+   
+}
+
+.navbar-brand.fixed-theme,
+.navbar-container.fixed-theme,
+.navbar.navbar-fixed-top.fixed-theme,
+.navbar-brand,
+.navbar-container{
+    transition: 0.8s;
 }

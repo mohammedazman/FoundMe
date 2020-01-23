@@ -4,6 +4,7 @@ class Model{
 
     protected $model_file;
     // protected $model_data;
+    protected $modelObj;
 
     public function __construct($model_file)
     {
@@ -24,4 +25,3 @@ class Model{
 }
 
 
-?>

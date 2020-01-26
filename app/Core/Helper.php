@@ -205,10 +205,10 @@
 
 
 
-      //for mearge full name from profile to users 
+      //for mearge full name from profile to users
 
 
-      public function merageUserInfo($baiscInfo){
+      public static function merageUserInfo($baiscInfo){
         $result = array();
         foreach($baiscInfo as $details){
           $info = $details;

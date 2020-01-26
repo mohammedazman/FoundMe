@@ -940,3 +940,25 @@ footer p a:hover {
 .navbar-container{
     transition: 0.8s;
 }
+
+
+.navbar-collapse ul li a {
+    padding-left: 8px !important;
+    font-size: 18px;
+
+}
+
+.navbar  a{
+
+    color: #fff !important;
+}
+
+.dropdown-menu a{
+    color: #3aa3a9 !important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #fff !important;
+    text-decoration: none;
+    background-color: #3aa3a9;
+}

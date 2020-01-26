@@ -94,10 +94,10 @@ public function lastID()
   //delete manage users
   
   public function deleteUsers($args){
-    $oStmt = 'update users set status=? WHERE id in (?)';
-    // echo 'update users set status='.$args[0].' WHERE id in ('.$args[1].')';
-    // echo $oStmt;
-    // print_r($args);
+    $oStmt = 'update users set status=? WHERE id in ("?")';
+    echo 'update users set status='.$args[0].' WHERE id in ('.$args[1].')';
+    echo $oStmt;
+    print_r($args);
 
     return $this->db->QueryCrud($oStmt,$args,0);
 }

@@ -5,10 +5,12 @@
 class authController extends Controller
 {
   protected $modelObj;
+  protected $validation;
   public function __construct()
     {
         $this->model('Users');
         $this->modelObj= $this->model->getModel();
+        $this->validation=new Validation();
     }
 
   public function index($id='',$name='')
@@ -24,15 +26,20 @@ class authController extends Controller
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      //do validation to POST
-          $validate=Validation::required(['email','password']);
+          $this->validation->checkFild([
+              'email' => array(['required' => 'required', 'min' => '6']),
+              'password' => array(['required' => 'required','min' => '2' ]),
+              ]);
 
-               if ($validate['status'] == 0){
+
+
+               if ($this->validation->GetStatus() == 0){
                    Helper::back();
                    return;
                    }
 
-            $password=Hashing::init($validate['data'][':password'])->__toString();
-            $userForm= array($validate['data'][':email'] ,$password);
+            $password=Hashing::init($_REQUEST['password'])->__toString();
+            $userForm= array($_REQUEST['email'] ,$password);
             // $this->model('Users');
            $user=$this->modelObj->checkLogin($userForm);
           //  print_r($user);
@@ -42,7 +49,7 @@ class authController extends Controller
              Helper::back();
              return;
            }
-       
+
            Session::loggIn($user);
 
            Message::setMessage(1,'main','loged in succesfuly');
@@ -54,7 +61,7 @@ class authController extends Controller
 
 
              }
-             header('Location:/home/index');
+             Helper::goHome();
 
    }
        $this->view('home'.DIRECTORY_SEPARATOR.'login');
@@ -69,12 +76,23 @@ class authController extends Controller
       // check if there submit
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $request= Validation::required(['password','email','phone','first_name','last_name']);
-    if ($request['status']==1) {
+     $this->validation->checkFild(
+       ['first_name'=>array(['required' => 'required', 'maxWords' => '1'])
+       ,'last_name'=>array(['required' => 'required', 'maxWords' => '1'])
+       ,'password'=>array(['required' => 'required', 'maxWords' => '1'])
+       ,'password'=>array(['required' => 'required', 'min' => '8'])
+       ,'confirm_password'=>array(['required' => 'required', 'confirmed' => 'password'])
+       ,'email'=>array(['required' => 'required', 'email' => 'email', 'unique' =>array('users','email')])
+       ,'phone'=>array(['required' => 'required', 'digit' => 'digit'])]
+     );
+
+
+
+    if ($this->validation->GetStatus()===1) {
               // $user=$this->model('Users');
 
-             $params[]=$request['data'][':email'];
-             $params[]=Hashing::init($request['data'][':password'])->__toString();
+             $params[]=$_REQUEST['email'];
+             $params[]=Hashing::init($_REQUEST['password'])->__toString();
              $params[]=1;
              $params[]='User';
 
@@ -83,12 +101,12 @@ class authController extends Controller
                      $this->model('Profiles');
                      $profile=$this->model->getModel();
 
-                     $profile->add(['First Name',$request['data'][':first_name'],$this->modelObj->lastID()['id']]);
-                     $profile->add(['Last Name',$request['data'][':last_name'],$this->modelObj->lastID()['id']]);
-                     $profile->add(['Phone',$request['data'][':phone'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['First Name',$_REQUEST['first_name'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['Last Name',$_REQUEST['last_name'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['Phone',$_REQUEST['phone'],$this->modelObj->lastID()['id']]);
 
                      Message::setMessage(1,'main',' add new account have be done ');
-                     header('Location:/home/index');
+
                                             }
                                             }
   }

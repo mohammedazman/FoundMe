@@ -45,17 +45,22 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 											<div class="form-group">
 												<input type="text" id="Title" oninput=" stringlength(document.addCompign.Title, 1, 20)" name="Title" class="form-control" placeholder="Title" value="" required />
                         <span id="TitleError" class="text-danger"></span>
+                        <?php echo Message::check('Title');  ?>
                       </div>
 											<div class="form-group">
 									            <input type="text" id="Tags" name="Tags" oninput=" stringlength(document.addCompign.Tags, 2, 20)"  class="form-control" placeholder="Tags" value="" required />
                               <span id="TagsError" class="text-danger"></span>
+                              <?php echo Message::check('Tags');  ?>
                       </div>
                       <div class="form-group">
                         <input type="number" id="Amount" name="Amount" oninput="phonenumber(document.addCompign.Amount)"  class="form-control"  placeholder="Amount of the donation" value="" required/>
                         <span id="AmountError" class="text-danger"></span>
+                        <?php echo Message::check('Amount');  ?>
                       </div>
                       <div class="form-group">
                         <input type="date" class="form-control" id="Deuration" name="Deuration"  placeholder="Add Deuration" value="" required/>
+                        <?php echo Message::check('Deuration');  ?>
+
                       </div>
                       <div class="form-group">
                       <input type="file" multiple class="form-control img-file-input" name="gallery"  id="gallery-photo-add">
@@ -66,14 +71,16 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
                           </div>
                         </div>
-
+                        <?php echo Message::check('gallery');  ?>
                       </div>
                       <div class="form-group">
                       <input type="file" class="form-control pdf-file-input" name="file">
+                      <?php echo Message::check('file');  ?>
                       </div>
                       <div class="form-group">
                       <textarea rows="4" cols="50" class="form-control" id="mytextarea" name="descrption"> you will learn how to make a website. We offer free tutorials in all web development technologies.
                       </textarea>
+                      <?php echo Message::check('descrption');  ?>
                       </div>
 
                       <center>

@@ -53,7 +53,7 @@
              if (move_uploaded_file($file_tmp, $target_file)) {
                  return $file;
              } else {
-               
+
                  $uploadErr .= "Sorry, there was an error uploading your file.";
              }
          }
@@ -155,6 +155,11 @@
 
    }
 
+   public static function goHome()
+   {
+     header('Location:/home/index');
+   }
+
 
    #return COUNT of news for category @param is id of category
       public static function countposts($id)
@@ -200,10 +205,10 @@
 
 
 
-      //for mearge full name from profile to users 
+      //for mearge full name from profile to users
 
 
-      public function merageUserInfo($baiscInfo){
+      public static function merageUserInfo($baiscInfo){
         $result = array();
         foreach($baiscInfo as $details){
           $info = $details;

@@ -18,7 +18,7 @@ abstract class Session
     public static function loggIn(array $user)
     {
             $_SESSION['userID'] = $user[0]['id'];
-            // $_SESSION['userName'] = $user['username'];
+            $_SESSION['userName'] = Helper::userName($_SESSION['userID']);
             $_SESSION['type'] = $user[0]['type'];
 
 
@@ -94,7 +94,7 @@ abstract class Session
     public static function destroy()
     {
 
-
+        session_unset();
         session_destroy();
     }
 }

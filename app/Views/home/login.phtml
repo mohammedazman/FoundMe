@@ -23,9 +23,11 @@
 									<div class="col-md-12">
 											<div class="form-group">
 												<input type="email" name="email" class="form-control" placeholder="Your Email *" value="" />
+												<?php echo Message::check('email');  ?>
 											</div>
 											<div class="form-group">
 												<input type="password" name="password" class="form-control" placeholder="Password *" value="" />
+												<?php echo Message::check('password');  ?>
 											</div>
 										</div>
 										<div class="col-md-12">

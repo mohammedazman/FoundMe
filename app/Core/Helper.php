@@ -53,7 +53,7 @@
              if (move_uploaded_file($file_tmp, $target_file)) {
                  return $file;
              } else {
-               
+
                  $uploadErr .= "Sorry, there was an error uploading your file.";
              }
          }
@@ -153,6 +153,11 @@
        return $counter[0]['count'];
 
 
+   }
+
+   public static function goHome()
+   {
+     header('Location:/home/index');
    }
 
 

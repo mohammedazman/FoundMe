@@ -5,11 +5,14 @@
 class compaignController extends Controller
 {
 private $compaign;
+protected $valdition;
 
 public function __construct()
 {
   $this->model('Compaign');
   $this->compaign=$this->model->getModel();
+  $this->validation=new Validation();
+
 }
 
   public function index()
@@ -30,7 +33,7 @@ public function __construct()
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-      $request= Validation::required(['Title','Tags','Amount','Deuration','gallery','file','descrption']);
+      $request= $this->validation->required(['Title','Tags','Amount','Deuration','gallery','file','descrption']);
       if ($_FILES)
       {
 
@@ -63,7 +66,7 @@ foreach ($_FILES as $key=>$files) {
 
 
 
-      if ($request['status']==1) {
+      if ($this->validation->GetStatus()==1) {
 
                 $params=array(':owner_id' => 1 ,
                 ':title'=> $request['data'][':Title'],

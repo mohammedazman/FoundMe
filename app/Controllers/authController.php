@@ -5,10 +5,12 @@
 class authController extends Controller
 {
   protected $modelObj;
+  protected $validation;
   public function __construct()
     {
         $this->model('Users');
         $this->modelObj= $this->model->getModel();
+        $this->validation=new Validation();
     }
 
   public function index($id='',$name='')
@@ -24,9 +26,10 @@ class authController extends Controller
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      //do validation to POST
-          $validate=Validation::required(['email','password']);
+          $validate=$this->validation->required(['email','password']);
+                    $this->validation->EmailCheck('email');
 
-               if ($validate['status'] == 0){
+               if ($this->validation->GetStatus() == 0){
                    Helper::back();
                    return;
                    }
@@ -42,7 +45,7 @@ class authController extends Controller
              Helper::back();
              return;
            }
-       
+
            Session::loggIn($user);
 
            Message::setMessage(1,'main','loged in succesfuly');
@@ -54,7 +57,7 @@ class authController extends Controller
 
 
              }
-             header('Location:/home/index');
+             Helper::goHome();
 
    }
        $this->view('home'.DIRECTORY_SEPARATOR.'login');
@@ -69,8 +72,12 @@ class authController extends Controller
       // check if there submit
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $request= Validation::required(['password','email','phone','first_name','last_name']);
-    if ($request['status']==1) {
+    $request = $this->validation->required(['first_name','last_name','password','email','phone']);
+
+     $this->validation->unique('users','email','email');
+     $this->validation->EmailCheck('email');
+
+    if ($this->validation->GetStatus()===1) {
               // $user=$this->model('Users');
 
              $params[]=$request['data'][':email'];
@@ -88,7 +95,7 @@ class authController extends Controller
                      $profile->add(['Phone',$request['data'][':phone'],$this->modelObj->lastID()['id']]);
 
                      Message::setMessage(1,'main',' add new account have be done ');
-                     header('Location:/home/index');
+
                                             }
                                             }
   }

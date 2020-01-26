@@ -24,9 +24,17 @@
           <span>Comments</span><span class="badge float-right" style="background:gray;color:#fff;">3400</span></a>
       </li>
       <li class="nav-item ">
-        <a  class=" nav-link" href="">
+      <div class="panel panel-default">
+
+        <a  class=" nav-link" data-toggle="collapse" href="#collapse1">
+
           <i class="fa fa-users"></i>
           <span>Users</span><span class="badge float-right" style="background:orange;color:#fff;">25</span></a>
+          <div id="collapse1" class="panel-collapse collapse">
+      <div class="panel-body"><a class=" nav-link " href="/manageusers/ShowDeletedUsers">Active Users</a> </div>
+      <div class="panel-body"><a class=" nav-link " href="/manageusers/showActiveUsers">Deleted Users</a> </div>
+    </div>
+  </div>
       </li>
       <li class="nav-item ">
         <a  class=" nav-link " href="index.php">
@@ -34,3 +42,4 @@
           <span>Settings</span></a>
       </li>   
     </ul>
+

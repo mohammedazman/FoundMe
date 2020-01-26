@@ -17,7 +17,7 @@ class Model{
 
         if (file_exists(MODEL. $this->model_file.'.php')) {
 
-            require MODEL.$this->model_file.'.php';
+            require_once MODEL.$this->model_file.'.php';
             $this->modelObj= new $this->model_file;
               return $this->modelObj;
      }

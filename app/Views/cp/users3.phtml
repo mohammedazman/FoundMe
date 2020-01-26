@@ -1,0 +1,263 @@
+
+<?php
+require_once   VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'header.phtml';
+require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'fixedBar.phtml';
+require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
+?>
+ <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Manage Users</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Manage Users</li>
+            </ol>
+          </div>
+ 
+
+  <div class="user" style="background-color: #fff; padding:50px;border-radius: 40px; " >
+  <div class="select">
+    <select class="form-control" id="locale">
+      <option value="ar-SA">ar-SA</option>
+      <option value="en-US" selected>en-US</option>
+    </select>
+  </div>
+  
+  <div id="toolbar">
+    <button id="remove" class="btn btn-danger" disabled>
+      <i class="glyphicon glyphicon-remove"></i> Delete
+    </button>
+  </div>
+  <table
+  id="table"
+  data-toolbar="#toolbar"
+  data-search="true"
+  data-show-toggle="true"
+  data-show-fullscreen="true"
+  data-show-columns="true"
+  data-show-columns-toggle-all="true"
+  data-detail-view="true"
+  data-show-export="true"
+  data-click-to-select="true"
+  data-detail-formatter="detailFormatter"
+  data-minimum-count-columns="2"
+  data-show-pagination-switch="true"
+  data-pagination="true"
+  data-id-field="id"
+  data-page-list="[10, 25, 50, 100, all]"
+
+  >
+  </table>
+</div>
+
+<!-- model  -->
+
+<div id="deleteUsers" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+						
+					<div class="modal-header">						
+						<h4 class="modal-title "> احذفه ذلحينه انا من صدقك</h4>
+						<button type="button" class="close mr-5" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" id="id_d" name="id" class="form-control">					
+						<input type="hidden" id="state_d" name="state" class="form-control">					
+						<p>احلف لك يمين !</p>
+						
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-info" id="delete" value="احذفه">
+						<button type="button" class="btn btn-danger"  data-dismiss="modal">لا اتحديك</button>
+					</div>
+				</form>
+			</div>
+		</div>
+  </div>
+<!-- model -->
+  <script>
+    var $table = $('#table')
+    var $remove = $('#remove')
+    var selections = []
+  
+    function getIdSelections() {
+      return $.map($table.bootstrapTable('getSelections'), function (row) {
+        return row.id
+      })
+    }
+  
+    function responseHandler(res) {
+      $.each(res.rows, function (i, row) {
+        row.state = $.inArray(row.id, selections) !== -1
+      })
+      return res
+    }
+  
+    function detailFormatter(index, row) {
+      var html = []
+      $.each(row, function (key, value) {
+        html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+      })
+      return html.join('')
+    }
+  
+    function operateFormatter(value, row, index) {
+      return [
+        '<a class="like" href="javascript:void(0)" title="Like">',
+        '<i class="fa fa-edit"></i>',
+        '</a>  ',
+        '<a class="remove" href="javascript:void(0)" title="Remove">',
+        '<i class="fa fa-trash"></i>',
+        '</a>'
+      ].join('')
+    }
+  
+    window.operateEvents = {
+      'click .like': function (e, value, row, index) {
+        alert('You click like action, row: ' + JSON.stringify(row))
+      },
+      'click .remove': function (e, value, row, index) {
+        
+        $table.bootstrapTable('remove', {
+          field: 'id',
+          values: [row.id]
+        })
+      }
+    }
+  
+    function totalTextFormatter(data) {
+      return 'Total'
+    }
+  
+    function totalNameFormatter(data) {
+      return data.length
+    }
+  
+    function totalPriceFormatter(data) {
+      var field = this.field
+      return '$' + data.map(function (row) {
+        return +row[field].substring(1)
+      }).reduce(function (sum, i) {
+        return sum + i
+      }, 0)
+    }
+  
+    function initTable(users) {
+      $table.bootstrapTable('destroy').bootstrapTable({
+        height: 550,
+        locale: $('#locale').val(),
+        pagination: true,
+        search: true,
+        columns: [
+          [{
+            field: 'state',
+            checkbox: true,
+            rowspan: 2,
+            align: 'center',
+            valign: 'middle'
+          }, {
+            title: 'User ID',
+            field: 'id',
+            rowspan: 2,
+            align: 'center',
+            valign: 'middle',
+            sortable: true,
+            footerFormatter: totalTextFormatter
+          }, {
+            title: 'User Details',
+            colspan: 5,
+            align: 'center'
+          }],
+          [{
+            field: 'name',
+            title: 'Full Name',
+            sortable: true,
+            footerFormatter: totalNameFormatter,
+            align: 'center'
+          }, {
+            field: 'email',
+            title: 'User Email',
+            sortable: true,
+            align: 'center',
+            footerFormatter: totalPriceFormatter
+          }, {
+            field: 'status',
+            title: 'User State',
+            sortable: true,
+            align: 'center',
+            footerFormatter: totalPriceFormatter
+          },{
+            field: 'type',
+            title: 'User Type',
+            sortable: true,
+            align: 'center',
+            footerFormatter: totalPriceFormatter
+          }
+          , {
+            field: 'operate',
+            title: 'Item Action',
+            align: 'center',
+            clickToSelect: false,
+            events: window.operateEvents,
+            formatter: operateFormatter
+          }]
+        ],
+        data:users
+       
+      })
+      $table.on('check.bs.table uncheck.bs.table ' +
+        'check-all.bs.table uncheck-all.bs.table',
+      function () {
+        $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
+  
+        // save your data, here just save the current page
+        selections = getIdSelections()
+        // push or splice the selections if you want to save all data selections
+      })
+      $table.on('all.bs.table', function (e, name, args) {
+        console.log(name, args)
+      })
+      $remove.click(function () {
+        var ids = getIdSelections()
+        $table.bootstrapTable('remove', {
+          field: 'id',
+          values: ids
+        })
+        $remove.prop('disabled', true)
+      })
+    }
+  
+    // $(function() {
+    //   initTable()
+  
+    //   $('#locale').change(initTable)
+    // })
+
+
+ $(document).ready(function(){  
+      	load_data();
+  });  
+
+
+ function load_data(){
+		$.ajax({
+			url:"/manageusers",
+			method:"POST",
+      data:{type:"1"},
+			success:function(data)
+			{
+        var userInfo=JSON.parse(data);
+        // alert(d)
+        initTable(userInfo.data);
+        $('#locale').change(initTable)
+      }
+
+        
+		       });
+}
+   
+  </script>
+
+</body>
+</html>
+

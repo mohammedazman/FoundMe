@@ -68,17 +68,17 @@ public static function check($key)
   switch (Message::getMessage('msgState')) {
     case 0:
         if ($key=='main') {
-            $view='<h3 class="text-danger text-center"> <strong>sorry ! : </strong>'.Message::getMessage($key).'</h3>';
+            $view='<h3 class="text-danger text-center"> <i class="fas fa-exclamation-circle error-icon"></i>'.Message::getMessage($key).'</h3>';
         }
         else {
-          $view='<h5 class="text-danger"> <strong>sorry ! : </strong>'.Message::getMessage($key).'</h5>';
+          $view='<h5 class="text-danger text-error"> <i class="fas fa-exclamation-circle error-icon"></i>'.Message::getMessage($key).'</h5>';
         }
 
       break;
 
     case 1:
     if ($key='main') {
-        $view='<h3 class="text-success text-center"> <strong>Thanks! : </strong>'.Message::getMessage($key).'</h3>';
+        $view='<h3 class="text-success text-center"><i class="fas fa-exclamation-circle error-icon"></i>'.Message::getMessage($key).'</h3>';
     }
 
       break;

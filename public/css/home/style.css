@@ -440,12 +440,12 @@ a .material-icons {
     color: #fff;
     font-size: 18px;
     background-color: #3aa3a9;
-    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(156,39,176,.6);
+    box-shadow: 0 2px 4px 0 rgba(158, 155, 155, 0.2), 0 5px 24px -11px rgba(86, 86, 86, 0.6);
 }
 
 .nav-pills .nav-item .nav-link {
     line-height: 24px;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 500;
     min-width: 100px;
     color: #555;
@@ -993,10 +993,14 @@ footer p a:hover {
 .profile-info{
     color: #206468;
     font-size: 20px;
+    position: absolute;
+    left: 38%;
 }
 .profile-info-tow{
     color: #3aa3a9;
     font-size: 20px;
+    position: absolute;
+    left: 54%;
 }
 
 .title-home{
@@ -1013,3 +1017,25 @@ footer p a:hover {
     font-size: 12px;
     padding: 10px 0px;
 }
+
+.profile-info-all{
+    display: block;
+    padding-top: 30px;
+}
+
+.fa-circle{
+    font-size: 10px;
+    padding-right: 3px;
+    color: #3aa3a9;
+    position: relative;
+    right: 17%;
+
+}
+.p-all-10{
+    padding: 10px;
+}
+
+input[type='file'] {
+    color: transparent;
+    
+  }

@@ -77,18 +77,18 @@
             <div class="tab-pane active text-center gallery" id="studio">
             <a href="/compaign" class="btn btn-white"><span style="font-size: 30px">+</span> Add new info</a>
                 <div>
-                    <div class="description text-center">
-                        <div class="container text-center">
-                          <div class="row text-center">
+                    <div class="description">
+                        <div class="container">
+                          <div class="row text-center profile-info-all">
                             <?php
                              if (array_key_exists('profiles',$this->view_data)){
                               $html='';
                               foreach ($this->view_data['profiles'] as $profile) {
-                                      $html.='<div> <span class= "profile-info">';
+                                      $html.='<center><div class="p-all-10"><i class="fas fa-circle"></i> <span class= "profile-info">';
                                         $html.=$profile['name']." : ";
                                   $html.='</span>  <span class="profile-info-tow">';
                                         $html.=$profile['value'];
-                                      $html.='</span> </div>';
+                                      $html.='</span> </div> </center>';
                                       // $html.='<div class="dropdown-divider"></div>';
 
 

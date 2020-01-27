@@ -50,7 +50,8 @@ function allLetter(inputtxt)
       return true;
   } else
   {
-      document.getElementById(Errspan).innerText = 'Please Enter alphabet characters only';
+    document.getElementById(Errspan).innerText = 'Please Enter alphabet characters only' ;
+
       return false;
   }
 }

@@ -41,7 +41,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 										<div>
 											<div class="form-group">
 												<label for="Title" class="laple-forms">Title </label>
-												<input type="text" id="Title" oninput=" stringlength(document.addCompign.Title, 1, 20)" name="Title" class="form-control" placeholder="Title" value="" required />
+												<input type="text" id="Title" oninput="stringlength(document.addCompign.Title, 1, 20);allLetter(document.addCompign.Title); " name="Title" class="form-control" placeholder="Title" value="" required />
                         <span id="TitleError" class="text-danger"></span>
                         <?php echo Message::check('Title');  ?>
                       </div>

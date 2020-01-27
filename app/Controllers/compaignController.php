@@ -33,7 +33,13 @@ public function __construct()
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-      $request= $this->validation->required(['Title','Tags','Amount','Deuration','gallery','file','descrption']);
+      $request= $this->validation->checkFild(
+        ['Title'=>array(['required' => 'required', 'maxWords' => '5'])
+        ,'Tags'=>array(['required' => 'required', 'maxWords' => '5'])
+        ,'Amount'=>array(['required' => 'required', 'digit' => 'digit'])
+        ,'Deuration'=>array(['required' => 'required','date'=>'date' ])
+        ,'descrption'=>array(['required' => 'required','min'=>'20' ])]
+      );
       if ($_FILES)
       {
 
@@ -68,15 +74,15 @@ foreach ($_FILES as $key=>$files) {
 
       if ($this->validation->GetStatus()==1) {
 
-                $params=array(':owner_id' => 1 ,
-                ':title'=> $request['data'][':Title'],
+                $params=array(':owner_id' => !empty(Session::get('userID'))?Session::get('userID'):1 ,
+                ':title'=> $_REQUEST['Title'],
                 ':galary' =>$filename,
-                 ':descrption'=> $request['data'][':descrption'],
+                 ':descrption'=> $_REQUEST['descrption'],
                  	':file'=> isset($pdfFile)?$pdfFile:'',
-                   ':tags'=>$request['data'][':Tags']	,
+                   ':tags'=>$_REQUEST['Tags']	,
                     ':status' =>0,
-                     ':cost'=>$request['data'][':Amount']		,
-                      ':duration'=>$request['data'][':Deuration']	 ,
+                     ':cost'=>$_REQUEST['Amount']		,
+                      ':duration'=>$_REQUEST['Deuration']	 ,
                       	':pending'=> 0,
                         	':updates'=>null );
 

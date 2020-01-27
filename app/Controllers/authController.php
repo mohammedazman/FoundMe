@@ -26,16 +26,20 @@ class authController extends Controller
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      //do validation to POST
-          $validate=$this->validation->required(['email','password']);
-                    $this->validation->EmailCheck('email');
+          $this->validation->checkFild([
+              'email' => array(['required' => 'required', 'min' => '6']),
+              'password' => array(['required' => 'required','min' => '2' ]),
+              ]);
+
+
 
                if ($this->validation->GetStatus() == 0){
                    Helper::back();
                    return;
                    }
 
-            $password=Hashing::init($validate['data'][':password'])->__toString();
-            $userForm= array($validate['data'][':email'] ,$password);
+            $password=Hashing::init($_REQUEST['password'])->__toString();
+            $userForm= array($_REQUEST['email'] ,$password);
             // $this->model('Users');
            $user=$this->modelObj->checkLogin($userForm);
           //  print_r($user);
@@ -72,16 +76,23 @@ class authController extends Controller
       // check if there submit
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $request = $this->validation->required(['first_name','last_name','password','email','phone']);
+     $this->validation->checkFild(
+       ['first_name'=>array(['required' => 'required', 'maxWords' => '1'])
+       ,'last_name'=>array(['required' => 'required', 'maxWords' => '1'])
+       ,'password'=>array(['required' => 'required', 'maxWords' => '1'])
+       ,'password'=>array(['required' => 'required', 'min' => '8'])
+       ,'confirm_password'=>array(['required' => 'required', 'confirmed' => 'password'])
+       ,'email'=>array(['required' => 'required', 'email' => 'email', 'unique' =>array('users','email')])
+       ,'phone'=>array(['required' => 'required', 'digit' => 'digit'])]
+     );
 
-     $this->validation->unique('users','email','email');
-     $this->validation->EmailCheck('email');
+
 
     if ($this->validation->GetStatus()===1) {
               // $user=$this->model('Users');
 
-             $params[]=$request['data'][':email'];
-             $params[]=Hashing::init($request['data'][':password'])->__toString();
+             $params[]=$_REQUEST['email'];
+             $params[]=Hashing::init($_REQUEST['password'])->__toString();
              $params[]=1;
              $params[]='User';
 
@@ -90,9 +101,9 @@ class authController extends Controller
                      $this->model('Profiles');
                      $profile=$this->model->getModel();
 
-                     $profile->add(['First Name',$request['data'][':first_name'],$this->modelObj->lastID()['id']]);
-                     $profile->add(['Last Name',$request['data'][':last_name'],$this->modelObj->lastID()['id']]);
-                     $profile->add(['Phone',$request['data'][':phone'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['First Name',$_REQUEST['first_name'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['Last Name',$_REQUEST['last_name'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['Phone',$_REQUEST['phone'],$this->modelObj->lastID()['id']]);
 
                      Message::setMessage(1,'main',' add new account have be done ');
 

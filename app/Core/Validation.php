@@ -22,32 +22,135 @@ class Validation
   {
     return $this->status;
   }
-  public function required($input=[])
+  public function checkFild($fild)
   {
-    $data=[];
 
-    foreach ($_REQUEST as $key => $value) {
 
-      if (array_search($key,$input) !== false) {
+  foreach ($fild as $fildName => $validation){
 
-              if (empty($value)) {
 
-                $error="you must fill  ".$key;
+    foreach ($validation[0] as $typeValidate => $data) {
+        $formData = $_REQUEST[$fildName];
 
-                Message::setMessage(0,'main','you must fill all field');
-                Message::setMessage(0,$key,$error);
-                $this->SetStatus(0);
-                return(['status'=>$this->status]);
+        switch ($typeValidate) {
+            case 'required':
+                $this->required($fildName);
+                continue 2;
+            case 'min':
+                $this->main($fildName,$data);
+                continue 2;
+            case 'minWords':
+                $this->minWords($fildName,$data);
+                continue 2;
+            case 'max':
+                $this->max($fildName,$data);
+                continue 2;
+            case 'maxWords':
+                $this->maxWords($fildName,$data);
+                continue 2;
+            case 'confirmed':
+            $this->confirmPassword($fildName,$data);
+            continue 2;
+            case 'email':
+            $this->EmailCheck($fildName);
+            continue 2;
+            case 'digit':
+            $this->DigitCheck($fildName);
+            continue 2;
+            case 'alpha':
+            $this->AlphaCheck($fildName);
+            continue 2;
+            case 'date':
+            $this->ValidateDate($fildName);
+            continue 2;
+            case 'unique':
+                $this->unique($data[0],$data[1],$fildName);
+                break;
+    }
+  }
 
-              }
-      }
+}}
 
-      $data[':'.$key.'']=$this->test_input($value);
 
+
+
+  public function main($input,$data)
+  {
+    if (strlen($_REQUEST["$input"]) < $data){
+      Message::setMessage(0,'main','There Error try agin');
+      Message::setMessage(0,$input,"This $input must be more than  $data");
+      $this->SetStatus(0);
+    }
+
+    return;
+  }
+
+  public function max($input,$data)
+  {
+    if (strlen($_REQUEST["$input"]) > $data){
+      Message::setMessage(0,'main','There Error try agin');
+      Message::setMessage(0,$input,"This $input must be less than  $data");
+      $this->SetStatus(0);
+    }
+
+    return;
+  }
+
+  public function minWords($input,$data)
+  {
+  if (str_word_count($_REQUEST["$input"]) < $data){
+    Message::setMessage(0,'main','There Error try agin');
+    Message::setMessage(0,$input,"This $input must be more than  $data");
+    $this->SetStatus(0);
+  }
+  return;
+  }
+
+  public function maxWords($input,$data)
+  {
+  if (str_word_count($_REQUEST["$input"]) > $data){
+    Message::setMessage(0,'main','There Error try agin');
+    Message::setMessage(0,$input,"This $input must be less than  $data");
+    $this->SetStatus(0);
+  }
+  return;
+  }
+
+  public function confirmPassword($input,$data)
+  {
+
+
+    if ($_REQUEST["$input"] != $_REQUEST["$data"]){
+      Message::setMessage(0,'main','There Error try agin');
+      Message::setMessage(0,$input,"This $input must be equall   $data");
+      $this->SetStatus(0);
 
     }
-    return (['data'=>$data]);
+
+    return;
   }
+  public function required($input)
+  {
+
+              if (empty($_REQUEST["$input"])) {
+
+                $error="you must fill  ".$input;
+
+                Message::setMessage(0,'main','you must fill all field');
+                Message::setMessage(0,$input,$error);
+                $this->SetStatus(0);
+                return;
+
+              }
+              return ;
+      }
+
+
+
+
+
+
+
 
 
 public   function test_input($data) {
@@ -112,6 +215,18 @@ public   function test_input($data) {
       $this->SetStatus(0);
       return;
     }
+  }
+
+  function ValidateDate($input, $format = 'Y-m-d')
+  {
+    $date=$_REQUEST["$input"];
+      $d = DateTime::createFromFormat($format, $date);
+      if (! $d && $d->format($format) == $date) {
+        Message::setMessage(0,'main','There Error try agin');
+        Message::setMessage(0,$input,"This Format $input   must be Date");
+        $this->SetStatus(0);
+        return;
+      }
   }
 }
 

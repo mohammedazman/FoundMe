@@ -1,74 +1,73 @@
-function stringlength(inputtxt, minlength, maxlength)
+function stringlength(inputText, minlength, maxlength)
               {
-  var field = inputtxt.value;
+  var field = inputText.value;
   var mnlen = minlength;
   var mxlen = maxlength;
-  var Errspan = inputtxt.name + 'Error';
+  var Errspan = inputText.name + 'Error';
 
   if (field.length < mnlen || field.length > mxlen)
   {
-    document.getElementById(Errspan).innerText = '';
-    document.getElementById(Errspan).innerText = 'Please Enter between ' + mnlen + ' and ' + mxlen + ' characters';
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+  'Please Enter between ' + mnlen + ' and ' + mxlen + ' characters';
     return false;
   } else
   {
-    document.getElementById(Errspan).innerText = '';
+    document.getElementById(Errspan).innerHTML='';
     return true;
   }
 }
 
-function preventSpace(inputtxt, minSpace, maxSpace)
+function preventSpace(inputText, minSpace, maxSpace)
              {
-  var field = inputtxt.value;
+  var field = inputText.value;
   var mnChar = minSpace;
   var mxChar = maxSpace;
-  var Errspan = inputtxt.name + 'Error';
+  var Errspan = inputText.name + 'Error';
 
   if (field.split(' ').length - 1 >= 1 && mnChar == 0)
    {
-    document.getElementById(Errspan).innerText = 'Space Not allowed';
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+  'Space Not allowed in this field';
     return false;
   } else if (field.split(' ').length - 1 < mnChar || field.split(' ').length - 1 > mxChar)
   {
-    document.getElementById(Errspan).innerText = 'Please Enter the userid between ' + mnChar + ' and ' + mxChar + ' words';
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+  'Please Enter the userid between ' + mnChar + ' and ' + mxChar + ' words';
     return false;
   } else
   {
-    document.getElementById(Errspan).innerText = '';
+    document.getElementById(Errspan).innerHTML='';
     return true;
   }
 }
 
-function allLetter(inputtxt)
+function allLetter(inputText)
               {
   var letters = /^[A-Za-z]+$/;
-  var Errspan = inputtxt.name + 'Error';
+  var Errspan = inputText.name + 'Error';
 
-  if (inputtxt.value.match(letters))
+  if (inputText.value.match(letters))
   {
-      document.getElementById(Errspan).innerText = '';
+    document.getElementById(Errspan).innerHTML='';
       return true;
   } else
   {
-    document.getElementById(Errspan).innerText = 'Please Enter alphabet characters only' ;
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ 'This field accept alphabet characters only ' ;
 
       return false;
   }
 }
 
-                function Requirevalidation(inputtxt)
+                function Requirevalidation(inputText)
                 {
 
-  var empt = document.forms['form1']['un'].value;
-  var Errspan = inputtxt.name + 'Error';
+  var empt =inputText.value;
+  var Errspan = inputText.name + 'Error';
 
   if (empt == '')
   {
-      document.getElementById(Errspan).innerText = 'This feil is required ';
+      document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+  'This feild is required ';
       return false;
   } else
   {
-      document.getElementById(Errspan).innerText = '';
+    document.getElementById(Errspan).innerHTML='';
       return true;
   }
 
@@ -77,33 +76,35 @@ function allLetter(inputtxt)
    function ValidateEmail(inputText)
                 {
                 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                var Errspan=inputtxt.name+'Error';
+                var Errspan = inputText.name + 'Error';
+
 
                 if(inputText.value.match(mailformat))
                 {
-                    document.getElementById(Errspan).innerText='Invalid Email ';
-                    return true;
+                  document.getElementById(Errspan).innerHTML='';
+                  return true;
                 }
                 else
                 {
-                    document.getElementById(Errspan).innerText='';
+                    document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ 'Invalid Email, please enter a valid email ';
                     return false;
                 }
                 }
-                function phonenumber(inputtxt)
+  function phonenumber(inputText)
                 {
-                    var Errspan=inputtxt.name+'Error';
+                    var Errspan=inputText.name+'Error';
 
-                var phoneno = /^\d{10}$/;
-                if(inputtxt.value.match(phoneno))
+                    var phoneno = /^[0-9]+$/;
+
+                if(inputText.value.match(phoneno))
                         {
-                            document.getElementById(Errspan).innerText='only number allowed here';
-                             return true;
+                          document.getElementById(Errspan).innerHTML='';
+                          return true;
                         }
-                    else
+                        else
                         {
-                            document.getElementById(Errspan).innerText='';
-                             return false;
+                          document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ 'only number allowed here';
+                           return false;
                         }
                 }
 
@@ -114,11 +115,12 @@ function allLetter(inputtxt)
                     var pass =opass.value.slice(0,cpass.value.length);
 
                     if (cpass.value!=pass) {
-                        document.getElementById(Errspan).innerText="password not match";
+                        document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ "password not match";
                         return false;
                     }
                     else
                     {
-                         document.getElementById(Errspan).innerText="";
+                      document.getElementById(Errspan).innerHTML='';
+                         return true;
                     }
 				}

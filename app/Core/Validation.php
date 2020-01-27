@@ -77,7 +77,7 @@ class Validation
   public function main($input,$data)
   {
     if (strlen($_REQUEST["$input"]) < $data){
-      Message::setMessage(0,'main','There Error try agin');
+      Message::setMessage(0,'main','There are error ,please try again');
       Message::setMessage(0,$input,"This $input must be more than  $data");
       $this->SetStatus(0);
     }
@@ -88,7 +88,7 @@ class Validation
   public function max($input,$data)
   {
     if (strlen($_REQUEST["$input"]) > $data){
-      Message::setMessage(0,'main','There Error try agin');
+      Message::setMessage(0,'main','There are error ,please try again');
       Message::setMessage(0,$input,"This $input must be less than  $data");
       $this->SetStatus(0);
     }
@@ -99,7 +99,7 @@ class Validation
   public function minWords($input,$data)
   {
   if (str_word_count($_REQUEST["$input"]) < $data){
-    Message::setMessage(0,'main','There Error try agin');
+    Message::setMessage(0,'main','There are error ,please try again');
     Message::setMessage(0,$input,"This $input must be more than  $data");
     $this->SetStatus(0);
   }
@@ -109,7 +109,7 @@ class Validation
   public function maxWords($input,$data)
   {
   if (str_word_count($_REQUEST["$input"]) > $data){
-    Message::setMessage(0,'main','There Error try agin');
+    Message::setMessage(0,'main','There are error ,please try again');
     Message::setMessage(0,$input,"This $input must be less than  $data");
     $this->SetStatus(0);
   }
@@ -121,7 +121,7 @@ class Validation
 
 
     if ($_REQUEST["$input"] != $_REQUEST["$data"]){
-      Message::setMessage(0,'main','There Error try agin');
+      Message::setMessage(0,'main','There are error ,please try again');
       Message::setMessage(0,$input,"This $input must be equall   $data");
       $this->SetStatus(0);
 
@@ -169,7 +169,7 @@ public   function test_input($data) {
 
 
     if (DB::init()->QueryCrud("SELECT * FROM $table WHERE $colum=?",$aData)) {
-      Message::setMessage(0,'main','There Error try agin');
+      Message::setMessage(0,'main','There are error ,please try again');
       Message::setMessage(0,$input,"This $input exist befeor you must Enter another $input");
       $this->SetStatus(0);
       return;
@@ -177,13 +177,12 @@ public   function test_input($data) {
 
   }
 
-
   public function EmailCheck($input)
 	{
     $email=$_REQUEST["$input"];
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))
     {
-      Message::setMessage(0,'main','There Error try agin');
+      Message::setMessage(0,'main','There are error ,please try again');
       Message::setMessage(0,$input,"This Email is not a valid email address");
       $this->SetStatus(0);
       return;
@@ -198,7 +197,7 @@ public   function test_input($data) {
     $statement=$_REQUEST["$input"];
     if (!ctype_alpha($statement))
     {
-      Message::setMessage(0,'main','There Error try agin');
+      Message::setMessage(0,'main','There are error ,please try again');
       Message::setMessage(0,$input,"This $input  must contains letters only");
       $this->SetStatus(0);
       return;
@@ -210,7 +209,7 @@ public   function test_input($data) {
     $number=$_REQUEST["$input"];
     if (!ctype_digit($number))
     {
-      Message::setMessage(0,'main','There Error try agin');
+      Message::setMessage(0,'main','There are error ,please try again');
       Message::setMessage(0,$input,"This $input   must contains numbers only");
       $this->SetStatus(0);
       return;
@@ -222,7 +221,7 @@ public   function test_input($data) {
     $date=$_REQUEST["$input"];
       $d = DateTime::createFromFormat($format, $date);
       if (! $d && $d->format($format) == $date) {
-        Message::setMessage(0,'main','There Error try agin');
+        Message::setMessage(0,'main','There are error ,please try again');
         Message::setMessage(0,$input,"This Format $input   must be Date");
         $this->SetStatus(0);
         return;

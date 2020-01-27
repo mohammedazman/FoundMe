@@ -19,14 +19,14 @@ public function all($args)
 }
 
 //add new row to notification table
-public static function addNoti($msg , $effectedID,$uId,$type)
+public static function addNoti($msg ,$uId,$type)
 {
   // $content=['msg'=>$msg,'effectedType'=>$effectedType,'effectedId',$effectedID];
 
-      $oStmt = 'INSERT INTO notifications (text,notification_id,user_id,type)
-                VALUES ( ?, ?, ?,?)';
+      $oStmt = 'INSERT INTO notifications (text,target_user,type)
+                VALUES ( ?, ?, ?)';
 
-          return DB::init()->QueryCrud($oStmt,[$msg,$effectedID,$uId,$type],0);
+          return DB::init()->QueryCrud($oStmt,[$msg,$uId,$type],0);
 
   }
 

@@ -92,6 +92,7 @@ foreach ($_FILES as $key=>$files) {
                      if ($this->compaign->add($params)) {
 
 
+                      Notification::addNoti('New compaign is added by '.$_SESSION['userName'] .'and need approvment','admin','new compain');
 
                        Message::setMessage(1,'main',' add your compaing have be done ');
                        

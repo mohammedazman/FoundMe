@@ -8,7 +8,7 @@ function stringlength(inputtxt, minlength, maxlength)
   if (field.length < mnlen || field.length > mxlen)
   {
     document.getElementById(Errspan).innerText = '';
-    document.getElementById(Errspan).innerText += 'Please Enter between ' + mnlen + ' and ' + mxlen + ' characters';
+    document.getElementById(Errspan).innerText = 'Please Enter between ' + mnlen + ' and ' + mxlen + ' characters';
     return false;
   } else
   {
@@ -26,11 +26,11 @@ function preventSpace(inputtxt, minSpace, maxSpace)
 
   if (field.split(' ').length - 1 >= 1 && mnChar == 0)
    {
-    document.getElementById(Errspan).innerText += 'Space Not allowed';
+    document.getElementById(Errspan).innerText = 'Space Not allowed';
     return false;
   } else if (field.split(' ').length - 1 < mnChar || field.split(' ').length - 1 > mxChar)
   {
-    document.getElementById(Errspan).innerText += 'Please Enter the userid between ' + mnChar + ' and ' + mxChar + ' words';
+    document.getElementById(Errspan).innerText = 'Please Enter the userid between ' + mnChar + ' and ' + mxChar + ' words';
     return false;
   } else
   {

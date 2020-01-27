@@ -13,7 +13,7 @@ class adminController extends Controller
     $this->view->render();
 
   }
-
+  
 
 
 }

@@ -13,9 +13,9 @@ class Notification
     $this->db=new DB();
   }
 // return all user notification
-public function all($args)
+public static function getNoti($args)
 {
-  return DB::init()->QueryCrud("select * from notifications where use_id=? Desc",$args);
+  return DB::init()->QueryCrud("select * from notifications where target_user=? ",[$args]);
 }
 
 //add new row to notification table

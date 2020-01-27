@@ -40,10 +40,10 @@
                             </div>
 	                        <div class="name text-center">
 	                            <h3 class="title"><?php echo $this->view_data['username']; ?></h3>
-                                <h6>Designer</h6>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                                <h6></h6>
+                                <!-- <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
                                 <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a> -->
 	                        </div>
 	                    </div>
     	            </div>
@@ -75,7 +75,8 @@
 
           <div class="tab-content tab-space">
             <div class="tab-pane active text-center gallery" id="studio">
-                <div class="row">
+            <a href="/compaign" class="btn btn-white"><span style="font-size: 30px">+</span> Add new info</a>
+                <div>
                     <div class="description text-center">
                         <div class="container text-center">
                           <div class="row text-center">
@@ -83,11 +84,14 @@
                              if (array_key_exists('profiles',$this->view_data)){
                               $html='';
                               foreach ($this->view_data['profiles'] as $profile) {
-                                      $html.='<div class="col-md-6">';
-                                        $html.=$profile['name'];
-                                  $html.='</div>  <div class="col-md-6">';
+                                      $html.='<div> <span class= "profile-info">';
+                                        $html.=$profile['name']." : ";
+                                  $html.='</span>  <span class="profile-info-tow">';
                                         $html.=$profile['value'];
-                                      $html.='</div>';
+                                      $html.='</span> </div>';
+                                      // $html.='<div class="dropdown-divider"></div>';
+
+
                               }
                             echo $html;
                             }
@@ -103,9 +107,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
+                            <img class="card-img-top" src="/images/home/1(6).jpg" alt="Card image cap">
                             <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
+                              <h5 class="card-title">compagin</h5>
                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                               <a href="#" class="btn btn-primary">Go somewhere</a>
                             </div>
@@ -114,18 +118,16 @@
                   </div>
   			</div>
             <div class="tab-pane text-center gallery" id="favorite">
-            <a href="/compaign" class="btn btn-white"><span style="font-size: 30px">+</span> Add new info</a>
-
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card" style="width: 18rem;">
+                        <!-- <div class="card" style="width: 18rem;">
                             <img class="card-img-top" src="..." alt="Card image cap">
                             <div class="card-body">
                               <h5 class="card-title">Card title</h5>
                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                               <a href="#" class="btn btn-primary">Go somewhere</a>
                             </div>
-                          </div>
+                          </div> -->
                     </div>
                   </div>
       		</div>

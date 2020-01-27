@@ -57,16 +57,16 @@
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php  echo Session::get('userName'); ?> </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/profile/index">My Profile</a>
-                            <a class="dropdown-item" href="/auth/logout">Log Out</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="/auth/logout">Log Out</a>
+                            <!-- <a class="dropdown-item" href="#">Something else here</a> -->
                           </div>
                         </li>
 
                       <?php }else{  ?>
                         <li class="nav-item dropdown right-menu">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-camera"></i> Join FoundMe </a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> Join FoundMe </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
                             <a class="dropdown-item" href="/auth/login">Log In</a>
                             <a class="dropdown-item" href="/auth/signup">Sign Up</a>
                           </div>

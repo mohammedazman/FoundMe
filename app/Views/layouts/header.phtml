@@ -34,16 +34,27 @@
                           <a class="nav-link" href="/home/index">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="/compaign/addcompaign">add Compigan</a>
+                          <a class="nav-link" href="#">Compigans</a>
                         </li>
-
+                        <li class="nav-item">
+                          <a class="nav-link" href="/compaign/addcompaign">Add Compigan</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">Help</a>
+                        </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#"  data-toggle="modal" data-target="#exampleModal">Search</a>
                         </li>
 
 <?php  if(Session::logged())  { ?>
                         <li class="nav-item dropdown right-menu">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-camera"></i> <?php  echo Session::get('userName'); ?> </a>
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> <?php  echo Session::get('userName'); ?> </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/profile/index">My Profile</a>
                             <a class="dropdown-item" href="/auth/logout">Log Out</a>

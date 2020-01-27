@@ -20,41 +20,54 @@
 
 							<div class="tab-content" id="myTabContent">
 								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-									<h3 class="register-heading">Fill this Form</h3>
+									<h3 class="register-heading"></h3>
 									<form class="" action="" method="post">
 									<div class="row register-form wow flipInX">
-									<div class="col-md-12">
+									<div class="col-md-6">
 											<div class="form-group">
+												<label for="first_name" class="laple-forms">First Name</label>
 												<input type="text" class="form-control" placeholder="First Name *" name="first_name" value="" />
                           <?php echo Message::check('first_name');  ?>
 											</div>
 											<div class="form-group">
+												<label for="last_name" class="laple-forms">Last Name</label>
 												<input type="text" class="form-control" placeholder="Last Name *" name="last_name" value="" />
                           <?php echo Message::check('last_name');  ?>
 											</div>
 											<div class="form-group">
+												<label for="email" class="laple-forms">Your Email</label>
+												<input type="email" name="email" class="form-control" placeholder="Your Email *" value="" />
+                          <?php echo Message::check('email');  ?>
+											</div>
+											</div>		
+											<div class="col-md-6">
+											<div class="form-group">
+												<label for="password" class="laple-forms">Your Password</label>
 												<input type="password" class="form-control" placeholder="Password *" name="password" value="" />
                           <?php echo Message::check('password');  ?>
 											</div>
 											<div class="form-group">
-													<input type="password" class="form-control" name="confirm_password"  placeholder="Confirm Password *" value="" />
+												<label for="confirm_password" class="laple-forms">Confirm Password</label>
+												<input type="password" class="form-control" name="confirm_password"  placeholder="Confirm Password *" value="" />
                             <?php echo Message::check('confirm_password');  ?>
 												</div>
+										
 											<div class="form-group">
-												<input type="email" name="email" class="form-control" placeholder="Your Email *" value="" />
-                          <?php echo Message::check('email');  ?>
-											</div>
-											<div class="form-group">
+												<label for="phone" class="laple-forms">Your Phone</label>
 												<input type="text" minlength="10" maxlength="10" name="phone" class="form-control" placeholder="Your Phone *" value="" />
                           <?php echo Message::check('phone');  ?>
 											</div>
-										
-											<!-- <p class="p-login">You have already account! <a href="login.html">LogIn</a></p> -->
 											<center>
 											<input type="submit" class="btnRegister float-none"  value="Sing Up"/>
 											
 											</center>
 
+											</div>
+										
+
+										
+											<!-- <p class="p-login">You have already account! <a href="login.html">LogIn</a></p> -->
+										
 										
 									</div>
 								</div>

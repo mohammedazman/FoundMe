@@ -37,20 +37,17 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 									<h3 class="register-heading">Add Your Compagin</h3>
 									<div class="row register-form wow fadeIn">
-                    <form class="" action="" name="addCompign" method="post" enctype="multipart/form-data">
-
-
-
-										<div class="col-md-12">
+                  <form class="col-md-12" action="" name="addCompign" method="post" enctype="multipart/form-data">
+										<div>
 											<div class="form-group">
 												<input type="text" id="Title" oninput=" stringlength(document.addCompign.Title, 1, 20)" name="Title" class="form-control" placeholder="Title" value="" required />
                         <span id="TitleError" class="text-danger"></span>
                         <?php echo Message::check('Title');  ?>
                       </div>
 											<div class="form-group">
-									            <input type="text" id="Tags" name="Tags" oninput=" stringlength(document.addCompign.Tags, 2, 20)"  class="form-control" placeholder="Tags" value="" required />
-                              <span id="TagsError" class="text-danger"></span>
-                              <?php echo Message::check('Tags');  ?>
+									      <input type="text" id="Tags" name="Tags" oninput=" stringlength(document.addCompign.Tags, 2, 20)"  class="form-control" placeholder="Tags" value="" required />
+                        <span id="TagsError" class="text-danger"></span>
+                        <?php echo Message::check('Tags');  ?>
                       </div>
                       <div class="form-group">
                         <input type="number" id="Amount" name="Amount" oninput="phonenumber(document.addCompign.Amount)"  class="form-control"  placeholder="Amount of the donation" value="" required/>
@@ -60,15 +57,12 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                       <div class="form-group">
                         <input type="date" class="form-control" id="Deuration" name="Deuration"  placeholder="Add Deuration" value="" required/>
                         <?php echo Message::check('Deuration');  ?>
-
                       </div>
                       <div class="form-group">
                       <input type="file" multiple class="form-control img-file-input" name="gallery"  id="gallery-photo-add">
-
                         <div class="container">
                           <div class="row">
                             <div class="gallery"></div>
-
                           </div>
                         </div>
                         <?php echo Message::check('gallery');  ?>
@@ -88,7 +82,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 							        <p class="p-login nots-p-reg" style="padding-top:20px">Visite my compaing!<a href="/auth/signup"> Click here</a></p>
                       </center>
 										</div>
-                    </form>
+                  </form>
 									</div>
 								</div>
 

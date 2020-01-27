@@ -94,6 +94,7 @@ foreach ($_FILES as $key=>$files) {
 
 
                        Message::setMessage(1,'main',' add your compaing have be done ');
+                       
 
                                               }
                                             }

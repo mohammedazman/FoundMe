@@ -439,3 +439,9 @@
   }
   /* notification */
 
+.text-blue{
+  color:#3aa3a9;
+}
+
+a:hover {
+  color: #3aa3a9;}

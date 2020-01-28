@@ -14,13 +14,13 @@ class manageusersController extends Controller
     }
     public function index()
     {
-      
-     
 
-      
+
+
+
     }
     public function ShowDeletedUsers(){
-     
+
       $this->view('cp'.DIRECTORY_SEPARATOR.'deleteUsers');
       $this->view->pageTitle='Active Users';
       $this->view->render();
@@ -34,20 +34,20 @@ class manageusersController extends Controller
 
     }
     public function showUsers($state){
-      
+
       $usersArray = $this->userModel->getUsers([$state]);
 
       return  json_encode(array("statusCode"=>200,"data"=>Helper::merageUserInfo($usersArray)));
-      
+
     }
-    
+
     public function deleteUsers($ids,$state){
-      
+
       $usersArray = $this->userModel->deleteUsers([$state,$ids]);
       return  json_encode(array("statusCode"=>200,"message"=>"Process done successfully"));
-      
+
     }
-   
+
 
 
 }
@@ -56,11 +56,11 @@ $manage=new manageusersController();
 if(count($_POST)>0){
 
 if($_POST['type']==1){
-     
+
   echo $manage->showUsers(1);
   }
   if($_POST['type']==3){
-     
+
     echo $manage->showUsers(0);
     }
 
@@ -68,6 +68,6 @@ if($_POST['type']==2){
   // print_r($_POST);
   echo $manage->deleteUsers($_POST['ids'],$_POST['state']);
   }
-  
+
 }
  ?>

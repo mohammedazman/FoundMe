@@ -3,7 +3,7 @@
 /**
  * @param $key
  * @param $value
- * static class to manage privilege using array of rules with cournt user using session to check type of user
+ * static class to manage privilege using array of roles with cournt user using session to check type of user
  * using singletone pattern to init instance of class with init function
  */
 
@@ -13,7 +13,7 @@
      * @param $key
      * @param $value
      */
-     private static $rules=['Admin'=>'adminController','user'=>'adminController'];
+     private static $roles=['Admin'=>'adminController','Admin'=>'manageusersController','Admin'=>'adminController'];
      private static $user;
      private static $instance;
 
@@ -27,19 +27,20 @@
      {
        $status=1;
 
-        # looping to check all element in array rules
-       foreach (self::$rules as $key => $values) {
+        # looping to check all element in array roles
+       foreach (self::$roles as $key => $values) {
 
-           # check if the controller is in rules
+           # check if the controller is in roles
+
             if ($contr==$values ) {
-              
 
-                      # check if the cournt user match Controller in array rules
+
+                      # check if the cournt user match Controller in array roles
                       if ($key==self::$user){
                             $status=1;
                       }# end if
                       else {
-                        $status=1;
+                        $status=0;
                       }
 
           }# end if

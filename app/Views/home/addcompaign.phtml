@@ -37,7 +37,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 									<h3 class="register-heading">Add Your Compagin</h3>
 									<div class="row register-form wow fadeIn">
-                  <form class="col-md-12" action="" name="addCompign" method="post" enctype="multipart/form-data">
+                  <form class="col-md-12" action="" name="addCompign" id="addCompign" method="post" enctype="multipart/form-data">
 										<div>
 											<div class="form-group">
 												<label for="Title" class="laple-forms">Title </label>
@@ -60,6 +60,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                       <div class="form-group">
 												<label for="Deuration" class="laple-forms">Add Deuration</label>
                         <input type="date" class="form-control" id="Deuration" name="Deuration"  placeholder="Add Deuration" value="" required/>
+                        <span id="DeurationError" class="text-danger"></span>
                         <?php echo Message::check('Deuration');  ?>
                       </div>
                       
@@ -79,8 +80,10 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                       <?php echo Message::check('file');  ?>
                       </div>
                       <div class="form-group">
-                      <textarea rows="4" cols="50" class="form-control" id="mytextarea" name="descrption"> you will learn how to make a website. We offer free tutorials in all web development technologies.
+                      <textarea rows="4" cols="50" class="form-control" id="mytextarea" name="descrption">
                       </textarea>
+                      <span id="descrptionError" class="text-danger"></span>
+
                       <?php echo Message::check('descrption');  ?>
                       </div>
 
@@ -101,5 +104,15 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
   </section>
 	<!-- </div> -->
 	<!-- profile page end -->
-
+  <script>
+$(document).ready(function(){
+    $("#addComp").click(function(){  
+		event.preventDefault();  
+		if(Requirevalidation(document.addCompign.Title)&&Requirevalidation(document.addCompign.Tags)&&
+		Requirevalidation(document.addCompign.Amount)&&Requirevalidation(document.addCompign.Deuration)&&
+		$('#discription').val()!='')    
+        $("#addCompign").submit(); // Submit the form
+    });
+});
+</script>
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

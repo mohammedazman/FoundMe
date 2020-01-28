@@ -13,14 +13,7 @@ class adminController extends Controller
     $this->view->render();
 
   }
-  public function users()
-  {
-
-    $this->view('cp'.DIRECTORY_SEPARATOR.'users');
-    $this->view->pageTitle='Manage Users';
-    $this->view->render();
-
-  }
+  
 
 
 }

@@ -14,7 +14,7 @@
 							<p class="p-login nots-p-reg">You don't have account! <a href="/auth/signup">SignUp</a></p>
 						</div>
 						<div class="col-md-12 register-right shadow-div">
-						<form class="" action="" method="post">
+						<form class="" action="" method="post" name="loginForm" id="loginForm">
 
 							<div class="tab-content" id="myTabContent">
 								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -22,18 +22,24 @@
 									<div class="row register-form wow  flipInX">
 									<div class="col-md-12">
 											<div class="form-group">
+												<label for="email" class="laple-forms">Your Email</label>
 												<input type="email" name="email" class="form-control" placeholder="Your Email *" value="" />
 												<?php echo Message::check('email');  ?>
+												<span class="text-danger text-error" id="emailError"> </span>
+
 											</div>
 											<div class="form-group">
+												<label for="password" class="laple-forms">Your password</label>
 												<input type="password" name="password" class="form-control" placeholder="Password *" value="" />
 												<?php echo Message::check('password');  ?>
+												<span class="text-danger text-error" id="passwordError"> </span>
+
 											</div>
 										</div>
 										<div class="col-md-12">
 											<center>
 											<!-- <input type="submit" class="btnRegister"  value="Log In"/> -->
-											<input type="submit" class="btnlogin float-none"  value="Log In"/>
+											<input type="submit" id="logintBtn" class="btnlogin float-none"  value="Log In"/>
 											<p class="p-login-forget">forgot your password ! <a href="login.html">Forgot</a></p>
 											</center>
 										</div>
@@ -46,7 +52,15 @@
 
 				</div>
     </section>
-
+	<script>
+$(document).ready(function(){
+    $("#logintBtn").click(function(){  
+		event.preventDefault();  
+		if(Requirevalidation(document.loginForm.email)&&Requirevalidation(document.loginForm.password))    
+        $("#loginForm").submit(); // Submit the form
+    });
+});
+</script>
 
     <!-- end login -->
 <?php  include VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

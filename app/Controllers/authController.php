@@ -98,6 +98,8 @@ class authController extends Controller
 
 
                    if ($this->modelObj->add($params)) {
+
+                      Notification::addNoti('New user is added and need activation','admin','new user');
                      $this->model('Profiles');
                      $profile=$this->model->getModel();
 

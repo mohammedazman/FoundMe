@@ -6,16 +6,16 @@
 
     <!-- start pages photo -->
     <section class="cover-background top-space" style="background-image:url('/images/home/1(1).jpg');">
-        <div class="opacity-medium bg-gray"></div>
+        <div class="opacity-medium bg-dark"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
                     <div class="vertical-align-middle text-center">
                         <!-- start sub title -->
-                        <!-- <span class="text-white text-shadow-black">Profile</span> -->
+                        <span class="text-white">Profile</span>
                         <!-- end sub title -->
                         <!-- start page title -->
-                        <!-- <h1 class="text-white text-shadow-black">Welcome to My Profile</h1> -->
+                        <h1 class="text-white">Welcome to My Profile</h1>
                         <!-- end page title -->
                     </div>
                 </div>
@@ -26,117 +26,117 @@
 
     <!-- profile page start-->
     <div class="main main-raised border-50">
-		<div class="profile-content">
-            <div class="container">
-                <div class="row">
-	                <div class="col-md-6 ml-auto mr-auto">
-        	           <div class="profile">
-	                        <div class="text-center mt-50px circle">
-	                            <img src="/images/home/profile4.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid profile-pic" width="250px";>
+      <div class="profile-content">
+          <div class="container">
+              <div class="row">
+                <!-- PROFILE PHOTO -->
+                <div class="col-md-4 ml-auto mr-auto">
+                    <div class="profile">
+                        <div class="text-center mt-50px circle">
+                          <div class="profile-img-size">
+                            <img src="/images/home/profile4.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid profile-pic" width="auto">
+                            <i class="fas fa-user-edit upload-button p-image"></i>
+                            <input class="file-upload" type="file" accept="image/*"/> 
                           </div>
-                          <div class="p-image">
-                            <img class="upload-button" src="/images/home/edit.png" alt="">
-                               <input class="file-upload" type="file" accept="image/*"/>
-                            </div>
-	                        <div class="name text-center">
-	                            <h3 class="title"><?php echo $this->view_data['username']; ?></h3>
-                                <h6></h6>
-                                <!-- <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a> -->
-	                        </div>
-	                    </div>
-    	            </div>
+                          
+                        </div>
+                        
+                        <div class="name text-center">
+                            <h3 class="title"><?php echo $this->view_data['username']; ?></h3>
+                              <h6></h6>
+                              <!-- <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                              <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
+                              <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a> -->
+                        </div>
+                    </div>
                 </div>
+                <!-- PROFILE PHOTO -->
 
-				<div class="row">
-					<div class="col-md-6 ml-auto mr-auto">
-                        <div class="profile-tabs">
-                          <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
-                                 About
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                                 Compigan
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                                  Donition
-                                </a>
-                            </li>
-                          </ul>
-                        </div>
-    	    	</div>
-            </div>
-
-          <div class="tab-content tab-space">
-            <div class="tab-pane active text-center gallery" id="studio">
-            <a href="/compaign" class="btn btn-white"><span style="font-size: 30px">+</span> Add new info</a>
-                <div>
-                    <div class="description">
-                        <div class="container">
-                          <div class="row text-center profile-info-all">
-                            <?php
-                             if (array_key_exists('profiles',$this->view_data)){
-                              $html='';
-                              foreach ($this->view_data['profiles'] as $profile) {
-                                      $html.='<center><div class="p-all-10"><i class="fas fa-circle"></i> <span class= "profile-info">';
-                                        $html.=$profile['name']." : ";
-                                  $html.='</span>  <span class="profile-info-tow">';
-                                        $html.=$profile['value'];
-                                      $html.='</span> </div> </center>';
-                                      // $html.='<div class="dropdown-divider"></div>';
-
-
-                              }
-                            echo $html;
-                            }
-                              ?>
-                          </div>
-                        </div>
+                <!-- TAPS  -->
+                <div class="col-md-8 ml-auto mr-auto">
+                      <div class="profile-tabs">
+                        <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                          <li class="nav-item">
+                              <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
+                              About
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#works" role="tab" data-toggle="tab">
+                              Compigan
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                                Donition
+                              </a>
+                          </li>
+                        </ul>
                       </div>
                 </div>
-  			</div>
-            <div class="tab-pane text-center gallery" id="works">
-            <a href="/compaign" class="btn btn-white"><span style="font-size: 30px">+</span> Add Compigan</a>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="/images/home/1(6).jpg" alt="Card image cap">
-                            <div class="card-body">
-                              <h5 class="card-title">compagin</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
+                <!-- TAPS  -->
+                <div class="tab-content tab-space">
+                  <div class="tab-pane active text-center gallery" id="studio">
+                  <a href="/compaign" class="btn btn-white"><span style="font-size: 30px">+</span> Add new info</a>
+                      <div>
+                          <div class="description">
+                              <div class="container">
+                                <div class="row text-center profile-info-all">
+                                  <?php
+                                    if (array_key_exists('profiles',$this->view_data)){
+                                    $html='';
+                                    foreach ($this->view_data['profiles'] as $profile) {
+                                            $html.='<center><div class="p-all-10"><i class="fas fa-circle"></i> <span class= "profile-info">';
+                                              $html.=$profile['name']." : ";
+                                        $html.='</span>  <span class="profile-info-tow">';
+                                              $html.=$profile['value'];
+                                            $html.='</span> </div> </center>';
+                                            // $html.='<div class="dropdown-divider"></div>';
+                                    }
+                                  echo $html;
+                                  }
+                                    ?>
+                                </div>
+                              </div>
                           </div>
-                    </div>
-                  </div>
-  			</div>
-            <div class="tab-pane text-center gallery" id="favorite">
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="..." alt="Card image cap">
-                            <div class="card-body">
-                              <h5 class="card-title">Card title</h5>
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                          </div> -->
-                    </div>
-                  </div>
-      		</div>
-          </div>
+                      </div>
+              </div>
+              <div class="tab-pane text-center gallery" id="works">
+                  <a href="/compaign" class="btn btn-white"><span style="font-size: 30px">+</span> Add Compigan</a>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="card" style="width: 18rem;">
+                                  <img class="card-img-top" src="/images/home/1(6).jpg" alt="Card image cap">
+                                  <div class="card-body">
+                                    <h5 class="card-title">compagin</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+              </div>
+              <div class="tab-pane text-center gallery" id="favorite">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <!-- <div class="card" style="width: 18rem;">
+                                  <img class="card-img-top" src="..." alt="Card image cap">
+                                  <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                  </div>
+                                </div> -->
+                          </div>
+                      </div>
+              </div>
+              </div>
 
-
-            </div>
-        </div>
-	</div>
+              </div>
+              
+          </div>  
+      </div>
+  	</div>
 	<!-- profile page end -->
 
 

@@ -135,12 +135,12 @@
 }
 
 .sidebar .nav-item .nav-link i {
-  font-size: 0.85rem;
+  font-size: 18px;
   margin-right: 0.25rem;
 }
 
 .sidebar .nav-item .nav-link span {
-  font-size: 0.85rem;
+  /* font-size: 0.85rem; */
   display: inline;
 }
 
@@ -233,7 +233,8 @@
 .sidebar.toggled .nav-item .nav-link i {
   float: left;
   text-align: center;
-  font-size: 1rem;
+  font-size: 22px;
+  padding: 10px;
   margin: 0 0 0.7rem 1rem;
 }
 
@@ -354,26 +355,7 @@
 {
 	float:left;
 }
-.stat
-{
-	margin:2px;
-	padding:2px;
-	margin-left:40px; 
-	border-radius:10px;
 
-}
-
-.home-stats .stat
-{
-	background:#eee;
-
-}
-
-.home-stats .stat span
-{
-	display:block;
-	font-size:20px;
-}
 .user{
 
   -webkit-box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
@@ -400,7 +382,7 @@
     top: -20px;
     right: 12px;
     border:10px solid #343A40;
-    border-color: transparent transparent #343A40 transparent;
+    border-color: transparent transparent #3aa3a9 transparent;
   }
   .head{
     padding:5px 15px;
@@ -444,4 +426,105 @@
 }
 
 a:hover {
-  color: #3aa3a9;}
+  color: #9b9696;
+}
+
+
+
+.notification .badge {
+  font-size: 10px;
+  position: absolute;
+  top: 18px;
+  right: 34px;
+  padding: 3px 5px;
+  border-radius: 53%;
+  background-color: #e96e59;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+
+/* thuraya */
+
+
+.stat {
+  padding: 38px;
+  width: 24% !IMPORTANT;
+  HEIGHT: 180px;
+  margin: 6px;
+  border-radius: 40px;
+}
+
+.pg-color-blue{
+  background-color: #6e85f3;
+}
+.pg-color-pink{
+  background-color: #e96e59;
+}
+.pg-color-green{
+  background-color: #9de573;
+}
+.pg-color-yellow{
+  background-color: #f1ef50;
+}
+/* .home-stats .stat
+{
+	background:#eee;
+} */
+
+.home-stats .stat span
+{
+	display:block;
+  font-size: 38px;
+  color: #fff;
+}
+
+.f-28px{
+  font-size: 28px !important;
+}
+
+.title-db{
+  padding-bottom: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.font-size-18px{
+  font-size: 18px;
+}
+
+.panel-body
+{
+  padding-left: 25px;
+  padding-top: 5px;
+}
+
+.db-count-num{
+  background: #e96e59;
+  color: #ffffff;
+}
+
+.breadcrumb-item a {
+  color: #4c4c4d;
+}
+
+.breadcrumb-item a:hover {
+  color: #b8babc !important;
+  text-decoration: none;
+}
+
+.breadcrumb-item.active {
+  color: #bcbdbe;
+}
+.breadcrumb {
+  background-color: unset;
+}
+
+.p-users
+{
+  padding: 8px 22px !important;
+}
+
+.font-size-20px{
+  font-size: 20px;
+}

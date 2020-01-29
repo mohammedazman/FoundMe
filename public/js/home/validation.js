@@ -90,24 +90,24 @@ function allLetter(inputText)
                     return false;
                 }
                 }
-  function phonenumber(inputText)
+    function phonenumber(inputText)
                 {
-                    var Errspan=inputText.name+'Error';
+                  var Errspan=inputText.name+'Error';
 
-                    var phoneno = /^[0-9]+$/;
+                  var phoneno =/^\+(?:[0-9] ?){6,14}[0-9]$/;
+                  if(inputText.value.match(phoneno))
+                     {
+                      document.getElementById(Errspan).innerHTML='';
 
-                if(inputText.value.match(phoneno))
-                        {
-                          document.getElementById(Errspan).innerHTML='';
-                          return true;
-                        }
-                        else
-                        {
-                          document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ 'only number allowed here';
-                           return false;
-                        }
+                     return true;
+                   }
+                   else
+                     {
+                      document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ 'Invalid phone number';
+                      return false;
+                     }
                 }
-
+  
 
    function confirmPassValidation(cpass,opass){
 

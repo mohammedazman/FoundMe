@@ -25,30 +25,18 @@ class authController extends Controller
     {
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     //do validation to POST
-          $this->validation->checkFild([
-              'email' => array(['required' => 'required', 'min' => '6']),
-              'password' => array(['required' => 'required','min' => '2' ]),
-              ]);
-
-
-
-               if ($this->validation->GetStatus() == 0){
-                   Helper::back();
-                   return;
-                   }
 
             $password=Hashing::init($_REQUEST['password'])->__toString();
             $userForm= array($_REQUEST['email'] ,$password);
             // $this->model('Users');
            $user=$this->modelObj->checkLogin($userForm);
-          //  print_r($user);
+           if(sizeof($user)>0){
            if ($user[0]['status']==0) {
 
              Message::setMessage(0,'main','failed to log in pleas try agin');
-             Helper::back();
              return;
            }
+           else{
 
            Session::loggIn($user);
 
@@ -62,6 +50,10 @@ class authController extends Controller
 
              }
              Helper::goHome();
+            }}
+            else{
+              Message::setMessage(0,'main','failed to log in pleas try agin');
+            }
 
    }
        $this->view('home'.DIRECTORY_SEPARATOR.'login');
@@ -73,24 +65,7 @@ class authController extends Controller
 
   public function signUp($id='',$name='')
   {
-      // check if there submit
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-     $this->validation->checkFild(
-       ['first_name'=>array(['required' => 'required', 'maxWords' => '1'])
-       ,'last_name'=>array(['required' => 'required', 'maxWords' => '1'])
-       ,'password'=>array(['required' => 'required', 'maxWords' => '1'])
-       ,'password'=>array(['required' => 'required', 'min' => '8'])
-       ,'confirm_password'=>array(['required' => 'required', 'confirmed' => 'password'])
-       ,'email'=>array(['required' => 'required', 'email' => 'email', 'unique' =>array('users','email')])
-       ,'phone'=>array(['required' => 'required', 'digit' => 'digit'])]
-     );
-
-
-
-    if ($this->validation->GetStatus()===1) {
-              // $user=$this->model('Users');
-
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
              $params[]=$_REQUEST['email'];
              $params[]=Hashing::init($_REQUEST['password'])->__toString();
              $params[]=1;
@@ -106,12 +81,14 @@ class authController extends Controller
                      $profile->add(['First Name',$_REQUEST['first_name'],$this->modelObj->lastID()['id']]);
                      $profile->add(['Last Name',$_REQUEST['last_name'],$this->modelObj->lastID()['id']]);
                      $profile->add(['Phone',$_REQUEST['phone'],$this->modelObj->lastID()['id']]);
+                      
+                     Message::setMessage(1,'main',' Your account added successfully');
+                     header('Location:/home/index');
 
-                     Message::setMessage(1,'main',' add new account have be done ');
 
                                             }
-                                            }
-  }
+                                          }
+                                            
   $this->view('home'.DIRECTORY_SEPARATOR.'singUp');
   $this->view->pageTitle='Sign Up Page';
   $this->view->render();

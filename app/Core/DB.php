@@ -39,11 +39,13 @@ class DB {
       public function QueryCrud ($sql,$args=array(),$type=1){
         $query=$this->pdoObject->prepare($sql);
         $query->execute($args);
+        // echo $sql;
+        // print_r($args);
         if($type){
           $data=$query->fetchAll();
         // // echo"$sql"."<br>";
         // // print_r($args);
-        // // print_r($data);
+        // print_r($data);
         // if(sizeof($data)>0)
         // {
                return $data;

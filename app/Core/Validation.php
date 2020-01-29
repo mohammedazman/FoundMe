@@ -22,7 +22,7 @@ class Validation
   {
     return $this->status;
   }
-  public function checkFild($fild)
+  public function checkFild($fild,$formCurrentData)
   {
 
 
@@ -30,41 +30,41 @@ class Validation
 
 
     foreach ($validation[0] as $typeValidate => $data) {
-        $formData = $_REQUEST[$fildName];
+        $formData = $formCurrentData[$fildName];
 
         switch ($typeValidate) {
             case 'required':
-                $this->required($fildName);
+                $this->required($fildName,$formCurrentData);
                 continue 2;
             case 'min':
-                $this->main($fildName,$data);
+                $this->main($fildName,$data,$formCurrentData);
                 continue 2;
             case 'minWords':
-                $this->minWords($fildName,$data);
+                $this->minWords($fildName,$data,$formCurrentData);
                 continue 2;
             case 'max':
-                $this->max($fildName,$data);
+                $this->max($fildName,$data,$formCurrentData);
                 continue 2;
             case 'maxWords':
-                $this->maxWords($fildName,$data);
+                $this->maxWords($fildName,$data,$formCurrentData);
                 continue 2;
             case 'confirmed':
-            $this->confirmPassword($fildName,$data);
+            $this->confirmPassword($fildName,$data,$formCurrentData);
             continue 2;
             case 'email':
-            $this->EmailCheck($fildName);
+            $this->EmailCheck($fildName,$formCurrentData);
             continue 2;
             case 'digit':
-            $this->DigitCheck($fildName);
+            $this->DigitCheck($fildName,$formCurrentData);
             continue 2;
             case 'alpha':
-            $this->AlphaCheck($fildName);
+            $this->AlphaCheck($fildName,$formCurrentData);
             continue 2;
             case 'date':
-            $this->ValidateDate($fildName);
+            $this->ValidateDate($fildName,$formCurrentData);
             continue 2;
             case 'unique':
-                $this->unique($data[0],$data[1],$fildName);
+                $this->unique($data[0],$data[1],$fildName,$formCurrentData);
                 break;
     }
   }
@@ -74,9 +74,9 @@ class Validation
 
 
 
-  public function main($input,$data)
+  public function main($input,$data,$formCurrentData)
   {
-    if (strlen($_REQUEST["$input"]) < $data){
+    if (strlen($formCurrentData["$input"]) < $data){
       Message::setMessage(0,'main','There are error ,please try again');
       Message::setMessage(0,$input,"This $input must be more than  $data");
       $this->SetStatus(0);
@@ -85,9 +85,9 @@ class Validation
     return;
   }
 
-  public function max($input,$data)
+  public function max($input,$data,$formCurrentData)
   {
-    if (strlen($_REQUEST["$input"]) > $data){
+    if (strlen($formCurrentData["$input"]) > $data){
       Message::setMessage(0,'main','There are error ,please try again');
       Message::setMessage(0,$input,"This $input must be less than  $data");
       $this->SetStatus(0);
@@ -96,9 +96,9 @@ class Validation
     return;
   }
 
-  public function minWords($input,$data)
+  public function minWords($input,$data,$formCurrentData)
   {
-  if (str_word_count($_REQUEST["$input"]) < $data){
+  if (str_word_count($formCurrentData["$input"]) < $data){
     Message::setMessage(0,'main','There are error ,please try again');
     Message::setMessage(0,$input,"This $input must be more than  $data");
     $this->SetStatus(0);
@@ -106,9 +106,9 @@ class Validation
   return;
   }
 
-  public function maxWords($input,$data)
+  public function maxWords($input,$data,$formCurrentData)
   {
-  if (str_word_count($_REQUEST["$input"]) > $data){
+  if (str_word_count($formCurrentData["$input"]) > $data){
     Message::setMessage(0,'main','There are error ,please try again');
     Message::setMessage(0,$input,"This $input must be less than  $data");
     $this->SetStatus(0);
@@ -116,11 +116,11 @@ class Validation
   return;
   }
 
-  public function confirmPassword($input,$data)
+  public function confirmPassword($input,$data,$formCurrentData)
   {
 
 
-    if ($_REQUEST["$input"] != $_REQUEST["$data"]){
+    if ($formCurrentData["$input"] != $formCurrentData["$data"]){
       Message::setMessage(0,'main','There are error ,please try again');
       Message::setMessage(0,$input,"This $input must be equall   $data");
       $this->SetStatus(0);
@@ -129,10 +129,10 @@ class Validation
 
     return;
   }
-  public function required($input)
+  public function required($input,$formCurrentData)
   {
 
-              if (empty($_REQUEST["$input"])) {
+              if (empty($formCurrentData["$input"])) {
 
                 $error="you must fill  ".$input;
 
@@ -161,25 +161,26 @@ public   function test_input($data) {
   }
 
 
-  public  function unique($table,$colum,$input)
+  public  function unique($table,$colum,$input,$formCurrentData)
   {
-    $aData=[$_REQUEST["$input"]];
+    
+    $aData=[$formCurrentData["$input"]];
+    
 
+    $email=DB::init()->QueryCrud("SELECT * FROM $table WHERE $colum=?",$aData);
 
-
-
-    if (DB::init()->QueryCrud("SELECT * FROM $table WHERE $colum=?",$aData)) {
+    if (sizeof($email)>0) {
       Message::setMessage(0,'main','There are error ,please try again');
-      Message::setMessage(0,$input,"This $input exist befeor you must Enter another $input");
+      Message::setMessage(0,$input,"This $input is exist  you must Enter another $input");
       $this->SetStatus(0);
       return;
     }
-
+   
   }
 
-  public function EmailCheck($input)
+  public function EmailCheck($input,$formCurrentData)
 	{
-    $email=$_REQUEST["$input"];
+    $email=$formCurrentData["$input"];
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))
     {
       Message::setMessage(0,'main','There are error ,please try again');
@@ -192,9 +193,9 @@ public   function test_input($data) {
   }
 
 
-  public function AlphaCheck($input)
+  public function AlphaCheck($input,$formCurrentData)
   {
-    $statement=$_REQUEST["$input"];
+    $statement=$formCurrentData["$input"];
     if (!ctype_alpha($statement))
     {
       Message::setMessage(0,'main','There are error ,please try again');
@@ -204,9 +205,9 @@ public   function test_input($data) {
     }
   }
 
-  public function DigitCheck($input)
+  public function DigitCheck($input,$formCurrentData)
   {
-    $number=$_REQUEST["$input"];
+    $number=$formCurrentData["$input"];
     if (!ctype_digit($number))
     {
       Message::setMessage(0,'main','There are error ,please try again');
@@ -216,9 +217,9 @@ public   function test_input($data) {
     }
   }
 
-  function ValidateDate($input, $format = 'Y-m-d')
+  function ValidateDate($input, $format = 'Y-m-d',$formCurrentData)
   {
-    $date=$_REQUEST["$input"];
+    $date=$formCurrentData["$input"];
       $d = DateTime::createFromFormat($format, $date);
       if (! $d && $d->format($format) == $date) {
         Message::setMessage(0,'main','There are error ,please try again');

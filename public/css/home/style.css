@@ -1045,22 +1045,22 @@ input[type='file'] {
     background-color: #17A2B8;
   }
   .dropdown-menu{
-    top: 60px;
-    right: 0px;
+    top: 40px;
+    right: -15px;
     left: unset;
-    width: 460px;
+    width: 300px;
     box-shadow: 0px 5px 7px -1px #c1c1c1;
     padding-bottom: 0px;
     padding: 0px;
   }
-  .dropdown-menu:before{
+  /* .dropdown-menu:before{
     content: "";
     position: absolute;
     top: -20px;
     right: 12px;
     border:10px solid #343A40;
     border-color: transparent transparent #343A40 transparent;
-  }
+  } */
   .head{
     padding:5px 15px;
     border-radius: 3px 3px 0px 0px;
@@ -1070,11 +1070,25 @@ input[type='file'] {
     border-radius: 0px 0px 3px 3px; 
   }
   .notification-box{
-    padding: 10px 0px; 
+    padding: 2px 0px; 
+    border-bottom: 1px solid #eeeaea;
   }
   .bg-gray{
     background-color: #eee;
   }
+  .noti-header{
+    color: #b6dadc;
+  }
+  .noti-icon{
+    margin: 13px;
+    font-size: 30px;
+    color: #b6dadc;
+}
+.noti-date{
+    font-size: 12px;
+    color: #a0a0a0  !important;
+    font-style: italic;
+}
   @media (max-width: 640px) {
       .dropdown-menu{
         top: 50px;

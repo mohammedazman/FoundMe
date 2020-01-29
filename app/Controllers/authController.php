@@ -43,13 +43,13 @@ class authController extends Controller
            Message::setMessage(1,'main','loged in succesfuly');
              if (Session::get('type')=='Admin') {
 
-                $adminController=new adminController();
-                $adminController->index();
-                return ;
-
+              header('Location:/admin/index');
+              return ;
 
              }
-             Helper::goHome();
+
+             header('Location:/home/index');
+
             }}
             else{
               Message::setMessage(0,'main','failed to log in pleas try agin');
@@ -63,7 +63,7 @@ class authController extends Controller
 
   }
 
-  public function signUp($id='',$name='')
+  public function signUp()
   {
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
              $params[]=$_REQUEST['email'];
@@ -83,7 +83,8 @@ class authController extends Controller
                      $profile->add(['Phone',$_REQUEST['phone'],$this->modelObj->lastID()['id']]);
                       
                      Message::setMessage(1,'main',' Your account added successfully');
-                     header('Location:/home/index');
+                     $this->login();
+                    //  header('Location:/home/index');
 
 
                                             }

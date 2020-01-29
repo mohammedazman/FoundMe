@@ -15,7 +15,7 @@ class Notification
 // return all user notification
 public static function getNoti($args)
 {
-  return DB::init()->QueryCrud("select * from notifications where target_user=? ",[$args]);
+  return DB::init()->QueryCrud("select * from notifications where target_user=? ORDER BY id DESC ",[$args]);
 }
 
 //add new row to notification table
@@ -36,6 +36,13 @@ public function changeState($id,$args)
   $oStmt = 'update notifications set status=? WHERE id =? ';
   
     return $this->db->QueryCrud($oStmt,$args,0);
+}
+
+public static function countUnreadNoti($id)
+{
+  $oStmt = 'select count(id) as num from notifications where status=0 and target_user=? ';
+  
+  return DB::init()->QueryCrud($oStmt,[$id]);
 }
 
 

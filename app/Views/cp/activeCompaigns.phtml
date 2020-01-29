@@ -9,10 +9,10 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
  <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Manage Users</h1>
+            <h1 class="h3 mb-0 text-gray-800">Manage Compaigns</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Active Users</li>
+              <li class="breadcrumb-item active" aria-current="page">Active Compaigns</li>
             </ol>
           </div>
   <div class="user" style="background-color: #fff; padding:50px;border-radius: 40px; " >
@@ -25,7 +25,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
   <div id="toolbar">
     <button id="remove" class="btn btn-danger" disabled>
-      <i class="glyphicon glyphicon-remove"></i> Delete Users
+      <i class="glyphicon glyphicon-remove"></i> Delete Compaign
     </button>
   </div>
   <table
@@ -54,13 +54,13 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 <!-- model  -->
 
-<div id="deleteUsers" class="modal fade">
+<div id="changeCompaigns" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
 
 					<div class="modal-header">
-						<h4 class="modal-title "> Change user status</h4>
+						<h4 class="modal-title "> Change compaign status</h4>
 						<button type="button" class="close mr-5" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
 					<div class="modal-body">
@@ -107,8 +107,8 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
     function operateFormatter(value, row, index) {
       return [
-        '<a class="like" href="javascript:void(0)" title="Like">',
-        '<i class="fa fa-edit"></i>',
+        '<a class="pause" href="javascript:void(0)" title="pause">',
+        '<i class="fa fa-pause"></i>',
         '</a>  ',
         '<a class="remove" href="javascript:void(0)" title="Remove">',
         '<i class="fa fa-trash"></i>',
@@ -120,19 +120,19 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
   // delete fun
   function deleteU(){
     $.ajax({
-      url: "/manageusers",
+      url: "/managecompaign",
         type: "POST",
         cache: false,
         data:{
-            type:2,
+            type:4,
             ids: $("#id_d").val(),
-            state:0,
+            state:$("#state_d").val(),
 
         },
         success: function(dataResult){
             var dataResult = JSON.parse(dataResult);
             if(dataResult.statusCode==200){
-                $('#deleteUsers').modal('hide');
+                $('#changeCompaigns').modal('hide');
                 alert(dataResult.message)
                 // sucMsg(dataResult.message);
                 load_data()
@@ -147,15 +147,17 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 
     window.operateEvents = {
-      'click .like': function (e, value, row, index) {
-        alert('You click like action, row: ' + JSON.stringify(row))
+      'click .pause': function (e, value, row, index) {
+        $('#id_d').val(row.id);
+        $('#state_d').val(3);
+        $('#changeCompaigns').modal('show');
       },
       'click .remove': function (e, value, row, index) {
         // alert (row.id)
 
     $('#id_d').val(row.id);
-    $('#state_d').val(row.status);
-    $('#deleteUsers').modal('show');
+    $('#state_d').val(0);
+    $('#changeCompaigns').modal('show');
 
   }
 
@@ -201,7 +203,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             align: 'center',
             valign: 'middle'
           }, {
-            title: 'User ID',
+            title: ' ID',
             field: 'id',
             rowspan: 2,
             align: 'center',
@@ -209,31 +211,34 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             sortable: true,
             footerFormatter: totalTextFormatter
           }, {
-            title: 'User Details',
+            title: 'Compaigns Details',
             colspan: 5,
             align: 'center'
           }],
-          [{
-            field: 'name',
-            title: 'Full Name',
-            sortable: true,
-            footerFormatter: totalNameFormatter,
-            align: 'center'
-          }, {
-            field: 'email',
-            title: 'User Email',
+          [ {
+            field: 'title',
+            title: 'Compain Title',
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter
           }, {
-            field: 'status',
-            title: 'User State',
+            field: 'tags',
+            title: 'Tags',
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter
-          },{
-            field: 'type',
-            title: 'User Type',
+          }
+          ,{
+            field: 'cost',
+            title: 'Cost',
+            sortable: true,
+            align: 'center',
+            footerFormatter: totalPriceFormatter
+          }
+          ,
+          {
+            field: 'duration',
+            title: 'Duration',
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter
@@ -266,7 +271,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
       $remove.click(function () {
         var ids = getIdSelections()
         $('#id_d').val( ids);
-    $('#deleteUsers').modal('show');
+    $('#changeCompaigns').modal('show');
 
 
       })
@@ -286,9 +291,9 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
  function load_data(){
 		$.ajax({
-			url:"/manageusers",
+			url:"/managecompaign",
 			method:"POST",
-      data:{type:"1"},
+      data:{type:"2"},
 			success:function(data)
 			{
         var userInfo=JSON.parse(data);

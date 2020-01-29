@@ -10,13 +10,23 @@
         <a  class=" nav-link" href="/cp/index.phtml">
           <i class="fa fa-sticky-note"></i>
           <span>Pages</span><span class="badge float-right" style="background:green;color:#fff;">15</span></a>
-          
+
       </li>
-      
+
       <li class="nav-item ">
-        <a  class=" nav-link" href="index.php">
+      <div class="panel panel-default">
+
+        <a  class=" nav-link" data-toggle="collapse" href="#collapse1">
+
           <i class="fa fa-outdent"></i>
-          <span >Compign</span><span class="badge float-right" style="background:brown;color:#fff;">300</span></a>
+          <span>Compaigns</span><span class="badge float-right" style="background:orange;color:#fff;">25</span></a>
+          <div id="collapse1" class="panel-collapse collapse">
+      <div class="panel-body"><a class=" nav-link " href="/managecompaign/ShowPindingCompaigns">Pinding Compaigns</a> </div>
+      <div class="panel-body"><a class=" nav-link " href="/managecompaign/ShowDeletedCompaigns">Deleted Compaigns</a> </div>
+        <div class="panel-body"><a class=" nav-link " href="/managecompaign/ShowActiveCompaigns">Active Compaigns</a> </div>
+        <div class="panel-body"><a class=" nav-link " href="/managecompaign/ShowPausedCompaigns">Paused Compaigns</a> </div>
+    </div>
+  </div>
       </li>
       <li class="nav-item ">
         <a  class=" nav-link" href="index.php">
@@ -40,6 +50,5 @@
         <a  class=" nav-link " href="index.php">
           <i class="fa fa-wrench"></i>
           <span>Settings</span></a>
-      </li>   
+      </li>
     </ul>
-

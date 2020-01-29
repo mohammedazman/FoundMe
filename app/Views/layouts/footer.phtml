@@ -13,7 +13,42 @@
 
 	<script>
 	new WOW().init();
-	
+	$(document).ready(function(){
+         load_notification();
+  });  
+	function load_notification(){
+ 		$.ajax({
+ 			url:"/notification",
+ 			method:"POST",
+       data:{method:"user"},
+ 			success:function(data)
+ 			{
+         var notiInfo=JSON.parse(data);
+         var html='';
+         $.each(notiInfo.noti, function( index, row ) {
+
+          html+=' <li class="notification-box">'+
+                         '<div class="row">'+
+                          ' <div class="col-lg-2 col-sm-3 col-3 text-center">'+
+                          ' <i class="fa fa-user-circle noti-icon"  aria-hidden="true"></i>'+
+                          ' </div>'+
+                          ' <div class="col-lg-10 col-sm-8 col-8">'+
+                             '<strong class="text-info">'+row.type+'</strong>'+
+                             '<div>'+
+                             row.text+
+                            ' </div>'+
+                            ' <small class="text-warning">'+row.created_at+'</small>'+
+                          ' </div>    '+
+                        ' </div>'+
+                      ' </li>';
+         });
+         $('#noti-body').html(html);
+       }
+
+
+ 		       });
+ }
+
 	function errMsg(msg){
         if(msg!=''){
     $.toast({
@@ -25,9 +60,9 @@
         hideAfter: 6000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
         stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
         position: 'bottom-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
-        
-        
-        
+
+
+
         textAlign: 'left',  // Text alignment i.e. left, right or center
         loader: true,  // Whether to show loader or not. True by default
         loaderBg: '#ffffff',  // Background color of the toast loader

@@ -25,7 +25,7 @@ public function add(array $aData)
       $oStmt = 'INSERT INTO users (email,password, status, type)
                 VALUES ( ?, ?, ?, ?)';
 
-             
+
           return $this->db->QueryCrud($oStmt,$aData,0);
 
   }
@@ -83,8 +83,8 @@ public function lastID()
   // manageusers
   public function getUsers($args)
   {
-  
-  
+
+
     $oStmt ='SELECT * FROM users where status=?';
     return  $this->db->QueryCrud($oStmt,$args);
   }
@@ -92,12 +92,10 @@ public function lastID()
 
 
   //delete manage users
-  
+
   public function deleteUsers($args){
     $oStmt = 'update users set status=? WHERE id in (?)';
-    // echo 'update users set status='.$args[0].' WHERE id in ('.$args[1].')';
-    // echo $oStmt;
-    // print_r($args);
+  
 
     return $this->db->QueryCrud($oStmt,$args,0);
 }

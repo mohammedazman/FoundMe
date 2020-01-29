@@ -33,7 +33,8 @@
                         <li class="nav-item active">
                           <a class="nav-link" href="/home/index">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <?php if($_SESSION['type']=='Admin'){?>
+                        <?php
+                        if(Session::isAdmin()){?>
                         <li class="nav-item">
                           <a class="nav-link" href="/admin">DashBoard</a>
                         </li>
@@ -77,51 +78,13 @@
                                       <a href="" class="float-right text-light">Mark all as read</a>
                                     </div>
                                 </li>
-                                <li class="notification-box">
-                                  <div class="row">
-                                    <div class="col-lg-3 col-sm-3 col-3 text-center">
-                                      <img src="/demo/man-profile.jpg" class="w-50 rounded-circle">
-                                    </div>    
-                                    <div class="col-lg-8 col-sm-8 col-8">
-                                      <strong class="text-info">David John</strong>
-                                      <div>
-                                        Lorem ipsum dolor sit amet, consectetur
-                                      </div>
-                                      <small class="text-warning">27.11.2015, 15:00</small>
-                                    </div>    
-                                  </div>
-                                </li>
-                                <li class="notification-box bg-gray">
-                                  <div class="row">
-                                    <div class="col-lg-3 col-sm-3 col-3 text-center">
-                                      <img src="/demo/man-profile.jpg" class="w-50 rounded-circle">
-                                    </div>    
-                                    <div class="col-lg-8 col-sm-8 col-8">
-                                      <strong class="text-info">David John</strong>
-                                      <div>
-                                        Lorem ipsum dolor sit amet, consectetur
-                                      </div>
-                                      <small class="text-warning">27.11.2015, 15:00</small>
-                                    </div>    
-                                  </div>
-                                </li>
-                                <li class="notification-box">
-                                  <div class="row">
-                                    <div class="col-lg-3 col-sm-3 col-3 text-center">
-                                      <img src="/demo/man-profile.jpg" class="w-50 rounded-circle">
-                                    </div>    
-                                    <div class="col-lg-8 col-sm-8 col-8">
-                                      <strong class="text-info">David John</strong>
-                                      <div>
-                                        Lorem ipsum dolor sit amet, consectetur
-                                      </div>
-                                      <small class="text-warning">27.11.2015, 15:00</small>
-                                    </div>    
-                                  </div>
-                                </li>
-                                <li class="footer bg-dark text-center">
-                                  <a href="" class="text-light">View All</a>
-                                </li>
+
+
+
+                                <div id="noti-body">
+
+                                </div>
+
                               </ul>
                           </li>
 

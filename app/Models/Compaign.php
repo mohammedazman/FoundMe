@@ -59,5 +59,26 @@ class Compaign
         return $this->db->QueryCrud($oStmt,$aData);
 
   }
+
+  //
+
+  public function changeCompaigns($args){
+    $oStmt = 'update compigans set status=? WHERE id in (?)';
+
+
+     return $this->db->QueryCrud($oStmt,$args,0);
+    
+}
+
+
+// managecompaign
+public function getCompaigns($args)
+{
+
+
+  $oStmt ='SELECT * FROM compigans where status=?';
+  return  $this->db->QueryCrud($oStmt,$args);
+}
+
 }
   ?>

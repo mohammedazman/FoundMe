@@ -7,9 +7,9 @@ $(document).ready(function(){
           $(".navbar-collapse ul li a").css("color" , "#fff");
         }
   
-        else{
-            $(".chang-color").css("background" , "#3aa3a9");  
-          $(".navbar-collapse ul li a").css("color" , "#fff");
+        else if(scroll < 300){
+            $(".chang-color").css("background" , "none");  
+          $(".navbar-collapse ul li a").css("color" , "none");
 
         }
     })

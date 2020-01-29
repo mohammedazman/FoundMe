@@ -7,7 +7,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
   <!-- start pages photo -->
   <section class="cover-background top-space" style="background-image:url('/images/1(1).jpg');">
-        <div class="opacity-medium bg-gray"></div>
+        <div class="opacity-medium bg-dark"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
@@ -53,7 +53,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                       </div>
                       <div class="form-group">
 												<label for="Amount" class="laple-forms">Amount</label>
-                        <input type="number" id="Amount" name="Amount" oninput="phonenumber(document.addCompign.Amount)"  class="form-control"  placeholder="0 RY" value="" required/>
+                        <input type="number" id="Amount" name="Amount" oninput="phonenumber(document.addCompign.Amount)"  class="form-control"  placeholder="0 $" value="" required/>
                         <span id="AmountError" class="text-danger"></span>
                         <?php echo Message::check('Amount');  ?>
                       </div>

@@ -16,7 +16,7 @@ class DB {
           } catch (PDOException $e) {
               echo 'Connection failed: ' . $e->getMessage();
              }
-      
+
           if( !$this->pdoObject ) {
               throw new Exception('Could not connect to DB ');
           }
@@ -44,14 +44,16 @@ class DB {
         if($type){
           $data=$query->fetchAll();
         // // echo"$sql"."<br>";
-        // // print_r($args);
-        // print_r($data);
-        // if(sizeof($data)>0)
+        // // print_r($args);        // if(sizeof($data)>0)
         // {
                return $data;
         }
         else
             return true;
     }
-   
+    public function LastID()
+    {
+      return $this->pdoObject->lastInsertId();
+    }
+
 }

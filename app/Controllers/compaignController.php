@@ -80,7 +80,7 @@ foreach ($_FILES as $key=>$files) {
                  ':descrption'=> $_REQUEST['descrption'],
                  	':file'=> isset($pdfFile)?$pdfFile:'',
                    ':tags'=>$_REQUEST['Tags']	,
-                    ':status' =>0,
+                    ':status' =>1,
                      ':cost'=>$_REQUEST['Amount']		,
                       ':duration'=>$_REQUEST['Deuration']	 ,
                       	':pending'=> 0,
@@ -95,7 +95,7 @@ foreach ($_FILES as $key=>$files) {
                       Notification::addNoti('New compaign is added by '.$_SESSION['userName'] .'and need approvment','admin','new compain');
 
                        Message::setMessage(1,'main',' add your compaing have be done ');
-                       
+
 
                                               }
                                             }

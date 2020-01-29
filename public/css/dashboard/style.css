@@ -364,26 +364,29 @@
 
   /* notification */
 
+  
+  /* notification */
+
   .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
     background-color: #17A2B8;
   }
   .dropdown-menu{
-    top: 60px;
-    right: 0px;
+    top: 45px;
+    right: -15px;
     left: unset;
-    width: 360px;
+    width: 300px;
     box-shadow: 0px 5px 7px -1px #c1c1c1;
     padding-bottom: 0px;
     padding: 0px;
   }
-  .dropdown-menu:before{
+  /* .dropdown-menu:before{
     content: "";
     position: absolute;
     top: -20px;
     right: 12px;
     border:10px solid #343A40;
-    border-color: transparent transparent #3aa3a9 transparent;
-  }
+    border-color: transparent transparent #343A40 transparent;
+  } */
   .head{
     padding:5px 15px;
     border-radius: 3px 3px 0px 0px;
@@ -393,16 +396,25 @@
     border-radius: 0px 0px 3px 3px; 
   }
   .notification-box{
-    padding: 10px 0px; 
+    padding: 2px 0px; 
+    border-bottom: 1px solid #eeeaea;
   }
   .bg-gray{
     background-color: #eee;
   }
-  .noti-icon{
-    font-size: 35px;
-    position: absolute;
-    top: 15px;
+  .noti-header{
+    color: #b6dadc;
   }
+  .noti-icon{
+    margin: 13px;
+    font-size: 30px;
+    color: #b6dadc;
+}
+.noti-date{
+    font-size: 12px;
+    color: #a0a0a0  !important;
+    font-style: italic;
+}
   @media (max-width: 640px) {
       .dropdown-menu{
         top: 50px;
@@ -421,6 +433,40 @@
   }
   /* notification */
 
+.profile-img-size{
+    width: 200px;
+}
+
+.dropdown-toggle-user::before {
+    display: inline-block !important;
+    margin-left: .255em !important;
+    vertical-align: .255em !important;
+    content: "" !important;
+    border-top: .3em solid !important;
+    border-right: .3em solid transparent !important;
+    border-bottom: 0 !important;
+    border-left: .3em solid transparent !important;
+}
+
+
+.padding-left-10{
+    padding-left:10px;
+}
+
+.notification .badge {
+    font-size: 10px;
+    position: absolute;
+    top: 8px;
+    right: 4px;
+    padding: 1px 4px;
+    border-radius: 53%;
+    background-color: #e96e59;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  /* notification */
+
 .text-blue{
   color:#3aa3a9;
 }
@@ -434,7 +480,7 @@ a:hover {
 .notification .badge {
   font-size: 10px;
   position: absolute;
-  top: 18px;
+  top: 20px;
   right: 34px;
   padding: 3px 5px;
   border-radius: 53%;

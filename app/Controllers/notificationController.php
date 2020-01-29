@@ -16,7 +16,7 @@ class NotificationController extends Controller
 
    $result=Notification::getNoti('admin');
 
-      return  json_encode(array("statusCode"=>200,"noti"=>$result));
+      return  json_encode(array("statusCode"=>200,"noti"=>$result,"count"=>$this->countUnread('admin')));
 
   }
 
@@ -25,14 +25,14 @@ class NotificationController extends Controller
 
    $result=Notification::getNoti(Session::get('userID'));
 
-      return  json_encode(array("statusCode"=>200,"noti"=>$result,"count"=>$this->countUnread()));
+      return  json_encode(array("statusCode"=>200,"noti"=>$result,"count"=>$this->countUnread(Session::get('userID'))));
 
   }
 
-  public function countUnread()
+  public function countUnread($uid)
   {
 
-   $result=Notification::countUnreadNoti(Session::get('userID'));
+   $result=Notification::countUnreadNoti($uid);
 
       return  $result[0]['num'];
 
@@ -49,13 +49,12 @@ if($_POST['method']=="adminNoti"){
   echo $noti->getAdminNotification();
   }
   if($_POST['method']=="user"){
-
-    echo $noti->getNotification();
+    if(Session::isAdmin())
+       echo $noti->getAdminNotification();
+    else
+      echo $noti->getNotification();
     }
-    if($_POST['method']=="count"){
-
-      echo $noti->countUnread();
-      }
+   
 
 }
 

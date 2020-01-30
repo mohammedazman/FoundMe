@@ -421,7 +421,7 @@ a .material-icons {
 .nav-pills, .nav-tabs {
     border: 0;
     border-radius: 3px;
-    padding: 0 15px;
+    padding: 85px 15px;
 }
 
 .nav .nav-item {
@@ -594,7 +594,7 @@ footer p a:hover {
 }
 
 .text-shadow-black{
-    text-shadow: 2px 2px #3c3c3c;
+    /* text-shadow: 2px 2px #3c3c3c; */
 
 }
 
@@ -729,42 +729,6 @@ footer p a:hover {
 }
   
 /* scroll down end */
-@media (max-width: 640px){
-    .carousel-item {
-        height: 639px;
-    }
-    /* for images in the phone */
-    .w-100 {
-        width: 300%!important;
-    }
-
-    .register-left {
-        margin-top: 10%;
-    }
-    .bg-blue {
-        overflow: auto;
-    }
-    .btnRegister {
-        float: none;
-        margin-left: 64px;
-    }
-    .register {
-        padding: 6%;
-    }
-    .register-left img {
-        width: 18%;
-    }
-
-    .img-up {
-        width: 100%;
-        height: 190px;
-     }
-       
-}
-
-
-
-
 
 /* profile change */
   /* .profile-pic {
@@ -791,9 +755,9 @@ footer p a:hover {
   } */
   .p-image {
     position: absolute;
-    top: 126px;
-    right: 115px;
-    color: #fff;
+    top: 120px;
+    right: 196px;
+    color: #fff !important;
     padding: 10px;
     background-color: #3aa3a9;
     border-radius: 50%;
@@ -993,13 +957,18 @@ footer p a:hover {
     color: #206468;
     font-size: 20px;
     position: absolute;
-    left: 38%;
+    left: 8%;
+    display: none;
+}
+
+.info-icon .profile-info:hover{
+display: inline;
 }
 .profile-info-tow{
     color: #3aa3a9;
     font-size: 20px;
     position: absolute;
-    left: 54%;
+    left: 22%;
 }
 
 .title-home{
@@ -1020,15 +989,16 @@ footer p a:hover {
 .profile-info-all{
     display: block;
     padding-top: 30px;
+    padding-bottom: 60px;
 }
 
 .fa-circle{
     font-size: 10px;
     padding-right: 3px;
     color: #3aa3a9;
-    position: relative;
-    right: 17%;
-
+    position: absolute;
+    left: 0;
+    padding-top: 10px;
 }
 .p-all-10{
     padding: 10px;
@@ -1191,4 +1161,68 @@ input[type='file'] {
 
 .text-white{
     color: #FFF;
+}
+
+.name{
+    padding-left: 42px;
+}
+
+.p-all-20px{
+    padding:20px;
+}
+
+.info-icon{
+    left: 46px;
+    background-color: #3aa3a9;
+    border-radius: 50%;
+    font-size: 14px;
+    padding: 7px;
+    color: #fff;
+    position: absolute;
+    margin-left: -20px;
+}
+
+
+@media (max-width: 640px){
+    .carousel-item {
+        height: 639px;
+    }
+    /* for images in the phone */
+    .w-100 {
+        width: 300%!important;
+    }
+
+    .register-left {
+        margin-top: 10%;
+    }
+    .bg-blue {
+        overflow: auto;
+    }
+    .btnRegister {
+        float: none;
+        margin-left: 64px;
+    }
+    .register {
+        padding: 6%;
+    }
+    .register-left img {
+        width: 18%;
+    }
+
+    .img-up {
+        width: 100%;
+        height: 190px;
+     }
+     .profile{
+        margin-left: 32px;
+     }
+     .info-icon {
+        margin-left: 30px;
+     }
+     .profile-info {
+        left: 25%;
+     }
+     .profile-info-tow {
+        left: 42%;
+     }
 }

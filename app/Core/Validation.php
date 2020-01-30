@@ -60,9 +60,9 @@ class Validation
             case 'alpha':
             $this->AlphaCheck($fildName,$formCurrentData);
             continue 2;
-            case 'date':
-            $this->ValidateDate($fildName,$formCurrentData);
-            continue 2;
+            // case 'date':
+            // $this->ValidateDate($fildName,$formCurrentData);
+            // continue 2;
             case 'unique':
                 $this->unique($data[0],$data[1],$fildName,$formCurrentData);
                 break;
@@ -217,7 +217,7 @@ public   function test_input($data) {
     }
   }
 
-  function ValidateDate($input, $format = 'Y-m-d',$formCurrentData)
+  function ValidateDate($input,$formCurrentData,$format = 'Y-m-d')
   {
     $date=$formCurrentData["$input"];
       $d = DateTime::createFromFormat($format, $date);

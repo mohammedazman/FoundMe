@@ -124,3 +124,19 @@ function allLetter(inputText)
                          return true;
                     }
 				}
+function validateDate(inputText){
+  var Errspan=inputText.name+'Error';
+
+  var CurrentDate = new Date();
+  var GivenDate = new Date(inputText.value);
+  
+      if(GivenDate < CurrentDate){ 
+              document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ "you must enter date greater than current date";
+              return false;
+          }
+          else
+          {
+            document.getElementById(Errspan).innerHTML='';
+               return true;
+          }
+}

@@ -99,6 +99,10 @@ if($_POST['type']=="login"){
     $data=$validate->stringToArray(explode('&',$_POST['formData']));
     echo $validate->loginValidate($data);
  }
+ if($_POST['type']=="addCompain"){
+  $data=$validate->stringToArray(explode('&',$_POST['formData']));
+  echo $validate->addCompainValidate($data);
+}
 }
 
  ?>

@@ -9,43 +9,51 @@
         <a  class="nav-link font-size-18px" href="/cp/index.phtml">
           <i class="fa fa-sticky-note"></i>
 
-          <span>Pages</span><span class="badge float-right" style="background:green;color:#fff;">15</span></a>
+          <span>Pages</span>
+          <!-- <span class="badge float-right" style="background:green;color:#fff;">15</span> -->
+        </a>
 
       </li>
 
-      <li class="nav-item ">
-      <div class="panel panel-default">
 
-        <a  class=" nav-link" data-toggle="collapse" href="#collapse1">
-
-          <i class="fa fa-outdent"></i>
-          <span>Compaigns</span><span class="badge float-right" style="background:orange;color:#fff;">25</span></a>
-          <div id="collapse1" class="panel-collapse collapse">
-      <div class="panel-body"><a class=" nav-link " href="/managecompaign/ShowPindingCompaigns">Pinding Compaigns</a> </div>
-      <div class="panel-body"><a class=" nav-link " href="/managecompaign/ShowDeletedCompaigns">Deleted Compaigns</a> </div>
-        <div class="panel-body"><a class=" nav-link " href="/managecompaign/ShowActiveCompaigns">Active Compaigns</a> </div>
-        <div class="panel-body"><a class=" nav-link " href="/managecompaign/ShowPausedCompaigns">Paused Compaigns</a> </div>
-    </div>
-  </div>
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsCompaign"
+          aria-expanded="true" aria-controls="collapsCompaign">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>Compaigns</span>
+        </a>
+        <div id="collapsCompaign" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Compaigns managment</h6>
+            <a class="collapse-item" href="/managecompaign/ShowPindingCompaigns">Pending Compaigns</a>
+            <a class="collapse-item" href="/managecompaign/ShowActiveCompaigns">Active Compaigns</a>
+            <a class="collapse-item" href="/managecompaign/ShowPausedCompaigns">Paused Compaigns</a>
+            <a class="collapse-item" href="/managecompaign/ShowDeletedCompaigns">Deleted Compaigns</a>
+          </div>
+        </div>
       </li>
       <li class="nav-item">
-        <a  class="nav-link" href="index.php">
+        <a  class="nav-link" href="#">
           <i class="fa fa-comments"></i>
-          <span class="font-size-18px">Comments</span><span class="badge float-right db-count-num">3400</span></a>
+          <span class="font-size-18px">Comments</span>
+          <!-- <span class="badge float-right db-count-num">3400</span> -->
+        </a>
       </li>
+     
       <li class="nav-item">
-      <div class="panel panel-default">
-
-        <a  class="nav-link" data-toggle="collapse" href="#collapse1">
-
-          <i class="fa fa-users"></i>
-          <span class="font-size-18px">Users</span><span class="badge float-right db-count-num">25</span></a>
-          <div id="collapse1" class="panel-collapse collapse">
-      <div class="panel-body"><a class="nav-link p-users" href="/manageusers/ShowDeletedUsers">Active Users</a> </div>
-      <div class="panel-body"><a class="nav-link p-users" href="/manageusers/showActiveUsers">Deleted Users</a> </div>
-    </div>
-  </div>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsUsers"
+          aria-expanded="true" aria-controls="collapsUsers">
+          <i class="fa fa-users "></i>
+          <span>Users</span>
+        </a>
+        <div id="collapsUsers" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">User managment</h6>
+            <a class="collapse-item" href="/managecompaign/showPendingUsers">Pending Users</a>
+            <a class="collapse-item" href="/managecompaign/showActiveUsers">Active Users</a>
+            <a class="collapse-item" href="/managecompaign/ShowDeletedUsers">Deleted Users</a>
+          </div>
+        </div>
       </li>
       <li class="nav-item ">
         <a  class=" nav-link " href="index.php">

@@ -43,25 +43,21 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 												<label for="Title" class="laple-forms">Title </label>
 												<input type="text" id="Title" oninput="stringlength(document.addCompign.Title, 1, 20);allLetter(document.addCompign.Title); " name="Title" class="form-control" placeholder="Title" value="" required />
                         <span id="TitleError" class="text-danger"></span>
-                        <?php echo Message::check('Title');  ?>
                       </div>
 											<div class="form-group">
 												<label for="Tags" class="laple-forms">Tags</label>
 									      <input type="text" id="Tags" name="Tags" oninput=" stringlength(document.addCompign.Tags, 2, 20)"  class="form-control" placeholder="#Tags" value="" required />
                         <span id="TagsError" class="text-danger"></span>
-                        <?php echo Message::check('Tags');  ?>
                       </div>
                       <div class="form-group">
 												<label for="Amount" class="laple-forms">Amount</label>
                         <input type="number" id="Amount" name="Amount" oninput="phonenumber(document.addCompign.Amount)"  class="form-control"  placeholder="0 $" value="" required/>
                         <span id="AmountError" class="text-danger"></span>
-                        <?php echo Message::check('Amount');  ?>
                       </div>
                       <div class="form-group">
-												<label for="Deuration" class="laple-forms">Add Deuration</label>
+												<label for="Deuration" class="laple-forms">End Date</label>
                         <input type="date" class="form-control" id="Deuration" name="Deuration"  placeholder="Add Deuration" value="" required/>
                         <span id="DeurationError" class="text-danger"></span>
-                        <?php echo Message::check('Deuration');  ?>
                       </div>
                       
                       <div class="form-group">
@@ -72,19 +68,16 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                             <div class="gallery"></div>
                           </div>
                         </div>
-                        <?php echo Message::check('gallery');  ?>
                       </div>
                       <div class="form-group">
-                      <label for="file" class="laple-forms">Pdf file</label>
+                      <label for="file" class="laple-forms">Feasibility study PDF</label>
                       <input type="file" class="form-control pdf-file-input" name="file">
-                      <?php echo Message::check('file');  ?>
                       </div>
                       <div class="form-group">
                       <textarea rows="4" cols="50" class="form-control" id="mytextarea" name="descrption">
                       </textarea>
                       <span id="descrptionError" class="text-danger"></span>
 
-                      <?php echo Message::check('descrption');  ?>
                       </div>
 
                       <center>
@@ -111,8 +104,40 @@ $(document).ready(function(){
 		if(Requirevalidation(document.addCompign.Title)&&Requirevalidation(document.addCompign.Tags)&&
 		Requirevalidation(document.addCompign.Amount)&&Requirevalidation(document.addCompign.Deuration)&&
 		$('#discription').val()!='')    
-        $("#addCompign").submit(); // Submit the form
+        serverSideValidate();
     });
 });
+
+
+function serverSideValidate(){
+	
+  $.ajax({
+        url:"/validate",
+        method:"POST",
+             data:{
+           type:"addCompain",
+           formData:$('#addCompign').serialize()}
+           ,
+        success:function(data)
+        {
+      var result=JSON.parse(data);
+    
+      if(result.statusCode==200){
+  
+        $("#addCompign").submit(); // Submit the form
+      }
+      else{
+          var error=JSON.parse(result.message);
+          $.each( error, function( key, value ) {
+            if(key=='msgState' || key=='main');
+            else
+            document.getElementById(key+'Error').innerHTML=value;
+  
+            });
+            return false;}
+        }
+  
+             });
+        }
 </script>
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

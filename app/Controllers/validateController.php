@@ -65,8 +65,26 @@ public function signupValidate($formData)
       }
 
     }
+    public function addCompainValidate($formData)
+    {
+      $this->validation=new Validation();
+      $request= $this->validation->checkFild(
+        ['Title'=>array(['required' => 'required', 'maxWords' => '5'])
+        ,'Tags'=>array(['required' => 'required', 'maxWords' => '5'])
+        ,'Amount'=>array(['required' => 'required', 'digit' => 'digit'])
+        ,'Deuration'=>array(['required' => 'required','date'=>'date' ])
+        ,'descrption'=>array(['required' => 'required','min'=>'20' ])],$formData
+      );
+      if ($this->validation->GetStatus()===1) {
+        return  json_encode(array("statusCode"=>200,"message"=>"Process done successfully"));
+
+      }
+      else{
+        return  json_encode(array("statusCode"=>204,"message"=>json_encode($_SESSION)));
+    }
 
 
+}
 }
 $validate=new validateController();
 if(count($_POST)>0){

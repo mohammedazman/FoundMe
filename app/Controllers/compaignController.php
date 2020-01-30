@@ -27,32 +27,17 @@ public function __construct()
 
   public function addcompaign()
   {
-
-
     // check if there submit
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
-      $request= $this->validation->checkFild(
-        ['Title'=>array(['required' => 'required', 'maxWords' => '5'])
-        ,'Tags'=>array(['required' => 'required', 'maxWords' => '5'])
-        ,'Amount'=>array(['required' => 'required', 'digit' => 'digit'])
-        ,'Deuration'=>array(['required' => 'required','date'=>'date' ])
-        ,'descrption'=>array(['required' => 'required','min'=>'20' ])]
-      );
       if ($_FILES)
       {
-
-
-
-foreach ($_FILES as $key=>$files) {
-
-  $upload = 1;
-
-  $file = $files["name"];
-  $file_tmp = $files["tmp_name"];
-  $file_size = $files["size"];
-  $target_dir = ROOT."public".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR;
+        foreach ($_FILES as $key=>$files) {
+          $upload = 1;
+          $file = $files["name"];
+          $file_tmp = $files["tmp_name"];
+          $file_size = $files["size"];
+          $target_dir = ROOT."public".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR;
 
          if ($key=='file') {
            $pdfFile=Helper::uploadFile($target_dir, $file, $file_tmp, $file_size,$key);
@@ -65,13 +50,8 @@ foreach ($_FILES as $key=>$files) {
 
 
          }
-
-
   }
 }
-
-
-
       if ($this->validation->GetStatus()==1) {
 
                 $params=array(':owner_id' => !empty(Session::get('userID'))?Session::get('userID'):1 ,
@@ -86,50 +66,27 @@ foreach ($_FILES as $key=>$files) {
                       	':pending'=> 0,
                         	':updates'=>null );
 
-
-
-
                      if ($this->compaign->add($params)) {
-
 
                       Notification::addNoti('New compaign is added by '.$_SESSION['userName'] .'and need approvment','admin','new compain');
 
                        Message::setMessage(1,'main',' add your compaing have be done ');
-
 
                                               }
                                             }
 
 
 }
-
+    if(Session::logged()  || Session::isAdmin() ){
     $this->view('home'.DIRECTORY_SEPARATOR.'addcompaign');
     $this->view->pageTitle='Add Compaign';
-    $this->view->render();
+    $this->view->render();}
+    else
+    header('Location:/home/index');
+      
+      
     // check if there submit
-
-
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
  ?>

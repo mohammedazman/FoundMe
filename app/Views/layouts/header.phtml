@@ -40,9 +40,11 @@
                           <a class="nav-link" href="/admin">DashBoard</a>
                         </li>
                         <?php }?>
+                        <?php  if(Session::logged() && !Session::isAdmin() ) { ?>
                         <li class="nav-item">
                           <a class="nav-link" href="/compaign/addcompaign">Add Compigan</a>
                         </li>
+                        <?php }?>
                         <li class="nav-item">
                           <a class="nav-link" href="#">Contact</a>
                         </li>
@@ -55,7 +57,9 @@
                         <li class="nav-item">
                           <a class="nav-link" href="#"  data-toggle="modal" data-target="#exampleModal">Search</a>
                         </li>
-<?php  if(Session::logged())  { ?>
+
+<?php  if(!Session::isAdmin() )  { ?>
+              <?php  if(Session::logged() )  { ?>
                         <li class="nav-item dropdown right-menu">
                           <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user padding-left-10"></i> <?php  echo Session::get('userName'); ?> </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -101,7 +105,7 @@
                         <!-- <li class="nav-item dropdown right-menu">
                             <button type="button" class="btn btn-white">Start</button>
                         </li> -->
-
+                        <?php } ?>
                       </ul>
                     </div>
             </nav>

@@ -20,7 +20,7 @@ body{
 .bg-black{
     background-color: black;
 }
-.bg-blue-gradient{
+.bg-blue{
     background: -webkit-linear-gradient(left, #2b9096, #7dcdd1);
 }
 .no-pg-color{
@@ -384,7 +384,7 @@ a .material-icons {
 .main-raised {
     margin: -60px 30px 0;
     border-radius: 6px;
-    box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+    /* box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2); */
 }
 .main {
     background: #FFF;
@@ -1027,4 +1027,12 @@ input[type='file'] {
         top: 46px;
         right: 28px;
     }
+    .navbar-nav .dropdown-menu {
+        position: absolute;
+        top: 38px;
+        left: -221px;
+    }
+}
+.progress-bar {
+    background-color: #3aa3a9;
 }

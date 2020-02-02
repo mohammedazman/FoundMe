@@ -9,6 +9,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"><i class="fas fa-bars text-white"></i></span>
                     </button>
+                    <!-- phone -->
                     <?php  if(!Session::isAdmin() )  { ?>
                     <?php  if(Session::logged() )  { ?>
                     <ul class="navbar-nav a-link right-menu">
@@ -30,36 +31,27 @@
                                 </div>
                               </ul>
                         </li>
-
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span><img src="/images/home/1(2).jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>"></span></a>
-                            <div class="dropdown-menu dropdown-menu-pic-pro" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="/profile/index">My Profile</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="/auth/logout">Log Out</a>
-                            </div>
-                          </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span><img src="/images/home/1(2).jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>"></span></a>
+                          <div class="dropdown-menu dropdown-menu-pic-pro" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/profile/index">My Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/auth/logout">Log Out</a>
+                          </div>
+                        </li>
                         <?php }else{  ?>
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user  padding-left-10"></i> Join FoundMe </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
-                              <a class="dropdown-item" href="/auth/login">Log In</a>
-                              <a class="dropdown-item" href="/auth/signup">Sign Up</a>
-                            </div>
-                          </li>
                         <?php } ?>
                           <!-- <li class="nav-item dropdown right-menu">
                               <button type="button" class="btn btn-white">Start</button>
                           </li> -->
                           <?php } ?>
-                      </ul>
+                    </ul>
+                    <!-- phone -->
                     <div class="collapse navbar-collapse justify-content-center order-2" id="navbarSupportedContent">
                       <ul class="navbar-nav a-link left-menu">
                         <li class="nav-item active">
                           <a class="nav-link" href="/home/index">Home <span class="sr-only">(current)</span></a>
                         </li>
-
-
                         <?php  if(Session::isAdmin())  { ?>
                         <li class="nav-item">
                           <a class="nav-link" href="/admin">DashBoard</a>
@@ -76,8 +68,8 @@
                         <li class="nav-item">
                           <a class="nav-link" href="#">About</a>
                         </li>
-                              <?php  if(!Session::isAdmin() )  { ?>
-                              <?php  if(Session::logged() )  { ?>
+                          <?php  if(!Session::isAdmin() )  { ?>
+                          <?php  if(Session::logged() )  { ?>
                       </ul>
                       <ul class="navbar-nav a-link right-menu d-none d-md-block d-lg-none">
                          <!-- notification -->
@@ -98,23 +90,22 @@
                                 </div>
                               </ul>
                         </li>
-
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span><img src="/images/home/1(2).jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>"></span><?php  echo Session::get('userName');?> </a>
-                            <div class="dropdown-menu dropdown-menu-pic-pro" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="/profile/index">My Profile</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="/auth/logout">Log Out</a>
-                            </div>
-                          </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span><img src="/images/home/1(2).jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>"></span><?php  echo Session::get('userName');?> </a>
+                          <div class="dropdown-menu dropdown-menu-pic-pro" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/profile/index">My Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/auth/logout">Log Out</a>
+                          </div>
+                        </li>
                         <?php }else{  ?>
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user  padding-left-10"></i> Join FoundMe </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
-                              <a class="dropdown-item" href="/auth/login">Log In</a>
-                              <a class="dropdown-item" href="/auth/signup">Sign Up</a>
-                            </div>
-                          </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user  padding-left-10"></i> Join FoundMe </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
+                            <a class="dropdown-item" href="/auth/login">Log In</a>
+                            <a class="dropdown-item" href="/auth/signup">Sign Up</a>
+                          </div>
+                        </li>
                         <?php } ?>
                           <!-- <li class="nav-item dropdown right-menu">
                               <button type="button" class="btn btn-white">Start</button>

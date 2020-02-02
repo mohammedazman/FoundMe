@@ -797,24 +797,6 @@ footer p a:hover {
     border: 1px solid #ced4da0d;
     padding: 25px;
 }
-.navbar-container.fixed-theme {
-    padding: 0;  
-}
-.navbar-brand.fixed-theme,
-.navbar-container.fixed-theme,
-.navbar.navbar-fixed-top.fixed-theme,
-.navbar-brand,
-.navbar-container{
-    transition: 0.8s;
-}
-.navbar-collapse ul li a {
-    padding-left: 8px !important;
-    font-size: 13px;
-}
-.navbar  a{
-
-    color: #fff !important;
-}
 .animation-ttp{
     -webkit-animation: mover 2s infinite  alternate;
     animation: mover 1s infinite  alternate;

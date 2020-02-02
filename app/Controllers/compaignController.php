@@ -69,7 +69,6 @@ public function __construct()
                      if ($this->compaign->add($params)) {
 
                       Notification::addNoti('New compaign is added by '.$_SESSION['userName'] .'and need approvment','admin','new compain');
-
                        Message::setMessage(1,'main',' add your compaing have be done ');
 
                                               }
@@ -77,7 +76,7 @@ public function __construct()
 
 
 }
-    if(Session::logged()  || Session::isAdmin() ){
+    if(Session::logged()  || !Session::isAdmin() ){
     $this->view('home'.DIRECTORY_SEPARATOR.'addcompaign');
     $this->view->pageTitle='Add Compaign';
     $this->view->render();}

@@ -241,7 +241,79 @@
 .sidebar.toggled .sidebar-brand  {
   display: none;
 }
-
+.nav-item .nav-link[data-toggle=collapse].collapsed::after{
+  content: '\f105';
+  color: #3CA4A5;
+}
+.nav-item .nav-link[data-toggle=collapse]::after{
+  width: 8px;
+  text-align: center;
+  float: right;
+  font-weight: 900;
+  content: '\f107';
+  font-family: 'Font Awesome 5 Free';
+  top: -8px;
+  margin-top: 10px;
+}
+.nav-item .collapse, .sidebar .nav-item .collapsing {
+  margin: 0 1rem;
+}
+.nav-item .collapse {
+  position: relative;
+  left: 0;
+  z-index: 1;
+  top: 0;
+  -webkit-animation: none;
+  animation: none;
+}
+.rounded {
+  border-radius: .35rem!important;
+}
+ .collapse-header {
+  margin: 0;
+  padding: .5rem 1.5rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: .65rem;
+  color: #b7b9cc;
+}
+ .collapsing .collapse-inner {
+  padding: .5rem 0;
+  min-width: 10rem;
+  font-size: .85rem;
+  margin: 0 0 1rem 0;
+}
+ .collapse .collapse-inner {
+  border-radius: .35rem;
+  transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+}
+.nav-item .collapse .collapse-inner .collapse-item, .sidebar .nav-item .collapsing .collapse-inner .collapse-item {
+  padding: .5rem 1rem;
+  margin: 0 .5rem;
+  display: block;
+  color: #3a3b45;
+  text-decoration: none;
+  border-radius: .35rem;
+  white-space: nowrap;
+}
+.sidebar.toggled .nav-item .collapse {
+  position: absolute;
+  left: calc(6.5rem + 1.5rem / 2);
+  top: 2px;
+  -webkit-animation-name: growIn;
+  animation-name: growIn;
+  -webkit-animation-duration: 200ms;
+  animation-duration: 200ms;
+  -webkit-animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1), opacity cubic-bezier(0, 1, 0.4, 1);
+  animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1), opacity cubic-bezier(0, 1, 0.4, 1);
+}
+.nav-item .collapse .collapse-inner, .sidebar .nav-item .collapsing .collapse-inner {
+  padding: .5rem 0;
+  min-width: 10rem;
+  font-size: .85rem;
+  margin: 0 0 1rem 0;
+}
 @media (max-width: 768px) {
 
   #container-wrapper {
@@ -495,7 +567,7 @@ a:hover {
 
 .stat {
   padding: 38px;
-  width: 24% !IMPORTANT;
+  width: 23% !IMPORTANT;
   HEIGHT: 180px;
   margin: 6px;
   border-radius: 40px;

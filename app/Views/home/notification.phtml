@@ -1,0 +1,117 @@
+<?php
+
+// include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml';
+include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
+
+<body>
+
+  <!-- start pages photo -->
+  <section class="cover-background top-space" style="background-image:url('/images/1(1).jpg');">
+        <div class="opacity-medium bg-dark"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
+                    <div class="vertical-align-middle text-center">
+                        <!-- start sub title -->
+                        <span class="text-white text-shadow-black">Viw Notifications</span>
+                        <!-- end sub title -->
+                        <!-- start page title -->
+                        <h1 class="text-white text-shadow-black">you can see your notifications</h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end pages photo - -->
+
+
+  <!-- Notification page start-->
+  <section>
+			<div class="container register" style="    padding: 3% 3%;">
+  
+        <div class="row" >
+		
+          <div class="col-md-12">
+		  
+ <button class='btn btn-block btncolor all_read_btn' name='chang_state'>Mark all as read  </button>
+</h4>
+			
+            <hr>
+          </div>
+          <?php $notification= $this->view_data['notifications'];
+          // print_r($notification);
+           ?>
+<?php foreach($notification as $row){  
+  ?>
+ <div class='col-lg-12' >  <!-- من هانا يبدا الاشعار الواحد -->
+		  
+		<?php   if($row['status']==0){ ?>
+			      <div class='notificatio_bottom_border item not_read'  >
+    <?php }
+		   else
+		   {
+         ?>
+				 <div class='notificatio_bottom_border item'>	
+		  <?php } ?>
+
+
+<div class='navbar noti_more'> 
+    <ul>   
+    <li>
+	<?php	if($row['status']==0){
+             $state="UnRead";
+    ?>
+        <a data-toggle='dropdown'class='noti_state iconify' data-icon='typcn-media-record-outline'  title='مقرؤة'></a>
+        <?php }
+          else{
+            $state="Read";
+             ?>
+         <a data-toggle='dropdown'class='noti_state iconify '  data-icon='typcn-media-record' title='غير مقرؤة' ></a>
+         <?php } ?>
+<section >
+		   <div class='dropdown-menu noti_dropdown-menu text-center '>
+		   <button class='btn btn-block btncolor' name='chang_state'><?php echo $state ?></button>
+           </div>
+</section>
+    </li>
+    </ul>
+
+</div> <!--  هنا ينتهي السهم حق اخفاء و تحديد ك مقروئة-->
+      <?php if($row['type']=="new compain")  { ?>
+
+		 <span class='noti_typ_msg iconify' data-icon="typcn-arrow-forward" ></span>  <!-- الايكون حق الارسال داخل الـ سبان -->
+	  
+      <?php } elseif($row['type']=="aprroved compaign")  { ?>
+
+		 <span class='text-success  iconify' data-icon="typcn-tick" ></span>  <!-- الايكون حق الموافقة داخل الـ سبان -->
+		  
+      <?php } elseif($row['type']=="reject compaign")  { ?>
+		 <span class='text-danger iconify ' data-icon="typcn-times" ></span>   <!-- الايكون حق الرفض داخل الـ سبان --> 
+		  
+    <?php } elseif($row['type']=="new user")  { ?>
+		 <span class='text-primary iconify ' data-icon="typcn-user-add" ></span>  <!-- الايكون حق عمل اضافي داخل الـ سبان -->
+		  
+	  <?php } elseif($row['type']=="paused compaign")  { ?>
+		 <span class='text-secondary iconify ' data-icon="typcn-media-pause" ></span>  <!-- الايكون حق الاجتماع داخل الـ سبان -->
+    <?php } ?>
+		 
+	  <span class="noti-text">	<?php echo $row['text'] ; ?></span> <!-- نص الاشعار -->
+		<br><span class='noti_page_time' data-icon="typcn-arrow-forward"><?php echo $row['created_at'] ?></span>  <!-- وقت الاشعار -->  </a>
+      </div>
+	 
+						   </div>  <!-- من هانا ينتهي  الاشعار الواحد -->
+<?php						   }
+	  //  }
+?>
+	
+	
+ </div>
+
+	</div>
+  </div>
+    </section>
+	
+	<!-- Notification page end -->
+  
+<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

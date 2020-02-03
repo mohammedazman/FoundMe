@@ -1,7 +1,9 @@
 <?php
 
+
   include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
   $compaign=$this->view_data['compaign']; ?>
+
     <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -74,11 +76,13 @@
                 <div class="col-md-8 col-xs-12">
                     <div class="details">
                         <div class="text-center mt-50px">
+
                         <h4 class="text-left"><?php print_r( $compaign); ?></h4>
                             <div class="">
                             <img src="/images/home/1(2).jpg" class="img-raised img-fluid" width="auto">
                             </div>
                         <h5 class="text-left by-user"><i class="fas fa-pen-alt"></i> by: <span><?php echo Session::get('userName');?></span></h5>
+
                         <div class="compagin-content">
                             <p class="text-left">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, porro molestiae ullam nesciunt quia inventore repudiandae provident natus ab qui voluptatum eveniet explicabo voluptates exercitationem excepturi quidem modi expedita aliquam. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt ex, perspiciatis qui voluptates quam cumque doloribus fuga architecto ipsum labore quo quibusdam aperiam totam recusandae dolorem aspernatur molestiae illo eligendi?
@@ -91,9 +95,11 @@
                                         <ul class="nav nav-pills" role="tablist">
                                             <li class="nav-item "><a href="#comments-login" class="nav-link active" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Comments</h4></a></li>
                                             <li class="nav-item"><a href="#add-comment-disabled"  class="nav-link" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li>
+
                                         </ul>
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="comments-login">
+
                                                 <ul class="media-list">
                                                 <li class="media">
                                                     <a class="pull-left" href="#">
@@ -109,10 +115,12 @@
                                                             Great snippet! Thanks for sharing.
                                                         </p>
 
+
                                                     </div>
                                                     </div>
 
                                                 </li>
+
                                                 <hr class="hr-blue-80">
                                                 <li class="media">
                                                     <a class="pull-left" href="#">
@@ -128,7 +136,9 @@
                                                             I'm looking for that. Thanks!
                                                         </p>
 
+
                                                     </div>
+
                                                     </div>
                                                 </li>
                                                 <hr class="hr-blue-80">
@@ -145,6 +155,7 @@
                                                         <p class="media-comment">
                                                             Yehhhh... Thanks for sharing.
                                                         </p>
+
                                                     </div>
                                                     </div>
                                                 </li>
@@ -154,6 +165,7 @@
                                             <div class="tab-pane" id="add-comment-disabled">
                                                 <p class="p-login nots-p-reg">You have already account! <a href="/auth/login">LogIn</a></p>
                                                 <form action="#" method="post" class="form-horizontal" id="commentForm" role="form">
+
                                                     <div class="form-group">
                                                         <label for="email" class="col-sm-2 control-label">Comment</label>
                                                         <div class="col-sm-10">
@@ -161,6 +173,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
+
                                                         <div class="col-sm-offset-2 col-sm-10">
                                                             <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
                                                         </div>
@@ -170,6 +183,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
                         <!-- comments -->
                     </div>
@@ -200,7 +214,9 @@
                 </div>
                 <!-- details PHOTO -->
 
+
             </div>
+
         </div>
   	</div>
 </div>

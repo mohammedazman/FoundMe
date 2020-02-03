@@ -13,13 +13,13 @@ class Notification
     $this->db=new DB();
   }
 // return all user notification
-public static function getNoti($args)
+public  function getNoti($args)
 {
   return DB::init()->QueryCrud("select * from notifications where target_user=? ORDER BY id DESC ",[$args]);
 }
 
 //add new row to notification table
-public static function addNoti($msg ,$uId,$type)
+public  function addNoti($msg ,$uId,$type)
 {
   // $content=['msg'=>$msg,'effectedType'=>$effectedType,'effectedId',$effectedID];
 
@@ -38,7 +38,7 @@ public function changeState($id,$args)
     return $this->db->QueryCrud($oStmt,$args,0);
 }
 
-public static function countUnreadNoti($id)
+public  function countUnreadNoti($id)
 {
   $oStmt = 'select count(id) as num from notifications where status=0 and target_user=? ';
   

@@ -118,6 +118,9 @@ function serverSideValidate(){
            type:"addCompain",
            formData:$('#addCompign').serialize()}
            ,
+        progress:function(){
+
+        },
         success:function(data)
         {
       var result=JSON.parse(data);

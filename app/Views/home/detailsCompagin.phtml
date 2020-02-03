@@ -2,7 +2,7 @@
 
 
   include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
-  $compaign=$this->view_data['compaign']; ?>
+  $compaign=$this->view_data['compaign'][0]; ?>
 
     <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -19,24 +19,27 @@
       </div>
       <div class="modal-body">
         <div>
-            <div class="donar-user">
-                <div class="d-inline">
-                <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>">
-                </div>
-                <div class="d-inline-block">
-                <h5>User name /<span> 15$</span></h5>
-                </div>
+
+            <?php
+              if (array_key_exists('donars',$this->view_data)){
+              $html='';
+              foreach ($this->view_data['donars'] as $donar) {
+                $html.='<div class="donar-user">';
+                $html.='<div class="d-inline">';
+                $html.='  <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="">';
+                $html.='</div> <div class="d-inline-block"> <h5>';
+                $html.=Helper::userName($donar['user_id']);
+                $html.='/<span>';
+                $html.=$donar['amount'];
+                $html.='</span></h5></div>
                 <hr class="hr-blue-80">
-            </div>
-            <div class="donar-user">
-                <div class="d-inline">
-                <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>">
-                </div>
-                <div class="d-inline-block">
-                <h5>User name /<span> 15$</span></h5>
-                </div>
-                <hr class="hr-blue-80">
-            </div>
+            </div>';
+
+              }
+            echo $html;
+            }
+              ?>
+            
         </div>
       </div>
       <div class="modal-footer">
@@ -77,15 +80,15 @@
                     <div class="details">
                         <div class="text-center mt-50px">
 
-                        <h4 class="text-left"><?php print_r( $compaign); ?></h4>
+                        <h4 class="text-left"><?php echo $compaign['title']; ?></h4>
                             <div class="">
-                            <img src="/images/home/1(2).jpg" class="img-raised img-fluid" width="auto">
+                            <img src='/uploads/<?php echo $compaign["galary"]; ?>' class="img-raised img-fluid" width="auto">
                             </div>
-                        <h5 class="text-left by-user"><i class="fas fa-pen-alt"></i> by: <span><?php echo Session::get('userName');?></span></h5>
+                        <h5 class="text-left by-user"><i class="fas fa-pen-alt"></i> by: <span><?php echo Helper::userName( $compaign['owner_id']); ?></span></h5>
 
                         <div class="compagin-content">
                             <p class="text-left">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, porro molestiae ullam nesciunt quia inventore repudiandae provident natus ab qui voluptatum eveniet explicabo voluptates exercitationem excepturi quidem modi expedita aliquam. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt ex, perspiciatis qui voluptates quam cumque doloribus fuga architecto ipsum labore quo quibusdam aperiam totam recusandae dolorem aspernatur molestiae illo eligendi?
+                                <?php echo $compaign['descrption']; ?>
                             </p>
                         </div>
 
@@ -101,65 +104,37 @@
                                             <div class="tab-pane active" id="comments-login">
 
                                                 <ul class="media-list">
-                                                <li class="media">
-                                                    <a class="pull-left" href="#">
-                                                    <img class="media-object rounded-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
-                                                    </a>
-                                                    <div class="media-body">
-                                                    <div class="well well-lg">
-                                                        <h5 class="media-heading text-uppercase reviews">Marco</h5>
-                                                        <ul class="media-date text-uppercase reviews list-inline">
-                                                        <span class="date-comm">03-02-2020</span>
-                                                        </ul>
-                                                        <p class="media-comment">
-                                                            Great snippet! Thanks for sharing.
-                                                        </p>
 
 
-                                                    </div>
-                                                    </div>
-
-                                                </li>
-
-                                                <hr class="hr-blue-80">
-                                                <li class="media">
-                                                    <a class="pull-left" href="#">
-                                                    <img class="media-object rounded-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" alt="profile">
-                                                    </a>
-                                                    <div class="media-body">
-                                                    <div class="well well-lg">
-                                                        <h5 class="media-heading text-uppercase reviews">Nico</h5>
-                                                        <ul class="media-date text-uppercase reviews list-inline">
-                                                        <span class="date-comm">03-02-2020</span>
-                                                        </ul>
-                                                        <p class="media-comment">
-                                                            I'm looking for that. Thanks!
-                                                        </p>
 
 
-                                                    </div>
+                                                <?php
+                                                  if (array_key_exists('comments',$this->view_data)){
+                                                  $html='';
+                                                  foreach ($this->view_data['comments'] as $comment) {
+                                                            $html.='
+                                                                    <li class="media">';
+                                                            $html.='  <a class="pull-left" href="#">
+                                                                    <img class="media-object rounded-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
+                                                                    </a>';
+                                                            $html.='  <div class="media-body">';
+                                                            $html.='<div class="well well-lg">';
+                                                            $html.='    <h5 class="media-heading text-uppercase reviews">';
+                                                            $html.=Helper::userName($comment['user_id']);
+                                                            $html.='</h5><ul class="media-date text-uppercase reviews list-inline">';
+                                                            $html.='<span class="date-comm">';
+                                                            $html.=$comment['created_at'];
+                                                            $html.='</span></ul><p class="media-comment">';
+                                                            $html.=$comment['message'];
+                                                            $html.='  </p></div></div>  </li>
+                                                              <hr class="hr-blue-80">
+                                                            ';
+                                                  }
+                                                echo $html;
+                                                }
+                                                  ?>
 
-                                                    </div>
-                                                </li>
-                                                <hr class="hr-blue-80">
-                                                <li class="media">
-                                                    <a class="pull-left" href="#">
-                                                    <img class="media-object rounded-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
-                                                    </a>
-                                                    <div class="media-body">
-                                                    <div class="well well-lg">
-                                                        <h5 class="media-heading text-uppercase reviews">Kriztine</h5>
-                                                        <ul class="media-date text-uppercase reviews list-inline">
-                                                        <span class="date-comm">03-02-2020</span>
-                                                        </ul>
-                                                        <p class="media-comment">
-                                                            Yehhhh... Thanks for sharing.
-                                                        </p>
 
-                                                    </div>
-                                                    </div>
-                                                </li>
-                                                <hr class="hr-blue-80">
                                                 </ul>
                                             </div>
                                             <div class="tab-pane" id="add-comment-disabled">

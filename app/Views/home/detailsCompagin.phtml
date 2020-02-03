@@ -1,0 +1,218 @@
+<?php
+
+  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
+    <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-donate"></i>DONATIONS (4.3K)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+            <div class="donar-user">
+                <div class="d-inline">
+                <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>">
+                </div>
+                <div class="d-inline-block">
+                <h5>User name /<span> 15$</span></h5>
+                </div>
+                <hr class="hr-blue-80">
+            </div>
+            <div class="donar-user">
+                <div class="d-inline">
+                <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>">
+                </div>
+                <div class="d-inline-block">
+                <h5>User name /<span> 15$</span></h5>
+                </div>
+                <hr class="hr-blue-80">
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btnmodel float-none" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal -->
+
+
+<!-- start pages photo -->
+<section class="cover-background top-space" style="background-image:url('/images/home/1(1).jpg');">
+    <div class="opacity-medium bg-dark"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
+                <div class="vertical-align-middle text-center">
+                    <!-- start sub title -->
+                    <span class="text-white">Compagin</span>
+                    <!-- end sub title -->
+                    <!-- start page title -->
+                    <h1 class="text-white">Compagin Details</h1>
+                    <!-- end page title -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end pages photo - -->
+
+<div class="main main-raised border-50">
+    <div class="details-content">
+        <div class="container">
+            <div class="row">
+                <!-- details PHOTO -->
+                <div class="col-md-8 col-xs-12">
+                    <div class="details">
+                        <div class="text-center mt-50px">
+                        <h4 class="text-left">Compagin Title</h4>
+                            <div class="">
+                            <img src="/images/home/1(2).jpg" class="img-raised img-fluid" width="auto">
+                            </div>
+                        <h5 class="text-left by-user"><i class="fas fa-pen-alt"></i> by: <span><?php echo Session::get('userName');?></span></h5>    
+                        <div class="compagin-content">
+                            <p class="text-left">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, porro molestiae ullam nesciunt quia inventore repudiandae provident natus ab qui voluptatum eveniet explicabo voluptates exercitationem excepturi quidem modi expedita aliquam. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt ex, perspiciatis qui voluptates quam cumque doloribus fuga architecto ipsum labore quo quibusdam aperiam totam recusandae dolorem aspernatur molestiae illo eligendi?
+                            </p>
+                        </div>
+
+                        <!-- comments -->
+                                <div class="col-sm-10 col-sm-offset-1" id="login">
+                                    <div class="comment-tabs">
+                                        <ul class="nav nav-pills" role="tablist">
+                                            <li class="nav-item "><a href="#comments-login" class="nav-link active" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Comments</h4></a></li>
+                                            <li class="nav-item"><a href="#add-comment-disabled"  class="nav-link" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li>
+                                        </ul>            
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="comments-login">                
+                                                <ul class="media-list">
+                                                <li class="media">
+                                                    <a class="pull-left" href="#">
+                                                    <img class="media-object rounded-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
+                                                    </a>
+                                                    <div class="media-body">
+                                                    <div class="well well-lg">
+                                                        <h5 class="media-heading text-uppercase reviews">Marco</h5>
+                                                        <ul class="media-date text-uppercase reviews list-inline">
+                                                        <span class="date-comm">03-02-2020</span>
+                                                        </ul>
+                                                        <p class="media-comment">
+                                                            Great snippet! Thanks for sharing.
+                                                        </p>
+                                                       
+                                                    </div>              
+                                                    </div>
+                                                   
+                                                </li> 
+                                                <hr class="hr-blue-80">
+                                                <li class="media">
+                                                    <a class="pull-left" href="#">
+                                                    <img class="media-object rounded-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" alt="profile">
+                                                    </a>
+                                                    <div class="media-body">
+                                                    <div class="well well-lg">
+                                                        <h5 class="media-heading text-uppercase reviews">Nico</h5>
+                                                        <ul class="media-date text-uppercase reviews list-inline">
+                                                        <span class="date-comm">03-02-2020</span>
+                                                        </ul>
+                                                        <p class="media-comment">
+                                                            I'm looking for that. Thanks!
+                                                        </p>
+                                                        
+                                                    </div>              
+                                                    </div>
+                                                </li>
+                                                <hr class="hr-blue-80">
+                                                <li class="media">
+                                                    <a class="pull-left" href="#">
+                                                    <img class="media-object rounded-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
+                                                    </a>
+                                                    <div class="media-body">
+                                                    <div class="well well-lg">
+                                                        <h5 class="media-heading text-uppercase reviews">Kriztine</h5>
+                                                        <ul class="media-date text-uppercase reviews list-inline">
+                                                        <span class="date-comm">03-02-2020</span>
+                                                        </ul>
+                                                        <p class="media-comment">
+                                                            Yehhhh... Thanks for sharing.
+                                                        </p>
+                                                    </div>              
+                                                    </div>
+                                                </li>
+                                                <hr class="hr-blue-80">
+                                                </ul> 
+                                            </div>
+                                            <div class="tab-pane" id="add-comment-disabled">
+                                                <p class="p-login nots-p-reg">You have already account! <a href="/auth/login">LogIn</a></p>
+                                                <form action="#" method="post" class="form-horizontal" id="commentForm" role="form"> 
+                                                    <div class="form-group">
+                                                        <label for="email" class="col-sm-2 control-label">Comment</label>
+                                                        <div class="col-sm-10">
+                                                        <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-offset-2 col-sm-10">                    
+                                                            <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+                                                        </div>
+                                                    </div>            
+                                                </form>
+                                            </div>     
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                        <!-- comments -->
+                    </div>
+                    </div>
+                </div>
+                <!-- details PHOTO -->
+                <!-- details PHOTO -->
+                <div class="col-md-4 col-xs-12">
+                    <div class="details">
+
+                        <div class="mt-50px">
+                        <div class="container">
+                        <h3 class="text-center text-blue">1000.000 <span>$ </span><span class="goal-num">raised of $300,000 goal</span></h3>
+                            <div class="progress progress-details">
+                            <div class="progress-bar bg-yellow" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                         <a href="" class="a-donars" data-toggle="modal" data-target="#exampleModalLong"><h5 class="text-center text-black"><i class="fas fa-donate"></i>Donars <span class="donars-num">300K</span></h5></a>
+                            <center>
+                            <a href="/donate"><input type="submit" id="donate" class="btndonate float-none"  value="Donate Now"/></a>
+                            </center>
+                        </div>
+                       
+                            <div class="">
+                            <!-- <img src="/images/home/1(2).jpg" class="img-raised img-fluid" width="auto"> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- details PHOTO -->
+
+            </div>  
+        </div>
+  	</div>
+</div>
+
+
+<script src="/js/home/jquery-3.4.1.slim.min.js"></script>
+<script src="/js/home/js.js"></script>
+<script src="/js/home/popper.min.js"></script>
+<script src="/js/home/bootstrap.min.js"></script>
+<script src="/js/home/wow.min.js"></script>
+<script src="/js/home/main.js"></script>
+
+<script>
+new WOW().init();
+</script>
+<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

@@ -2,7 +2,7 @@
 /**
  *
  */
-class compaignController extends Controller
+class viewCompaignController extends Controller
 {
 private $compaign;
 
@@ -24,7 +24,7 @@ public function __construct()
     $this->model('Comments');
     $comments=$this->model->getModel()->CompaignComments([$id]);
 
-    $this->view('home'.DIRECTORY_SEPARATOR.'compaign',['compaign'=>$comp,'donors'=>$donors,'comments'=>$comments]);
+    $this->view('home'.DIRECTORY_SEPARATOR.'detailsCompagin',['compaign'=>$comp,'donors'=>$donors,'comments'=>$comments]);
     $this->view->pageTitle='View Compaign';
     $this->view->render();
 

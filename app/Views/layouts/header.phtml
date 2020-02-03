@@ -1,23 +1,4 @@
 <?php include VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml'; ?>
-<!-- Modals -->
-<!-- Modal search start -->
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-
-        <div class="modal-body">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search About what you went*" value="" />
-              </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-<!-- Modal search end-->
-
-
     <!-- start header -->
     <header>
             <nav class="navbar navbar-expand-lg navbar-top chang-color">
@@ -28,13 +9,49 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"><i class="fas fa-bars text-white"></i></span>
                     </button>
+                    <!-- phone -->
+                    <?php  if(!Session::isAdmin() )  { ?>
+                    <?php  if(Session::logged() )  { ?>
+                    <ul class="navbar-nav a-link right-menu">
+                         <!-- notification -->
+                        <li class="nav-item dropdown not-mobail">
+                            <a class="nav-link text-light dropdown-toggle-user notification" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fa fa-bell"></i>
+                              <span class="badge wow pulse noti-count"></span>
+                            </a>
+                              <ul class="dropdown-menu">
+                                <li class="head">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-12">
+                                      <span class="text-black">Notification</span>
+                                    </div>
+                                </li>
+                                <div id="noti-body">
+
+                                </div>
+                              </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span><img src="/images/home/1(2).jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>"></span></a>
+                          <div class="dropdown-menu dropdown-menu-pic-pro" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/profile/index">My Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/auth/logout">Log Out</a>
+                          </div>
+                        </li>
+                        <?php }else{  ?>
+                        <?php } ?>
+                          <!-- <li class="nav-item dropdown right-menu">
+                              <button type="button" class="btn btn-white">Start</button>
+                          </li> -->
+                          <?php } ?>
+                    </ul>
+                    <!-- phone -->
                     <div class="collapse navbar-collapse justify-content-center order-2" id="navbarSupportedContent">
-                      <ul class="navbar-nav a-link" style="margin-right: 865px">
+                      <ul class="navbar-nav a-link left-menu">
                         <li class="nav-item active">
                           <a class="nav-link" href="/home/index">Home <span class="sr-only">(current)</span></a>
                         </li>
-
-
                         <?php  if(Session::isAdmin())  { ?>
                         <li class="nav-item">
                           <a class="nav-link" href="/admin">DashBoard</a>
@@ -51,61 +68,50 @@
                         <li class="nav-item">
                           <a class="nav-link" href="#">About</a>
                         </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">Help</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#"  data-toggle="modal" data-target="#exampleModal">Search</a>
-                        </li>
-
-<?php  if(!Session::isAdmin() )  { ?>
-              <?php  if(Session::logged() )  { ?>
-                        <li class="nav-item dropdown right-menu">
-                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user padding-left-10"></i> <?php  echo Session::get('userName'); ?> </a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/profile/index">My Profile</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/auth/logout">Log Out</a>
-                            <!-- <a class="dropdown-item" href="#">Something else here</a> -->
-                          </div>
-                        </li>
-                        <!-- notification -->
-                        <li class="nav-item dropdown right-menu" style="right: 140px">
+                          <?php  if(!Session::isAdmin() )  { ?>
+                          <?php  if(Session::logged() )  { ?>
+                      </ul>
+                      <ul class="navbar-nav a-link right-menu d-none d-md-block d-lg-none">
+                         <!-- notification -->
+                        <li class="nav-item dropdown">
                             <a class="nav-link text-light dropdown-toggle-user notification" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-bell"></i>
                               <span class="badge wow pulse noti-count"></span>
                             </a>
                               <ul class="dropdown-menu">
-                                <li class="head text-light bg-light">
+                                <li class="head">
                                   <div class="row">
                                     <div class="col-lg-12 col-sm-12 col-12">
-                                      <span class="noti-header"> Last Notification</span>
+                                      <span class="text-black">Notification</span>
                                     </div>
                                 </li>
-
-
-
                                 <div id="noti-body">
 
                                 </div>
 
-
                               </ul>
-                          </li>
-
-                      <?php }else{  ?>
-                        <li class="nav-item dropdown right-menu">
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span><img src="/images/home/1(2).jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>"></span><?php  echo Session::get('userName');?> </a>
+                          <div class="dropdown-menu dropdown-menu-pic-pro" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/profile/index">My Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/auth/logout">Log Out</a>
+                          </div>
+                        </li>
+                        <?php }else{  ?>
+                        <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user  padding-left-10"></i> Join FoundMe </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
                             <a class="dropdown-item" href="/auth/login">Log In</a>
                             <a class="dropdown-item" href="/auth/signup">Sign Up</a>
                           </div>
                         </li>
-                      <?php } ?>
-                        <!-- <li class="nav-item dropdown right-menu">
-                            <button type="button" class="btn btn-white">Start</button>
-                        </li> -->
                         <?php } ?>
+                          <!-- <li class="nav-item dropdown right-menu">
+                              <button type="button" class="btn btn-white">Start</button>
+                          </li> -->
+                          <?php } ?>
                       </ul>
                     </div>
             </nav>

@@ -32,12 +32,12 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 			<div class="container register">
 					<div class="row">
 						<div class="col-md-12 register-right shadow-div">
-            <div class="tab-content" id="myTabContent">
+
+							<div class="tab-content" id="myTabContent">
 								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 									<h3 class="register-heading">Add Your Compagin</h3>
 									<div class="row register-form wow fadeIn">
-                  <form class="col-md-12" action="/compaign/uploadFiles" id="addCompign" name="addCompign" method="post" enctype="multipart/form-data">
-                  <!-- <form class="col-md-12" action="" name="addCompign" id="addCompign" method="post" enctype="multipart/form-data"> -->
+                  <form class="col-md-12" action="" name="addCompign" id="addCompign" method="post" enctype="multipart/form-data">
 										<div>
 											<div class="form-group">
 												<label for="Title" class="laple-forms">Title </label>
@@ -81,17 +81,12 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                       </div>
 
                       <center>
-                      <input type="submit" class="btnadd"  value="Add" id="addComp" name="addComp" onclick="serverSideValidate();" />
-
-                      <!-- <input type="submit" class="btnadd"  value="Add" id="addComp" name="addComp"/> -->
+                      <input type="submit" class="btnadd"  value="Add" id="addComp" name="addComp"/>
 							        <p class="p-login nots-p-reg" style="padding-top:20px">Visite my compaing!<a href="/auth/signup"> Click here</a></p>
                       </center>
-                    
 										</div>
                   </form>
-                 
-                  </div>
-                  
+									</div>
 								</div>
 
 							</div>
@@ -100,115 +95,36 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
 				</div>
   </section>
-
-<!-- Large modal -->
-<button type="button" class="btn btn-primary"  id="loading" style="display: none;"   data-toggle="modal" data-target=".bd-example-modal-lg" data-keyboard="false" data-backdrop="static">loadding</button>
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" style="top:20%;" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-  <div class="modal-content">
-      <div class="modal-header" style="border: none !important;">
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="myprogress" id="progress_div">
-          <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
-            <circle class="progress-circle-back"
-                  cx="80" cy="80" r="74"></circle>
-              <circle class="progress-circle-prog" 
-                      cx="80" cy="80" r="74"></circle>
-          </svg>
-          <div class="progress-text" data-progress="0">0%</div>
-      </div>
-      <center>
-    <span style="
-    position: absolute;
-    z-index: 1;
-    top: 170px;
-    color: #e4e4e4;
-    font-size:24px;
-    ">Loading...</span>
-    </center>
-    </div>
-    <div class="modal-footer">
-     
-    </div>
-    </div>
-  </div>
-</div>
-
-<script src="/js/home/bootstrap.min.js"></script>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
-  <script type="text/javascript" src="/js/home/jquery.form.js"></script>
-  <script type="text/javascript" >
-     function upload_image() 
-	{
-
-		var bar = $('#bar');
-		var percent = $('#percent1');
-	
-		$('#addCompign').ajaxForm({
-			beforeSubmit: function() {
-        document.getElementById("loading").click();
-        progressBar(0,100);
-			},
-			uploadProgress: function(event, position, total, percentComplete) {
-        progressBar(percentComplete,100);
-
-			},
-			success: function() {
-        progressBar(100,100);
-
-			},
-			complete: function(xhr) {
-				if(xhr.responseText)
-				{
-          window.location.replace("/home/index");
-				}
-			}
-    }); 
-  }
-  
-  
-function progressBar(progressVal,totalPercentageVal = 100) {
-		var strokeVal = (4.64 * 100) /  totalPercentageVal;
-		var x = document.querySelector('.progress-circle-prog');
-		x.style.strokeDasharray = progressVal * (strokeVal) + ' 999';
-		var el = document.querySelector('.progress-text'); 
-		var from = $('.progress-text').data('progress');
-		$('.progress-text').data('progress', progressVal);
-		var start = new Date().getTime();
-	  
-		setTimeout(function() {
-			var now = (new Date().getTime()) - start;
-			var progress = now / 700;
-			el.innerHTML =Math.round(progressVal / totalPercentageVal * 100) + '%';
-			if (progress < 1) setTimeout(arguments.callee, 10);
-		}, 10);
-	
-	}
-  
-  function serverSideValidate(){	
+	<!-- </div> -->
+	<!-- profile page end -->
+  <script>
+$(document).ready(function(){
+    $("#addComp").click(function(){  
+		event.preventDefault();  
     tinyMCE.triggerSave();
 		if(Requirevalidation(document.addCompign.Title)&&Requirevalidation(document.addCompign.Tags)&&
 		Requirevalidation(document.addCompign.Amount)&&Requirevalidation(document.addCompign.Deuration)&&
-    Requirevalidation(document.addCompign.descrption)){
-  $('#addCompign').ajaxForm({
+    Requirevalidation(document.addCompign.descrption))
+       serverSideValidate();
+    });
+});
+
+
+function serverSideValidate(){	
+  $.ajax({
         url:"/validate",
-        type:"POST",
-        data:{
+        method:"POST",
+             data:{
            type:"addCompain",
            formData:$('#addCompign').serialize()}
         ,
-        complete:function(xhr) {
-				
-      var result=JSON.parse(xhr.responseText);
+        success:function(data)
+        {
+      var result=JSON.parse(data);
     
       if(result.statusCode==200){
   
-        // upload_image();
-        alert('jjjjjjjj');
+        $("#addCompign").submit(); // Submit the form
       }
       else{
         alert(result.message);
@@ -226,14 +142,7 @@ function progressBar(progressVal,totalPercentageVal = 100) {
             return false;}
         }
   
-             }); 
-            }
-            else 
-  event.preventDefault();  
-
-  }   
-            
-  
+             });
+        }
 </script>
-    
-
+<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

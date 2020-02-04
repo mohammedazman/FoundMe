@@ -15,7 +15,13 @@ class homeController extends Controller
   }
 
 
+  public function progress($id='',$name='')
+  {
+    $this->view('home'.DIRECTORY_SEPARATOR.'progree');
+    $this->view->pageTitle='Found Me';
+    $this->view->render();
 
+  }
 
 
 

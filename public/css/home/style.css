@@ -330,9 +330,8 @@ header nav {
 .modal-content {
     background-color: #b9aeae00;
     border: 1px solid #b9aeae00;
-    border-bottom: 2px solid #fff;
     border-radius: 0;
-
+    height: 180px;
 }
 /* profile */
 .h6, h6 {
@@ -1033,9 +1032,7 @@ input[type='file'] {
         left: -221px;
     }
 }
-.progress-bar {
-    background-color: #3aa3a9;
-}
+
 #user-compign{
     margin-top: 18px;
 }
@@ -1270,11 +1267,6 @@ font-family: 'Droid Arabic Kufi'
 
 												/*end notification*/
 
-
-
-.progress-details{
-    height: 8px;
-}
 .goal-num{
     color: #767676;
     font-weight: 400;
@@ -1389,3 +1381,51 @@ font-family: 'Droid Arabic Kufi'
     background-color: #f5e720;
 }
 /* comments */
+
+
+
+
+/* progress */
+
+.myprogress {
+    display: block;
+    position: absolute;   
+    height: 160px;
+    width: 160px;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    margin: -80px 0 0 -80px;
+    overflow: hidden;
+    font-size: .75rem;
+    border-radius: .25rem;
+  }
+  
+  .progress-circle {
+  transform: rotate(-90deg);
+  margin-top: -40px;
+  }
+  
+  .progress-circle-back {
+  fill: none; 
+  stroke: #e4e4e4;
+  stroke-width:10px;
+  }
+  
+  .progress-circle-prog {
+  fill: none; 
+  stroke: #3aa3a9;
+  stroke-width: 10px;  
+  stroke-dasharray: 0 999;    
+  stroke-dashoffset: 0px;
+  transition: stroke-dasharray 0.7s linear 0s;
+  }
+  
+  .progress-text {
+  width: 100%;
+  position: absolute;
+  top: 60px;
+  text-align: center;
+  font-size: 2em;
+  color:#fcfcfc;
+  }

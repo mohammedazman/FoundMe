@@ -1506,3 +1506,6 @@ font-family: 'Droid Arabic Kufi'
 .welcome-form {
     padding: 11% 9%;
 }
+.text-size-4em {
+    font-size: 4em;
+}

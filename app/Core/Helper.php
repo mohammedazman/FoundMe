@@ -220,7 +220,13 @@
 
 
 
-      //err messge 
-      
+      //
+      public static function getDonars($id='')
+      {
+        $counter =DB::init()->QueryCrud("SELECT SUM(amount) AS sum FROM donations WHERE compigan_id= $id ");
+
+          return $counter[0]['sum'];
+      }
+
  }
  ?>

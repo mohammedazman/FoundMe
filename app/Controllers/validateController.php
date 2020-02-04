@@ -2,14 +2,14 @@
 /**
  *
  */
-class validateController 
+class validateController
 {
     protected $validation;
 
 
   public function index()
   {
-      
+
 }
 public function signupValidate($formData)
 {
@@ -32,8 +32,8 @@ public function signupValidate($formData)
         return  json_encode(array("statusCode"=>204,"message"=>json_encode($_SESSION)));
 
     }
-   
- 
+
+
 
   }
   function stringToArray($formArray) {
@@ -56,7 +56,7 @@ public function signupValidate($formData)
       ],$formData);
 
       if ($this->validation->GetStatus()===1) {
-        
+
         return  json_encode(array("statusCode"=>200,"message"=>"Process done successfully"));
 
       }
@@ -65,6 +65,26 @@ public function signupValidate($formData)
       }
 
     }
+    public function addDonationValidate($formData)
+   {
+        //do validation to POST
+        $this->validation=new Validation();
+
+        $this->validation->checkFild([
+         'email' => array(['required' => 'required']),
+         'password' => array(['required' => 'required' ]),
+     ],$formData);
+
+     if ($this->validation->GetStatus()===1) {
+
+       return  json_encode(array("statusCode"=>200,"message"=>"Process done successfully"));
+
+     }
+     else{
+       return  json_encode(array("statusCode"=>204,"message"=>json_encode($_SESSION)));
+     }
+
+   }
     public function addCompainValidate($formData)
     {
       $this->validation=new Validation();
@@ -90,12 +110,12 @@ $validate=new validateController();
 if(count($_POST)>0){
 
 if($_POST['type']=="signup"){
-    
+
      $data=$validate->stringToArray(explode('&',$_POST['formData']));
      echo $validate->signupValidate($data);
   }
 if($_POST['type']=="login"){
-    
+
     $data=$validate->stringToArray(explode('&',$_POST['formData']));
     echo $validate->loginValidate($data);
  }
@@ -103,6 +123,12 @@ if($_POST['type']=="login"){
   $data=$validate->stringToArray(explode('&',$_POST['formData']));
   echo $validate->addCompainValidate($data);
 }
+
+if($_POST['type']=="addDonation"){
+ $data=$validate->stringToArray(explode('&',$_POST['formData']));
+ echo $validate->addDonationValidate($data);
+}
+
 }
 
  ?>

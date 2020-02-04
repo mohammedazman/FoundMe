@@ -9,10 +9,18 @@ class detailsCompaginController extends Controller
   public function index()
   {
 
-  
 
-    $this->view('home'.DIRECTORY_SEPARATOR.'detailsCompagin');
-    $this->view->pageTitle='details Compagin';
+
+
+    $comp=$this->compaign->find([$id]);
+    $this->model('Donations');
+    $donars=$this->model->getModel()->CompaignDonations([$id]);
+    $this->model('Comments');
+    $comments=$this->model->getModel()->CompaignComments([$id]);
+
+
+    $this->view('home'.DIRECTORY_SEPARATOR.'detailsCompagin',['compaign'=>$comp,'donars'=>$donars,'comments'=>$comments]);
+    $this->view->pageTitle='View Compaign';
     $this->view->render();
 
   }

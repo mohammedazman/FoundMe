@@ -1,49 +1,6 @@
 <?php
 
   include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
-      <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">DONATIONS (4.3K)</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div>
-            <div class="donar-user">
-                <div class="d-inline">
-                <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>">
-                </div>
-                <div class="d-inline-block">
-                <h5>User name /<span> 15$</span></h5>
-                </div>
-                <hr class="hr-blue-80">
-            </div>
-            <div class="donar-user">
-                <div class="d-inline">
-                <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>">
-                </div>
-                <div class="d-inline-block">
-                <h5>User name /<span> 15$</span></h5>
-                </div>
-                <hr class="hr-blue-80">
-            </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btnmodel float-none" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- modal -->
-
 <!-- start pages photo -->
 <section class="cover-background top-space" style="background-image:url('/images/home/1(1).jpg');">
     <div class="opacity-medium bg-dark"></div>
@@ -71,7 +28,6 @@
                 <!-- details PHOTO -->
                 <div class="col-md-8 col-xs-12">
                     <div class="details">
-                    <div class="col-md-12">
                         <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <h3 class="text-center">Donate Now</h3>
@@ -93,13 +49,13 @@
                                                 <option>Yemen</option>
                                                 <option>Yemen</option>
                                                 </select>  
-                                            </div>
-                                    </div>	
+                                            </div>      
+                                    </div>		
                                     <div class="col-md-6">
                                     <div class="form-group">
                                             <label for="code" class="laple-forms">Zip Code</label>
                                             <input type="text" name="code" class="form-control" placeholder="Your Code " value='' oninput="" />
-                                        </div>
+                                    </div>
                                     </div>
 
                                     <div class="col-md-12">
@@ -108,7 +64,6 @@
                                                 <input type="text" class="form-control" placeholder="Debit Number" name="nebit-number"/>
                                             </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="month" class="laple-forms">Expiration Month</label>
@@ -133,6 +88,13 @@
                                                 </select>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="security-code" class="laple-forms">Security Code</label>
+                                                <input type="text" class="form-control" placeholder="Security Code" name="security-code"/>
+                                            </div>
+                                    </div>   
+                                    </div> 
                                                                                                   
                                                 </div>
                                                 <center>

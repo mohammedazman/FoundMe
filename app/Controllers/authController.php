@@ -21,7 +21,7 @@ class authController extends Controller
 
   }
 
-  public function login()
+  public function login($signup=false)
     {
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -47,8 +47,10 @@ class authController extends Controller
               return ;
 
              }
-
-             header('Location:/home/index');
+             if($signup==true)
+               header('Location:/auth/welcome');
+             else
+               header('Location:/home/index');
 
             }}
             else{
@@ -83,7 +85,7 @@ class authController extends Controller
                      $profile->add(['Phone',$_REQUEST['phone'],$this->modelObj->lastID()['id']]);
                       
                      Message::setMessage(1,'main',' Your account added successfully');
-                     $this->login();
+                     $this->login(true);
                     //  header('Location:/home/index');
 
 
@@ -94,7 +96,12 @@ class authController extends Controller
   $this->view->pageTitle='Sign Up Page';
   $this->view->render();
 }
-
+ public function welcome()
+{
+  $this->view('home'.DIRECTORY_SEPARATOR.'welcome2fundme');
+  $this->view->pageTitle='Welcome';
+  $this->view->render();
+}
 public function logout()
 {
   Session::destroy();

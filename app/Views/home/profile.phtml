@@ -90,32 +90,9 @@
                       <div class="tab-content tab-space">
                   <div class="tab-pane active text-center gallery" id="works">
                       <a href="/compaign" class="btn btn-white"><span style="font-size: 30px">+</span> Add Compigan</a>
-                        <div class="row">
-                          <div class="col-md-6 img-overlay">
-                            <div class="card">
-                                <img class="card-img-top" src="/images/home/1(5).jpg" alt="Card image cap">
-                                <div class="overlay">
-                                  <div class="text-overlay"> 
-                                    <h5 class="card-title">compagin</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                    <a href="/detailsCompagin" class="btn btn-home-comp">Go somewhere</a>
-                                  </div>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="col-md-6 img-overlay">
-                            <div class="card">
-                                <img class="card-img-top" src="/images/home/1(5).jpg" alt="Card image cap">
-                                <div class="overlay">
-                                  <div class="text-overlay"> 
-                                    <h5 class="card-title">compagin</h5>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                    <a href="/detailsCompagin" class="btn btn-home-comp">Go somewhere</a>
-                                  </div>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
+                      <div class="row" id="user-compign">
+                        
+                      </div>
                   </div>
                   <div class="tab-pane text-center gallery" id="favorite">
                           <div class="row">
@@ -146,7 +123,7 @@
 
 
 
-<script src="/js/home/jquery-3.4.1.slim.min.js"></script>
+<!-- <script src="/js/home/jquery-3.4.1.slim.min.js"></script> -->
 <script src="/js/home/js.js"></script>
 <script src="/js/home/popper.min.js"></script>
 <script src="/js/home/bootstrap.min.js"></script>
@@ -155,5 +132,50 @@
 
 <script>
 new WOW().init();
+</script>
+<script>
+
+function load_data(){
+		$.ajax({
+			url:"/managecompaign",
+			method:"POST",
+      data:{type:"user"},
+			success:function(data)
+			{
+        html='';
+        var userInfo=JSON.parse(data);
+        // alert(d)
+       var i=1;
+        $.each( userInfo.data, function( index, row ) {
+          if(i<4){
+        html+=' <div class="col-md-6 img-overlay">'+
+                  '<div class="card">'+
+                      '<img class="card-img-top" src="/uploads/'+row.galary+'" alt="Card image cap">'+
+                      '<div class="overlay">'+
+                      '<div class="text-overlay"> '+
+                        '<h5 class="card-title">compagin</h5>'+
+                        '<p class="card-text">'+row.title+'</p>'+
+                        '<a href="#" class="btn btn-home-comp">Go somewhere</a>'+
+                      '</div>'+
+                      '</div>'+
+                  '</div>'+
+                  ' <div class="progress">'+
+                    '<div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">55%</div>'+
+                  '</div>'+
+              '</div>';
+          }
+          i++;
+      });
+      $('#user-compign').html(html);
+
+    }
+
+
+		       });
+}
+$(document).ready(function(){
+         load_data();
+  });  
+
 </script>
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

@@ -15,7 +15,7 @@
 	new WOW().init();
 	$(document).ready(function(){
          load_notification();
-  });  
+  });
 
   setInterval(function(){
     load_notification();
@@ -41,15 +41,16 @@
                           ' <i class="fa fa-user-circle noti-icon"  aria-hidden="true"></i>'+
                           ' </div>'+
                           ' <div class="col-lg-10 col-sm-8 col-8">'+
+
                              '<strong class="noti-date">'+row.created_at+'</strong><br>'+
-                             
-                             row.text+
+
+                            '<strong>'+row.type+'</strong><br>'+row.text+
                             ' </div>'+
                           ' </div>    '+
                         ' </div>'+
                       ' </li>';
            }
-          
+
            i++;
          });
          if(i==1){
@@ -61,7 +62,7 @@
          }
          else{
           html+='<li class="footer text-center">'+
-                                   '<a href="" class="text-blue">View All</a>'+
+                                   '<a href="/notification/viewNotification" class="text-blue">View All</a>'+
                                '</li>';
          }
          $('#noti-body').html(html);

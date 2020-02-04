@@ -79,6 +79,13 @@ public function getCompaigns($args)
   $oStmt ='SELECT * FROM compigans where status=?';
   return  $this->db->QueryCrud($oStmt,$args);
 }
+public function getUSerCompaigns($args)
+{
+
+
+  $oStmt ='SELECT * FROM compigans where owner_id=?';
+  return  $this->db->QueryCrud($oStmt,$args);
+}
 
 }
   ?>

@@ -60,7 +60,7 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
     <!-- end slider -->
 
 
-  
+
 
      <!-- service start -->
      <section id="numone" class="wow fadeIn p-section" style="visibility: visible; animation-name: fadeIn;">
@@ -69,7 +69,7 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
      </center>
         <div class="container">
             <div class="row">
-                <!-- start feature box item -->  
+                <!-- start feature box item -->
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 feature-box-1 xs-margin-30px-bottom wow fadeIn last-paragraph-no-margin" style="visibility: visible; animation-name: fadeIn;">
                     <div class="col-md-12 col-sm-12 no-padding margin-15px-bottom alt-font">
                         <h3 class="char-value text-blue letter-spacing-minus-1 font-weight-600 servic-num">01.</h3>
@@ -117,10 +117,10 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
 <div class="tab-pane text-center gallery" id="works">
 
           <div class="row" id="active-compain">
-              
+
           </div>
 
-          
+
           <a href="/compaign" class="btn btn-white"><span style="font-size: 30px"></span>  Read More</a>
 
   </div>
@@ -141,7 +141,7 @@ function load_data(){
         html='';
         var userInfo=JSON.parse(data);
         // alert(d)
-       
+
         $.each( userInfo.data, function( index, row ) {
         html+=' <div class="col-md-4 img-overlay">'+
                   '<div class="card">'+
@@ -150,7 +150,7 @@ function load_data(){
                       '<div class="text-overlay"> '+
                         '<h5 class="card-title">compagin</h5>'+
                         '<p class="card-text">'+row.title+'</p>'+
-                        '<a href="/detailsCompagin" class="btn btn-home-comp">Go somewhere</a>'+
+                        '<a href="/viewCompaign/show/'+row.id+'" class="btn btn-home-comp">Go somewhere</a>'+
                       '</div>'+
                       '</div>'+
                   '</div>'+
@@ -165,7 +165,7 @@ function load_data(){
 }
 $(document).ready(function(){
          load_data();
-  });  
+  });
 
 </script>
 

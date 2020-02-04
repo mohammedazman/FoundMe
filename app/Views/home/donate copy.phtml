@@ -1,0 +1,152 @@
+<?php
+
+  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
+<!-- start pages photo -->
+<section class="cover-background top-space" style="background-image:url('/images/home/1(1).jpg');">
+    <div class="opacity-medium bg-dark"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
+                <div class="vertical-align-middle text-center">
+                    <!-- start sub title -->
+                    <span class="text-white">Compagin</span>
+                    <!-- end sub title -->
+                    <!-- start page title -->
+                    <h1 class="text-white">Compagin Details</h1>
+                    <!-- end page title -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end pages photo - -->
+
+<div class="main main-raised border-50">
+    <div class="details-content">
+        <div class="container">
+            <div class="row">
+                <!-- details PHOTO -->
+                <div class="col-md-8 col-xs-12">
+                    <div class="details">
+                        <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <h3 class="text-center">Donate Now</h3>
+                                <form class="" action="" method="post" name='signupForm' id="signupForm">
+                                    <div class="row register-form ">
+                                    <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="Donation" class="laple-forms">your Donation</label>
+                                                <input type="number" class="form-control donate-dollar" placeholder="0.0 $"  name="Donation"/>
+                                            </div>
+                                    </div>        
+                                    <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="country" class="laple-forms">Country</label>
+                                                <select class="form-control" class="form-control" placeholder="your country" name="country">
+                                                <option selected>Select Your Country</option>
+                                                <option>Yemen</option>
+                                                <option>Yemen</option>
+                                                <option>Yemen</option>
+                                                <option>Yemen</option>
+                                                </select>  
+                                            </div>      
+                                    </div>		
+                                    <div class="col-md-6">
+                                    <div class="form-group">
+                                            <label for="code" class="laple-forms">Zip Code</label>
+                                            <input type="text" name="code" class="form-control" placeholder="Your Code " value='' oninput="" />
+                                    </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="nebit-number" class="laple-forms">Credit or Debit Number</label>
+                                                <input type="text" class="form-control" placeholder="Debit Number" name="nebit-number"/>
+                                            </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="month" class="laple-forms">Expiration Month</label>
+                                            <select class="form-control" class="form-control" name="month">
+                                                <option class="selected">Select Expiration Month</option>
+                                                <option>02-Jun</option>
+                                                <option>02-Feb</option>
+                                                <option>02-Oct</option>
+                                                <option>02-Nov</option>
+                                                </select> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="year" class="laple-forms">Expiration Year</label>
+                                            <select class="form-control" class="form-control" name="year">
+                                                <option class="selected">Select Expiration Year</option>
+                                                <option>2020</option>
+                                                <option>2021</option>
+                                                <option>2023</option>
+                                                <option>2024</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="security-code" class="laple-forms">Security Code</label>
+                                                <input type="text" class="form-control" placeholder="Security Code" name="security-code"/>
+                                            </div>
+                                    </div>   
+                                    </div> 
+                                                                                                  
+                                                </div>
+                                                <center>
+                                            <input id="signuptBtn" type="submit" class="btnRegister float-none"  value="Donate Now"/>
+                                            </center>
+                                            </div>
+                                </form>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- details PHOTO -->
+                <!-- details PHOTO -->
+                <div class="col-md-4 col-xs-12 box-donate">
+                    <div class="details">
+
+                        <div class="mt-50px">
+                        <div class="container">
+                        <h4 class="text-center">Compagin Title</h4>
+
+                        <h3 class="text-center text-blue">1000.000 <span>$ </span><span class="goal-num">raised of $300,000 goal</span></h3>
+                            <div class="progress progress-details">
+                            <div class="progress-bar bg-yellow" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="">
+                            <img src="/images/home/1(2).jpg" class="pt-10px img-fluid" width="auto">
+                            </div>
+                            <div class="text-center p-all-10">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam quaerat in est minima ipsum aliquid, dicta molestias quae consequuntur eum fugit aut voluptatem laudantium quas sunt, et dolorum sed molestiae.</p>
+                            </div>
+                         <a href="" class="a-donars" data-toggle="modal" data-target="#exampleModalLong"><h5 class="text-center text-black"><i class="fas fa-donate"></i>Donars <span class="donars-num">300K</span></h5></a>
+                           
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- details PHOTO -->
+
+            </div>  
+        </div>
+  	</div>
+</div>
+
+
+<script src="/js/home/jquery-3.4.1.slim.min.js"></script>
+<script src="/js/home/js.js"></script>
+<script src="/js/home/popper.min.js"></script>
+<script src="/js/home/bootstrap.min.js"></script>
+<script src="/js/home/wow.min.js"></script>
+<script src="/js/home/main.js"></script>
+
+<script>
+new WOW().init();
+</script>
+<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

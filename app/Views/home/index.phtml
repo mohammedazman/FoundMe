@@ -19,7 +19,7 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
                           <h1 class="h1-slide wow fadeIn">Fundraising for the people and <br>
                               causes you care about</h1>
                           <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
-                          <button type="button" class="btn btn-blue wow flipInX" data-wow-delay="0.9s">Start a Fund Me</button>
+                          <button type="button" class="btn btn-blue wow flipInX" data-wow-delay="0.9s">Start a fund Me</button>
                         </div>
                       </div>
                       <div class="carousel-item bg-black">
@@ -28,7 +28,7 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
                           <h1 class="h1-slide wow fadeIn">Fundraising for the people and <br>
                             causes you care about</h1>
                           <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
-                          <button type="button" class="btn btn-blue wow flipInX" data-wow-delay="0.9s">Start a Fund Me</button>
+                          <button type="button" class="btn btn-blue wow flipInX" data-wow-delay="0.9s">Start a fund Me</button>
                         </div>
                       </div>
                       <div class="carousel-item bg-black">
@@ -37,7 +37,8 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
                           <h1 class="h1-slide wow fadeIn">Fundraising for the people and <br>
                              causes you care about</h1>
                           <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
-                          <button type="button" class="btn btn-blue wow flipInX" data-wow-delay="0.9s">Start a Fund Me</button>
+
+                          <button type="button" class="btn btn-blue wow flipInX" data-wow-delay="0.9s">Start a fund Me</button>
                         </div>
                       </div>
                       <div class="carousel-item bg-black">
@@ -46,7 +47,7 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
                           <h1 class="h1-slide wow fadeIn">Fundraising for the people and <br>
                                causes you care about</h1>
                           <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
-                          <button type="button" class="btn btn-blue wow flipInX" data-wow-delay="0.9s">Start a Fund Me</button>
+                          <button type="button" class="btn btn-blue wow flipInX" data-wow-delay="0.9s">Start a fund Me</button>
                         </div>
                       </div>
                       <section class="demo">
@@ -60,7 +61,7 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
     <!-- end slider -->
 
 
-  
+
 
      <!-- service start -->
      <section id="numone" class="wow fadeIn p-section" style="visibility: visible; animation-name: fadeIn;">
@@ -69,7 +70,7 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
      </center>
         <div class="container">
             <div class="row">
-                <!-- start feature box item -->  
+                <!-- start feature box item -->
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 feature-box-1 xs-margin-30px-bottom wow fadeIn last-paragraph-no-margin" style="visibility: visible; animation-name: fadeIn;">
                     <div class="col-md-12 col-sm-12 no-padding margin-15px-bottom alt-font">
                         <h3 class="char-value text-blue letter-spacing-minus-1 font-weight-600 servic-num">01.</h3>
@@ -103,32 +104,36 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
 
 <!-- service start -->
 <section id="compignhome" style="background-color:#3aa3a9; color:#fff; padding:90px;">
-<h1 class="text-center">Fund Me .. Fund Me </h1>
+
+<h1 class="text-center">Fund Me ..  </h1>
 </section>
 <!-- service end -->
 
 <!-- latest compign -->
 <section class="p-section">
-<center>
-  <h2 class="title-home">The Last Compagin</h2>
-</center>
-<div class="container">
-<!-- <div class="row"> -->
-<div class="tab-pane text-center gallery" id="works">
+    <center>
+      <h2 class="title-home">The Last Compagin</h2>
+    </center>
+    <div class="container">
+    <!-- <div class="row"> -->
+    <div class="tab-pane text-center gallery" id="works">
 
-          <div class="row" id="active-compain">
-              
-          </div>
+              <div class="row" id="active-compain">
 
-          
-          <a href="/compaign" class="btn btn-white"><span style="font-size: 30px"></span>  Read More</a>
+              </div>
 
-  </div>
-</div>
 
-</div>
+              <a href="/compaign" class="btn btn-white"><span style="font-size: 30px"></span>  Read More</a>
+
+      </div>
+    </div>
+
+    </div>
 </section>
 <!-- latest Compaign -->
+
+
+
 <script>
 
 function load_data(){
@@ -141,7 +146,7 @@ function load_data(){
         html='';
         var userInfo=JSON.parse(data);
         // alert(d)
-       
+
         $.each( userInfo.data, function( index, row ) {
         html+=' <div class="col-md-4 img-overlay">'+
                   '<div class="card">'+
@@ -150,7 +155,7 @@ function load_data(){
                       '<div class="text-overlay"> '+
                         '<h5 class="card-title">compagin</h5>'+
                         '<p class="card-text">'+row.title+'</p>'+
-                        '<a href="#" class="btn btn-home-comp">Go somewhere</a>'+
+                        '<a href="/viewCompaign/show/'+row.id+'" class="btn btn-home-comp">Go somewhere</a>'+
                       '</div>'+
                       '</div>'+
                   '</div>'+
@@ -165,7 +170,7 @@ function load_data(){
 }
 $(document).ready(function(){
          load_data();
-  });  
+  });
 
 </script>
 

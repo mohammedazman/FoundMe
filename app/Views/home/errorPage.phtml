@@ -1,7 +1,6 @@
-
 <?php include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml';?>
 <body class="bg-blue">
-<div class="container welcome-form">
+<div class="container error-form">
     <div class="row">
         <div class="col-md-12 register-left">
                 <div class="animation-ttp">
@@ -10,10 +9,10 @@
                 </a>
                 </div>
                 <div class="p-5">
-                <h1>WELCOME <span class="text-yellow"> <?php  echo Session::get('userName');?></span>!</h1>
-                <p>Agreat Cooperative society</p>
-                <h3>we will redirect you now </h3>
-                <p class="p-login nots-p-reg">If not <a href="/home/index">Click Here!</a></p>
+                <h1><span class="text-yellow text-size-4em ">4</span><span class="text-white text-size-4em ">0</span><span class="text-yellow text-size-4em ">4</span> <span class="text-blue text-size-4em "></span>!</h1>
+                <p>Opps Page not found!</p>
+                <h3></h3>
+                <p class="p-login nots-p-reg">Back to <a href="/home/index">Home!</a></p>
 
                 </div>
             
@@ -21,11 +20,11 @@
     </div>
 </div>
    
-       <script>
+       <!-- <script>
          setTimeout(function(){
             window.location.href = '/home/index';
          }, 2000);
-      </script>
+      </script> -->
       
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>
 

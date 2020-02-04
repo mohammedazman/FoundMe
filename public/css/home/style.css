@@ -1513,7 +1513,18 @@ font-family: 'Droid Arabic Kufi'
     padding: 7% 9%;
 }
 
-/* slider home  */
-
-
-/* slider home */
+.btncontactus {
+    float: right;
+    margin-top: unset;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #3aa3a9;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.register .contact-form{
+    padding: 6% 8%;
+}

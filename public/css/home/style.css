@@ -1509,3 +1509,6 @@ font-family: 'Droid Arabic Kufi'
 .text-size-4em {
     font-size: 4em;
 }
+.error-form {
+    padding: 7% 9%;
+}

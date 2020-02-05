@@ -77,6 +77,26 @@ public function find($aData)
 }
 
 
+  // manageusers
+  public function getComments($aData)
+  {
+
+
+    $oStmt ='SELECT * FROM comments where status=?';
+    return  $this->db->QueryCrud($oStmt,$aData);
+  }
+
+
+
+  //delete manage users
+
+  public function deleteComments($aData){
+    $oStmt = 'update comments set status=? WHERE id in (?)';
+  
+
+    return $this->db->QueryCrud($oStmt,$aData,0);
+}
+
 }
 
 

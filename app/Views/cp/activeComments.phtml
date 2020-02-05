@@ -9,10 +9,10 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
  <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Manage Users</h1>
+            <h1 class="h3 mb-0 text-gray-800">Manage Comments</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Active Users</li>
+              <li class="breadcrumb-item active" aria-current="page">Active Comments</li>
             </ol>
           </div>
   <div class="user" style="background-color: #fff; padding:50px;border-radius: 40px; " >
@@ -25,7 +25,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
   <div id="toolbar">
     <button id="remove" class="btn btn-danger" disabled>
-      <i class="glyphicon glyphicon-remove"></i> Delete Users
+      <i class="glyphicon glyphicon-remove"></i> Delete Comments
     </button>
   </div>
   <table
@@ -54,13 +54,13 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 <!-- model  -->
 
-<div id="deleteUsers" class="modal fade">
+<div id="deleteComments" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
 
 					<div class="modal-header">
-						<h4 class="modal-title "> Change user status</h4>
+						<h4 class="modal-title "> Change Comments status</h4>
 						<button type="button" class="close mr-5" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
 					<div class="modal-body">
@@ -109,7 +109,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
       return [
         '<a class="like" href="javascript:void(0)" title="Like">',
         '<i class="fa fa-edit"></i>',
-        '</a>  ',
+        '</a>',
         '<a class="remove" href="javascript:void(0)" title="Remove">',
         '<i class="fa fa-trash"></i>',
         '</a>'
@@ -119,8 +119,9 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
   // delete fun
   function deleteU(){
+    // alert($("#id_d").val())
     $.ajax({
-      url: "/manageusers",
+      url: "/managecomment",
         type: "POST",
         cache: false,
         data:{
@@ -132,7 +133,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
         success: function(dataResult){
             var dataResult = JSON.parse(dataResult);
             if(dataResult.statusCode==200){
-                $('#deleteUsers').modal('hide');
+                $('#deleteComments').modal('hide');
                 alert(dataResult.message)
                 // sucMsg(dataResult.message);
                 load_data()
@@ -155,7 +156,8 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
     $('#id_d').val(row.id);
     $('#state_d').val(row.status);
-    $('#deleteUsers').modal('show');
+    // alert(row.id);
+    $('#deleteComments').modal('show');
 
   }
 
@@ -187,7 +189,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
       }, 0)
     }
 
-    function initTable(users) {
+    function initTable(comments) {
       $table.bootstrapTable('destroy').bootstrapTable({
         height: 550,
         locale: $('#locale').val(),
@@ -209,7 +211,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             sortable: true,
             footerFormatter: totalTextFormatter
           }, {
-            title: 'User Details',
+            title: 'Comments Details',
             colspan: 5,
             align: 'center'
           }],
@@ -220,20 +222,20 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             footerFormatter: totalNameFormatter,
             align: 'center'
           }, {
-            field: 'email',
-            title: 'User Email',
+            field: 'message',
+            title: 'Comments',
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter
           }, {
             field: 'status',
-            title: 'User State',
+            title: 'Comments State',
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter
           },{
-            field: 'type',
-            title: 'User Type',
+            field: 'compigan_id',
+            title: 'compigan',
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter
@@ -247,7 +249,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             formatter: operateFormatter
           }]
         ],
-        data:users
+        data:comments
 
       })
     }
@@ -266,7 +268,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
       $remove.click(function () {
         var ids = getIdSelections()
         $('#id_d').val( ids);
-    $('#deleteUsers').modal('show');
+    $('#deleteComments').modal('show');
 
 
       })
@@ -286,14 +288,14 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
  function load_data(){
 		$.ajax({
-			url:"/manageusers",
+			url:"/managecomment",
 			method:"POST",
       data:{type:"1"},
 			success:function(data)
 			{
-        var userInfo=JSON.parse(data);
+        var commentsInfo=JSON.parse(data);
         // alert(d)
-        initTable(userInfo.data);
+        initTable(commentsInfo.data);
         $('#locale').change(initTable)
       }
 

@@ -17,13 +17,13 @@ $(document).ready(function(){
 
 
 
-  //scroll down
-  $(function() {
-    $('a[href*=#]').on('click', function(e) {
-      e.preventDefault();
-      $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
-    });
-  });
+//   //scroll down
+//   $(function() {
+//     $('a[href*=#]').on('click', function(e) {
+//       e.preventDefault();
+//       $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+//     });
+//   });
 
 
   //profile change photo 

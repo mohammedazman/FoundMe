@@ -54,12 +54,7 @@ class managecompaignController extends Controller
       return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
 
     }
-    public function showUserCompaigns(){
-
-      $compaignsArray = $this->compaignModel->getUSerCompaigns([$_SESSION['userID']]);
-      return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
-
-    }
+  
 
     public function changeCompaigns($ids,$state){
 
@@ -88,11 +83,7 @@ if 5 is for approve or active Compaign
   */
 if(count($_POST)>0){
   $type=$_POST['type'];
-  if($type=='user'){
-
-    echo $manage->showUserCompaigns();
-    }
-  elseif($type<=3){
+if($type<=3){
 
     echo $manage->showCompaigns($type);
     }

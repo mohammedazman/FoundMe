@@ -9,11 +9,12 @@
 <script src="/js/home/wow.min.js"></script>
 <script src="/js/home/main.js"></script>
 <script src="/js/home/jquery.toast.js"></script>
-
-
+<script type="text/javascript">
+var jQuery_toast = $.noConflict(true);
+</script>
 	<script>
 	new WOW().init();
-	$(document).ready(function(){
+	jQuery_1_3_2(document).ready(function(){
          load_notification();
   });
 
@@ -22,7 +23,7 @@
              }, 10000);
 
 	function load_notification(){
- 		$.ajax({
+    jQuery_1_3_2.ajax({
  			url:"/notification",
  			method:"POST",
        data:{method:"user"},
@@ -31,8 +32,8 @@
          var notiInfo=JSON.parse(data);
          var html='';
          i=1;
-         $('.noti-count').text(notiInfo.count);
-         $.each(notiInfo.noti, function( index, row ) {
+         jQuery_1_3_2('.noti-count').text(notiInfo.count);
+         jQuery_1_3_2.each(notiInfo.noti, function( index, row ) {
            if(i<4){
 
           html+=' <li class="notification-box">'+
@@ -65,7 +66,7 @@
                                    '<a href="/notification/viewNotification" class="text-blue">View All</a>'+
                                '</li>';
          }
-         $('#noti-body').html(html);
+         jQuery_1_3_2('#noti-body').html(html);
        }
 
 
@@ -74,7 +75,7 @@
 
 	function errMsg(msg){
         if(msg!=''){
-    $.toast({
+          jQuery_toast.toast({
         text: msg, // Text that is to be shown in the toast
         heading: 'Note', // Optional heading to be shown on the toast
         icon: 'info', // Type of toast icon

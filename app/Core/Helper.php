@@ -228,5 +228,16 @@
           return $counter[0]['sum'];
       }
 
+      public static function getUsersId()
+      {
+        $results =DB::init()->QueryCrud("SELECT id from users where status=1 ");
+        $users=[];
+        foreach($results as $user){
+          $users[]=$user['id'];
+        }
+
+          return $users;
+      }
+
  }
  ?>

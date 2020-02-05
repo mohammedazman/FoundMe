@@ -89,60 +89,29 @@
 
                         <!-- comments -->
                                 <div class="col-sm-10 col-sm-offset-1" id="login">
-                                    <div class="comment-tabs">
-                                        <ul class="nav nav-pills" role="tablist">
-                                            <li class="nav-item "><a href="#comments-login" class="nav-link active" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Comments</h4></a></li>
-                                            <li class="nav-item"><a href="#add-comment-disabled"  class="nav-link" role="tab" data-toggle="tab"><h4 class="reviews text-capitalize">Add comment</h4></a></li>
-                                        </ul>
-                                        <div class="tab-content">
+                                  
+                                        <div>
                                             <div class="tab-pane active" id="comments-login">
-                                                <ul class="media-list">
-                                                  <?php
-                                                   if (array_key_exists('comments',$this->view_data)){
-                                                   $html='';
-                                                   foreach ($this->view_data['comments'] as $comment) {
-                                                             $html.='
-                                                                     <li class="media">';
-                                                             $html.='  <a class="pull-left" href="#">
-                                                                     <img class="media-object rounded-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
-                                                                     </a>';
-                                                             $html.='  <div class="media-body">';
-                                                             $html.='<div class="well well-lg">';
-                                                             $html.='    <h5 class="media-heading text-uppercase reviews">';
-                                                             $html.=Helper::userName($comment['user_id']);
-                                                             $html.='</h5><ul class="media-date text-uppercase reviews list-inline">';
-                                                             $html.='<span class="date-comm">';
-                                                             $html.=$comment['created_at'];
-                                                             $html.='</span></ul><p class="media-comment">';
-                                                             $html.=$comment['message'];
-                                                             $html.='  </p></div></div>  </li>
-                                                               <hr class="hr-blue-80">
-                                                             ';
-                                                   }
-                                                 echo $html;
-                                                 }
-                                                   ?>
-
+                                                <ul class="media-list" id="comments-show">
+                                                  
                                                 </ul>
                                             </div>
-                                            <div class="tab-pane" id="add-comment-disabled">
-                                                <p class="p-login nots-p-reg">You have already account! <a href="/auth/login">LogIn</a></p>
-                                                <form action="#" method="post" class="form-horizontal" id="commentForm" role="form">
+                                            <div>
+                                                <!-- <p class="p-login nots-p-reg">You have already account! <a href="/auth/login">LogIn</a></p> -->
                                                     <div class="form-group">
                                                         <label for="email" class="col-sm-2 control-label">Comment</label>
                                                         <div class="col-sm-10">
-                                                        <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
+                                                        <textarea class="form-control" name="Comment" id="Comment" rows="5" oninput="if($('#Comment').val()!='')$('#submitComment').attr('disabled' , false ); else $('#submitComment').attr('disabled' , 'disabled' );"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-sm-offset-2 col-sm-10">
-                                                            <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+                                                            <button class="btn btn-success btn-circle text-uppercase" disabled='disabled' onclick="add_comment()" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
                                                         </div>
                                                     </div>
-                                                </form>
                                             </div>
                                         </div>
-                                    </div>
+                                    
                                 </div>
 
                         <!-- comments -->
@@ -218,6 +187,69 @@ $( document ).ready(function() {
 });
 
 
+</script>
+
+<script>
+      function load_comment(){
+        jQuery_1_3_2.ajax({
+            url:"/detailsCompagin",
+            method:"POST",
+            data:{type:"getcomment",
+            id:<?php echo $compaign['id'] ?>
+            },
+            success:function(data)
+            {
+              html='';
+              var comments=JSON.parse(data);
+              // alert(d)
+
+              $.each( comments.data, function( index, row ) {
+          html+='<li class="media">'+
+                '<a class="pull-left" href="#">'+
+                  '<img class="media-object rounded-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">'+
+                  '</a>'+
+                  '<div class="media-body">'+
+                  '<div class="well well-lg">'+
+                  '<h5 class="media-heading text-uppercase reviews">'+row.name+
+                  '</h5><ul class="media-date text-uppercase reviews list-inline">'+
+                  '<span class="date-comm">'+row.created_at+
+                  '</span></ul><p class="media-comment">'+row.message+
+                  '</p></div></div></li>'+
+                  '<hr class="hr-blue-80">';
+            });
+            $('#comments-show').html(html);
+
+          }
+      });
+      }
+      $(document).ready(function(){
+              load_comment();
+        });
+
+
+        function add_comment(){
+          comm =$('#Comment').val();
+
+        jQuery_1_3_2.ajax({
+            url:"/detailsCompagin",
+            method:"POST",
+            data:{type:"addcomment",
+            id:<?php echo $compaign['id'];?>,
+            comment: comm
+            },
+            success:function(data)
+            {
+              var comments=JSON.parse(data);
+              if(comments.statusCode=='200'){
+                $('#Comment').val('');
+                load_comment()  
+
+              }
+
+          }
+      });
+          
+      }
 </script>
 
 

@@ -19,7 +19,7 @@ public function all()
 }
 
 //add new row to comments table
-public function add(array $aData)
+public function addcomment(array $aData)
 {
 
       $oStmt = 'INSERT INTO comments ( user_id,	compigan_id,	message,	status)

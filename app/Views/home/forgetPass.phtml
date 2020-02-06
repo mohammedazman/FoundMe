@@ -1,0 +1,207 @@
+<?php   include VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml' ?>
+
+<!-- start login -->
+<body class="bg-blue">
+
+<section id="email">
+			<div class="container register ">
+					<div class="row">
+						<div class="col-md-12 register-left">
+								<a href="/home/index">
+									<img src="/images/home/logo.png" alt=""/>
+								</a>
+							<h5>Forget Password</h5>
+							<!-- <p class="p-login nots-p-reg">You want to go back   <a href="/auth/login">LogIn</a></p> -->
+
+						</div>
+						<div class="col-md-12 register-right shadow-div">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+									<h3 class="register-heading">Enter Email</h3>
+
+									<div class="row register-form">
+									<div class="col-md-12">
+											<div class="form-group">
+												<label for="email" class="laple-forms">Your Email</label>
+												<input type="email" name="email" class="form-control" id="emailVal" placeholder="Your Email *"  />
+												<span class="text-danger text-error" id="emailError"> </span>
+
+											</div>
+										</div>
+										<div class="col-md-12">
+											<center>
+											<!-- <input type="submit" class="btnRegister"  value="Log In"/> -->
+											<input type="button" id="emailSend" class="emailSend float-none"  value="Send" onclick="emailValidate()" />
+											</center>
+										</div>
+									</div>
+								</div>
+</form>
+							</div>
+						</div>
+					</div>
+</section>
+<section id="code">
+					<div class="container register">
+					<div class="row">
+						<div class="col-md-12 register-left">
+								<a href="/home/index">
+									<img src="/images/home/logo.png" alt=""/>
+								</a>
+							<h5>Verify Email</h5>
+							<!-- <p class="p-login nots-p-reg">You want to rewrite    <a href="/auth/login">email</a></p> -->
+
+						</div>
+						<div class="col-md-12 register-right shadow-div">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+									<h3 class="register-heading">Write code</h3>
+									<div class="row register-form">
+									<div class="col-md-12">
+											<div class="form-group">
+												<label for="email" class="laple-forms">Varification Code</label>
+												<input type="text" name="code" id="codeval" class="form-control" placeholder="code *"  />
+												<span class="text-danger text-error" id="codError"> </span>
+
+											</div>
+										</div>
+										<div class="col-md-12">
+											<center>
+											<!-- <input type="submit" class="btnRegister"  value="Log In"/> -->
+											<input type="button" id="codeSend" class="codeSend float-none"  value="Send" onclick="codeValidate()" />
+											</center>
+										</div>
+									</div>
+								</div>
+</form>
+							</div>
+						</div>
+					</div>
+</section>	
+	<section id="reset">
+					<div class="container register">
+					<div class="row">
+						<div class="col-md-12 register-left">
+								<a href="/home/index">
+									<img src="/images/home/logo.png" alt=""/>
+								</a>
+								<h5>Reset Password</h5>
+							<!-- <p class="p-login nots-p-reg">You want to rewrite    <a href="/auth/login">code</a></p> -->
+
+						</div>
+						<div class="col-md-12 register-right shadow-div">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+									<h3 class="register-heading">Enter your new password</h3>
+									<form class="" action="" method="post" name='changepassForm' id="signupForm">
+
+									<div class="row register-form">
+									<div class="col-md-12">
+									<div class="form-group">
+											<label for="password" class="laple-forms">Your New Password</label>
+											<input type="password" class="form-control" placeholder="Password *" name="password" id="password" value='<?php if(isset($_POST['password']))echo$_POST['password'];?>'  oninput="stringlength(document.changepassForm.password,8,15);" />
+											<?php echo Message::check('password');  ?>
+											<span class="text-danger text-error" id="passwordError"> </span>
+										</div>
+
+									<div class="form-group">
+											<label for="confirm_password" class="laple-forms">Confirm Password</label>
+											<input type="password" class="form-control" name="confirm_password"  placeholder="Confirm Password *" value='<?php if(isset($_POST['confirm_password']))echo$_POST['confirm_password'];?>' oninput=" confirmPassValidation(document.changepassForm.confirm_password,document.changepassForm.password)"; />
+											<?php echo Message::check('confirm_password');  ?>
+											<span class="text-danger text-error" id="confirm_passwordError"> </span>
+										</div>
+									
+										</div>
+										<div class="col-md-12">
+											<center>
+											<!-- <input type="submit" class="btnRegister"  value="Log In"/> -->
+											<input type="button" id="" class=" float-none"  value="Done" onclick="resetPass()"/>
+											</center>
+										</div>
+									</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+    </section>
+	<script>
+jQuery_1_3_2(document).ready(function(){
+	jQuery_1_3_2('#code').hide();
+	jQuery_1_3_2('#reset').hide();
+});
+var code;
+var uid;
+function emailValidate(){
+	jQuery_1_3_2.ajax({
+				url:"/forgetPass",
+				method:"POST",
+				 data:{
+					 type:"email",
+					 email:jQuery_1_3_2('#emailVal').val(),
+					}
+					 ,
+				success:function(data)
+				{
+			var result=JSON.parse(data);
+		
+			if(result.statusCode==200){
+			code=result.code;
+			uid=result.uid;
+	
+				jQuery_1_3_2('#email').hide();
+				jQuery_1_3_2('#code').fadeIn(1500);
+
+
+			}
+			else{
+				alert('failed');
+			}
+			
+		  }
+			
+				   });
+}
+function codeValidate(){
+	// alert(code);
+	entered=jQuery_1_3_2('#codeval').val();
+	if(code==entered){
+		jQuery_1_3_2('#code').hide();
+				jQuery_1_3_2('#reset').fadeIn(1500);
+	}
+	else{
+		alert('wrong code');
+	}
+				}
+function resetPass(){
+	if(Requirevalidation(document.changepassForm.password)&&
+		Requirevalidation(document.changepassForm.confirm_password)){
+	jQuery_1_3_2.ajax({
+				url:"/forgetPass",
+				method:"POST",
+				 data:{
+					 type:"reset",
+					 uid:uid,
+					 pass:$('#password').val()
+					}
+					 ,
+				success:function(data)
+				{
+			var result=JSON.parse(data);
+		
+			if(result.statusCode==200){
+				errMsg('change password done successfully ')
+				setTimeout(function(){
+            window.location.href = '/auth/login';
+         }, 4000);
+			}
+			
+		  }
+			
+				   });
+		}
+				}
+</script>
+
+    <!-- end login -->
+	<?php   include VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

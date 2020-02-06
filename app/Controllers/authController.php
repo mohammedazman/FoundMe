@@ -65,6 +65,15 @@ class authController extends Controller
 
   }
 
+  public function forgetPass()
+  {
+
+     $this->view('home'.DIRECTORY_SEPARATOR.'forgetPass');
+     $this->view->pageTitle='Forget Password';
+     $this->view->render();
+
+
+}
   public function signUp()
   {
     if ($_SERVER["REQUEST_METHOD"] == "POST"){

@@ -37,7 +37,7 @@ class manageusersController extends Controller
 
       $usersArray = $this->userModel->getUsers([$state]);
 
-      return  json_encode(array("statusCode"=>200,"data"=>Helper::merageUserInfo($usersArray)));
+      return  json_encode(array("statusCode"=>200,"data"=>Helper::merageUserInfo($usersArray,'id')));
 
     }
 

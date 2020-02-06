@@ -19,7 +19,7 @@ public function all()
 }
 
 //add new row to comments table
-public function add(array $aData)
+public function addcomment(array $aData)
 {
 
       $oStmt = 'INSERT INTO comments ( user_id,	compigan_id,	message,	status)
@@ -76,6 +76,26 @@ public function find($aData)
 
 }
 
+
+  // manageusers
+  public function getComments($aData)
+  {
+
+
+    $oStmt ='SELECT * FROM comments where status=?';
+    return  $this->db->QueryCrud($oStmt,$aData);
+  }
+
+
+
+  //delete manage users
+
+  public function deleteComments($aData){
+    $oStmt = 'update comments set status=? WHERE id in (?)';
+  
+
+    return $this->db->QueryCrud($oStmt,$aData,0);
+}
 
 }
 

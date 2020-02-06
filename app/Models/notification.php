@@ -19,7 +19,7 @@ public  function getNoti($args)
 }
 
 //add new row to notification table
-public  function addNoti($msg ,$uId,$type)
+public static  function addNoti($msg ,$uId,$type)
 {
   // $content=['msg'=>$msg,'effectedType'=>$effectedType,'effectedId',$effectedID];
 
@@ -34,14 +34,14 @@ public  function addNoti($msg ,$uId,$type)
 public function changeState($id,$args)
 {
   $oStmt = 'update notifications set status=? WHERE id =? ';
-  
+
     return $this->db->QueryCrud($oStmt,$args,0);
 }
 
 public  function countUnreadNoti($id)
 {
   $oStmt = 'select count(id) as num from notifications where status=0 and target_user=? ';
-  
+
   return DB::init()->QueryCrud($oStmt,[$id]);
 }
 

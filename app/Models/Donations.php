@@ -23,7 +23,7 @@ public function add(array $aData)
 {
 
       $oStmt = 'INSERT INTO donations ( compigan_id,	user_id,	amount)
-                VALUES ( ?,?,?)';
+                VALUES ( :compigan_id,	:user_id,	:amount)';
           return $this->db->QueryCrud($oStmt,$aData,0);
 
   }

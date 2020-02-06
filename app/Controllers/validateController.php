@@ -71,8 +71,12 @@ public function signupValidate($formData)
         $this->validation=new Validation();
 
         $this->validation->checkFild([
-         'email' => array(['required' => 'required']),
-         'password' => array(['required' => 'required' ]),
+         'Donation' => array(['required' => 'required']),
+         'country' => array(['required' => 'required' ]),
+         'code' => array(['required' => 'required']),
+         'debitNumber' => array(['required' => 'required' ]),
+         'month' => array(['required' => 'required']),
+         'year' => array(['required' => 'required' ]),
      ],$formData);
 
      if ($this->validation->GetStatus()===1) {

@@ -59,11 +59,11 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                         <input type="date" class="form-control" id="Deuration" name="Deuration" oninput="validateDate(document.addCompign.Deuration)"  placeholder="Add Deuration" value="" />
                         <span id="DeurationError" class="text-danger"></span>
                       </div>
-                      
+
                       <div class="form-group">
                       <label for="gallery" class="laple-forms">Photo</label>
                       <input type="file"  class="form-control img-file-input" require onchange="Filevalidation('gallery-photo-add')" name="gallery"  id="gallery-photo-add">
-                      <span id="galleryError" class="text-danger"></span> 
+                      <span id="galleryError" class="text-danger"></span>
                       <div class="container">
                           <div class="row">
                             <div class="gallery"></div>
@@ -73,7 +73,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                       <div class="form-group">
                       <label for="file" class="laple-forms">Feasibility study PDF</label>
                       <input type="file" class="form-control pdf-file-input" name="file">
-                      <span id="fileError" class="text-danger"></span> 
+                      <span id="fileError" class="text-danger"></span>
 
                       </div>
                       <input type="submit"  style="display: none;" id='ajaxSubmit'  value="Add"  name="addComp" onclick="upload_to_db();" />
@@ -91,12 +91,12 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 							        <p class="p-login nots-p-reg" style="padding-top:20px">Visite my compaing!<a href="#"> Click here</a></p>
 
                       </center>
-                    
+
 										</div>
                   </form>
-                 
+
                   </div>
-                  
+
 								</div>
 
 							</div>
@@ -120,7 +120,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
           <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
             <circle class="progress-circle-back"
                   cx="80" cy="80" r="74"></circle>
-              <circle class="progress-circle-prog" 
+              <circle class="progress-circle-prog"
                       cx="80" cy="80" r="74"></circle>
           </svg>
           <div class="progress-text" data-progress="0">0%</div>
@@ -136,24 +136,24 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
     </center>
     </div>
     <div class="modal-footer">
-     
+
     </div>
     </div>
   </div>
 </div>
 
 <script src="/js/home/bootstrap.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
   <script type="text/javascript" src="/js/home/jquery.form.js"></script>
   <script type="text/javascript">
 var jQuery_form = $.noConflict(true);
 </script>
 
   <script type="text/javascript" >
-     function upload_to_db() 
+     function upload_to_db()
 	{
     tinyMCE.triggerSave();
-	
+
       jQuery_form('#addCompign').ajaxForm({
 			beforeSubmit: function() {
 
@@ -175,58 +175,58 @@ var jQuery_form = $.noConflict(true);
           window.location.replace("/home/index");
 				}
 			}
-    }); 
+    });
   // }
-  // else 
-  // event.preventDefault();  
+  // else
+  // event.preventDefault();
 
-  }   
- 
-  Filevalidation = (id) => { 
-        const fi = document.getElementById(id); 
-        // Check if any file is selected. 
-       
-        if (fi.files.length > 0) { 
-            for (var i = 0; i <= fi.files.length - 1; i++) { 
-  
-                const fsize = fi.files.item(i).size; 
-                const ftype = fi.files.item(i).type; 
-                const fname = fi.files.item(i).name; 
-                const error = fi.name+'Error'; 
-                const file = Math.round((fsize / 1024)); 
-                // The size of the file. 
-                if (file > 50000) { 
+  }
+
+  Filevalidation = (id) => {
+        const fi = document.getElementById(id);
+        // Check if any file is selected.
+
+        if (fi.files.length > 0) {
+            for (var i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const ftype = fi.files.item(i).type;
+                const fname = fi.files.item(i).name;
+                const error = fi.name+'Error';
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file > 50000) {
                     document.getElementById(error).innerHTML=
-                      "File too Big, please select a file less than 4mb"; 
+                      "File too Big, please select a file less than 4mb";
                 }
-                else if ((fname=='gallary' &&  ftype !='image/jpeg') || (fname=='file' &&  ftype !='application/pdf')) { 
+                else if ((fname=='gallary' &&  ftype !='image/jpeg') || (fname=='file' &&  ftype !='application/pdf')) {
                   document.getElementById(error).innerHTML=
                       "Invalid file type, this field accept image only";
-                } else { 
+                } else {
                   document.getElementById(error).innerHTML='';
-                } 
-            } 
-        } 
-    } 
+                }
+            }
+        }
+    }
 
 function progressBar(progressVal,totalPercentageVal = 100) {
 		var strokeVal = (4.64 * 100) /  totalPercentageVal;
 		var x = document.querySelector('.progress-circle-prog');
 		x.style.strokeDasharray = progressVal * (strokeVal) + ' 999';
-		var el = document.querySelector('.progress-text'); 
+		var el = document.querySelector('.progress-text');
 		var from = $('.progress-text').data('progress');
 		$('.progress-text').data('progress', progressVal);
 		var start = new Date().getTime();
-	  
+
 		setTimeout(function() {
 			var now = (new Date().getTime()) - start;
 			var progress = now / 700;
 			el.innerHTML =Math.round(progressVal / totalPercentageVal * 100) + '%';
 			if (progress < 1) setTimeout(arguments.callee, 10);
 		}, 10);
-	
+
 	}
-  function serverSideValidation(){	
+  function serverSideValidation(){
      if(Requirevalidation(document.addCompign.Title)&&Requirevalidation(document.addCompign.Tags)&&
       Requirevalidation(document.addCompign.Amount)&&Requirevalidation(document.addCompign.Deuration)&&
       Requirevalidation(document.addCompign.descrption)){
@@ -240,9 +240,9 @@ function progressBar(progressVal,totalPercentageVal = 100) {
         success:function(data)
         {
       var result=JSON.parse(data);
-    
+
       if(result.statusCode==200){
-  
+
         document.getElementById("ajaxSubmit").click();
 
       }
@@ -250,22 +250,21 @@ function progressBar(progressVal,totalPercentageVal = 100) {
           var error=JSON.parse(result.message);
           i=1;
           jQuery_1_3_2.each( error, function( key, value ) {
-         
-          
+
+
               if(key=='msgState' || key=='main'|| key=='userID'|| key=='userName'|| key=='type');
               else
               document.getElementById(key+'Error').innerHTML=value;
-           
-  
+
+
             });
             return false;}
         }
-  
+
              });
             }
         }
-  
-</script>
-    
-    <?php include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml'; ?>
 
+</script>
+
+    <?php include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml'; ?>

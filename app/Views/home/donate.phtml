@@ -82,12 +82,16 @@
                         <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <h2 class="text-center text-blue">Donate Now</h2>
-                                <form class="" action="" method="post" name='signupForm' id="signupForm">
+                                <form class="" action="" method="post" name='DonateForm' id="DonateForm">
+                                  <input type="hidden" name="compaign_id" value="<?php echo $compaign['id']; ?>">
                                     <div class="row register-form ">
                                     <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="Donation" class="laple-forms">your Donation</label>
                                                 <input type="number" class="form-control donate-dollar" placeholder="0.0 $"  name="Donation"/>
+                                                <?php echo Message::check('Donation');  ?>
+                          											<span class="text-danger text-error" id="DonationError"> </span>
+
                                             </div>
                                     </div>
                                     <div class="col-md-6">
@@ -100,19 +104,25 @@
                                                 <option>Yemen</option>
                                                 <option>Yemen</option>
                                                 </select>
+                                                <?php echo Message::check('country');  ?>
+                                                <span class="text-danger text-error" id="countryError"> </span>
                                             </div>
                                     </div>
                                     <div class="col-md-6">
                                     <div class="form-group">
                                             <label for="code" class="laple-forms">Zip Code</label>
                                             <input type="text" name="code" class="form-control" placeholder="Your Code " value='' oninput="" />
+                                            <?php echo Message::check('code');  ?>
+                                            <span class="text-danger text-error" id="codeError"> </span>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="nebit-number" class="laple-forms">Credit or Debit Number</label>
-                                                <input type="text" class="form-control" placeholder="Debit Number" name="nebit-number"/>
+                                                <input type="text" class="form-control" placeholder="Debit Number" name="debitNumber"/>
+                                                <?php echo Message::check('debitNumber');  ?>
+                                                <span class="text-danger text-error" id="debitNumberError"> </span>
                                             </div>
                                     </div>
 
@@ -126,6 +136,8 @@
                                                 <option>02-Oct</option>
                                                 <option>02-Nov</option>
                                                 </select>
+                                                <?php echo Message::check('month');  ?>
+                                                <span class="text-danger text-error" id="monthError"> </span>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -138,12 +150,15 @@
                                                 <option>2023</option>
                                                 <option>2024</option>
                                                 </select>
+                                                <?php echo Message::check('year');  ?>
+                                                <span class="text-danger text-error" id="yearError"> </span>
                                         </div>
                                     </div>
 
                                                 </div>
                                                 <center>
-                                            <input id="signuptBtn" type="submit" class="btnRegister float-none"  value="Donate Now"/>
+                                                    <input type="submit"  style="display: none;" id='ajaxSubmit'  value="Add"  name="addDonation" onclick="upload_to_db();" />
+                                            <input id="DonateBtn" type="submit" class="btnRegister float-none"  value="Donate Now"/>
                                             </center>
                                             </div>
                                 </form>
@@ -182,15 +197,51 @@
         </div>
   	</div>
 </div>
+<!-- Large modal -->
+<button type="button" class="btn btn-primary"  id="loading" style="display: none;"   data-toggle="modal" data-target=".bd-example-modal-lg" data-keyboard="false" data-backdrop="static">loadding</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" style="top:20%;" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+  <div class="modal-content">
+      <div class="modal-header" style="border: none !important;">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="myprogress" id="progress_div">
+          <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+            <circle class="progress-circle-back"
+                  cx="80" cy="80" r="74"></circle>
+              <circle class="progress-circle-prog"
+                      cx="80" cy="80" r="74"></circle>
+          </svg>
+          <div class="progress-text" data-progress="0">0%</div>
+      </div>
+      <center>
+    <span style="
+    position: absolute;
+    z-index: 1;
+    top: 170px;
+    color: #e4e4e4;
+    font-size:24px;
+    ">Loading...</span>
+    </center>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+    </div>
+  </div>
+</div>
 
 
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="/js/home/jquery-3.4.1.slim.min.js"></script>
 <script src="/js/home/js.js"></script>
 <script src="/js/home/popper.min.js"></script>
 <script src="/js/home/bootstrap.min.js"></script>
 <script src="/js/home/wow.min.js"></script>
 <script src="/js/home/main.js"></script>
-<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
 
 <script type="text/javascript">
 new WOW().init();
@@ -219,7 +270,102 @@ $( document ).ready(function() {
 
 });
 
+$(document).ready(function(){
+    $("#DonateBtn").click(function(){
+		event.preventDefault();
+		if(Requirevalidation(document.DonateForm.Donation)&&Requirevalidation(document.DonateForm.country)&&
+		Requirevalidation(document.DonateForm.code)&&Requirevalidation(document.DonateForm.debitNumber)&&
+		Requirevalidation(document.DonateForm.month)&&Requirevalidation(document.DonateForm.year)){
+			serverSideValidate()
 
+
+		}
+    });
+});
+
+
+function serverSideValidate(){
+
+$.ajax({
+			url:"/validate",
+			method:"POST",
+     	    data:{
+				 type:"addDonation",
+				 formData:$('#DonateForm').serialize()}
+				 ,
+			success:function(data)
+			{
+		var result=JSON.parse(data);
+
+		if(result.statusCode==200){
+
+		document.getElementById("ajaxSubmit").click();// Submit the form
+		}
+		else{
+				var error=JSON.parse(result.message);
+				$.each( error, function( key, value ) {
+					if(key=='msgState' || key=='main');
+					else
+					document.getElementById(key+'Error').innerHTML=value;
+
+					});
+					return false;
+
+			}
+      }
+
+
+			   });
+			}
+
+      function upload_to_db()
+   {
+     tinyMCE.triggerSave();
+
+       jQuery_form('#DonateForm').ajaxForm({
+       beforeSubmit: function() {
+
+         document.getElementById("loading").click();
+         progressBar(0,100);
+       },
+       uploadProgress: function(event, position, total, percentComplete) {
+         progressBar(percentComplete,100);
+
+       },
+       success: function() {
+         progressBar(100,100);
+
+       },
+       complete: function(xhr) {
+         if(xhr.responseText)
+         {
+           progressBar(100,100);
+           window.location.replace("/home/index");
+         }
+       }
+     });
+   // }
+   // else
+   // event.preventDefault();
+
+ }
+ function progressBar(progressVal,totalPercentageVal = 100) {
+ 		var strokeVal = (4.64 * 100) /  totalPercentageVal;
+ 		var x = document.querySelector('.progress-circle-prog');
+ 		x.style.strokeDasharray = progressVal * (strokeVal) + ' 999';
+ 		var el = document.querySelector('.progress-text');
+ 		var from = $('.progress-text').data('progress');
+ 		$('.progress-text').data('progress', progressVal);
+ 		var start = new Date().getTime();
+
+ 		setTimeout(function() {
+ 			var now = (new Date().getTime()) - start;
+ 			var progress = now / 700;
+ 			el.innerHTML =Math.round(progressVal / totalPercentageVal * 100) + '%';
+ 			if (progress < 1) setTimeout(arguments.callee, 10);
+ 		}, 10);
+
+ 	}
 </script>
 
 

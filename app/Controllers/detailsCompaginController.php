@@ -7,45 +7,35 @@ class detailsCompaginController extends Controller
   private $details;
 
   public function index()
-  {
-
-
-
-
-    $comp=$this->compaign->find([$id]);
-    $this->model('Donations');
-    $donars=$this->model->getModel()->CompaignDonations([$id]);
-    $this->model('Comments');
-    $comments=$this->model->getModel()->CompaignComments([$id]);
-
-
-    $this->view('home'.DIRECTORY_SEPARATOR.'detailsCompagin',['compaign'=>$comp,'donars'=>$donars,'comments'=>$comments]);
-    $this->view->pageTitle='View Compaign';
-    $this->view->render();
-
+{
+   
   }
 
 
+  public function getcomment($id){
+    $this->model('Comments');
+    $comments=Helper::merageUserInfo($this->model->getModel()->CompaignComments([$id]),'user_id');
+    return json_encode(array("statusCode"=>200,"data"=>$comments));
+  }
 
+  public function addcomment($id)
+  {
+    $this->model('Comments');
+    $comments=$this->model->getModel()->addcomment([Session::get('userID'),$id ,$_POST['comment'],1]);
+    return json_encode(array("statusCode"=>200,"message"=>"Process done successfully"));
+  }
+  }
 
+  $Comment= new detailsCompaginController();
+  if(count($_POST)>0){
+    $type=$_POST['type'];
+  if($type=="getcomment"){
+      echo $Comment->getcomment($_POST['id']);
+      }
+     elseif($type=="addcomment"){
+        echo $Comment->addcomment($_POST['id']);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
+  }
+  }
 
  ?>

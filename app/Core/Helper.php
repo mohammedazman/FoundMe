@@ -208,11 +208,11 @@
       //for mearge full name from profile to users
 
 
-      public static function merageUserInfo($baiscInfo){
+      public static function merageUserInfo($baiscInfo,$col){
         $result = array();
         foreach($baiscInfo as $details){
           $info = $details;
-          $info['name']=self::userName($details['id']);
+          $info['name']=self::userName($details[$col]);
           $result[]= $info;
         }
         return $result;

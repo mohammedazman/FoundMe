@@ -74,12 +74,6 @@ public function lastID()
         return $this->db->QueryCrud($oStmt)[0];
 }
 
-
-
-
-
-
-
   // manageusers
   public function getUsers($args)
   {

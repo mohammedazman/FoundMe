@@ -825,6 +825,20 @@ footer p a:hover {
         margin-left: -20px;
     }
 }
+@media (max-width: 992px){
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+        margin-left: -20px;
+    }
+    .right-menu {
+        position: absolute;
+        right: 55px;
+        bottom: 13px;
+    }
+    .not-mobail {
+        top: 46px;
+        right: 28px;
+    }
+}
 .profile-info{
     color: #206468;
     font-size: 20px;

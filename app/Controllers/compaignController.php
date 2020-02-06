@@ -71,21 +71,21 @@ public function uploadFiles(){
    echo 'your compain added successfully';
    exit();
 
-   
+
 }
 
 }
   public function addcompaign()
   {
-  
+
     if(Session::logged()  || !Session::isAdmin() ){
     $this->view('home'.DIRECTORY_SEPARATOR.'addcompaign');
     $this->view->pageTitle='Add Compaign';
     $this->view->render();}
     else
     header('Location:/home/index');
-      
-      
+
+
     // check if there submit
   }
 }

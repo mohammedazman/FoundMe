@@ -34,7 +34,7 @@ class Application
                             }
               }
               else {
-                    $this->controller=new homeController;
+                    $this->controller=new errorpageController;
                     call_user_func_array([$this->controller,'index'],$this->params);
               }
   }# end of __construct

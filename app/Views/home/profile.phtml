@@ -1,9 +1,6 @@
 <?php
 
   include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
-
-
-
     <!-- start pages photo -->
     <section class="cover-background top-space" style="background-image:url('/images/home/1(1).jpg');">
         <div class="opacity-medium bg-dark"></div>
@@ -52,7 +49,7 @@
                                     if (array_key_exists('profiles',$this->view_data)){
                                     $html='';
                                     foreach ($this->view_data['profiles'] as $profile) {
-                                            $html.='<div class="p-all-20px"><span class="info-icon" title="'.$profile['name'].'">FN </span>';
+                                        $html.='<div class="p-all-20px"><span class="info-icon" title="'.$profile['name'].'">FN </span>';
                                         $html.='</span>  <span class="profile-info-tow">';
                                               $html.=$profile['value'];
                                             $html.='</span> </div>';
@@ -101,10 +98,17 @@
                                 <div class="card">
                                     <img class="card-img-top" src="/uploads/<?php echo $row['galary'] ?>" alt="Card image cap">
                                     <div class="overlay">
+                                    <div class="dropdown">
+                                    <span class="dropspan"><i class="fa fa-ellipsis-v"></i></span>
+                                    <div class="dropspan-content">
+                                    <a href="#">Edit</a>
+                                    <a href="#">Delete</a>
+                                    </div>
+                                    </div>
                                     <div class="text-overlay"> 
                                       <h5 class="card-title">compagin</h5>
                                       <p class="card-text"><?php echo $row['title'] ?></p>
-                                      <a href="#" class="btn btn-home-comp">Go somewhere</a>
+                                      <a href="/viewCompaign/show/<?php echo $row['id']?>" class="btn btn-home-comp">Go somewhere</a>
                                     </div>
                                     </div>
                                 </div>

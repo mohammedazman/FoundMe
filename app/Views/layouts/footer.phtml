@@ -2,20 +2,22 @@
 <footer class="footer text-center bg-blue">
 	<p><a href="/home/index" class="text-white" target="_blank">&copy; 2020 foundme.com</a></p>
 </footer>
-	<!-- footer end -->
+  <!-- footer end -->
+  <script src="/js/home/jquery.toast.js"></script>
+<script type="text/javascript">
+var jQuery_toast = $.noConflict(true);
+</script>
 <script src="/js/home/js.js"></script>
 <script src="/js/home/popper.min.js"></script>
 <script src="/js/home/bootstrap.min.js"></script>
 <script src="/js/home/wow.min.js"></script>
 <script src="/js/home/main.js"></script>
-<script src="/js/home/jquery.toast.js"></script>
-<script type="text/javascript">
-var jQuery_toast = $.noConflict(true);
-</script>
+
 	<script>
 	new WOW().init();
 	jQuery_1_3_2(document).ready(function(){
          load_notification();
+         errMsg('kkk');
   });
 
   setInterval(function(){

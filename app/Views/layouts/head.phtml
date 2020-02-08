@@ -6,14 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php
-if(count($_COOKIE) > 0)  {?>
+
+  if(!array_key_exists('lang',$_COOKIE)){
+    setcookie('lang','en-lang', time() + (86400 * 30), "/"); 
+    setcookie('dir', 'ltr', time() + (86400 * 30), "/"); 
+  }
+  else{
+  ?>
 <?php require ROOT.'public'.DIRECTORY_SEPARATOR.'lang'.DIRECTORY_SEPARATOR.$_COOKIE['lang'].'.php'; ?>
     <link rel="stylesheet" href="/css/home/all.css">
     <link rel="stylesheet" href="/css/home/bootstrap-<?php echo $_COOKIE['dir']; ?>.css">
     <link rel="stylesheet" href="/css/home/animate.css">
     <link rel="stylesheet" href="/css/home/style-<?php echo $_COOKIE['dir']; ?>.css">
     <link href="/css/home/jquery.toast.css"  rel="stylesheet">
-    <?php }?>
+    <?php }
+
+    ?>
     <link rel="shortcut icon" type="/image/icon" href="/images/home/logo.png" />
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 

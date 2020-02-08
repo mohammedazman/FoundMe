@@ -10,7 +10,9 @@
 								<a href="/home/index">
 									<img src="/images/home/logo.png" alt=""/>
 								</a>
-							<h5>Forget Password</h5>
+							<h3>Forget Password</h3>
+							<p class="p-login nots-p-reg">أنشـاء حسـاب جـديد <a href="/auth/signup"><?php echo $lang['item4b'].'  '?></a></p>
+
 							<!-- <p class="p-login nots-p-reg">You want to go back   <a href="/auth/login">LogIn</a></p> -->
 
 						</div>
@@ -31,8 +33,10 @@
 										<div class="col-md-12">
 											<center>
 											<!-- <input type="submit" class="btnRegister"  value="Log In"/> -->
-											<input type="button" id="emailSend" class="emailSend float-none"  value="Send" onclick="emailValidate()" />
-											</center>
+											<input type="button" id="emailSend" class="emailSend btnlogin float-none"  value="Send" onclick="emailValidate()" />
+											<p class="p-login-forget">سوف يتم ارسال كود التحقق الى ايميلك خلال دقائق الرجاء مراجعة البريد او التحقق من الرسائل المزعجة</p>
+
+										</center>
 										</div>
 									</div>
 								</div>
@@ -48,8 +52,8 @@
 								<a href="/home/index">
 									<img src="/images/home/logo.png" alt=""/>
 								</a>
-							<h5>Verify Email</h5>
-							<!-- <p class="p-login nots-p-reg">You want to rewrite    <a href="/auth/login">email</a></p> -->
+							<h3>Verify Email</h3>
+							<p class="p-login nots-p-reg">لم يتم ارسال كود التحقق العودة للتحقق من الأيميل<a href="/auth/forgetPass">الأيميل</a></p>
 
 						</div>
 						<div class="col-md-12 register-right shadow-div">
@@ -68,7 +72,7 @@
 										<div class="col-md-12">
 											<center>
 											<!-- <input type="submit" class="btnRegister"  value="Log In"/> -->
-											<input type="button" id="codeSend" class="codeSend float-none"  value="Send" onclick="codeValidate()" />
+											<input type="button" id="codeSend" class="codeSend btnlogin float-none"  value="Send" onclick="codeValidate()" />
 											</center>
 										</div>
 									</div>

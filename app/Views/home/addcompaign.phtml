@@ -13,10 +13,10 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                 <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
                     <div class="vertical-align-middle text-center">
                         <!-- start sub title -->
-                        <span class="text-white text-shadow-black">Add Compigan</span>
+                        <span class="text-white text-shadow-black"><?php echo $lang['item30']?></span>
                         <!-- end sub title -->
                         <!-- start page title -->
-                        <h1 class="text-white text-shadow-black">you can add your compagin</h1>
+                        <h1 class="text-white text-shadow-black"><?php echo $lang['item31']?></h1>
                         <!-- end page title -->
                     </div>
                 </div>
@@ -34,34 +34,34 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 						<div class="col-md-12 register-right shadow-div">
             <div class="tab-content" id="myTabContent">
 								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-									<h3 class="register-heading">Add Your Compagin</h3>
+									<h3 class="register-heading"><?php echo $lang['item32']?></h3>
 									<div class="row register-form wow fadeIn">
                   <form class="col-md-12" action="/compaign/uploadFiles" id="addCompign" name="addCompign" method="post" enctype="multipart/form-data">
                   <!-- <form class="col-md-12" action="" name="addCompign" id="addCompign" method="post" enctype="multipart/form-data"> -->
 										<div>
 											<div class="form-group">
-												<label for="Title" class="laple-forms">Title </label>
-												<input type="text" id="Title" oninput="stringlength(document.addCompign.Title, 10, 50); " name="Title" class="form-control" placeholder="Title" value=""  />
+												<label for="Title" class="laple-forms"><?php echo $lang['item33']?> </label>
+												<input type="text" id="Title" oninput="stringlength(document.addCompign.Title, 10, 50); " name="Title" class="form-control" placeholder="<?php echo $lang['item33']?>" value=""  />
                         <span id="TitleError" class="text-danger"></span>
                       </div>
 											<div class="form-group">
-												<label for="Tags" class="laple-forms">Tags</label>
-									      <input type="text" id="Tags" name="Tags" oninput=" stringlength(document.addCompign.Tags, 2, 20)"  class="form-control" placeholder="#Tags" value=""  />
+												<label for="Tags" class="laple-forms"><?php echo $lang['item34']?></label>
+									      <input type="text" id="Tags" name="Tags" oninput=" stringlength(document.addCompign.Tags, 2, 20)"  class="form-control" placeholder="#<?php echo $lang['item34']?>" value=""  />
                         <span id="TagsError" class="text-danger"></span>
                       </div>
                       <div class="form-group">
-												<label for="Amount" class="laple-forms">Amount</label>
+												<label for="Amount" class="laple-forms"><?php echo $lang['item35']?></label>
                         <input type="number" id="Amount" name="Amount"   class="form-control"  placeholder="0 $" value="" />
                         <span id="AmountError" class="text-danger"></span>
                       </div>
                       <div class="form-group">
-												<label for="Deuration" class="laple-forms">End Date</label>
+												<label for="Deuration" class="laple-forms"><?php echo $lang['item36']?></label>
                         <input type="date" class="form-control" id="Deuration" name="Deuration" oninput="validateDate(document.addCompign.Deuration)"  placeholder="Add Deuration" value="" />
                         <span id="DeurationError" class="text-danger"></span>
                       </div>
 
                       <div class="form-group">
-                      <label for="gallery" class="laple-forms">Photo</label>
+                      <label for="gallery" class="laple-forms"><?php echo $lang['item39']?></label>
                       <input type="file"  class="form-control img-file-input" require onchange="Filevalidation('gallery-photo-add')" name="gallery"  id="gallery-photo-add">
                       <span id="galleryError" class="text-danger"></span>
                       <div class="container">
@@ -71,13 +71,14 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                         </div>
                       </div>
                       <div class="form-group">
-                      <label for="file" class="laple-forms">Feasibility study PDF</label>
+                      <label for="file" class="laple-forms"><?php echo $lang['item38']?></label>
                       <input type="file" class="form-control pdf-file-input" name="file">
                       <span id="fileError" class="text-danger"></span>
 
                       </div>
                       <input type="submit"  style="display: none;" id='ajaxSubmit'  value="Add"  name="addComp" onclick="upload_to_db();" />
                       <div class="form-group">
+                      <label for="file" class="laple-forms"><?php echo $lang['item37']?></label>
 
                       <textarea rows="4" cols="50" class="form-control" id="mytextarea" value="" name="descrption">
                       </textarea>
@@ -86,9 +87,9 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                       </div>
 
                       <center>
-                      <button type="button" class="btnadd"  value="Add" id="addComp" name="addComp" onclick="serverSideValidation();" />add Compaign</button>
+                      <button type="button" class="btnadd"  value="Add" id="addComp" name="addComp" onclick="serverSideValidation();" /><?php echo $lang['item30']?></button>
                       <!-- <input type="submit" class="btnadd"  value="Add" id="addComp" name="addComp"/> -->
-							        <p class="p-login nots-p-reg" style="padding-top:20px">Visite my compaing!<a href="#"> Click here</a></p>
+							        <p class="p-login nots-p-reg" style="padding-top:20px"><?php echo $lang['item39a']?><a href="#"> <?php echo $lang['item15']?></a></p>
 
                       </center>
 

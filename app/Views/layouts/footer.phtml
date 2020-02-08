@@ -72,6 +72,26 @@ var jQuery_toast = $.noConflict(true);
 
  		       });
  }
+function converLanguage(lang,dir){
+
+  jQuery_1_3_2.ajax({
+ 			url:"/language",
+ 			method:"POST",
+       data:{method:"convertLang",lang:lang,dir:dir},
+ 			success:function(data)
+ 			{
+        var result=JSON.parse(data);
+
+         if(result.statusCode==200){
+            setTimeout(function(){
+                location. reload();
+            }, 2000);
+        }
+
+       }
+  });
+
+}
 
 	function errMsg(msg){
         if(msg!=''){

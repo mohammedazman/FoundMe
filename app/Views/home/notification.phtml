@@ -13,10 +13,10 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                 <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
                     <div class="vertical-align-middle text-center">
                         <!-- start sub title -->
-                        <span class="text-white text-shadow-black">Viw Notifications</span>
+                        <span class="text-white text-shadow-black"><?php echo $lang['item110'] ?></span>
                         <!-- end sub title -->
                         <!-- start page title -->
-                        <h1 class="text-white text-shadow-black">you can see your notifications</h1>
+                        <h1 class="text-white text-shadow-black">y<?php echo $lang['item111'] ?></h1>
                         <!-- end page title -->
                     </div>
                 </div>
@@ -34,7 +34,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 		
           <div class="col-md-12">
 		  
- <button class='btn btn-block btncolor all_read_btn' name='chang_state'>Mark all as read  </button>
+ <button class='btn btn-block btncolor all_read_btn' name='chang_state'><?php echo $lang['item114'] ?>  </button>
 </h4>
 			
             <hr>
@@ -62,12 +62,12 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 	<?php	if($row['status']==0){
              $state="UnRead";
     ?>
-        <a data-toggle='dropdown'class='noti_state iconify' data-icon='typcn-media-record-outline'  title='مقرؤة'></a>
+        <a data-toggle='dropdown'class='noti_state iconify' data-icon='typcn-media-record-outline'  title='<?php echo $lang['item112'] ?>'></a>
         <?php }
           else{
             $state="Read";
              ?>
-         <a data-toggle='dropdown'class='noti_state iconify '  data-icon='typcn-media-record' title='غير مقرؤة' ></a>
+         <a data-toggle='dropdown'class='noti_state iconify '  data-icon='typcn-media-record' title='<?php echo $lang['item113'] ?>' ></a>
          <?php } ?>
 <section >
 		   <div class='dropdown-menu noti_dropdown-menu text-center '>

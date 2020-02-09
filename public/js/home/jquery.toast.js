@@ -7,7 +7,7 @@ if ( typeof Object.create !== 'function' ) {
     };
 }
 
-(function( $, window, document, undefined ) {
+(function( jQuery_1_3_2, window, document, undefined ) {
 
     "use strict";
     
@@ -17,7 +17,7 @@ if ( typeof Object.create !== 'function' ) {
         _defaultIcons : ['success', 'error', 'info', 'warning'],
 
         init: function (options, elem) {
-            this.prepareOptions(options, $.toast.options);
+            this.prepareOptions(options, jQuery_1_3_2.toast.options);
             this.process();
         },
 
@@ -28,7 +28,7 @@ if ( typeof Object.create !== 'function' ) {
             } else {
                 _options = options;
             }
-            this.options = $.extend( {}, options_to_extend, _options );
+            this.options = jQuery_1_3_2.extend( {}, options_to_extend, _options );
         },
 
         process: function () {
@@ -43,7 +43,7 @@ if ( typeof Object.create !== 'function' ) {
             
             var _toastContent = '';
             
-            this._toastEl = this._toastEl || $('<div></div>', {
+            this._toastEl = this._toastEl || jQuery_1_3_2('<div></div>', {
                 class : 'jq-toast-single'
             });
 
@@ -90,7 +90,7 @@ if ( typeof Object.create !== 'function' ) {
             if ( this.options.icon !== false ) {
                 this._toastEl.addClass('jq-has-icon');
 
-                if ( $.inArray(this.options.icon, this._defaultIcons) !== -1 ) {
+                if ( jQuery_1_3_2.inArray(this.options.icon, this._defaultIcons) !== -1 ) {
                     this._toastEl.addClass('jq-icon-' + this.options.icon);
                 };
             };
@@ -101,22 +101,22 @@ if ( typeof Object.create !== 'function' ) {
         },
 
         position: function () {
-            if ( ( typeof this.options.position === 'string' ) && ( $.inArray( this.options.position, this._positionClasses) !== -1 ) ) {
+            if ( ( typeof this.options.position === 'string' ) && ( jQuery_1_3_2.inArray( this.options.position, this._positionClasses) !== -1 ) ) {
 
                 if ( this.options.position === 'bottom-center' ) {
                     this._container.css({
-                        left: ( $(window).outerWidth() / 2 ) - this._container.outerWidth()/2,
+                        left: ( jQuery_1_3_2(window).outerWidth() / 2 ) - this._container.outerWidth()/2,
                         bottom: 20
                     });
                 } else if ( this.options.position === 'top-center' ) {
                     this._container.css({
-                        left: ( $(window).outerWidth() / 2 ) - this._container.outerWidth()/2,
+                        left: ( jQuery_1_3_2(window).outerWidth() / 2 ) - this._container.outerWidth()/2,
                         top: 20
                     });
                 } else if ( this.options.position === 'mid-center' ) {
                     this._container.css({
-                        left: ( $(window).outerWidth() / 2 ) - this._container.outerWidth()/2,
-                        top: ( $(window).outerHeight() / 2 ) - this._container.outerHeight()/2
+                        left: ( jQuery_1_3_2(window).outerWidth() / 2 ) - this._container.outerWidth()/2,
+                        top: ( jQuery_1_3_2(window).outerHeight() / 2 ) - this._container.outerHeight()/2
                     });
                 } else {
                     this._container.addClass( this.options.position );
@@ -197,17 +197,17 @@ if ( typeof Object.create !== 'function' ) {
 
         addToDom: function () {
 
-             var _container = $('.jq-toast-wrap');
+             var _container = jQuery_1_3_2('.jq-toast-wrap');
              
              if ( _container.length === 0 ) {
                 
-                _container = $('<div></div>',{
+                _container = jQuery_1_3_2('<div></div>',{
                     class: "jq-toast-wrap",
                     role: "alert",
                     "aria-live": "polite"
                 });
 
-                $('body').append( _container );
+                jQuery_1_3_2('body').append( _container );
 
              } else if ( !this.options.stack || isNaN( parseInt(this.options.stack, 10) ) ) {
                 _container.empty();
@@ -223,7 +223,7 @@ if ( typeof Object.create !== 'function' ) {
                     _extToastCount = _prevToastCount - this.options.stack;
 
                 if ( _extToastCount > 0 ) {
-                    $('.jq-toast-wrap').find('.jq-toast-single').slice(0, _extToastCount).remove();
+                    jQuery_1_3_2('.jq-toast-wrap').find('.jq-toast-single').slice(0, _extToastCount).remove();
                 };
 
             }
@@ -312,7 +312,7 @@ if ( typeof Object.create !== 'function' ) {
         reset: function ( resetWhat ) {
 
             if ( resetWhat === 'all' ) {
-                $('.jq-toast-wrap').remove();
+                jQuery_1_3_2('.jq-toast-wrap').remove();
             } else {
                 this._toastEl.remove();
             }
@@ -330,7 +330,7 @@ if ( typeof Object.create !== 'function' ) {
         }
     };
     
-    $.toast = function(options) {
+    jQuery_1_3_2.toast = function(options) {
         var toast = Object.create(Toast);
         toast.init(options, this);
 
@@ -350,7 +350,7 @@ if ( typeof Object.create !== 'function' ) {
         }
     };
 
-    $.toast.options = {
+    jQuery_1_3_2.toast.options = {
         text: '',
         heading: '',
         showHideTransition: 'fade',

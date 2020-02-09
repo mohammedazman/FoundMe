@@ -1,14 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?php
+
+  if(!array_key_exists('lang',$_COOKIE)){
+    setcookie('lang','en-lang', time() + (86400 * 30), "/");
+    setcookie('dir', 'ltr', time() + (86400 * 30), "/");
+  }
+  else{
+  ?>
+<?php require ROOT.'public'.DIRECTORY_SEPARATOR.'lang'.DIRECTORY_SEPARATOR.$_COOKIE['lang'].'.php'; ?>
     <link rel="stylesheet" href="/css/home/all.css">
-    <link rel="stylesheet" href="/css/home/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/home/bootstrap-<?php echo $_COOKIE['dir']; ?>.css">
     <link rel="stylesheet" href="/css/home/animate.css">
-    <link rel="stylesheet" href="/css/home/style.css">
+    <link rel="stylesheet" href="/css/home/style-<?php echo $_COOKIE['dir']; ?>.css">
     <link href="/css/home/jquery.toast.css"  rel="stylesheet">
+    <?php }
+
+    ?>
     <link rel="shortcut icon" type="/image/icon" href="/images/home/logo.png" />
     <script class="jsbin" src="/js/home/jquery.min.js"></script>
 
@@ -21,8 +34,10 @@
     <script type="text/javascript">
 var jQuery_1_3_2 = $.noConflict(true);
 </script>
+
     <script class="jsbin" src="/js/home/jquery-ui.min.js"></script>
     <script src="/js/home/tinymce.min.js" referrerpolicy="origin"></script>
+
     <!-- <script src="https://code.jquery.com/jquery-1.11.3.js"></script> -->
     <script type="text/javascript" src="/js/home/tinymce/jquery.tinymce.min.js"></script>
     <script type="text/javascript" src="/js/home/tinymce/tinymce.min.js"></script>

@@ -94,6 +94,19 @@ public function lastID()
     return $this->db->QueryCrud($oStmt,$args,0);
 }
 
+// for check if email is exist
+public function checkEmail(array $aData)
+
+{
+  $oStmt ='SELECT email,status,id FROM users WHERE email =? ';
+  return  $this->db->QueryCrud($oStmt,$aData);
+}
+public function changePass(array $aData)
+{
+  $oStmt ='update users set password=? WHERE id =? ';
+  return  $this->db->QueryCrud($oStmt,$aData,0);
+}
+
 }
 
 ?>

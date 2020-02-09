@@ -48,7 +48,7 @@
                                 <li class="head">
                                   <div class="row">
                                     <div class="col-lg-12 col-sm-12 col-12">
-                                      <span class="text-black">Notification</span>
+                                      <span class="text-black"><?php echo $lang['item7']?></span>
                                     </div>
                                 </li>
                                 <div id="noti-body">
@@ -59,9 +59,9 @@
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span><img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>"></span></a>
                           <div class="dropdown-menu dropdown-menu-pic-pro" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/profile/index">My Profile</a>
+                            <a class="dropdown-item" href="/profile/index"><?php echo $lang['item8a']?></a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/auth/logout">Log Out</a>
+                            <a class="dropdown-item" href="/auth/logout"><?php echo $lang['item8b']?></a>
                           </div>
                         </li>
                         <?php }else{  ?>
@@ -75,7 +75,7 @@
                     <div class="collapse navbar-collapse justify-content-center order-2" id="navbarSupportedContent">
                       <ul class="navbar-nav a-link left-menu">
                         <li class="nav-item active">
-                          <a class="nav-link" href="/home/index">Home <span class="sr-only">(current)</span></a>
+                          <a class="nav-link" href="/home/index"><?php echo $lang['item1']?> <span class="sr-only">(current)</span></a>
                         </li>
                         <?php  if(Session::isAdmin())  { ?>
                         <li class="nav-item">
@@ -84,14 +84,22 @@
                         <?php }?>
                         <?php  if(Session::logged() && !Session::isAdmin() ) { ?>
                         <li class="nav-item">
-                          <a class="nav-link" href="/compaign/addcompaign">Add Compigan</a>
+                          <a class="nav-link" href="/compaign/addcompaign"><?php echo $lang['item6']?></a>
                         </li>
                         <?php }?>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Contact</a>
+                          <a class="nav-link" href="/contactus"><?php echo $lang['item2']?></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">About</a>
+                          <a class="nav-link" href="#"><?php echo $lang['item3']?></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user  padding-left-10"></i> <?php echo $lang['item5']?></a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
+                            <!-- <buttun class="dropdown-item">Arabic</button> -->
+                            <button class="dropdown-item" id='arabic' onclick="converLanguage('ar-lang','rtl')"><?php echo $lang['item5a']?></button>
+                            <button class="dropdown-item" id='english' onclick="converLanguage('en-lang','ltr')"><?php echo $lang['item5b']?></button>
+                          </div>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#"  data-toggle="modal" data-target="#exampleModal">Search</a>
@@ -111,7 +119,7 @@
                                 <li class="head">
                                   <div class="row">
                                     <div class="col-lg-12 col-sm-12 col-12">
-                                      <span class="text-black">Notification</span>
+                                      <span class="text-black"><?php echo $lang['item7']?></span>
                                     </div>
                                 </li>
                                 <div id="noti-body">
@@ -123,17 +131,18 @@
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span><img src="/images/home/1(2).jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>"></span><?php  echo Session::get('userName');?> </a>
                           <div class="dropdown-menu dropdown-menu-pic-pro" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/profile/index">My Profile</a>
+                            <a class="dropdown-item" href="/profile/index"><?php echo $lang['item8a']?></a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/auth/logout">Log Out</a>
+                            <a class="dropdown-item" href="/auth/logout"><?php echo $lang['item8b']?></a>
                           </div>
                         </li>
+                        
                         <?php }else{  ?>
                         <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user  padding-left-10"></i> Join fundMe </a>
+                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user  padding-left-10"></i> <?php echo $lang['item4']?> </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
-                            <a class="dropdown-item" href="/auth/login">Log In</a>
-                            <a class="dropdown-item" href="/auth/signup">Sign Up</a>
+                            <a class="dropdown-item" href="/auth/login"><?php echo $lang['item4a']?></a>
+                            <a class="dropdown-item" href="/auth/signup"><?php echo $lang['item4b']?></a>
                           </div>
                         </li>
                         <?php } ?>
@@ -141,6 +150,7 @@
                               <button type="button" class="btn btn-white">Start</button>
                           </li> -->
                           <?php } ?>
+                          
                       </ul>
                     </div>
             </nav>

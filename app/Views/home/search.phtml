@@ -1,0 +1,152 @@
+<?php
+
+
+include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
+$item=$this->view_data['item'];?>
+
+
+
+<!-- start pages photo -->
+<section class="cover-background top-space" style="background-image:url('/images/home/1(1).jpg');">
+    <div class="opacity-medium bg-dark"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
+                <div class="vertical-align-middle text-center">
+                    <!-- start sub title -->
+                    <span class="text-white">Search</span>
+                    <!-- end sub title -->
+                    <!-- start page title -->
+                    <h1 class="text-white">The Result for <?php echo $item; ?></h1>
+                    <!-- end page title -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end pages photo - -->
+
+
+
+<!-- TAPS  -->
+<div class="col-md-8 col-xs-12 ml-auto mr-auto">
+      <div class="profile-tabs">
+        <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+          <li class="nav-item">
+              <a class="nav-link active" href="#compaigns" role="tab" data-toggle="tab" id="compBtn">
+              Compigans
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#tags" role="tab" data-toggle="tab" id="tagBtn">
+                Tags
+              </a>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content tab-space">
+  <div class="tab-pane active text-center gallery" id="compaigns">
+
+  </div>
+  <div class="tab-pane text-center gallery" id="tags">
+
+  </div>
+  </div>
+
+</div>
+</div>
+
+<!-- TAPS  -->
+
+
+
+
+<!-- get result with ajax -->
+<script>
+      function load_compaign(){
+        jQuery_1_3_2.ajax({
+            url:"/search/find",
+            method:"POST",
+            data:{type:"getCompaign",
+            item:"<?php echo $item; ?>"
+            },
+            beforeSend:function() {
+              $('#compaigns').html("<h3>Whaiting.....</h3>");
+
+            }
+            ,
+            success:function(data)
+            {
+              html='';
+
+              var compaigns=JSON.parse(data);
+              // alert(d)
+
+              $.each( compaigns.data, function( index, row ) {
+
+          html+='<a href="/viewCompaign/show/'+row.id+'" class="btn btn-blue text-info m-2   wow flipInX">'
+              +row.title+
+                  '</a>';
+
+            });
+
+
+            $('#compaigns').html(html);
+
+
+          }
+      });
+      }
+
+      // load Tags
+      function load_tags(){
+        jQuery_1_3_2.ajax({
+            url:"/search/find",
+            method:"POST",
+            data:{type:"getTags",
+            item:"<?php echo $item; ?>"
+          },
+          beforeSend:function() {
+            $('#tags').html("<h3>Whaiting.....</h3>");
+
+          }
+          ,
+            success:function(data)
+            {
+              html='';
+
+              var compaigns=JSON.parse(data);
+               // alert(data);
+
+              $.each( compaigns.data, function( index, row ) {
+
+          html+='<a href="/viewCompaign/show/'+row.id+'" class="btn btn-blue text-info m-2   wow flipInX">'
+              +row.tags+
+                  '</a>';
+
+            });
+
+
+            $('#tags').html(html);
+
+
+          }
+      });
+      }
+
+          $(document).ready(function(){
+                  load_compaign();
+            });
+
+          $("#tagBtn").on("click", function(){
+            load_tags();
+          });
+          $("#compBtn").on("click", function(){
+            load_compaign();
+          });
+
+
+
+</script>
+
+    <?php include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml'; ?>

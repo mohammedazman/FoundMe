@@ -1,4 +1,29 @@
 <?php include VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml'; ?>
+<!-- Modals -->
+<!-- Modal search start -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-body">
+
+              <form class="" action="/search/index" method="post">
+                <div class="form-group search-box">
+                <input type="text" class="form-control " placeholder="Search About what you went*"  name="item" />
+
+              <div class="result">
+
+                </div>
+              </div>
+                    </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<!-- Modal search end-->
+
     <!-- start header -->
     <header>
             <nav class="navbar navbar-expand-lg navbar-top chang-color">
@@ -67,6 +92,10 @@
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#"  data-toggle="modal" data-target="#exampleModal">Search</a>
+
                         </li>
                           <?php  if(!Session::isAdmin() )  { ?>
                           <?php  if(Session::logged() )  { ?>

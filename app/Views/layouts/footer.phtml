@@ -98,6 +98,33 @@ var jQuery_toast = $.noConflict(true);
         }
 }
 errMsg(<?php echo'"'.Message::check('main').'"'; ?>);
+//live search
+jQuery_1_3_2(document).ready(function () {
+    jQuery_1_3_2('.search-box input[type="text"]').on('keyup input', function () {
+
+        /* Get input value on change */
+        var term = jQuery_1_3_2(this).val();
+				
+        var resultDropdown = jQuery_1_3_2(this).siblings('.result');
+        if (term.length) {
+          jQuery_1_3_2.get('/search/livesearch/'+term).done(function (data) {
+              // Display the returned data in browser
+
+              resultDropdown.html(data);
+            });
+        } else {
+          resultDropdown.empty();
+        }
+      });
+
+    // Set search input value on click of result item
+    jQuery_1_3_2(document).on('click', '.result p', function () {
+        jQuery_1_3_2(this).parents('.search-box').find('input[type="text"]').val(jQuery_1_3_2(this).text()).focus();
+        jQuery_1_3_2(this).parent('.result').empty();
+      });
+  });
+
+
 	</script>
 
 </body>

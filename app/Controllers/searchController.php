@@ -68,7 +68,16 @@ public function find($value='')
 
     }
   if ($_POST['type']=='getTags') {
-  $compaigns=$this->model->getModel()->searchTags($item);
+    $count=0;
+    $compaigns=[];
+  $compaign=  $this->model->getModel()->searchTags($item);
+
+    foreach ($compaign as $key => $value) {
+      $compaigns=array_merge($compaigns,Helper::tags($value['tags']));
+
+
+    }
+
     }
 
 

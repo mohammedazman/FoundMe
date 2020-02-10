@@ -16,7 +16,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
                         <span class="text-white text-shadow-black"><?php echo $lang['item110'] ?></span>
                         <!-- end sub title -->
                         <!-- start page title -->
-                        <h1 class="text-white text-shadow-black">y<?php echo $lang['item111'] ?></h1>
+                        <h1 class="text-white text-shadow-black"><?php echo $lang['item111'] ?></h1>
                         <!-- end page title -->
                     </div>
                 </div>
@@ -44,10 +44,12 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
            ?>
 <?php foreach($notification as $row){  
   ?>
- <div class='col-lg-12' >  <!-- من هانا يبدا الاشعار الواحد -->
+  <!-- notiChangeState(<?php echo $row['id'] ?>,<?php echo $row['state'] ?>); -->
+ <div class='col-lg-12' id='singleNoti' >  <!-- من هانا يبدا الاشعار الواحد -->
 		  
-		<?php   if($row['status']==0){ ?>
-			      <div class='notificatio_bottom_border item not_read'  >
+    <?php   if($row['status']==0){ ?>
+     
+      <div class='notificatio_bottom_border item not_read'  >
     <?php }
 		   else
 		   {
@@ -60,12 +62,12 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
     <ul>   
     <li>
 	<?php	if($row['status']==0){
-             $state="UnRead";
+             $state="Read";
     ?>
         <a data-toggle='dropdown'class='noti_state iconify' data-icon='typcn-media-record-outline'  title='<?php echo $lang['item112'] ?>'></a>
         <?php }
           else{
-            $state="Read";
+            $state="unRead";
              ?>
          <a data-toggle='dropdown'class='noti_state iconify '  data-icon='typcn-media-record' title='<?php echo $lang['item113'] ?>' ></a>
          <?php } ?>
@@ -78,30 +80,42 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
     </ul>
 
 </div> <!--  هنا ينتهي السهم حق اخفاء و تحديد ك مقروئة-->
-      <?php if($row['type']=="new compain")  { ?>
-
-		 <span class='noti_typ_msg iconify' data-icon="typcn-arrow-forward" ></span>  <!-- الايكون حق الارسال داخل الـ سبان -->
+<div>
+            <a href="/viewCompaign/show/<?php echo $row['effected_id'] ?>">
+      <?php if($row['type']=="new compain")  { $type='compain'; ?>
+                  
+		 <span class='noti_typ_msg iconify' data-icon="typcn-arrow-forward" ></span> 
 	  
-      <?php } elseif($row['type']=="aprroved compaign")  { ?>
+      <?php } elseif($row['type']=="aprrove compaign")  { $type='approve'; ?>
 
-		 <span class='text-success  iconify' data-icon="typcn-tick" ></span>  <!-- الايكون حق الموافقة داخل الـ سبان -->
+		 <span class='text-success  iconify' data-ico="typcn-tick" ></span> 
+      <?php } elseif($row['type']=="reject compaign")  {  $type='reject'; ?>
+		 <span class='text-danger iconify ' data-icon="typcn-times" ></span>   
 		  
-      <?php } elseif($row['type']=="reject compaign")  { ?>
-		 <span class='text-danger iconify ' data-icon="typcn-times" ></span>   <!-- الايكون حق الرفض داخل الـ سبان --> 
-		  
-    <?php } elseif($row['type']=="new user")  { ?>
-		 <span class='text-primary iconify ' data-icon="typcn-user-add" ></span>  <!-- الايكون حق عمل اضافي داخل الـ سبان -->
-		  
-	  <?php } elseif($row['type']=="paused compaign")  { ?>
-		 <span class='text-secondary iconify ' data-icon="typcn-media-pause" ></span>  <!-- الايكون حق الاجتماع داخل الـ سبان -->
+    <?php } elseif($row['type']=="new user")  {  $type='user';  ?>
+     <span class='text-primary iconify ' data-icon="typcn-user-add" ></span>
+     
+	  <?php } elseif($row['type']=="pause compaign")  {  $type='pause';  ?>
+     <span class='text-secondary iconify ' data-icon="typcn-media-pause" ></span> 
+     
+    <?php } elseif($row['type']=="active compaign")  {  $type='active';  ?>
+     <span class='text-secondary iconify ' data-icon="typcn-media-pause" ></span> 
+     
+    <?php } elseif($row['type']=="delete compaign")  {  $type='delete';  ?>
+		 <span class='text-secondary iconify ' data-icon="typcn-media-pause" ></span> 
     <?php } ?>
+    
+    
 		 
-	  <span class="noti-text">	<?php echo $row['text'] ; ?></span> <!-- نص الاشعار -->
+	  <span class="noti-text">	<?php echo $lang[$type] ; ?></span> <!-- نص الاشعار -->
 		<br><span class='noti_page_time' data-icon="typcn-arrow-forward"><?php echo $row['created_at'] ?></span>  <!-- وقت الاشعار -->  </a>
-      </div>
+    </div>  
+  </a>
+  </div>
 	 
 						   </div>  <!-- من هانا ينتهي  الاشعار الواحد -->
-<?php						   }
+<?php						  
+}
 	  //  }
 ?>
 	

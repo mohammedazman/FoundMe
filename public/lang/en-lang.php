@@ -129,6 +129,14 @@ $lang=array(
     'item112'=>'Make as read',
     'item113'=>'Make as unread',
     'item114'=>'Make all as read',
+    //notification content
+    'approve'=>'Admin approve your compaign',
+    'reject'=>'Admin reject your compaign',
+    'pause'=>'Admin pause your compaign',
+    'resume'=>'Admin resume your compaign',
+    'delete'=>'Admin delete your compaign',
+    'active'=>'Admin active your compaign',
+
 
     
 

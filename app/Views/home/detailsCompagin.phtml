@@ -80,8 +80,9 @@
                             <div class="">
                             <img src='/uploads/<?php echo $compaign["galary"]; ?>' class="img-raised img-fluid" width="auto">
                             </div>
-                        <h5 class="text-left by-user"><i class="fas fa-pen-alt"></i> <?php echo $lang['item72']; ?>: <span><?php echo Helper::userName( $compaign['owner_id']); ?></span></h5>
-                        <div class="compagin-content">
+                        <h5 class="text-left by-user">
+                          <a href="/profile/showProfile/<?php echo $compaign['owner_id']; ?>">  <i class="fas fa-pen-alt"></i> <?php echo $lang['item72']; ?>: <span><?php echo Helper::userName( $compaign['owner_id']); ?></span></h5></a>                       
+                    <div class="compagin-content">
                             <p class="text-left">
                               <?php echo $compaign['descrption']; ?>
                             </p>

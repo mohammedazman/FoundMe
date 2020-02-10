@@ -43,7 +43,7 @@ class donateController extends Controller
 
                         if ($this->donar->add($params)) {
 
-                         Notification::addNoti('New donar is added by '.$_SESSION['userName'] .'about:'.$params[":amount"].'$',$comp[0]['owner_id'],'add donation');
+                         Notification::addNoti($_SESSION['userName'] .' donate '.$params[":amount"].'$ to your compaign',$comp[0]['owner_id'],'add donation',$_REQUEST['compaign_id']);
                           Message::setMessage(1,'main',' add your donation have be done ');
 
                                                  }

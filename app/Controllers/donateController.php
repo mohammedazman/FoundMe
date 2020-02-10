@@ -15,12 +15,39 @@ class donateController extends Controller
 
   }
 
+public function submitform($value='')
+{
+  $this->model("Compaign");
+  $compaign=$this->model->getModel()->find([$id]);
 
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+   if ($this->validation->GetStatus()==1) {
+
+             $params=array(':compigan_id'=>$_REQUEST['compaign_id'],
+                           ':user_id'=>Session::get('userID'),
+               ':amount'=> $_REQUEST['Donation'],
+
+              );
+              $this->model('Compaign');
+              $comp=$this->model->getModel()->find([$_REQUEST['compaign_id']]);
+
+                  if ($this->donar->add($params)) {
+
+                   Notification::addNoti('New donar is added by '.$_SESSION['userName'] .'about:'.$params[":amount"].'$',$comp[0]['owner_id'],'add donation');
+                    Message::setMessage(1,'main',' add your donation have be done ');
+
+                                           }
+                                         }
+}
+
+exit();
+}
   public function index($id='')
   {
 
          $this->model("Compaign");
-         $compaign=$this->model->getModel()->find([$id]);
+         $compaign=$this->model->getModel()->find([$id])[0];
 
          $donars=$this->donar->CompaignDonations([$id]);
 
@@ -43,14 +70,13 @@ class donateController extends Controller
 
                         if ($this->donar->add($params)) {
 
-                         Notification::addNoti('New donar is added by '.$_SESSION['userName'] .'about:'.$params[":amount"].'$',$comp[0]['owner_id'],'add donation');
+                         Notification::addNoti($_SESSION['userName'] .' donate '.$params[":amount"].'$ to your compaign',$comp[0]['owner_id'],'add donation',$_REQUEST['compaign_id']);
                           Message::setMessage(1,'main',' add your donation have be done ');
 
                                                  }
                                                }
     }
 
-      exit();
 
   }
 

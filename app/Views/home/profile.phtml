@@ -9,10 +9,10 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
                     <div class="vertical-align-middle text-center">
                         <!-- start sub title -->
-                        <span class="text-white">Profile</span>
+                        <span class="text-white"><?php echo $lang['item100'] ?></span>
                         <!-- end sub title -->
                         <!-- start page title -->
-                        <h1 class="text-white">Welcome to My Profile</h1>
+                        <h1 class="text-white"><?php echo $lang['item101'] ?></h1>
                         <!-- end page title -->
                     </div>
                 </div>
@@ -77,12 +77,12 @@
                         <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                           <li class="nav-item">
                               <a class="nav-link active" href="#works" role="tab" data-toggle="tab" >
-                              Compigan
+                              <?php echo $lang['item102'] ?>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                                Donition
+                              <?php echo $lang['item103'] ?>
                               </a>
                           </li>
                         </ul>
@@ -108,7 +108,7 @@
                                     </div>
                                     </div>
                                     <div class="text-overlay"> 
-                                      <h5 class="card-title">compagin</h5>
+                                      <h5 class="card-title"><?php echo $lang['item102'] ?></h5>
                                       <p class="card-text"><?php echo $row['title'] ?></p>
                                       <a href="/viewCompaign/show/<?php echo $row['id']?>" class="btn btn-home-comp">Go somewhere</a>
                                     </div>

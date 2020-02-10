@@ -1,4 +1,4 @@
-function stringlength(inputText, minlength, maxlength)
+function stringlength(inputText, minlength, maxlength,msg)
               {
   var field = inputText.value;
   var mnlen = minlength;
@@ -7,7 +7,7 @@ function stringlength(inputText, minlength, maxlength)
 
   if (field.length < mnlen || field.length > mxlen)
   {
-    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+  'Please Enter between ' + mnlen + ' and ' + mxlen + ' characters';
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ msg  + mnlen + ' , ' + mxlen + ' ';
     return false;
   } else
   {
@@ -25,11 +25,11 @@ function preventSpace(inputText, minSpace, maxSpace)
 
   if (field.split(' ').length - 1 >= 1 && mnChar == 0)
    {
-    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+  'Space Not allowed in this field';
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ msg ;
     return false;
   } else if (field.split(' ').length - 1 < mnChar || field.split(' ').length - 1 > mxChar)
   {
-    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+  'Please Enter the userid between ' + mnChar + ' and ' + mxChar + ' words';
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ msg + mnChar + ' , ' + mxChar + ' ';
     return false;
   } else
   {
@@ -49,7 +49,7 @@ function allLetter(inputText)
       return true;
   } else
   {
-    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ 'This field accept alphabet characters only ' ;
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ msg ;
 
       return false;
   }
@@ -63,7 +63,7 @@ function allLetter(inputText)
 
   if (empt == '')
   {
-      document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+  'This feild is required ';
+      document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+  msg;
       return false;
   } else
   {
@@ -86,7 +86,7 @@ function allLetter(inputText)
                 }
                 else
                 {
-                    document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ 'Invalid Email, please enter a valid email ';
+                    document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+msg;
                     return false;
                 }
                 }
@@ -103,7 +103,7 @@ function allLetter(inputText)
                    }
                    else
                      {
-                      document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ 'Invalid phone number';
+                      document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ msg;
                       return false;
                      }
                 }
@@ -115,7 +115,7 @@ function allLetter(inputText)
                     var pass =opass.value.slice(0,cpass.value.length);
 
                     if (cpass.value!=pass) {
-                        document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ "password not match";
+                        document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ msg;
                         return false;
                     }
                     else
@@ -131,7 +131,7 @@ function validateDate(inputText){
   var GivenDate = new Date(inputText.value);
   
       if(GivenDate < CurrentDate){ 
-              document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ "you must enter date greater than current date";
+              document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ msg ;
               return false;
           }
           else

@@ -149,14 +149,14 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
     window.operateEvents = {
       'click .resume': function (e, value, row, index) {
         $('#id_d').val(row.id);
-        $('#state_d').val(2);
+        $('#state_d').val(4);
         $('#changeCompaigns').modal('show');
       },
       'click .remove': function (e, value, row, index) {
         // alert (row.id)
 
     $('#id_d').val(row.id);
-    $('#state_d').val(0);
+    $('#state_d').val(6);
     $('#changeCompaigns').modal('show');
 
   }

@@ -56,10 +56,10 @@
             <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
                 <div class="vertical-align-middle text-center">
                     <!-- start sub title -->
-                    <span class="text-white">Compagin</span>
+                    <span class="text-white"><?php echo $lang['item70']; ?></span>
                     <!-- end sub title -->
                     <!-- start page title -->
-                    <h1 class="text-white">Compagin Details</h1>
+                    <h1 class="text-white"><?php echo $lang['item71']; ?></h1>
                     <!-- end page title -->
                 </div>
             </div>
@@ -80,8 +80,9 @@
                             <div class="">
                             <img src='/uploads/<?php echo $compaign["galary"]; ?>' class="img-raised img-fluid" width="auto">
                             </div>
-                        <h5 class="text-left by-user"><i class="fas fa-pen-alt"></i> by: <span><?php echo Helper::userName( $compaign['owner_id']); ?></span></h5>
-                        <div class="compagin-content">
+                        <h5 class="text-left by-user">
+                          <a href="/profile/showProfile/<?php echo $compaign['owner_id']; ?>">  <i class="fas fa-pen-alt"></i> <?php echo $lang['item72']; ?>: <span><?php echo Helper::userName( $compaign['owner_id']); ?></span></h5></a>                       
+                    <div class="compagin-content">
                             <p class="text-left">
                               <?php echo $compaign['descrption']; ?>
                             </p>
@@ -99,14 +100,14 @@
                                             <div>
                                                 <!-- <p class="p-login nots-p-reg">You have already account! <a href="/auth/login">LogIn</a></p> -->
                                                     <div class="form-group">
-                                                        <label for="email" class="col-sm-2 control-label">Comment</label>
+                                                        <label for="email" class="col-sm-2 control-label"><?php echo $lang['item73']; ?></label>
                                                         <div class="col-sm-10">
                                                         <textarea class="form-control" name="Comment" id="Comment" rows="5" oninput="if($('#Comment').val()!='')$('#submitComment').attr('disabled' , false ); else $('#submitComment').attr('disabled' , 'disabled' );"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-sm-offset-2 col-sm-10">
-                                                            <button class="btn btn-success btn-circle text-uppercase" disabled='disabled' onclick="add_comment()" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+                                                            <button class="btn btn-success btn-circle text-uppercase" disabled='disabled' onclick="add_comment()" type="submit" id="<?php echo $lang['item74']; ?>"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
                                                         </div>
                                                     </div>
                                             </div>
@@ -125,13 +126,13 @@
 
                         <div class="mt-50px">
                         <div class="container">
-                        <h3 class="text-center text-blue"><span class="collection">0.0</span> <span>$ </span><span class="goal-num">raised of $<span class="cost"><?php echo $compaign['cost']; ?></span> goal</span></h3>
+                        <h3 class="text-center text-blue"><span class="collection">0.0</span> <span>$ </span><span class="goal-num"><?php echo $lang['item75']; ?> $<span class="cost"><?php echo $compaign['cost']; ?></span> <?php echo $lang['item76']; ?></span></h3>
                             <div class="progress progress-details">
                             <div class="progress-bar bg-yellow" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                         <a href="" class="a-donars" data-toggle="modal" data-target="#exampleModalLong"><h5 class="text-center text-black"><i class="fas fa-donate"></i>Donars <span class="donars-num donars">00</span></h5></a>
+                         <a href="" class="a-donars" data-toggle="modal" data-target="#exampleModalLong"><h5 class="text-center text-black"><i class="fas fa-donate"></i><?php echo $lang['item77']; ?> <span class="donars-num donars">00</span></h5></a>
                             <center>
-                            <a href="/donate/index/<?php echo $compaign['id'] ?>"><input type="submit" id="donate" class="btndonate float-none"  value="Donate Now"/></a>
+                            <a href="/donate/index/<?php echo $compaign['id'] ?>"><input type="submit" id="donate" class="btndonate float-none"  value="<?php echo $lang['item78']; ?>"/></a>
                             </center>
                         </div>
 
@@ -149,15 +150,14 @@
 </div>
 
 
-<script src="/js/home/jquery-3.4.1.slim.min.js"></script>
 
-
+<!-- 
 <script src="/js/home/js.js"></script>
 <script src="/js/home/popper.min.js"></script>
 <script src="/js/home/bootstrap.min.js"></script>
 <script src="/js/home/wow.min.js"></script>
 <script src="/js/home/main.js"></script>
-<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script> -->
 
 <script type="text/javascript">
 new WOW().init();
@@ -187,9 +187,6 @@ $( document ).ready(function() {
 });
 
 
-</script>
-
-<script>
       function load_comment(){
         jQuery_1_3_2.ajax({
             url:"/detailsCompagin",

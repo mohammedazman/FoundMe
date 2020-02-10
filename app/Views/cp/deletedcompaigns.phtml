@@ -107,10 +107,8 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
     function operateFormatter(value, row, index) {
       return [
-        '<a class="like" href="javascript:void(0)" title="Like">',
-        '<i class="fa fa-edit"></i>',
-        '</a>  ',
-        '<a class="remove" href="javascript:void(0)" title="Remove">',
+        
+        '<a class="remove" href="javascript:void(0)" title="Active">',
         '<i class="fa fa-check-square "></i>',
         '</a>'
       ].join('')
@@ -154,7 +152,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
         // alert (row.id)
 
     $('#id_d').val(row.id);
-    $('#state_d').val(2);
+    $('#state_d').val(7);
     $('#changeCompaigns').modal('show');
 
   }

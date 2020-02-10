@@ -4,8 +4,6 @@
 </footer>
 	<!-- footer end -->
 <script src="/js/home/js.js"></script>
-<script src="/js/home/popper.min.js"></script>
-<script src="/js/home/bootstrap.min.js"></script>
 <script src="/js/home/wow.min.js"></script>
 <script src="/js/home/main.js"></script>
 <script src="/js/home/jquery.toast.js"></script>
@@ -14,68 +12,10 @@ var jQuery_toast = $.noConflict(true);
 </script>
 	<script>
 	new WOW().init();
-	jQuery_1_3_2(document).ready(function(){
-         load_notification();
-  });
-
-  setInterval(function(){
-    load_notification();
-             }, 10000);
-
-	function load_notification(){
-    jQuery_1_3_2.ajax({
- 			url:"/notification",
- 			method:"POST",
-       data:{method:"user"},
- 			success:function(data)
- 			{
-         var notiInfo=JSON.parse(data);
-         var html='';
-         i=1;
-         jQuery_1_3_2('.noti-count').text(notiInfo.count);
-         jQuery_1_3_2.each(notiInfo.noti, function( index, row ) {
-           if(i<4){
-
-          html+=' <li class="notification-box">'+
-                         '<div class="row">'+
-                          ' <div class="col-lg-2 col-sm-3 col-3 text-center">'+
-                          ' <i class="fa fa-user-circle noti-icon"  aria-hidden="true"></i>'+
-                          ' </div>'+
-                          ' <div class="col-lg-10 col-sm-8 col-8">'+
-
-                             '<strong class="noti-date">'+row.created_at+'</strong><br>'+
-
-                            '<strong>'+row.type+'</strong><br>'+row.text+
-                            ' </div>'+
-                          ' </div>    '+
-                        ' </div>'+
-                      ' </li>';
-           }
-
-           i++;
-         });
-         if(i==1){
-          html+=' <li class="notification-box">'+
-                         '<div class="row p-5">'+
-                         'There is not any notification'
-                        ' </div>'+
-                      ' </li>';
-         }
-         else{
-          html+='<li class="footer text-center">'+
-                                   '<a href="/notification/viewNotification" class="text-blue">View All</a>'+
-                               '</li>';
-         }
-         jQuery_1_3_2('#noti-body').html(html);
-       }
-
-
- 		       });
- }
-
+ 
 	function errMsg(msg){
         if(msg!=''){
-          jQuery_toast.toast({
+    $.toast({
         text: msg, // Text that is to be shown in the toast
         heading: 'Note', // Optional heading to be shown on the toast
         icon: 'info', // Type of toast icon
@@ -98,6 +38,196 @@ var jQuery_toast = $.noConflict(true);
         }
 }
 errMsg(<?php echo'"'.Message::check('main').'"'; ?>);
+function converLanguage(lang,dir){
+
+jQuery_1_3_2.ajax({
+     url:"/language",
+     method:"POST",
+     data:{method:"convertLang",lang:lang,dir:dir},
+     success:function(data)
+     {
+      var result=JSON.parse(data);
+
+       if(result.statusCode==200){
+          setTimeout(function(){
+              location. reload();
+          }, 2000);
+      }
+
+     }
+});
+
+}
+//////////////////////////////////validation.js
+function stringlength(inputText, minlength, maxlength)
+              {
+  var field = inputText.value;
+  var mnlen = minlength;
+  var mxlen = maxlength;
+  var Errspan = inputText.name + 'Error';
+
+  if (field.length < mnlen || field.length > mxlen)
+  {
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo  '"'.$lang['error1']. '"'; ?>  + mnlen + ' , ' + mxlen + ' ';
+    return false;
+  } else
+  {
+    document.getElementById(Errspan).innerHTML='';
+    return true;
+  }
+}
+
+function preventSpace(inputText, minSpace, maxSpace)
+             {
+  var field = inputText.value;
+  var mnChar = minSpace;
+  var mxChar = maxSpace;
+  var Errspan = inputText.name + 'Error';
+
+  if (field.split(' ').length - 1 >= 1 && mnChar == 0)
+   {
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo  '"'.$lang['error4']. '"'; ?> ;
+    return false;
+  } else if (field.split(' ').length - 1 < mnChar || field.split(' ').length - 1 > mxChar)
+  {
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo  '"'.$lang['error2']. '"'; ?> + mnChar + ' , ' + mxChar + ' ';
+    return false;
+  } else
+  {
+    document.getElementById(Errspan).innerHTML='';
+    return true;
+  }
+}
+
+function allLetter(inputText)
+              {
+  var letters = /^[A-Za-z]+$/;
+  var Errspan = inputText.name + 'Error';
+
+  if (inputText.value.match(letters))
+  {
+    document.getElementById(Errspan).innerHTML='';
+      return true;
+  } else
+  {
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo  '"'.$lang['error5']. '"'; ?> ;
+
+      return false;
+  }
+}
+
+                function Requirevalidation(inputText)
+                {
+
+  var empt =inputText.value;
+  var Errspan = inputText.name + 'Error';
+
+  if (empt == '')
+  {
+      document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+  <?php echo  '"'.$lang['error3']. '"'; ?>;
+      return false;
+  } else
+  {
+    document.getElementById(Errspan).innerHTML='';
+      return true;
+  }
+
+
+                }
+   function ValidateEmail(inputText)
+                {
+                var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                var Errspan = inputText.name + 'Error';
+
+
+                if(inputText.value.match(mailformat))
+                {
+                  document.getElementById(Errspan).innerHTML='';
+                  return true;
+                }
+                else
+                {
+                    document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+<?php echo  '"'.$lang['error6'].'"'; ?>;
+                    return false;
+                }
+                }
+    function phonenumber(inputText)
+                {
+                  var Errspan=inputText.name+'Error';
+
+                  var phoneno =/^\+(?:[0-9] ?){6,14}[0-9]$/;
+                  if(inputText.value.match(phoneno))
+                     {
+                      document.getElementById(Errspan).innerHTML='';
+
+                     return true;
+                   }
+                   else
+                     {
+                      document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo  '"'.$lang['error7'].'"'; ?>;
+                      return false;
+                     }
+                }
+  
+
+   function confirmPassValidation(cpass,opass){
+
+                    var Errspan=cpass.name+'Error';
+                    var pass =opass.value.slice(0,cpass.value.length);
+
+                    if (cpass.value!=pass) {
+                        document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo  '"'.$lang['error8']. '"'; ?>;
+                        return false;
+                    }
+                    else
+                    {
+                      document.getElementById(Errspan).innerHTML='';
+                         return true;
+                    }
+				}
+function validateDate(inputText){
+  var Errspan=inputText.name+'Error';
+
+  var CurrentDate = new Date();
+  var GivenDate = new Date(inputText.value);
+  
+      if(GivenDate < CurrentDate){ 
+              document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo '"'.$lang['error9'].'"'; ?> ;
+              return false;
+          }
+          else
+          {
+            document.getElementById(Errspan).innerHTML='';
+               return true;
+          }
+}
+//live search
+jQuery_1_3_2(document).ready(function () {
+    jQuery_1_3_2('.search-box input[type="text"]').on('keyup input', function () {
+
+        /* Get input value on change */
+        var term = jQuery_1_3_2(this).val();
+				
+        var resultDropdown = jQuery_1_3_2(this).siblings('.result');
+        if (term.length) {
+          jQuery_1_3_2.get('/search/livesearch/'+term).done(function (data) {
+              // Display the returned data in browser
+
+              resultDropdown.html(data);
+            });
+        } else {
+          resultDropdown.empty();
+        }
+      });
+
+    // Set search input value on click of result item
+    jQuery_1_3_2(document).on('click', '.result p', function () {
+        jQuery_1_3_2(this).parents('.search-box').find('input[type="text"]').val(jQuery_1_3_2(this).text()).focus();
+        jQuery_1_3_2(this).parent('.result').empty();
+      });
+  });
+
+
 	</script>
 
 </body>

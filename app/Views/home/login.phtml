@@ -10,26 +10,26 @@
 								<a href="/home/index">
 									<img src="/images/home/logo.png" alt=""/>
 								</a>
-							<h3>Welcome</h3>
-							<p class="p-login nots-p-reg">You don't have account! <a href="/auth/signup">SignUp</a></p>
+							<h3><?php echo $lang['item10']?></h3>
+							<p class="p-login nots-p-reg"><?php echo $lang['item11']?> <a href="/auth/signup"><?php echo $lang['item4b']?></a></p>
 						</div>
 						<div class="col-md-12 register-right shadow-div">
 						<form class="" action="" method="post" name="loginForm" id="loginForm">
 
 							<div class="tab-content" id="myTabContent">
 								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-									<h3 class="register-heading">Log IN</h3>
+									<h3 class="register-heading"><?php echo $lang['item4a']?></h3>
 									<div class="row register-form">
 									<div class="col-md-12">
 											<div class="form-group">
-												<label for="email" class="laple-forms">Your Email</label>
-												<input type="email" name="email" class="form-control" placeholder="Your Email *" value='<?php if(isset($_POST['email']))echo$_POST['email'];?>' />
+												<label for="email" class="laple-forms"><?php echo $lang['item12']?></label>
+												<input type="email" name="email" class="form-control" placeholder="<?php echo $lang['item12']?> *" value='<?php if(isset($_POST['email']))echo$_POST['email'];?>' />
 												<span class="text-danger text-error" id="emailError"> </span>
 
 											</div>
 											<div class="form-group">
-												<label for="password" class="laple-forms">Your password</label>
-												<input type="password" name="password" class="form-control" placeholder="Password *" value='<?php if(isset($_POST['email']))echo$_POST['email'];?>' />
+												<label for="password" class="laple-forms"><?php echo $lang['item13']?></label>
+												<input type="password" name="password" class="form-control" placeholder="<?php echo $lang['item13']?> *" value='<?php if(isset($_POST['email']))echo$_POST['email'];?>' />
 												<span class="text-danger text-error" id="passwordError"> </span>
 
 											</div>
@@ -38,7 +38,7 @@
 											<center>
 											<!-- <input type="submit" class="btnRegister"  value="Log In"/> -->
 											<input type="submit" id="logintBtn" class="btnlogin float-none"  value="Log In"/>
-											<p class="p-login-forget">forgot your password ! <a href="login.html">Forgot</a></p>
+											<p class="p-login-forget"><?php echo $lang['item14']?> ! <a href="/auth/forgetPass"><?php echo $lang['item15']?> </a></p>
 											</center>
 										</div>
 									</div>

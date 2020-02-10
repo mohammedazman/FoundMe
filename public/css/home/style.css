@@ -694,7 +694,7 @@ footer p a:hover {
 }
 .p-image {
     position: absolute;
-    top: 120px;
+    top: 115px;
     right: 196px;
     color: #fff !important;
     padding: 10px;
@@ -1626,4 +1626,40 @@ font-family: 'Droid Arabic Kufi'
   .dropspan-content a:hover {background-color: #e1e1e1;}
   
   .dropdown:hover .dropspan-content {display: block;}
-  
+.mt-80{
+    margin-top: 80px;
+}
+
+.btnEdit {
+    float: right;
+    margin-top: 20px;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #3aa3a9;
+    color: #fff;
+    font-weight: 600;
+    width: 50%;
+    cursor: pointer;
+}
+.circle{
+  height: 20%;
+  width: 20%;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+
+
+.p-image-edit {
+    position: absolute;
+    top: 128px;
+    right: 480px;
+    color: #fff !important;
+    padding: 10px;
+    background-color: #3aa3a9;
+    border-radius: 50%;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}

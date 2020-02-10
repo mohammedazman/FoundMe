@@ -67,7 +67,7 @@ class Compaign
 
 
      return $this->db->QueryCrud($oStmt,$args,0);
-    
+
 }
 
 
@@ -85,6 +85,25 @@ public function getUSerCompaigns($args)
 
   $oStmt ='SELECT * FROM compigans where owner_id=?';
   return  $this->db->QueryCrud($oStmt,$args);
+}
+
+
+// search for compaigns by title
+public function searchCompaign($args)
+{
+ $arg="%$args%";
+
+  $oStmt ='SELECT * FROM compigans  WHERE title LIKE ? ';
+  return  $this->db->QueryCrud($oStmt,[$arg]);
+}
+
+// search for compaigns by tags
+public function searchTags($args)
+{
+ $arg="%$args%";
+
+  $oStmt ='SELECT * FROM compigans  WHERE  tags LIKE ?';
+  return  $this->db->QueryCrud($oStmt,[$arg]);
 }
 
 }

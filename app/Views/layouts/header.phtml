@@ -1,4 +1,29 @@
 <?php include VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml'; ?>
+<!-- Modals -->
+<!-- Modal search start -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-body">
+
+              <form class="" action="/search/index" method="post">
+                <div class="form-group search-box">
+                <input type="text" class="form-control " placeholder="Search About what you went*"  name="item" />
+
+              <div class="result">
+
+                </div>
+              </div>
+                    </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<!-- Modal search end-->
+
     <!-- start header -->
     <header>
             <nav class="navbar navbar-expand-lg navbar-top chang-color">
@@ -75,6 +100,10 @@
                             <button class="dropdown-item" id='arabic' onclick="converLanguage('ar-lang','rtl')"><?php echo $lang['item5a']?> <?php if($_COOKIE['lang']=='ar-lang') echo '  ('.$lang['item5c'].')  ';?></button>
                             <button class="dropdown-item" id='english' onclick="converLanguage('en-lang','ltr')"><?php echo $lang['item5b']?><?php if($_COOKIE['lang']=='en-lang') echo '  ('.$lang['item5c'].')  ';?></button>
                           </div>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#"  data-toggle="modal" data-target="#exampleModal">Search</a>
+
                         </li>
                           <?php  if(!Session::isAdmin() )  { ?>
                           <?php  if(Session::logged() )  { ?>

@@ -1,11 +1,10 @@
 <?php
 
   include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
-  $compaign=$this->view_data['compaign'][0];
+  $compaign=$this->view_data['compaign'];
+
   $donars=$this->view_data['donars']; ?>
       <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -83,7 +82,7 @@
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <h2 class="text-center text-blue"><?php echo $lang['item82'] ?></h2>
                                 <form class="" action="" method="post" name='DonateForm' id="DonateForm">
-                                  <input type="hidden" name="compaign_id" value="<?php echo $compaign['id']; ?>">
+                            <input type="hidden" name="compaign_id" value="<?php echo $compaign['id']; ?>">
                                     <div class="row register-form ">
                                     <div class="col-md-12">
                                             <div class="form-group">
@@ -159,6 +158,9 @@
                                                 <center>
                                                     <input type="submit"  style="display: none;" id='ajaxSubmit'  value="Add"  name="addDonation" onclick="upload_to_db();" />
                                             <input id="DonateBtn" type="submit" class="btnRegister float-none"  value="<?php echo $lang['item82'] ?>"/>
+                                            <!-- <input id="DonateBtn" type="submit" class="btnRegister float-none"  value="Donate Now"/> -->
+                                            <!-- <button type="button" class="btnadd"  value="Add" id="DonateBtn" name="addComp"  />Donate Now</button> -->
+
                                             </center>
                                             </div>
                                 </form>
@@ -233,18 +235,16 @@
   </div>
 </div>
 
-
-<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="/js/home/jquery-3.4.1.slim.min.js"></script>
-<script src="/js/home/js.js"></script>
-<script src="/js/home/popper.min.js"></script>
 <script src="/js/home/bootstrap.min.js"></script>
-<script src="/js/home/wow.min.js"></script>
-<script src="/js/home/main.js"></script>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+  <script type="text/javascript" src="/js/home/jquery.form.js"></script>
 
 <script type="text/javascript">
-new WOW().init();
+var jQuery_form = $.noConflict(true);
+</script>
+
+<script type="text/javascript">
 function getAmount() {
   var amount = $(".amount");
 
@@ -272,7 +272,7 @@ $( document ).ready(function() {
 
 $(document).ready(function(){
     $("#DonateBtn").click(function(){
-		event.preventDefault();
+       event.preventDefault();
 		if(Requirevalidation(document.DonateForm.Donation)&&Requirevalidation(document.DonateForm.country)&&
 		Requirevalidation(document.DonateForm.code)&&Requirevalidation(document.DonateForm.debitNumber)&&
 		Requirevalidation(document.DonateForm.month)&&Requirevalidation(document.DonateForm.year)){
@@ -286,7 +286,7 @@ $(document).ready(function(){
 
 function serverSideValidate(){
 
-$.ajax({
+jQuery_1_3_2.ajax({
 			url:"/validate",
 			method:"POST",
      	    data:{
@@ -329,6 +329,7 @@ $.ajax({
          progressBar(0,100);
        },
        uploadProgress: function(event, position, total, percentComplete) {
+
          progressBar(percentComplete,100);
 
        },
@@ -340,7 +341,10 @@ $.ajax({
          if(xhr.responseText)
          {
            progressBar(100,100);
-           window.location.replace("/home/index");
+           setTimeout(function () {
+              window.location.replace("/home/index");
+           },1000)
+
          }
        }
      });

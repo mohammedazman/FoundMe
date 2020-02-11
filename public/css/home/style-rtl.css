@@ -899,7 +899,7 @@ input[type='file'] {
     border-radius: 0px 0px 3px 3px;
 }
 .notification-box{
-    padding: 2px 0px;
+    padding: 4px 12px;
     border-bottom: 1px solid #eeeaea;
 }
 

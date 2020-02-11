@@ -1,0 +1,59 @@
+<script>
+$(document).ready(function(){
+         load_notification();
+  });  
+
+  // setInterval(function(){
+  //   load_notification();
+  //            }, 10000);
+
+
+	function load_notification(){
+    jQuery_1_3_2.ajax({
+ 			url:"/notification",
+ 			method:"POST",
+       data:{method:"user"},
+ 			success:function(data)
+ 			{
+         var notiInfo=JSON.parse(data);
+         var html='';
+         i=1;
+         if(notiInfo.count>0)
+            $('.noti-count').text(notiInfo.count);
+         $.each(notiInfo.noti, function( index, row ) {
+           if(i<4){
+            if(row.status==1)
+                html+=' <li class="notification-box item ">';
+             else
+                html+=' <li class="notification-box item not_read">';
+
+
+                         
+          html+='<strong class="noti-date">'+row.created_at+'</strong><br>'+
+                             '<span style="font-size: 13px;" >'+
+                             row.text+
+                             '</span'+ 
+                      ' </li>';
+           }
+          
+           i++;
+         });
+         if(i==1){
+          html+=' <li class="notification-box">'+
+                         '<div class="row p-5">'+
+                         'There is not any notification'
+                        ' </div>'+
+                      ' </li>';
+         }
+         else{
+          html+='<li class="footer text-center">'+
+                                   '<a href="/notification/viewNotification" class="text-blue">View All</a>'+
+                               '</li>';
+         }
+         $('#noti-body').html(html);
+       }
+
+
+ 		       });
+ }
+ </script>

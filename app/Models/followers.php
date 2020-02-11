@@ -37,9 +37,14 @@ public function addFoloow(array $aData)
   // find followers by Compaign ID
 public function CompaignFollowers(array $aData)
 {
-  $oStmt = 'SELECT * FROM comments WHERE compigan_id  =?';
+  $oStmt = 'SELECT user_id FROM followers WHERE compigan_id  =?';
 
-      return $this->db->QueryCrud($oStmt,$aData);
+      $followers= $this->db->QueryCrud($oStmt,$aData);
+      $return=array();
+      foreach($followers as $f){
+        $return[]=$f['user_id'];
+      }
+      return $return;
 
 }
 

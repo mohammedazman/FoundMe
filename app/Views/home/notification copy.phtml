@@ -34,7 +34,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 		
           <div class="col-md-12">
 		  
- <button class='btn btn-block btncolor all_read_btn' name='chang_state' onclick="readAll()"><?php echo $lang['item114'] ?>  </button>
+ <button class='btn btn-block btncolor all_read_btn' name='chang_state'><?php echo $lang['item114'] ?>  </button>
 </h4>
 			
             <hr>
@@ -67,13 +67,13 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
         <a data-toggle='dropdown'class='noti_state iconify' data-icon='typcn-media-record-outline'  title='<?php echo $lang['item112'] ?>'></a>
         <?php }
           else{
-            $state=$lang['item113'];
+            $state=$lang['item112'];
              ?>
          <a data-toggle='dropdown'class='noti_state iconify '  data-icon='typcn-media-record' title='<?php echo $lang['item113'] ?>' ></a>
          <?php } ?>
 <section >
 		   <div class='dropdown-menu noti_dropdown-menu text-center '>
-		   <button class='btn btn-block btncolor' name='chang_state' onclick="changeNotiState(<?php  echo $row['id']?>,<?php  echo '\''.!$row['status'].'\''?>)"><?php echo $state ?></button>
+		   <button class='btn btn-block btncolor' name='chang_state' onclick="changeNotiState($row['id'],!$row['status'])"><?php echo $state ?></button>
            </div>
 </section>
     </li>
@@ -81,7 +81,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
 </div> <!--  هنا ينتهي السهم حق اخفاء و تحديد ك مقروئة-->
 <div> 
-            <a href="/viewCompaign/show/<?php echo $row['effected_id'] ?>" onclick="changeNotiState(<?php  echo $row['id']?>,<?php  echo '\''.!$row['status'].'\''?>,1)"  style="text-decoration: none; color:#969696">
+            <a href="/viewCompaign/show/<?php echo $row['effected_id'] ?>"  style="text-decoration: none; color:#969696">
       <?php if($row['type']=="new compain")  { $type='compain'; ?>
                   
 		 <span class='noti_typ_msg iconify' data-icon="typcn-arrow-forward" ></span> 
@@ -129,7 +129,6 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 	<!-- Notification page end -->
   <script>
     	function changeNotiState(nid,state,neww=0){
-      
         if(neww==1)
          if(state==0)
             exit();
@@ -140,26 +139,11 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
           success:function(data)
           {
             var result=JSON.parse(data);
-            if(neww!=1)
             if(result.statusCode==200)
                 location.reload();
           }
               });
  }
- function readAll(){
-      
-  jQuery_1_3_2.ajax({
-        url:"/notification",
-        method:"POST",
-        data:{method:"readAll"},
-        success:function(data)
-        {
-          var result=JSON.parse(data);
-          if(result.statusCode==200)
-              location.reload();
-        }
-            });
-}
   </script>
 
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

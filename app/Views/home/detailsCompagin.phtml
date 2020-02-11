@@ -133,6 +133,13 @@
                          <a href="" class="a-donars" data-toggle="modal" data-target="#exampleModalLong"><h5 class="text-center text-black"><i class="fas fa-donate"></i><?php echo $lang['item77']; ?> <span class="donars-num donars">00</span></h5></a>
                             <center>
                             <a href="/donate/index/<?php echo $compaign['id'] ?>"><input type="submit" id="donate" class="btndonate float-none"  value="<?php echo $lang['item78']; ?>"/></a>
+                            <?php
+                             if(!in_array(Session::get('userID'),$this->view_data['followers'])){ ?>
+                              <input type="button" id="follow" onclick="follow('follow')" class="btndonate float-none"  value="متابعة"/>
+                            <?php } else{ ?>
+                              <input type="button" id="follow" onclick="follow('unfollow')" class="btndonate float-none"  value="الغاء المتابعة"/>
+                              <?php } ?>
+                              <input type="button" id="report" class="btndonate float-none"  value="تبليغ"/>
                             </center>
                         </div>
 
@@ -160,7 +167,6 @@
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script> -->
 
 <script type="text/javascript">
-new WOW().init();
 function getAmount() {
   var amount = $(".amount");
 
@@ -247,6 +253,24 @@ $( document ).ready(function() {
       });
           
       }
+
+      function follow(method){
+        jQuery_1_3_2.ajax({
+            url:"/follow",
+            method:"POST",
+            data:{method:method,
+            cid:<?php echo $compaign['id'] ?>,
+            owner:<?php echo $compaign['owner_id'] ?>
+            },
+            success:function(data)
+            {
+              var result=JSON.parse(data);
+                if(result.statusCode==200)
+                   location.reload();
+            }
+          });
+        }
+
 </script>
 
 

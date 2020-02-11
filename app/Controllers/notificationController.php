@@ -53,13 +53,29 @@ class NotificationController extends Controller
       return  $result[0]['num'];
 
   }
+  public function changeState($nid,$state)
+  {
+
+  
+   $result=$this->noti->changeState([$state,$nid]);
+  //  echo "<h1>".$result."</h1>";
+
+      return   json_encode(array('statusCode'=>200));
+
+  }
+
+  public function readAll()
+  {
+  $result=$this->noti->makeAllRead([Session::get('userID')]);
+      return   json_encode(array('statusCode'=>200));
+
+  }
 
 
 
 }
 $noti=new NotificationController();
 if(count($_POST)>0){
-
 if($_POST['method']=="adminNoti"){
 
   echo $noti->getAdminNotification();
@@ -71,6 +87,11 @@ if($_POST['method']=="adminNoti"){
       echo $noti->getNotification();
     }
    
+    if($_POST['method']=="changState")
+      echo $noti->changeState($_POST['id'],$_POST['state']);
+
+    if($_POST['method']=="readAll")
+      echo $noti->readAll();
 
 }
 

@@ -15,7 +15,7 @@ var jQuery_toast = $.noConflict(true);
  
 	function errMsg(msg){
         if(msg!=''){
-    $.toast({
+    jQuery_toast.toast({
         text: msg, // Text that is to be shown in the toast
         heading: 'Note', // Optional heading to be shown on the toast
         icon: 'info', // Type of toast icon
@@ -37,7 +37,11 @@ var jQuery_toast = $.noConflict(true);
     });
         }
 }
+
 errMsg(<?php echo'"'.Message::check('main').'"'; ?>);
+
+
+
 function converLanguage(lang,dir){
 
 jQuery_1_3_2.ajax({

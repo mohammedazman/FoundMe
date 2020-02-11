@@ -1,0 +1,104 @@
+<?php
+
+  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
+    <!-- start pages photo -->
+    <section class="cover-background top-space" style="background-image:url('/images/home/1(1).jpg');">
+        <div class="opacity-medium bg-dark"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
+                    <div class="vertical-align-middle text-center">
+                        <!-- start sub title -->
+                        <span class="text-white">Profile</span>
+                        <!-- end sub title -->
+                        <!-- start page title -->
+                        <h1 class="text-white">Welcome to My Profile</h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end pages photo - -->
+
+    <!-- profile page start-->
+<div class="main main-raised border-50">
+    <div class="profile-content">
+        <div class="container">
+            <div class="row">
+			    <div class="col-md-12 col-xs-12 ml-auto mr-auto mt-80">
+					<div class="tab-content" id="myTabContent">
+						     <form class="" action="" method="post" name='editForm' id="signupForm" enctype="multipart/form-data">
+								<div class="row register-form ">
+                                        <!-- PROFILE PHOTO -->
+                                        <div class="col-md-12 col-xs-12 ml-auto mr-auto">
+                                            <div class="profile">
+                                                <div class="text-center mt-50px">
+                                                    <div class="profile-img-size circle">
+                                                    <img src="/images/home/user.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid profile-pic" width="auto">
+                                                    
+                                                    <i class="fas fa-user-edit upload-button p-image-edit"></i>
+                                                    <input class="file-upload" type="file" accept="image/*"/> 
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- PROFILE PHOTO -->
+                                                            
+								<div class="col-md-6 mt-80">
+										<div class="form-group">
+											<label for="first_name" class="laple-forms">Your First Name</label>
+											<input type="text" class="form-control" placeholder="First Name *"  name="first_name" value='<?php if(isset($_POST['first_name']))echo$_POST['first_name'];?>' oninput=" stringlength(document.signupForm.first_name,5,12); allLetter(document.signupForm.first_name);preventSpace(document.signupForm.first_name,0,0)" />
+										<?php echo Message::check('first_name');?>
+										<span class="text-danger text-error" id="first_nameError"> </span>
+										</div>
+										<div class="form-group">
+											<label for="last_name" class="laple-forms">Your Last Name</label>
+											<input type="text" class="form-control" placeholder="Last Name *" name="last_name" value='<?php if(isset($_POST['last_name']))echo$_POST['last_name'];?>' oninput=" stringlength(document.signupForm.last_name,5,12); allLetter(document.signupForm.last_name);preventSpace(document.signupForm.first_name,0,0)" />
+											<?php echo Message::check('last_name');?>
+											<span class="text-danger text-error" id="last_nameError"> </span>
+                                        </div>
+                                        <div class="form-group">
+											<label for="phone" class="laple-forms">Your Phone</label>
+											<input type="text"  name="phone" class="form-control" placeholder="Your Phone *" value='<?php if(isset($_POST['phone']))echo$_POST['phone'];?>' oninput="phonenumber(document.signupForm.phone)"; />
+											<?php echo Message::check('phone');?>
+											<span class="text-danger text-error" id="phoneError"> </span>
+										</div>
+								</div>		
+								<div class="col-md-6 mt-80">
+										<div class="form-group">
+											<label for="phone" class="laple-forms">Gender</label>
+											<select type="text"  name="phone" class="form-control" value=''>
+                                                <option value="Female">Female</option>
+                                                <option value="male">male</option>
+                                            </select>
+											<?php echo Message::check('phone');?>
+											<span class="text-danger text-error" id="phoneError"> </span>
+                                        </div>
+                                        <div class="form-group">
+											<label for="phone" class="laple-forms">Birth Day</label>
+											<input type="date"  name="phone" class="form-control" placeholder="Your Birthday" value='' />
+                                        </div>
+                                        <div class="form-group">
+											<label for="phone" class="laple-forms">Bio</label>
+											<textarea  rows="4" cols="50" type="text"  name="bio" class="form-control" placeholder="Your Bio" oninput="preventSpace(document.editForm.bio,5,30);";></textarea>
+										</div>
+                                </div>
+                                            </div>
+                                            <center>
+										<input id="signuptBtn" type="submit" class="btnEdit float-none"  value="Edit "/>
+										</center>
+										</div>
+					         </form>     
+				</div>
+                <!-- PROFILE PHOTO -->
+            </div>  
+        </div>
+    </div>
+</div>
+      
+<!-- profile page end -->
+
+
+<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

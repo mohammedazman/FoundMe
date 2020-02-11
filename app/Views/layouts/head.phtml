@@ -23,14 +23,15 @@
 
     ?>
     <link rel="shortcut icon" type="/image/icon" href="/images/home/logo.png" />
-    <script class="jsbin" src="/js/home/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="/js/home/bootstrap.min.js"></script>
+    <script src="/js/home/popper.min.js"></script>
 
     <script src="/js/home/jquery-3.4.1.slim.min.js"></script>
+   
+    <!-- <script src="/js/home/validation.js"></script> -->
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
-
-
-    <script src="/js/home/validation.js"></script>
-    <script class="jsbin" src="/js/home/jquery.min.js"></script>
     <script type="text/javascript">
 var jQuery_1_3_2 = $.noConflict(true);
 </script>
@@ -87,6 +88,67 @@ var jQuery_1_3_2 = $.noConflict(true);
 
 
       </script>
+      <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
+<script>
+  $(document).ready(function(){
+         load_notification();
+  });  
+
+  // setInterval(function(){
+  //   load_notification();
+  //            }, 10000);
+
+	function load_notification(){
+    jQuery_1_3_2.ajax({
+ 			url:"/notification",
+ 			method:"POST",
+       data:{method:"user"},
+ 			success:function(data)
+ 			{
+         var notiInfo=JSON.parse(data);
+         var html='';
+         i=1;
+         $('.noti-count').text(notiInfo.count);
+         $.each(notiInfo.noti, function( index, row ) {
+           if(i<4){
+
+          html+=' <li class="notification-box">'+
+                         '<div class="row">'+
+                          ' <div class="col-lg-2 col-sm-3 col-3 text-center">'+
+                          ' <i class="fa fa-user-circle noti-icon"  aria-hidden="true"></i>'+
+                          ' </div>'+
+                          ' <div class="col-lg-10 col-sm-8 col-8">'+
+                             '<strong class="noti-date">'+row.created_at+'</strong><br>'+
+                             
+                             row.text+
+                            ' </div>'+
+                          ' </div>    '+
+                        ' </div>'+
+                      ' </li>';
+           }
+          
+           i++;
+         });
+         if(i==1){
+          html+=' <li class="notification-box">'+
+                         '<div class="row p-5">'+
+                         'There is not any notification'
+                        ' </div>'+
+                      ' </li>';
+         }
+         else{
+          html+='<li class="footer text-center">'+
+                                   '<a href="/notification/viewNotification" class="text-blue">View All</a>'+
+                               '</li>';
+         }
+         $('#noti-body').html(html);
+       }
+
+
+ 		       });
+ }
+
+  </script>
       <script src="/js/home/iconify.min.js"></script>
 
 

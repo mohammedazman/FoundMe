@@ -50,7 +50,7 @@ class authController extends Controller
              if($signup==true)
                header('Location:/auth/welcome');
              else
-               header('Location:/home/index');
+                $this->index();
 
             }}
             else{

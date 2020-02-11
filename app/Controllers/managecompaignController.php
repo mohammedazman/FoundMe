@@ -57,12 +57,20 @@ class managecompaignController extends Controller
   
 
     public function changeCompaigns($ids,$state){
+      if($state==4 || $state==7)
+        $nState=2;
+      elseif($state==5 || $state==6)
+        $nState=0;
+      else
+      $nState=$state;
 
-    $compaignID = $this->compaignModel->changeCompaigns([$state,$ids]);
+    $compaignID = $this->compaignModel->changeCompaigns([$nState,$ids]);
       $compArray = $this->compaignModel->find([$ids])[0];
-
-
-      Notification::addNoti('your compaign : '.$compArray["title"].'',$compArray['owner_id'],'aprroved compaign');
+       
+           $noti_type=array('reject Compaign','','approve compaign','pause compaign','resum compaign','delete compaign','','active compaign');
+           $noti_text=array('reject ','','approve ','pause ','resum ','delete ','','active ');
+      if($state!=6)
+           Notification::addNoti('Admin '.$noti_text[$state].'your compaign',$compArray['owner_id'],$noti_type[$state],$compArray['id']);
 
       return  json_encode(array("statusCode"=>200,"message"=>"Process done successfully"));
 

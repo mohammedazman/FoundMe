@@ -15,34 +15,39 @@ class donateController extends Controller
 
   }
 
-public function submitform($value='')
-{
-  $this->model("Compaign");
-  $compaign=$this->model->getModel()->find([$id]);
+// public function submitform($value='')
+// {
 
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-   if ($this->validation->GetStatus()==1) {
+//    if ($this->validation->GetStatus()==1) {
 
-             $params=array(':compigan_id'=>$_REQUEST['compaign_id'],
-                           ':user_id'=>Session::get('userID'),
-               ':amount'=> $_REQUEST['Donation'],
+//              $params=array(':compigan_id'=>$_REQUEST['compaign_id'],
+//                            ':user_id'=>Session::get('userID'),
+//                ':amount'=> $_REQUEST['Donation'],
 
-              );
-              $this->model('Compaign');
-              $comp=$this->model->getModel()->find([$_REQUEST['compaign_id']]);
+//               );
+//               $this->model('Compaign');
+//               $comp=$this->model->getModel()->find([$_REQUEST['compaign_id']]);
 
-                  if ($this->donar->add($params)) {
+//                   if ($this->donar->add($params)) {
 
-                   Notification::addNoti('New donar is added by '.$_SESSION['userName'] .'about:'.$params[":amount"].'$',$comp[0]['owner_id'],'add donation');
-                    Message::setMessage(1,'main',' add your donation have be done ');
+//                    Notification::addNoti($_SESSION['userName'].'donated:'.$params[":amount"].'$ to your compaign',$comp[0]['owner_id'],'add donation',$_REQUEST['compaign_id']);
+//                    $this->model('Followers');
+//                    $followers=$this->model->getModel()->CompaignFollowers([$_REQUEST['compaign_id']]);
+                  
+//                    foreach($followers as $f){
 
-                                           }
-                                         }
-}
+//                        Notification::addNoti('new donate to campaign that you follow',$f,'add donation',$_REQUEST['compaign_id']);
+//                    }
+//                        Message::setMessage(1,'main',' add your donation have be done ');
 
-exit();
-}
+//                                            }
+//                                          }
+// }
+// print_r($followers);
+// exit();
+// }
   public function index($id='')
   {
 
@@ -56,6 +61,35 @@ exit();
         $this->view->render();
         // check if there submit
 
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+         if ($this->validation->GetStatus()==1) {
+
+                   $params=array(':compigan_id'=>$_REQUEST['compaign_id'],
+                                 ':user_id'=>Session::get('userID'),
+                     ':amount'=> $_REQUEST['Donation'],
+
+                    );
+                    $this->model('Compaign');
+                    $comp=$this->model->getModel()->find([$_REQUEST['compaign_id']]);
+
+                        if ($this->donar->add($params)) {
+
+                         Notification::addNoti($_SESSION['userName'] .' donate '.$params[":amount"].'$ to your compaign',$comp[0]['owner_id'],'add donation',$_REQUEST['compaign_id']);
+                       
+                         $this->model('followers');
+
+                         $followers=$this->model->getModel()->CompaignFollowers([$_REQUEST['compaign_id']]);
+                  
+                         foreach($followers as $f){
+      
+                             Notification::addNoti('new donate to campaign that you follow',$f,'add donation',$_REQUEST['compaign_id']);
+                         }
+                         Message::setMessage(1,'main',' add your donation have be done ');
+
+                                                 }
+                                               }
+    }
 
 
   }

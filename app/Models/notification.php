@@ -19,21 +19,27 @@ public  function getNoti($args)
 }
 
 //add new row to notification table
-public static  function addNoti($msg ,$uId,$type)
+public static  function addNoti($msg ,$uId,$type,$effectedId=0)
 {
-  // $content=['msg'=>$msg,'effectedType'=>$effectedType,'effectedId',$effectedID];
 
-      $oStmt = 'INSERT INTO notifications (text,target_user,type)
-                VALUES ( ?, ?, ?)';
+      $oStmt = 'INSERT INTO notifications (text,target_user,type,effected_id)
+                VALUES ( ?, ?, ?,?)';
 
-          return DB::init()->QueryCrud($oStmt,[$msg,$uId,$type],0);
-
+          return DB::init()->QueryCrud($oStmt,[$msg,$uId,$type,$effectedId],0);
   }
 
 // read and unread converter
-public function changeState($id,$args)
+public function changeState($args)
 {
   $oStmt = 'update notifications set status=? WHERE id =? ';
+
+    return $this->db->QueryCrud($oStmt,$args,0);
+}
+
+// read and unread converter
+public function makeAllRead($args)
+{
+  $oStmt = 'update notifications set status=1 WHERE target_user =? ';
 
     return $this->db->QueryCrud($oStmt,$args,0);
 }

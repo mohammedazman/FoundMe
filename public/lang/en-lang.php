@@ -3,6 +3,7 @@
 $lang=array(
     //nav
     'item1'=>'Home',
+    'item0'=>'Dashboard',
     'item2'=>'Contact',
     'item3'=>'About',
     'item4'=>'Join FoundMe',
@@ -52,7 +53,94 @@ $lang=array(
     'item44'=>'Email',
     'item45'=>'Your Message',
     'item46'=>'Send Now',
-   
+    //forget pass
+    'item50'=>'Forget Password',
+    'item51'=>'Create New Account',
+    'item52'=>'Validate Email',
+    'item53'=>'Your Email',
+    'item54'=>'Send',
+    'item55'=>'verification code will be sent to your e-mail within minutes, Please check the mail / check  spam messages',
+    'item56'=>'Verify Code',
+    'item57'=>'The  verification code was not be sent back to ',
+    'item58'=>'Varification Code',
+    'item59'=>'Email',
+    'item60'=>'Reset Password',
+    'item61'=>'Enter your new password',
+    'item62'=>'Your new password',
+    'item63'=>'Confirm Password',
+    'item64'=>'Confirm',
+    'item65'=>'You have exceeded the limit to enter the verification code',
+    'item66'=>'Failed to send Code, make sure about your email or your internet connection ',
+    'item67'=>'Wrong Code',
+    'item68'=>'change password done successfully ',
+    //validation  error message
+    'error1'=>'Number of characters allowed',
+    'error2'=>'Number of words allowed',
+    'error3'=>'This field is required',
+    'error4'=>'Space Not allowed in this field',
+    'error5'=>'This field accept alphabet characters only',
+    'error6'=>'Invalid Email, please enter a valid email ',
+    'error7'=>'Invalid phone number',
+    'error8'=>'Password not match',
+    'error9'=>'you must enter date greater than current date',
+    'error10'=>"File too Big, please select a file less than 4mb",
+    'error11'=>"Invalid file type, this field accept image only",
+    'error12'=>'you must enter date greater than current date',
+    //detailsCompagin
+    'item70'=>'Compagin',
+    'item71'=>'Compagin Details',
+    'item72'=>'By',
+    'item73'=>'Comment',
+    'item74'=>'Send',
+    'item75'=>'raised of',
+    'item76'=>'goal',
+    'item77'=>'Donars',
+    'item78'=>'Donate Now',
+    'item79'=>'goal',
+    //Donate 
+    'item80'=>'Donate',
+    'item81'=>'Compaign Donations',
+    'item82'=>'Donate Now',
+    'item83'=>'your Donation',
+    'item84'=>'Country',
+    'item84a'=>'Select your Country',
+    'item85'=>'Zip Code',
+    'item86'=>'Credit or Debit Number',
+    'item87'=>'Expiration Month',
+    'item87a'=>'Select Expiration Month',
+    'item88'=>'Expiration Year',
+    'item88a'=>'Seleect Expiration Year',
+    //errorpage 404  //welcomePage
+    'item90'=>'Opps Page not found',
+    'item91'=>'Back to',
+    'item92'=>'WELCOME',
+    'item93'=>'Agreat Cooperative society',
+    'item94'=>'we will redirect you now',
+    'item95'=>'If not',
+    'item96'=>'Click Here',
+    //Profile
+    'item100'=>'Profile',
+    'item101'=>'Welcome to My Profile',
+    'item102'=>'Compaigns',
+    'item103'=>'Donations',
+   //notification
+   'item110'=>'Notifications',
+    'item111'=>'you can see your notifications',
+    'item112'=>'Make as read',
+    'item113'=>'Make as unread',
+    'item114'=>'Make all as read',
+    //notification content
+    'approve'=>'Admin approve your compaign',
+    'reject'=>'Admin reject your compaign',
+    'pause'=>'Admin pause your compaign',
+    'resume'=>'Admin resume your compaign',
+    'delete'=>'Admin delete your compaign',
+    'active'=>'Admin active your compaign',
+
+
+    
+
+
 
 )
 

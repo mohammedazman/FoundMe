@@ -58,10 +58,10 @@
             <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
                 <div class="vertical-align-middle text-center">
                     <!-- start sub title -->
-                    <span class="text-white">Compagin</span>
+                    <span class="text-white"><?php echo $lang['item80'] ?></span>
                     <!-- end sub title -->
                     <!-- start page title -->
-                    <h1 class="text-white">Compagin Details</h1>
+                    <h1 class="text-white"><?php echo $lang['item81'] ?></h1>
                     <!-- end page title -->
                 </div>
             </div>
@@ -80,13 +80,13 @@
                     <div class="col-md-12">
                         <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    <h2 class="text-center text-blue">Donate Now</h2>
-                                <form class="" action="/donate/submitform" method="post" name='DonateForm' id="DonateForm">
-                                  <input type="hidden" name="compaign_id" value="<?php echo $compaign['id']; ?>">
+                                    <h2 class="text-center text-blue"><?php echo $lang['item82'] ?></h2>
+                                <form class="" action="" method="post" name='DonateForm' id="DonateForm">
+                            <input type="hidden" name="compaign_id" value="<?php echo $compaign['id']; ?>">
                                     <div class="row register-form ">
                                     <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="Donation" class="laple-forms">your Donation</label>
+                                                <label for="Donation" class="laple-forms"><?php echo $lang['item83'] ?></label>
                                                 <input type="number" class="form-control donate-dollar" placeholder="0.0 $"  name="Donation"/>
                                                 <?php echo Message::check('Donation');  ?>
                           											<span class="text-danger text-error" id="DonationError"> </span>
@@ -95,22 +95,16 @@
                                     </div>
                                     <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="country" class="laple-forms">Country</label>
-                                                <select class="form-control" class="form-control" placeholder="your country" name="country">
-                                                <option selected>Select Your Country</option>
-                                                <option>Yemen</option>
-                                                <option>Yemen</option>
-                                                <option>Yemen</option>
-                                                <option>Yemen</option>
-                                                </select>
-                                                <?php echo Message::check('country');  ?>
-                                                <span class="text-danger text-error" id="countryError"> </span>
+                                            <label for="code" class="laple-forms"><?php echo $lang['item84'] ?></label>
+                                            <input type="text" name="country" class="form-control" placeholder="<?php echo $lang['item84'] ?> " value='' />
+                                            <?php echo Message::check('country');  ?>
+                                            <span class="text-danger text-error" id="countryError"> </span>
                                             </div>
                                     </div>
                                     <div class="col-md-6">
                                     <div class="form-group">
-                                            <label for="code" class="laple-forms">Zip Code</label>
-                                            <input type="text" name="code" class="form-control" placeholder="Your Code " value='' oninput="" />
+                                            <label for="code" class="laple-forms"><?php echo $lang['item85'] ?></label>
+                                            <input type="text" name="code" class="form-control" placeholder="<?php echo $lang['item85'] ?> " value=''  />
                                             <?php echo Message::check('code');  ?>
                                             <span class="text-danger text-error" id="codeError"> </span>
                                         </div>
@@ -118,47 +112,20 @@
 
                                     <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="nebit-number" class="laple-forms">Credit or Debit Number</label>
-                                                <input type="text" class="form-control" placeholder="Debit Number" name="debitNumber"/>
+                                                <label for="nebit-number" class="laple-forms"><?php echo $lang['item86'] ?></label>
+                                                <input type="text" class="form-control" placeholder="<?php echo $lang['item86'] ?>" name="debitNumber"/>
                                                 <?php echo Message::check('debitNumber');  ?>
                                                 <span class="text-danger text-error" id="debitNumberError"> </span>
                                             </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="month" class="laple-forms">Expiration Month</label>
-                                            <select class="form-control" class="form-control" name="month">
-                                                <option class="selected">Select Expiration Month</option>
-                                                <option>02-Jun</option>
-                                                <option>02-Feb</option>
-                                                <option>02-Oct</option>
-                                                <option>02-Nov</option>
-                                                </select>
-                                                <?php echo Message::check('month');  ?>
-                                                <span class="text-danger text-error" id="monthError"> </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="year" class="laple-forms">Expiration Year</label>
-                                            <select class="form-control" class="form-control" name="year">
-                                                <option class="selected">Select Expiration Year</option>
-                                                <option>2020</option>
-                                                <option>2021</option>
-                                                <option>2023</option>
-                                                <option>2024</option>
-                                                </select>
-                                                <?php echo Message::check('year');  ?>
-                                                <span class="text-danger text-error" id="yearError"> </span>
-                                        </div>
-                                    </div>
-
+                                  
                                                 </div>
                                                 <center>
                                                     <input type="submit"  style="display: none;" id='ajaxSubmit'  value="Add"  name="addDonation" onclick="upload_to_db();" />
+                                            <input id="DonateBtn" type="submit" class="btnRegister float-none"  value="<?php echo $lang['item82'] ?>"/>
                                             <!-- <input id="DonateBtn" type="submit" class="btnRegister float-none"  value="Donate Now"/> -->
-                                            <button type="button" class="btnadd"  value="Add" id="DonateBtn" name="addComp"  />Donate Now</button>
+                                            <!-- <button type="button" class="btnadd"  value="Add" id="DonateBtn" name="addComp"  />Donate Now</button> -->
 
                                             </center>
                                             </div>
@@ -176,9 +143,9 @@
                         <div class="container">
                         <h4 class="text-center"><?php echo $compaign['title']; ?></h4>
 
-                      <h3 class="text-center text-blue"><span class="collection">0.0</span> <span>$ </span><span class="goal-num">raised of $<span class="cost"><?php echo $compaign['cost']; ?></span> goal</span></h3>
+                        <h3 class="text-center text-blue"><span class="collection">0.0</span> <span>$ </span><span class="goal-num"><?php echo $lang['item75']; ?> $<span class="cost"><?php echo $compaign['cost']; ?></span> <?php echo $lang['item76']; ?></span></h3>
                             <div class="progress progress-details">
-                            <div class="progress-bar bg-yellow" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-yellow" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                             <div class="">
                             <img src="/uploads/<?php echo $compaign['galary']; ?>" class="pt-10px img-fluid" width="auto">
@@ -186,7 +153,7 @@
                             <div class="text-center p-all-10">
                                 <p><?php echo $compaign['descrption']; ?></p>
                             </div>
-                         <a href="" class="a-donars" data-toggle="modal" data-target="#exampleModalLong"><h5 class="text-center text-black"><i class="fas fa-donate"></i>Donars <span class="donars-num">300K</span></h5></a>
+                            <a href="" class="a-donars" data-toggle="modal" data-target="#exampleModalLong"><h5 class="text-center text-black"><i class="fas fa-donate"></i><?php echo $lang['item77']; ?> <span class="donars-num donars">00</span></h5></a>
 
                         </div>
                         </div>
@@ -234,7 +201,6 @@
   </div>
 </div>
 
-<script src="/js/home/bootstrap.min.js"></script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
   <script type="text/javascript" src="/js/home/jquery.form.js"></script>
@@ -273,8 +239,7 @@ $(document).ready(function(){
     $("#DonateBtn").click(function(){
        event.preventDefault();
 		if(Requirevalidation(document.DonateForm.Donation)&&Requirevalidation(document.DonateForm.country)&&
-		Requirevalidation(document.DonateForm.code)&&Requirevalidation(document.DonateForm.debitNumber)&&
-		Requirevalidation(document.DonateForm.month)&&Requirevalidation(document.DonateForm.year)){
+		Requirevalidation(document.DonateForm.code)&&Requirevalidation(document.DonateForm.debitNumber)){
 			serverSideValidate()
 
 
@@ -339,6 +304,7 @@ jQuery_1_3_2.ajax({
        complete: function(xhr) {
          if(xhr.responseText)
          {
+          //  alert(xhr.responseText);
            progressBar(100,100);
            setTimeout(function () {
               window.location.replace("/home/index");

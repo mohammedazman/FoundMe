@@ -137,9 +137,11 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
 <script>
 
 function load_data(){
+
   var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
   var err="<h1>ther is error pleas try agin</h2>";
 		jQuery_1_3_2.ajax({
+
 			url:"/managecompaign",
 			method:"POST",
       data:{type:"2"},

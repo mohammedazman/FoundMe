@@ -143,7 +143,6 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
   </div>
 </div>
 
-<script src="/js/home/bootstrap.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
   <script type="text/javascript" src="/js/home/jquery.form.js"></script>
   <script type="text/javascript">
@@ -198,11 +197,11 @@ var jQuery_form = $.noConflict(true);
                 // The size of the file.
                 if (file > 50000) {
                     document.getElementById(error).innerHTML=
-                      "File too Big, please select a file less than 4mb";
+                    <?php echo "'".$lang['error10']."'" ?>;
                 }
                 else if ((fname=='gallary' &&  ftype !='image/jpeg') || (fname=='file' &&  ftype !='application/pdf')) {
                   document.getElementById(error).innerHTML=
-                      "Invalid file type, this field accept image only";
+                  <?php echo "'".$lang['error11']."'" ?>;
                 } else {
                   document.getElementById(error).innerHTML='';
                 }

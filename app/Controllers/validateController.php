@@ -36,6 +36,29 @@ public function signupValidate($formData)
 
 
   }
+
+
+  public function editProfileValidate($formData)
+{
+    $this->validation=new Validation();
+
+    $this->validation->checkFild(
+        ['first_name'=>array(['required' => 'required', 'maxWords' => '1'])
+        ,'last_name'=>array(['required' => 'required', 'maxWords' => '1'])
+        ,'phone'=>array(['required' => 'required'])],$formData
+      );
+      if ($this->validation->GetStatus()===1) {
+        return  json_encode(array("statusCode"=>200,"message"=>"Process done successfully"));
+
+      }
+      else{
+        return  json_encode(array("statusCode"=>204,"message"=>json_encode($_SESSION)));
+
+    }
+
+
+
+  }
   function stringToArray($formArray) {
 
     $returnArray =[];
@@ -127,12 +150,16 @@ if($_POST['type']=="login"){
   $data=$validate->stringToArray(explode('&',$_POST['formData']));
   echo $validate->addCompainValidate($data);
 }
-
 if($_POST['type']=="addDonation"){
  $data=$validate->stringToArray(explode('&',$_POST['formData']));
  echo $validate->addDonationValidate($data);
 }
 
+if($_POST['type']=="editProfile"){
+  $data=$validate->stringToArray(explode('&',$_POST['formData']));
+  echo $validate->editProfileValidate($data);
+ }
+ 
 }
 
  ?>

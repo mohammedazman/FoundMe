@@ -95,22 +95,16 @@
                                     </div>
                                     <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="country" class="laple-forms"><?php echo $lang['item84'] ?></label>
-                                                <select class="form-control" class="form-control" placeholder="your country" name="country">
-                                                <option selected><?php echo $lang['item84a'] ?></option>
-                                                <option>Yemen</option>
-                                                <option>Yemen</option>
-                                                <option>Yemen</option>
-                                                <option>Yemen</option>
-                                                </select>
-                                                <?php echo Message::check('country');  ?>
-                                                <span class="text-danger text-error" id="countryError"> </span>
+                                            <label for="code" class="laple-forms"><?php echo $lang['item84'] ?></label>
+                                            <input type="text" name="country" class="form-control" placeholder="<?php echo $lang['item84'] ?> " value='' />
+                                            <?php echo Message::check('country');  ?>
+                                            <span class="text-danger text-error" id="countryError"> </span>
                                             </div>
                                     </div>
                                     <div class="col-md-6">
                                     <div class="form-group">
                                             <label for="code" class="laple-forms"><?php echo $lang['item85'] ?></label>
-                                            <input type="text" name="code" class="form-control" placeholder="<?php echo $lang['item85'] ?> " value='' oninput="" />
+                                            <input type="text" name="code" class="form-control" placeholder="<?php echo $lang['item85'] ?> " value=''  />
                                             <?php echo Message::check('code');  ?>
                                             <span class="text-danger text-error" id="codeError"> </span>
                                         </div>
@@ -125,35 +119,7 @@
                                             </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="month" class="laple-forms"><?php echo $lang['item87'] ?></label>
-                                            <select class="form-control" class="form-control" name="month">
-                                                <option class="selected"><?php echo $lang['item87a'] ?></option>
-                                                <option>02-Jun</option>
-                                                <option>02-Feb</option>
-                                                <option>02-Oct</option>
-                                                <option>02-Nov</option>
-                                                </select>
-                                                <?php echo Message::check('month');  ?>
-                                                <span class="text-danger text-error" id="monthError"> </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="year" class="laple-forms"><?php echo $lang['item88'] ?></label>
-                                            <select class="form-control" class="form-control" name="year">
-                                                <option class="selected"><?php echo $lang['item88a'] ?></option>
-                                                <option>2020</option>
-                                                <option>2021</option>
-                                                <option>2023</option>
-                                                <option>2024</option>
-                                                </select>
-                                                <?php echo Message::check('year');  ?>
-                                                <span class="text-danger text-error" id="yearError"> </span>
-                                        </div>
-                                    </div>
-
+                                  
                                                 </div>
                                                 <center>
                                                     <input type="submit"  style="display: none;" id='ajaxSubmit'  value="Add"  name="addDonation" onclick="upload_to_db();" />
@@ -235,7 +201,6 @@
   </div>
 </div>
 
-<script src="/js/home/bootstrap.min.js"></script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
   <script type="text/javascript" src="/js/home/jquery.form.js"></script>
@@ -274,8 +239,7 @@ $(document).ready(function(){
     $("#DonateBtn").click(function(){
        event.preventDefault();
 		if(Requirevalidation(document.DonateForm.Donation)&&Requirevalidation(document.DonateForm.country)&&
-		Requirevalidation(document.DonateForm.code)&&Requirevalidation(document.DonateForm.debitNumber)&&
-		Requirevalidation(document.DonateForm.month)&&Requirevalidation(document.DonateForm.year)){
+		Requirevalidation(document.DonateForm.code)&&Requirevalidation(document.DonateForm.debitNumber)){
 			serverSideValidate()
 
 
@@ -340,6 +304,7 @@ jQuery_1_3_2.ajax({
        complete: function(xhr) {
          if(xhr.responseText)
          {
+          //  alert(xhr.responseText);
            progressBar(100,100);
            setTimeout(function () {
               window.location.replace("/home/index");

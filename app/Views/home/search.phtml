@@ -64,6 +64,8 @@ $item=$this->view_data['item'];?>
 <!-- get result with ajax -->
 <script>
       function load_compaign(){
+        var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
+
         jQuery_1_3_2.ajax({
             url:"/search/find",
             method:"POST",
@@ -71,7 +73,7 @@ $item=$this->view_data['item'];?>
             item:"<?php echo $item; ?>"
             },
             beforeSend:function() {
-              $('#compaigns').html("<h3>Whaiting.....</h3>");
+              $('#compaigns').html(loading);
 
             }
             ,
@@ -84,9 +86,18 @@ $item=$this->view_data['item'];?>
 
               $.each( compaigns.data, function( index, row ) {
 
-          html+='<a href="/viewCompaign/show/'+row.id+'" class="btn btn-blue text-info m-2   wow flipInX">'
-              +row.title+
-                  '</a>';
+          html+=    html+=' <div class="col-md-4 img-overlay">'+
+                        '<div class="card">'+
+                            '<img class="card-img-top" src="/uploads/'+row.galary+'" alt="Card image cap">'+
+                            '<div class="overlay">'+
+                            '<div class="text-overlay"> '+
+                              '<h5 class="card-title">compagin</h5>'+
+                              '<p class="card-text">'+row.title+'</p>'+
+                              '<a href="/viewCompaign/show/'+row.id+'" class="btn btn-home-comp">Go somewhere</a>'+
+                            '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>';;
 
             });
 
@@ -100,6 +111,8 @@ $item=$this->view_data['item'];?>
 
       // load Tags
       function load_tags(){
+        var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
+
         jQuery_1_3_2.ajax({
             url:"/search/find",
             method:"POST",
@@ -107,7 +120,7 @@ $item=$this->view_data['item'];?>
             item:"<?php echo $item; ?>"
           },
           beforeSend:function() {
-            $('#tags').html("<h3>Whaiting.....</h3>");
+            $('#tags').html(loading);
 
           }
           ,
@@ -116,12 +129,17 @@ $item=$this->view_data['item'];?>
               html='';
 
               var compaigns=JSON.parse(data);
-               // alert(data);
+                // alert(data);
+
+
+
+
 
               $.each( compaigns.data, function( index, row ) {
 
-          html+='<a href="/viewCompaign/show/'+row.id+'" class="btn btn-blue text-info m-2   wow flipInX">'
-              +row.tags+
+
+          html+='<a href="/tags/index/'+row+'" class="btn btn-blue text-info m-2   wow flipInX">'
+              +row+
                   '</a>';
 
             });

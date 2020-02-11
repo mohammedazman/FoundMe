@@ -1,6 +1,11 @@
 <?php
 
-  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
+  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
+
+  $tags=isset($this->view_data['tags'])?$this->view_data['tags']:'';
+
+  $tag=isset($this->view_data['tag'])?$this->view_data['tag']:'';
+   ?>
 
 
 
@@ -33,100 +38,39 @@
             <div class="row">
                 <!-- details PHOTO -->
                 <div class="col-md-8">
-                                <form class="" action="" method="post" name='' id="">        
+                                <form class="" action="" method="post" name='' id="">
                                     <div class="col-md-6">
                                             <div class="form-group">
                                                 <!-- <label for="country" class="laple-forms">Country</label> -->
-                                                <select class="form-control form-control-allcomp" placeholder="your country" name="country">
-                                                <option selected>All compagin</option>
-                                                <option>Latest Compagin</option>
-                                                <option>New Compagin</option>
-                                                </select>  
+                                                <select class="form-control form-control-allcomp" placeholder="your country" name="selectTag" id="selectTag">
+                                                <option value="" <?php empty($tag)?'selected':''; ?>>All compagin</option>
+                                                <?php
+                                                  if (array_key_exists('tags',$this->view_data)){
+
+                                                  foreach ($tags as $ta) {
+
+                                                  echo "<option value='$ta'";
+                                                  if ($tag==$ta) {
+                                                    echo "selected";
+                                                  }
+                                                  echo" >$ta</option>";
+
+                                                  }
+
+                                                }
+                                                  ?>
+                                                </select>
                                             </div>
                                     </div>
-                                </form> 
-                </div>                   
-            </div>                   
-    </div>                   
+                                </form>
+                </div>
+            </div>
+    </div>
 <div class="container">
 <!-- <div class="row"> -->
-<div class="tab-pane text-center gallery" id="works">
-          <div class="row">
-              <div class="col-md-4 img-overlay">
-                  <div class="card">
-                      <img class="card-img-top" src="/images/home/1(5).jpg" alt="Card image cap">
-                      <div class="overlay">
-                      <div class="text-overlay"> 
-                        <h5 class="card-title">compagin</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-home-comp">Go somewhere</a>
-                      </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4 img-overlay">
-                  <div class="card">
-                      <img class="card-img-top" src="/images/home/1(3).jpg" alt="Card image cap">
-                      <div class="overlay">
-                      <div class="text-overlay"> 
-                      <h5 class="card-title">compagin</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-                        <a href="#" class="btn btn-home-comp">Go somewhere</a>
-                      </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4 img-overlay">
-                  <div class="card">
-                      <img class="card-img-top" src="/images/home/1(6).jpg" alt="Card image cap">
-                      <div class="overlay">
-                      <div class="text-overlay"> 
-                        <h5 class="card-title">compagin</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-                        <a href="#" class="btn btn-home-comp">Go somewhere</a>
-                      </div>
-                      </div>
-                  </div>
-              </div>
+<div class="tab-pane text-center gallery" id="compaigns">
 
-              <div class="col-md-4 img-overlay">
-                  <div class="card">
-                      <img class="card-img-top" src="/images/home/1(5).jpg" alt="Card image cap">
-                      <div class="overlay">
-                      <div class="text-overlay"> 
-                        <h5 class="card-title">compagin</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-home-comp">Go somewhere</a>
-                      </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4 img-overlay">
-                  <div class="card">
-                      <img class="card-img-top" src="/images/home/1(3).jpg" alt="Card image cap">
-                      <div class="overlay">
-                      <div class="text-overlay"> 
-                      <h5 class="card-title">compagin</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-                        <a href="#" class="btn btn-home-comp">Go somewhere</a>
-                      </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4 img-overlay">
-                  <div class="card">
-                      <img class="card-img-top" src="/images/home/1(6).jpg" alt="Card image cap">
-                      <div class="overlay">
-                      <div class="text-overlay"> 
-                        <h5 class="card-title">compagin</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-                        <a href="#" class="btn btn-home-comp">Go somewhere</a>
-                      </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          
+
           <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
@@ -146,8 +90,8 @@
                 </li>
             </ul>
           </nav>
-        
-         
+
+
   </div>
 </div>
 
@@ -165,5 +109,64 @@
 
 <script>
 new WOW().init();
+
+function load_compaign(){
+var selectd=$("select#selectTag").children("option:selected").val();
+var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
+  jQuery_1_3_2.ajax({
+      url:"/tags/findCompaign",
+      method:"POST",
+      data:{type:"getCompaign",
+      item:selectd
+      },
+      beforeSend:function() {
+        $('#compaigns').html(loading);
+
+      }
+      ,
+      success:function(data)
+      {
+        html='<div class="row">';
+
+        var compaigns=JSON.parse(data);
+        // alert(d)
+        var count=1;
+        $.each( compaigns.data, function( index, row ) {
+
+
+      html+=' <div class="col-md-4 img-overlay">'+
+                  '<div class="card">'+
+                      '<img class="card-img-top" src="/uploads/'+row.galary+'" alt="Card image cap">'+
+                      '<div class="overlay">'+
+                      '<div class="text-overlay"> '+
+                        '<h5 class="card-title">compagin</h5>'+
+                        '<p class="card-text">'+row.title+'</p>'+
+                        '<a href="/viewCompaign/show/'+row.id+'" class="btn btn-home-comp">Go somewhere</a>'+
+                      '</div>'+
+                      '</div>'+
+                  '</div>'+
+              '</div>';
+              if (count%3==0 ) {
+              html+='</div><div class="row">';
+              }
+              count++;
+
+      });
+
+
+      $('#compaigns').html(html);
+
+
+    }
+});
+}
+$(document).ready(function(){
+        load_compaign();
+  });
+
+  $("select#selectTag").change(function () {
+    load_compaign();
+  })
+
 </script>
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

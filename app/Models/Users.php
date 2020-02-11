@@ -89,7 +89,7 @@ public function lastID()
 
   public function deleteUsers($args){
     $oStmt = 'update users set status=? WHERE id in (?)';
-  
+
 
     return $this->db->QueryCrud($oStmt,$args,0);
 }
@@ -105,6 +105,11 @@ public function changePass(array $aData)
 {
   $oStmt ='update users set password=? WHERE id =? ';
   return  $this->db->QueryCrud($oStmt,$aData,0);
+}
+//
+public function countUsers()
+{
+  return $this->db->QueryCrud("SELECT COUNT(*) as count from users")[0];
 }
 
 }

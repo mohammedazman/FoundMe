@@ -92,9 +92,15 @@ public function find($aData)
 
   public function deleteComments($aData){
     $oStmt = 'update comments set status=? WHERE id in (?)';
-  
+
 
     return $this->db->QueryCrud($oStmt,$aData,0);
+}
+
+//
+public function countComments()
+{
+  return $this->db->QueryCrud("SELECT COUNT(*) as count from comments")[0];
 }
 
 }

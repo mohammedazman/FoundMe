@@ -88,6 +88,8 @@ public function getUSerCompaigns($args)
 }
 
 
+
+
 // search for compaigns by title
 public function searchCompaign($args)
 {
@@ -104,6 +106,23 @@ public function searchTags($args)
 
   $oStmt ='SELECT * FROM compigans  WHERE  tags LIKE ?';
   return  $this->db->QueryCrud($oStmt,[$arg]);
+}
+
+public function allTags()
+{
+$tags=[];
+$count=0;
+$compaigns=$this->all();
+foreach ($compaigns as $key => $value) {
+    $tags=array_unique(array_merge($tags,Helper::tags($value['tags'])));
+}
+return $tags;
+}
+
+//
+public function countCompaigns()
+{
+  return $this->db->QueryCrud("SELECT COUNT(*) as count from compigans")[0];
 }
 
 }

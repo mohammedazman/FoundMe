@@ -22,7 +22,7 @@ class manageusersController extends Controller
     public function ShowDeletedUsers(){
 
       $this->view('cp'.DIRECTORY_SEPARATOR.'deleteUsers');
-      $this->view->pageTitle='Active Users';
+      $this->view->pageTitle='Delete Users';
       $this->view->render();
 
 

@@ -52,18 +52,18 @@
     </section>
 	<script>
 $(document).ready(function(){
-    $("#logintBtn").click(function(){  
-		event.preventDefault();  
+    $("#logintBtn").click(function(){
+		event.preventDefault();
 		 if(Requirevalidation(document.loginForm.email)&&Requirevalidation(document.loginForm.password))
-		serverSideValidate(); 
-       
+		serverSideValidate();
+
     });
 });
 
 
 function serverSideValidate(){
-	
-	$.ajax({
+
+	jQuery_1_3_2.ajax({
 				url:"/validate",
 				method:"POST",
 				 data:{
@@ -74,9 +74,9 @@ function serverSideValidate(){
 				success:function(data)
 				{
 			var result=JSON.parse(data);
-		
+
 			if(result.statusCode==200){
-	
+
 				$("#loginForm").submit(); // Submit the form
 			}
 			else{
@@ -85,12 +85,12 @@ function serverSideValidate(){
 						if(key=='msgState' || key=='main');
 						else
 						document.getElementById(key+'Error').innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+value;
-	
+
 						});
 						return false;
 				}
 		  }
-			
+
 				   });
 				}
 </script>

@@ -98,8 +98,6 @@ public function signupValidate($formData)
          'country' => array(['required' => 'required' ]),
          'code' => array(['required' => 'required']),
          'debitNumber' => array(['required' => 'required' ]),
-         'month' => array(['required' => 'required']),
-         'year' => array(['required' => 'required' ]),
      ],$formData);
 
      if ($this->validation->GetStatus()===1) {

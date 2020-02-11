@@ -2,7 +2,7 @@
 /**
  *
  */
-class adminController extends Controller
+class followController extends Controller
 {
   private $follow;
   public function __construct()
@@ -16,16 +16,20 @@ class adminController extends Controller
     
   
   }
-  public function follow($user_id,$compaign_id,$owner_id)
+  public function follow($compaign_id,$owner_id)
   {
-    $this->follow->addFoloow([$user_id,$compaign_id]);
-    Notification::addNoti('starting follow your compaign',$owner_id,'follow compaign',$compaign_id); 
+    $result=$this->follow->addFoloow([Session::get('userID'),$compaign_id]);
+    Notification::addNoti(Session::get('userName').' start following your compaign',$owner_id,'follow compaign',$compaign_id); 
+    if($result)
+        return json_encode(array('statusCode'=>200));
 
   }
-  public function unFollow($user_id,$compaign_id)
+  public function unFollow($compaign_id)
   {
-
-    $this->follow->delFololow([$user_id,$compaign_id]);
+echo $compaign_id;
+    $result=$this->follow->delFololow([Session::get('userID'),$compaign_id]);
+    if($result)
+    return json_encode(array('statusCode'=>200));
 
   }
   public function getFollowers($compaign_id)
@@ -38,5 +42,15 @@ class adminController extends Controller
 
 
 }
+$follow=new followController();
+if(count($_POST)>0){
+if($_POST['method']=="follow"){
 
+  echo $follow->follow($_POST['cid'],$_POST['owner']);
+  }
+  elseif($_POST['method']=="unfollow"){
+
+    echo $follow->unFollow($_POST['cid']);
+    }
+}
  ?>

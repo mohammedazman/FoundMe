@@ -116,7 +116,7 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
     </center>
     <div class="container">
     <!-- <div class="row"> -->
-    <div class="tab-pane text-center gallery" id="works">
+    <div class="tab-pane text-center mx-auto gallery" id="works">
 
               <div class="row" id="active-compain">
 
@@ -137,17 +137,25 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
 <script>
 
 function load_data(){
-		$.ajax({
+
+  var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
+  var err="<h1>ther is error pleas try agin</h2>";
+		jQuery_1_3_2.ajax({
+
 			url:"/managecompaign",
 			method:"POST",
       data:{type:"2"},
+      beforeSend:function () {
+        jQuery_1_3_2('#active-compain').html(loading);
+      },
+      timeout: 10000,
 			success:function(data)
 			{
         html='';
         var userInfo=JSON.parse(data);
         // alert(d)
 
-        $.each( userInfo.data, function( index, row ) {
+        jQuery_1_3_2.each( userInfo.data, function( index, row ) {
         html+=' <div class="col-md-4 img-overlay">'+
                   '<div class="card">'+
                       '<img class="card-img-top" src="/uploads/'+row.galary+'" alt="Card image cap">'+
@@ -161,14 +169,25 @@ function load_data(){
                   '</div>'+
               '</div>';
       });
-      $('#active-compain').html(html);
+      jQuery_1_3_2('#active-compain').html(html);
 
-    }
+    },
+    statusCode:{
+      404:function () {
+        jQuery_1_3_2('#active-compain').html(err);
+      }
+    },
+    error:function (xhr,textStatus,errorThrown) {
+      if (textStatus=='timeout') {
+        jQuery_1_3_2('#active-compain').html(err);
+
+      }
+     }
 
 
 		       });
 }
-$(document).ready(function(){
+jQuery_1_3_2(document).ready(function(){
          load_data();
   });
 

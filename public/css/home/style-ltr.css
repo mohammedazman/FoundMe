@@ -1,6 +1,10 @@
 html *{
     -webkit-font-smoothing: antialiased;
 }
+html {
+    scroll-behavior: smooth;
+}
+
 /* fonts */
 @import url('https://fonts.googleapis.com/css?family=Alata&display=swap');
 body{
@@ -8,7 +12,7 @@ body{
 }
 /* text color */
 .text-blue{
-    color: #3aa3a9;
+    color: #596275;
 }
 .text-black{
     color: #303131;
@@ -16,15 +20,18 @@ body{
 .text-yellow{
     color: #f5e720;
 }
+.text-white-62{
+  color:rgba(255, 255, 255, 0.62)!important
+}
 /* backgrounds colors */
 .bg-green{
-    background-color:  #3aa3a9;
+    background-color:  #596275;
 }
 .bg-black{
     background-color: black;
 }
 .bg-blue{
-    background: -webkit-linear-gradient(left, #2b9096, #7dcdd1);
+    background: -webkit-linear-gradient(left, #596275, #7c879e);
 }
 .no-pg-color{
     background-color: none !important;
@@ -47,26 +54,26 @@ body{
 }
 /* bottons */
 .btn-blue {
-    color: #fbfcfd;
-    background-color: #f8f9fa00;
-    width: 25%;
-    border: 2px solid #3aa3a9;
-    font-size: 18px;
-    border-radius: 22px;
+    margin: 20px;
+    color: #596275;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 8px; 
 }
 .btn-white {
-    color: #3aa3a9;
+    color: #596275;
     background-color: #fbfcfd;
     width: auto;
     border: 2px solid #fbfcfd;
     font-size: 18px;
     border-radius: 22px;
 }
-.btn:hover {
-    color: #3aa3a9;
-    text-decoration: none;
-    background-color: #ffffff;
-    border: 2px solid #ffffff;
+.btn-blue:hover {
+    color: #fbfcfd;
+    background-color: #f8f9fa00;
+    border: 2px solid #dbdde1;
+    border-radius: 8px;
 }
 /* text size */
 .text-size-22px{
@@ -115,7 +122,7 @@ header nav {
 }
 .left-menu{
     position: absolute;
-    left: 70px;
+    left: 85px;
 }
 .pic-profile-header{
     border-radius: 50%;
@@ -176,7 +183,7 @@ header nav {
     color: #fff !important;
 }
 .dropdown-menu a{
-    color: #3aa3a9 !important;
+    color: #596275 !important;
 }
 .dropdown-item.active, .dropdown-item:active {
     color: #fff !important;
@@ -248,7 +255,7 @@ header nav {
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    background: #3aa3a9;
+    background: #596275;
     color: #fff;
     font-weight: 600;
     width: 50%;
@@ -313,14 +320,14 @@ header nav {
     border: none;
     border-radius: 1.5rem;
     padding: 1%;
-    background: #3aa3a9;
+    background: #596275;
     color: #fff;
     font-weight: 600;
     width: 28%;
     font-size: 18px;
 }
 .p-section {
-    padding: 130px 0;
+    padding: 210px 0px;
     overflow: hidden;
 }
 .display-table-cell {
@@ -458,7 +465,7 @@ a .material-icons {
 .nav-pills .nav-item .nav-link.active {
     color: #fff;
     font-size: 18px;
-    background-color: #3aa3a9;
+    background-color: #596275;
     box-shadow: 0 2px 4px 0 rgba(158, 155, 155, 0.2), 0 5px 24px -11px rgba(86, 86, 86, 0.6);
 }
 .nav-pills .nav-item .nav-link {
@@ -543,26 +550,40 @@ img.rounded {
     color: #999;
 }
 /* footer */
-footer{
-    margin-top: 10px;
-    color: #555;
-    padding: 25px;
-    font-weight: 300;
+
+
+
+.footer{
+    background: #596275;
+    color:white;
 }
-.footer p{
-    margin-bottom: 0;
-    font-size: 14px;
-    margin: 0 0 10px;
-    font-weight: 300;
+    
+.links ul li a {
+    list-style-type: none;
+    color: white;
+    transition: color .2s;
+    } 
+.links ul li a:hover { 
+    text-decoration:none;
+    color:#4180CB;
+    }
+
+.about-company i{
+      font-size: 25px;
+    }
+.about-company a{
+        color:white;
+        transition: color .2s;
+    }
+
+.about-company a:hover{
+    color:#4180CB
 }
-footer p a{
-    color: #3aa3a9;
-    font-weight: 400;
-    font-size: 20px;
+.location i{
+    font-size: 18px;
 }
-footer p a:hover {
-    color: #555;
-    text-decoration: none;
+.copyright p{
+    border-top:1px solid rgba(255,255,255,.1);
 }
 /* photo pages */
 .background-position-top {
@@ -621,7 +642,7 @@ footer p a:hover {
     background-color: #ccc;
 }
 .radio input:checked ~ .checkmark {
-    background-color: #3aa3a9;
+    background-color: #596275;
 }
 .checkmark:after {
     content: "";
@@ -647,7 +668,7 @@ footer p a:hover {
     float: none !important;
 }
 /* scroll down start */
-.demo a {
+.demo {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -698,7 +719,7 @@ footer p a:hover {
     right: 196px;
     color: #fff !important;
     padding: 10px;
-    background-color: #3aa3a9;
+    background-color: #596275;
     border-radius: 50%;
     transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
 }
@@ -721,7 +742,7 @@ footer p a:hover {
 }
 .img-file-input::before {
     content: 'Select some Images';
-    color: #3aa3a9;
+    color: #596275;
     display: inline-block;
     padding: 1px -22px;
     outline: none;
@@ -750,7 +771,7 @@ footer p a:hover {
 }
 .pdf-file-input::before {
     content: 'Select Your PDF ';
-    color: #3aa3a9;
+    color: #596275;
     display: inline-block;
     padding: 1px -22px;
     outline: none;
@@ -775,7 +796,7 @@ footer p a:hover {
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    background: #3aa3a9;
+    background: #596275;
     color: #fff;
     font-weight: 600;
     width: 50%;
@@ -785,14 +806,14 @@ footer p a:hover {
     display: inline-block;
     width: 150px;
     height: 150px;
-    border: 1px solid #3aa3a9;
+    border: 1px solid #596275;
     margin-top: 15px;
     margin-right: 5px;
 }
 .form-control:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #3aa3a9;
+    border-color: #596275;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgb(58, 163, 169);
 }
@@ -810,11 +831,12 @@ footer p a:hover {
 }
 .icon-home-arrow{
     transform: rotate(20deg);
+    z-index: 99;
 }
 .laple-forms{
     font-size: 16px;
     padding-left: 12px;
-    color: #3aa3a9;
+    color: #596275;
 }
 ::placeholder {
     font-size: 16px;
@@ -850,13 +872,13 @@ footer p a:hover {
 display: inline;
 }
 .profile-info-tow{
-    color: #3aa3a9;
+    color: #596275;
     font-size: 20px;
     position: absolute;
     left: 22%;
 }
 .title-home{
-    color: #3aa3a9;
+    color: #596275;
     padding-bottom: 100px;
 }
 .error-icon{
@@ -875,7 +897,7 @@ display: inline;
 .fa-circle{
     font-size: 10px;
     padding-right: 3px;
-    color: #3aa3a9;
+    color: #596275;
     position: absolute;
     left: 0;
     padding-top: 10px;
@@ -893,10 +915,6 @@ input[type='file'] {
 .head{
     padding:5px 15px;
     border-radius: 3px 3px 0px 0px;
-}
-.footer{
-    padding:5px 15px;
-    border-radius: 0px 0px 3px 3px;
 }
 .notification-box{
     padding: 2px 0px;
@@ -947,7 +965,7 @@ input[type='file'] {
     width: 100%;
     opacity: 0;
     transition: .5s ease;
-    background-color: #3aa3a9ad;
+    background-color: #596275ad;
 }
 
 .img-overlay:hover .overlay {
@@ -969,7 +987,7 @@ input[type='file'] {
 }
 
 .btn-home-comp{
-    color: #3aa3a9;
+    color: #596275;
     text-decoration: none;
     background-color: #ffffff;
     border: 2px solid #ffffff;
@@ -991,7 +1009,7 @@ input[type='file'] {
 }
 .info-icon{
     left: 46px;
-    background-color: #3aa3a9;
+    background-color: #596275;
     border-radius: 50%;
     font-size: 14px;
     padding: 7px;
@@ -1068,7 +1086,7 @@ input[type='file'] {
     line-height: 1.21;
 }
 .donars-num{
-    color: #3aa3a9;
+    color: #596275;
     font-weight: bold;
     font-size: .875rem;
     line-height: 1.21;
@@ -1079,7 +1097,7 @@ input[type='file'] {
     border: none;
     border-radius: 6px;
     padding: 1%;
-    background: #3aa3a9;
+    background: #596275;
     color: #fff;
     font-weight: 600;
     width: 80%;
@@ -1094,7 +1112,7 @@ input[type='file'] {
     border: none;
     border-radius: 6px;
     padding: 8px;
-    background: #3aa3a9;
+    background: #596275;
     color: #fff;
     font-weight: 600;
     width: auto;
@@ -1111,7 +1129,7 @@ input[type='file'] {
   }
 .a-donars h5 i {
     padding: 10px 5px;
-    color: #3aa3a9;
+    color: #596275;
     font-size: 16px;
 }
 .by-user{
@@ -1119,7 +1137,7 @@ input[type='file'] {
 }
 .by-user i{
     padding: 10px 5px;
-    color: #3aa3a9;
+    color: #596275;
     font-size: 16px;
 }
 
@@ -1168,7 +1186,7 @@ input[type='file'] {
 }
 .date-comm{
     font-size: 14px;
-    color: #3aa3a9;
+    color: #596275;
 }
 
 #user-compign{
@@ -1379,7 +1397,7 @@ font-family: 'Droid Arabic Kufi'
 }
 
 .not_read{
-	background-color:#3aa3a912;
+	background-color:#59627512;
 }
 
 .not_read:hover{
@@ -1401,7 +1419,7 @@ font-family: 'Droid Arabic Kufi'
     line-height: 1.21;
 }
 .donars-num{
-    color: #3aa3a9;
+    color: #596275;
     font-weight: bold;
     font-size: .875rem;
     line-height: 1.21;
@@ -1412,7 +1430,7 @@ font-family: 'Droid Arabic Kufi'
     border: none;
     border-radius: 6px;
     padding: 1%;
-    background: #3aa3a9;
+    background: #596275;
     color: #fff;
     font-weight: 600;
     width: 80%;
@@ -1427,7 +1445,7 @@ font-family: 'Droid Arabic Kufi'
     border: none;
     border-radius: 6px;
     padding: 8px;
-    background: #3aa3a9;
+    background: #596275;
     color: #fff;
     font-weight: 600;
     width: auto;
@@ -1444,7 +1462,7 @@ font-family: 'Droid Arabic Kufi'
   }
 .a-donars h5 i {
     padding: 10px 5px;
-    color: #3aa3a9;
+    color: #596275;
     font-size: 16px;
 }
 .by-user{
@@ -1452,7 +1470,7 @@ font-family: 'Droid Arabic Kufi'
 }
 .by-user i{
     padding: 10px 5px;
-    color: #3aa3a9;
+    color: #596275;
     font-size: 16px;
 }
 
@@ -1502,7 +1520,7 @@ font-family: 'Droid Arabic Kufi'
 }
 .date-comm{
     font-size: 14px;
-    color: #3aa3a9;
+    color: #596275;
 }
 .box-donate{
     padding-top: 80px;
@@ -1538,7 +1556,7 @@ font-family: 'Droid Arabic Kufi'
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    background: #3aa3a9;
+    background: #596275;
     color: #fff;
     font-weight: 600;
     width: 50%;
@@ -1578,7 +1596,7 @@ font-family: 'Droid Arabic Kufi'
   
   .progress-circle-prog {
   fill: none; 
-  stroke: #3aa3a9;
+  stroke: #596275;
   stroke-width: 10px;  
   stroke-dasharray: 0 999;    
   stroke-dashoffset: 0px;
@@ -1636,7 +1654,7 @@ font-family: 'Droid Arabic Kufi'
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    background: #3aa3a9;
+    background: #596275;
     color: #fff;
     font-weight: 600;
     width: 50%;
@@ -1659,7 +1677,42 @@ font-family: 'Droid Arabic Kufi'
     right: 480px;
     color: #fff !important;
     padding: 10px;
-    background-color: #3aa3a9;
+    background-color: #596275;
     border-radius: 50%;
     transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
 }
+/* new thuraya */
+
+.right-singup{
+    position: absolute;
+    right: -1122px;
+}
+
+.text-fantasy{
+    font-family: fantasy;
+    letter-spacing: 6px;
+}
+
+.fa-sm{
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    color: white;
+
+  }
+  
+  .fa-sm:hover {
+      opacity: 0.7;
+      color:#c2c2c2;
+    text-decoration: unset;
+  }
+
+.btn-big{
+    font-size: 16px;
+    padding: 10px;
+}
+
+  

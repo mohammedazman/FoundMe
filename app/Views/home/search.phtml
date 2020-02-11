@@ -64,6 +64,8 @@ $item=$this->view_data['item'];?>
 <!-- get result with ajax -->
 <script>
       function load_compaign(){
+        var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
+
         jQuery_1_3_2.ajax({
             url:"/search/find",
             method:"POST",
@@ -71,7 +73,7 @@ $item=$this->view_data['item'];?>
             item:"<?php echo $item; ?>"
             },
             beforeSend:function() {
-              $('#compaigns').html("<h3>Whaiting.....</h3>");
+              $('#compaigns').html(loading);
 
             }
             ,
@@ -109,6 +111,8 @@ $item=$this->view_data['item'];?>
 
       // load Tags
       function load_tags(){
+        var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
+
         jQuery_1_3_2.ajax({
             url:"/search/find",
             method:"POST",
@@ -116,7 +120,7 @@ $item=$this->view_data['item'];?>
             item:"<?php echo $item; ?>"
           },
           beforeSend:function() {
-            $('#tags').html("<h3>Whaiting.....</h3>");
+            $('#tags').html(loading);
 
           }
           ,

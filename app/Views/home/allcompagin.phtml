@@ -112,6 +112,7 @@ new WOW().init();
 
 function load_compaign(){
 var selectd=$("select#selectTag").children("option:selected").val();
+var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
   jQuery_1_3_2.ajax({
       url:"/tags/findCompaign",
       method:"POST",
@@ -119,7 +120,7 @@ var selectd=$("select#selectTag").children("option:selected").val();
       item:selectd
       },
       beforeSend:function() {
-        $('#compaigns').html("<h3>Whaiting.....</h3>");
+        $('#compaigns').html(loading);
 
       }
       ,

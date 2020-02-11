@@ -76,6 +76,17 @@ public function find($aData)
 
 }
 
+//
+public function countDonars()
+{
+  return $this->db->QueryCrud("SELECT COUNT(*) as count from donations")[0];
+}
+//
+public function SumDonars()
+{
+  return $this->db->QueryCrud("SELECT SUM(amount) as sum from donations")[0];
+}
+
 
 }
 

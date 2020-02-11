@@ -119,5 +119,11 @@ foreach ($compaigns as $key => $value) {
 return $tags;
 }
 
+//
+public function countCompaigns()
+{
+  return $this->db->QueryCrud("SELECT COUNT(*) as count from compigans")[0];
+}
+
 }
   ?>

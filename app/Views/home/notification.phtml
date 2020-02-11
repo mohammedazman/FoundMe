@@ -43,8 +43,8 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
           // print_r($notification);
            ?>
 <?php foreach($notification as $row){  
+  // print_r($row);
   ?>
-  <!-- notiChangeState(<?php echo $row['id'] ?>,<?php echo $row['state'] ?>); -->
  <div class='col-lg-12' id='singleNoti' >  <!-- من هانا يبدا الاشعار الواحد -->
 		  
     <?php   if($row['status']==0){ ?>
@@ -84,31 +84,52 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
             <a href="/viewCompaign/show/<?php echo $row['effected_id'] ?>" onclick="changeNotiState(<?php  echo $row['id']?>,<?php  echo '\''.!$row['status'].'\''?>,1)"  style="text-decoration: none; color:#969696">
       <?php if($row['type']=="new compain")  { $type='compain'; ?>
                   
-		 <span class='noti_typ_msg iconify' data-icon="typcn-arrow-forward" ></span> 
+        <span class='text-secondary fas fa-cancel'  style="font-size: 12px;color: #77a9e8 !important; padding: 6px;"></span> 
 	  
-      <?php } elseif($row['type']=="aprrove compaign")  { $type='approve'; ?>
+      <?php } elseif($row['type']=="approve compaign")  { $type='approve'; ?>
 
-		 <span class='text-success  iconify' data-ico="typcn-tick" ></span> 
-      <?php } elseif($row['type']=="reject compaign")  {  $type='reject'; ?>
-		 <span class='text-danger iconify ' data-icon="typcn-times" ></span>   
+        <span class='text-secondary fas fa-check' style="font-size: 12px;color: #77a9e8 !important; padding: 6px;" ></span> 
+      <?php } elseif($row['type']=="reject Compaign")  {  $type='reject'; ?>
+        <span class='text-secondary fas fa-times' style="font-size: 12px;color: #77a9e8 !important; padding: 6px;" ></span> 
 		  
     <?php } elseif($row['type']=="new user")  {  $type='user';  ?>
-     <span class='text-primary iconify ' data-icon="typcn-user-add" ></span>
+     <span class='text-primary iconify ' data-icon="typcn-user-add" ></span> 
      
 	  <?php } elseif($row['type']=="pause compaign")  {  $type='pause';  ?>
-     <span class='text-secondary iconify ' data-icon="typcn-media-pause" ></span> 
-     
-    <?php } elseif($row['type']=="active compaign")  {  $type='active';  ?>
-     <span class='text-secondary iconify ' data-icon="typcn-media-pause" ></span> 
+     <span class='text-secondary fas fa-pause' style="font-size: 12px;color: #77a9e8 !important; padding: 6px;" ></span> 
+   
+     <?php } elseif($row['type']=="resum compaign")  {  $type='resume';  ?>
+     <span class='text-secondary fas fa-play'  style="font-size: 12px;color: #77a9e8 !important; padding: 6px;"></span> 
+   
+    <?php } elseif($row['type']=="active compaign")  {  $type='active';  ?> 
+      <span class='text-secondary fas fa-check'  style="font-size: 12px;color: #77a9e8 !important; padding: 6px;"></span> 
      
     <?php } elseif($row['type']=="delete compaign")  {  $type='delete';  ?>
+      <span class='text-secondary fas fa-trash'  style="font-size: 12px;color: #77a9e8 !important; padding: 6px;"></span> 
+     
+    <?php } elseif($row['type']=="add donation")  {  $type='donate';  ?>
+      <span class="fas fa-donate" style="font-size: 12px;color: #77a9e8 !important; padding: 6px;"></span>
+    
+    <?php } elseif($row['type']=="follow1")  {  $type='follow1';  ?>
 		 <span class='text-secondary iconify ' data-icon="typcn-media-pause" ></span> 
+    <?php } elseif($row['type']=="follow compaign")  {  $type='follow1';  ?>
+      <span class="fas fa-donate" style="font-size: 12px;color: #77a9e8 !important; padding: 6px;"></span>
     <?php } ?>
     
     
-		 
+    <?php  
+    
+    if($type=='donate'){
+      $content=explode(' ',$row['text']);
+
+
+      echo'<span class="noti-text">'.$content[0].' '.$content[1].' '.$lang['donatea'].' '.$content[3].' '.$lang['donateb'].' </span> ';
+    }
+    else{
+    ?>
 	  <span class="noti-text">	<?php echo $lang[$type] ; ?></span> <!-- نص الاشعار -->
-		<br><span class='noti_page_time' data-icon="typcn-arrow-forward"><?php echo $row['created_at'] ?></span>  <!-- وقت الاشعار -->  </a>
+    <?php } ?>
+    <br><span class='noti_page_time' data-icon="typcn-arrow-forward"><?php echo $row['created_at'] ?></span>  <!-- وقت الاشعار -->  </a>
     </div>  
   </a>
   </div>

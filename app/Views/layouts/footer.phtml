@@ -1,6 +1,32 @@
 <!-- footer start -->
-<footer class="footer text-center bg-blue">
-	<p><a href="/home/index" class="text-white" target="_blank">&copy; 2020 foundme.com</a></p>
+<footer class="footer bg-blue">
+<div class="mt-5 pt-5 footer">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 text-center col-xs-12 about-company">
+      <h2>Fund Me</h2>
+      <p class=" text-white-62">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis </p>
+    </div>
+    <div class="col-lg-4 col-xs-12 location text-center"> 
+      <h4 class="mt-lg-0 mt-sm-4">Location</h4>
+      <p class="text-white-62">22, Lorem ipsum dolor, consectetur adipiscing</p>
+      <p class="mb-0 text-white-62"><i class="fa fa-phone mr-3"></i>(541) 754-3010</p>
+      <p class="text-white-62"><i class="fa fa-envelope-o mr-3"></i>info@hsdf.com</p>
+    </div>
+    <div class="col-lg-4 col-xs-12 location text-center"> 
+      <a href="#" class="fab fa-facebook-f fa-sm"></a>
+      <a href="#" class="fab fa-twitter fa-sm"></a>
+      <a href="#" class="fab fa-youtube fa-sm"></a>
+      <a href="#" class="fab fa-instagram fa-sm"></a>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col copyright text-center">
+      <p class=""><small class="text-white-50">© 2020. <a href="#" class="text-white">fundme.com</a></small></p>
+    </div>
+  </div>
+</div>
+</div>
 </footer>
 	<!-- footer end -->
 <script src="/js/home/js.js"></script>
@@ -10,7 +36,7 @@
 <script type="text/javascript">
 var jQuery_toast = $.noConflict(true);
 </script>
-	<script>
+<script>
 	new WOW().init();
  
 	function errMsg(msg){
@@ -94,7 +120,7 @@ function preventSpace(inputText, minSpace, maxSpace)
     return false;
   } else if (field.split(' ').length - 1 < mnChar || field.split(' ').length - 1 > mxChar)
   {
-    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo  '"'.$lang['error2']. '"'; ?> + mnChar + ' , ' + mxChar + ' ';
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo  '"'.$lang['error2']. ' "'; ?> + mnChar + ' , ' + mxChar + ' ';
     return false;
   } else
   {
@@ -232,7 +258,7 @@ jQuery_1_3_2(document).ready(function () {
   });
 
 
-	</script>
+</script>
 
 </body>
 </html>

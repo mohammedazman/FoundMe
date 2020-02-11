@@ -446,7 +446,7 @@
     top: 45px;
     right: -15px;
     left: unset;
-    width: 300px;
+    width: 250px;
     box-shadow: 0px 5px 7px -1px #c1c1c1;
     padding-bottom: 0px;
     padding: 0px;
@@ -468,7 +468,7 @@
     border-radius: 0px 0px 3px 3px; 
   }
   .notification-box{
-    padding: 2px 0px; 
+    padding: 4px 12px; 
     border-bottom: 1px solid #eeeaea;
   }
   .bg-gray{

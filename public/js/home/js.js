@@ -2,20 +2,18 @@
 $(document).ready(function(){
     $(window).scroll(function(){
         var scroll = $(window).scrollTop();
-        if (scroll > 300) {
-          $(".chang-color").css("background" , "#3aa3a9");
+        if (scroll > 700) {
+          $(".chang-color").css("background" , "#596275");
           $(".navbar-collapse ul li a").css("color" , "#fff");
         }
   
-        else if(scroll < 300){
+        else if(scroll < 700){
             $(".chang-color").css("background" , "none");  
           $(".navbar-collapse ul li a").css("color" , "none");
 
         }
     })
   })
-
-
 
 //   //scroll down
 //   $(function() {

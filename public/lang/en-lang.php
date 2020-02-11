@@ -6,7 +6,7 @@ $lang=array(
     'item0'=>'Dashboard',
     'item2'=>'Contact',
     'item3'=>'About',
-    'item4'=>'Join FoundMe',
+    'item4'=>'Sign in',
     'item4a'=>'Login',
     'item4b'=>'Signup',
     'item5'=>'Languages',
@@ -136,6 +136,9 @@ $lang=array(
     'resume'=>'Admin resume your compaign',
     'delete'=>'Admin delete your compaign',
     'active'=>'Admin active your compaign',
+    'donatea'=>'donate',
+    'donateb'=>'to your compaign',
+    'follow1'=>'new donate to campaign that you follow',
 
 
     

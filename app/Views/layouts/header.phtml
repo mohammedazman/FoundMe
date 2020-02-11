@@ -1,31 +1,25 @@
 <?php include VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml'; ?>
 <!-- Modals -->
 <!-- Modal search start -->
-
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-
         <div class="modal-body">
-
-              <form class="" action="/search/index" method="post">
-                <div class="form-group search-box">
-                <input type="text" class="form-control " placeholder="Search About what you went*"  name="item" />
-
-              <div class="result">
-
+          <form class="" action="/search/index" method="post">
+            <div class="form-group search-box">
+              <input type="text" class="form-control " placeholder="Search About what you went*"  name="item" />
+                <div class="result">
                 </div>
-              </div>
-                    </form>
+            </div>
+          </form>
         </div>
-
       </div>
     </div>
   </div>
 <!-- Modal search end-->
 
-    <!-- start header -->
-    <header>
+<!-- start header -->
+<header>
             <nav class="navbar navbar-expand-lg navbar-top chang-color">
                     <a class="navbar-brand" href="/home/index">
                         <img src="/images/home/logo.png" width="40" height="40" class="d-inline-block align-top" alt="fund Me" title="fund Me">
@@ -45,12 +39,13 @@
                               <span class="badge wow pulse noti-count"></span>
                             </a>
                               <ul class="dropdown-menu">
-                                <li class="head">
+                                <li class="head text-light bg-light">
                                   <div class="row">
                                     <div class="col-lg-12 col-sm-12 col-12">
-                                      <span class="text-black"><?php echo $lang['item7']?></span>
+                                      <span class="noti-header" style="color: #52aeb2;" > Last Notification</span>
                                     </div>
                                 </li>
+
                                 <div id="noti-body">
 
                                 </div>
@@ -93,8 +88,19 @@
                         <li class="nav-item">
                           <a class="nav-link" href="#"><?php echo $lang['item3']?></a>
                         </li>
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-language  padding-left-10"></i> <?php echo $lang['item5']?></a>
+                        <li class="nav-item">
+                         <?php if($_COOKIE['lang']=='ar-lang') {?>
+                          <a class="nav-link" href="#" onclick="converLanguage('en-lang','ltr')">
+                            EN
+                          </a>
+                         <?php }?>
+
+                         <?php if($_COOKIE['lang']=='en-lang') {?>
+                          <a class="nav-link" href="#" onclick="converLanguage('ar-lang','rtl')">
+                            AR
+                          </a>
+                         <?php }?>
+
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
                             <!-- <buttun class="dropdown-item">Arabic</button> -->
                             <button class="dropdown-item" id='arabic' onclick="converLanguage('ar-lang','rtl')"><?php echo $lang['item5a']?> <?php if($_COOKIE['lang']=='ar-lang') echo '  ('.$lang['item5c'].')  ';?></button>
@@ -138,8 +144,8 @@
                         </li>
                         
                         <?php }else{  ?>
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user  padding-left-10"></i> <?php echo $lang['item4']?> </a>
+                        <li class="nav-item dropdown right-singup">
+                          <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user  padding-left-10 text-size-20px"></i> </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
                             <a class="dropdown-item" href="/auth/login"><?php echo $lang['item4a']?></a>
                             <a class="dropdown-item" href="/auth/signup"><?php echo $lang['item4b']?></a>

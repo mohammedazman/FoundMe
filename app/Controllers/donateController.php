@@ -83,7 +83,7 @@ class donateController extends Controller
                   
                          foreach($followers as $f){
       
-                             Notification::addNoti('new donate to campaign that you follow',$f,'add donation',$_REQUEST['compaign_id']);
+                             Notification::addNoti('new donate to campaign that you follow',$f,'follow1',$_REQUEST['compaign_id']);
                          }
                          Message::setMessage(1,'main',' add your donation have be done ');
 

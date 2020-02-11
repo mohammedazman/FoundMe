@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2020 at 07:57 AM
+-- Generation Time: Feb 11, 2020 at 08:03 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -33,7 +33,8 @@ CREATE TABLE `comments` (
   `user_id` int(11) NOT NULL,
   `compigan_id` int(11) NOT NULL,
   `message` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -64,22 +65,22 @@ CREATE TABLE `compigans` (
 --
 
 INSERT INTO `compigans` (`id`, `owner_id`, `title`, `galary`, `descrption`, `file`, `tags`, `status`, `cost`, `duration`, `pending`, `updates`, `created_at`, `update_at`) VALUES
-(1, 29, 'this is new compaiin', '1.jpg', '<p>texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext</p>', '', 'hh', '2', 30000, 2020, 0, NULL, '2020-01-27 19:02:52', '2020-01-27 19:02:52'),
-(2, 29, 'gjhgkj,hgkjhgjk', '1.jpg', '<p>kjgufjfkjhglkjgkjhlkjhkljhklk</p>', '', 'kgjkhgkhgkjhg', '2', 9000, 2020, 0, NULL, '2020-01-28 07:23:49', '2020-01-28 07:23:49'),
-(3, 28, 'this is new compaiin', '1.jpg', '<p>this is content</p>', '982a52dbcd21a39b8b382250be2bed13.pdf', 'ggg', '0', 700, 2020, 0, NULL, '2020-01-30 08:43:27', '2020-01-30 08:43:27'),
-(4, 28, 'this is new compibnmbnjbhjmngn', '1.jpg', '<p>this is contextthis is contextthis is contextthis is contextthis is contextthis is context</p>', '144fd7b425e91b1160e0224dbd227a83.pdf', 'ggg', '0', 700, 2020, 0, NULL, '2020-01-30 09:41:32', '2020-01-30 09:41:32'),
-(5, 55, 'this is new compiign', '1.jpg', '<p>this is discthis is discthis is discthis is discthis is discthis is discthis is discthis is discthis is discthis is discthis is discthis is disc</p>', 'c43262c417d551a0ec9db9670e842b4c.pdf', 'ggg', '3', 30000, 2020, 0, NULL, '2020-02-02 08:18:38', '2020-02-02 08:18:38'),
-(8, 55, 'this is new compaiin', '1.jpg', '<p>hhhhhhhhhhhhhhhh</p>', '', 'ggg', '1', 600, 2020, 0, NULL, '2020-02-03 23:00:10', '2020-02-03 23:00:10'),
-(9, 55, 'this is new compaiin', '1.jpg', '<p>hhhhhhhhhhhhhhhh</p>', '', 'ggg', '1', 600, 2020, 0, NULL, '2020-02-03 23:01:05', '2020-02-03 23:01:05'),
-(10, 55, 'this is new compaiin', '1.jpg', '<p>hhhhhhhhhhhhhhhhhhhhhhhhh</p>', '', 'ggg', '1', 600, 2020, 0, NULL, '2020-02-03 23:14:01', '2020-02-03 23:14:01'),
+(1, 28, 'this is new compaiin', '1.jpg', '<p>texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext</p>', '', 'hh', '2', 30000, 2020, 0, NULL, '2020-01-27 19:02:52', '2020-01-27 19:02:52'),
+(2, 28, 'gjhgkj,hgkjhgjk', '1.jpg', '<p>kjgufjfkjhglkjgkjhlkjhkljhklk</p>', '', 'kgjkhgkhgkjhg', '0', 9000, 2020, 0, NULL, '2020-01-28 07:23:49', '2020-01-28 07:23:49'),
+(3, 28, 'this is new compaiin', '1.jpg', '<p>this is content</p>', '982a52dbcd21a39b8b382250be2bed13.pdf', 'ggg', '2', 700, 2020, 0, NULL, '2020-01-30 08:43:27', '2020-01-30 08:43:27'),
+(4, 28, 'this is new compibnmbnjbhjmngn', '1.jpg', '<p>this is contextthis is contextthis is contextthis is contextthis is contextthis is context</p>', '144fd7b425e91b1160e0224dbd227a83.pdf', 'ggg', '2', 700, 2020, 0, NULL, '2020-01-30 09:41:32', '2020-01-30 09:41:32'),
+(5, 55, 'this is new compiign', '1.jpg', '<p>this is discthis is discthis is discthis is discthis is discthis is discthis is discthis is discthis is discthis is discthis is discthis is disc</p>', 'c43262c417d551a0ec9db9670e842b4c.pdf', 'ggg', '0', 30000, 2020, 0, NULL, '2020-02-02 08:18:38', '2020-02-02 08:18:38'),
+(8, 55, 'this is new compaiin', '1.jpg', '<p>hhhhhhhhhhhhhhhh</p>', '', 'ggg', '0', 600, 2020, 0, NULL, '2020-02-03 23:00:10', '2020-02-03 23:00:10'),
+(9, 55, 'this is new compaiin', '1.jpg', '<p>hhhhhhhhhhhhhhhh</p>', '', 'ggg', '2', 600, 2020, 0, NULL, '2020-02-03 23:01:05', '2020-02-03 23:01:05'),
+(10, 55, 'this is new compaiin', '1.jpg', '<p>hhhhhhhhhhhhhhhhhhhhhhhhh</p>', '', 'ggg', '2', 600, 2020, 0, NULL, '2020-02-03 23:14:01', '2020-02-03 23:14:01'),
 (11, 55, 'gjhgkj,hgkjhgjk', '1.jpg', '<p>uuuuuuuuuuuuuuuuuu</p>', '', 'hh', '1', 600, 275760, 0, NULL, '2020-02-03 23:17:43', '2020-02-03 23:17:43'),
 (12, 55, 'last tryyyyyyyyyyyyy', '1.jpg', '<p>hhhhhhhhhhhhhhhhhhhh</p>', '', 'try', '1', 19, 2020, 0, NULL, '2020-02-03 23:28:23', '2020-02-03 23:28:23'),
 (13, 55, 'last tryyyyyyyyyyyyy', '1.jpg', '<p>hhhhhhhhhhhhhhhhhhhh</p>', '', 'try', '1', 19, 2020, 0, NULL, '2020-02-03 23:28:38', '2020-02-03 23:28:38'),
 (14, 55, 'last tryyyyyyyyyyyyy', '1.jpg', '<p>hhhhhhhhhhhhhhhhhhhh</p>', '', 'try', '1', 19, 2020, 0, NULL, '2020-02-03 23:28:42', '2020-02-03 23:28:42'),
 (15, 55, 'last tryyyyyyyyyyyyy', '1.jpg', '<p>hhhhhhhhhhhhhhhhhhhh</p>', '', 'try', '1', 19, 2020, 0, NULL, '2020-02-03 23:28:44', '2020-02-03 23:28:44'),
-(16, 55, 'last tryyyyyyyyyyyyy', '1.jpg', '<p>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>', '', 'kytiukj,m', '1', 666, 2020, 0, NULL, '2020-02-03 23:32:47', '2020-02-03 23:32:47'),
-(17, 28, 'this is new compibnmbnjbhjmngn', '1.jpg', '<p>jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</p>', '', 'hh', '1', 900, 2020, 0, NULL, '2020-02-04 06:26:51', '2020-02-04 06:26:51'),
-(18, 28, 'this is new compibnmbnjbhjmngn', '1.jpg', '<p>hgggggggggggggggggggggggggggggg</p>', '', 'ggg', '1', 777, 2020, 0, NULL, '2020-02-04 07:46:09', '2020-02-04 07:46:09'),
+(16, 55, 'last tryyyyyyyyyyyyy', '1.jpg', '<p>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>', '', 'kytiukj,m', '3', 666, 2020, 0, NULL, '2020-02-03 23:32:47', '2020-02-03 23:32:47'),
+(17, 28, 'this is new compibnmbnjbhjmngn', '1.jpg', '<p>jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</p>', '', 'hh', '2', 900, 2020, 0, NULL, '2020-02-04 06:26:51', '2020-02-04 06:26:51'),
+(18, 28, 'this is new compibnmbnjbhjmngn', '1.jpg', '<p>hgggggggggggggggggggggggggggggg</p>', '', 'ggg', '3', 777, 2020, 0, NULL, '2020-02-04 07:46:09', '2020-02-04 07:46:09'),
 (19, 28, 'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', '1.jpg', '<p>kuhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>', '', 'hh', '1', 600, 2020, 0, NULL, '2020-02-04 10:22:03', '2020-02-04 10:22:03'),
 (20, 28, 'Progeamming', '1.jpg', '<p>nnnnnnnnnnnnnnn</p>', '', 'web', '1', 27, 2020, 0, NULL, '2020-02-04 11:16:22', '2020-02-04 11:16:22'),
 (21, 35, 'this is new compibnmbnjbhjmngn', '1.jpg', '<p>ttttttttttttttttttttttttttttttttttttttttttttttt</p>', '', 'ggg', '1', 500, 2020, 0, NULL, '2020-02-04 17:12:44', '2020-02-04 17:12:44'),
@@ -102,6 +103,20 @@ CREATE TABLE `donations` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `donations`
+--
+
+INSERT INTO `donations` (`id`, `compigan_id`, `user_id`, `amount`, `created_at`) VALUES
+(1, 16, 55, '40', '2020-02-09 19:59:14'),
+(2, 16, 55, '40', '2020-02-09 20:01:16'),
+(3, 16, 55, '50', '2020-02-09 20:01:47'),
+(4, 3, 35, '400', '2020-02-10 18:36:30'),
+(5, 3, 35, '300', '2020-02-10 18:42:21'),
+(6, 3, 35, '20', '2020-02-10 18:44:09'),
+(9, 3, 35, '20', '2020-02-10 18:54:26'),
+(10, 3, 35, '20', '2020-02-10 18:57:00');
+
 -- --------------------------------------------------------
 
 --
@@ -113,6 +128,14 @@ CREATE TABLE `followers` (
   `user_id` int(11) NOT NULL,
   `compigan_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `followers`
+--
+
+INSERT INTO `followers` (`id`, `user_id`, `compigan_id`) VALUES
+(9, 55, 3),
+(10, 28, 3);
 
 -- --------------------------------------------------------
 
@@ -126,6 +149,7 @@ CREATE TABLE `notifications` (
   `text` text NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `type` varchar(20) NOT NULL,
+  `effected_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -134,55 +158,57 @@ CREATE TABLE `notifications` (
 -- Dumping data for table `notifications`
 --
 
-INSERT INTO `notifications` (`id`, `target_user`, `text`, `status`, `type`, `created_at`, `updated_at`) VALUES
-(7, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-27 18:29:04', '2020-01-27 18:29:04'),
-(8, 'admin', 'New compaign is added by thurya abdu and need approvment', 0, 'new compain', '2020-01-27 19:02:52', '2020-01-27 19:02:52'),
-(9, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-28 07:16:38', '2020-01-28 07:16:38'),
-(10, 'admin', 'New compaign is added by thurya abduand need approvment', 0, 'new compain', '2020-01-28 07:23:49', '2020-01-28 07:23:49'),
-(11, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-28 07:39:17', '2020-01-28 07:39:17'),
-(12, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 06:28:31', '2020-01-29 06:28:31'),
-(13, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 07:09:41', '2020-01-29 07:09:41'),
-(14, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 07:34:41', '2020-01-29 07:34:41'),
-(15, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 07:36:01', '2020-01-29 07:36:01'),
-(16, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 09:27:19', '2020-01-29 09:27:19'),
-(17, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 09:27:53', '2020-01-29 09:27:53'),
-(18, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 09:35:56', '2020-01-29 09:35:56'),
-(19, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 09:37:54', '2020-01-29 09:37:54'),
-(20, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 09:38:35', '2020-01-29 09:38:35'),
-(21, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 09:39:04', '2020-01-29 09:39:04'),
-(22, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 09:39:28', '2020-01-29 09:39:28'),
-(23, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 09:41:13', '2020-01-29 09:41:13'),
-(24, 'admin', 'New user is added and need activation', 0, 'new user', '2020-01-29 09:42:11', '2020-01-29 09:42:11'),
-(33, 'admin', 'New compaign is added by ibtehal Fahdand need approvment', 0, 'new compain', '2020-01-30 08:43:28', '2020-01-30 08:43:28'),
-(34, 'admin', 'New compaign is added by ibtehal Fahdand need approvment', 0, 'new compain', '2020-01-30 09:41:32', '2020-01-30 09:41:32'),
-(35, '28', 'your compaign is approved .', 1, 'aprroved compaign', '2020-02-02 07:28:38', '2020-02-02 07:28:38'),
-(36, '28', 'your compaign is rejected .', 0, 'reject compaign', '2020-02-02 07:28:51', '2020-02-02 07:28:51'),
-(37, 'admin', 'New user is added and need activation', 0, 'new user', '2020-02-02 08:09:11', '2020-02-02 08:09:11'),
-(38, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-02 08:18:38', '2020-02-02 08:18:38'),
-(39, '55', 'your compaign : this is new compiign', 0, 'aprroved compaign', '2020-02-02 08:29:13', '2020-02-02 08:29:13'),
-(40, '55', 'your compaign : this is new compiign', 0, 'aprroved compaign', '2020-02-02 08:29:39', '2020-02-02 08:29:39'),
-(41, '28', 'your compaign is paused by admin .', 0, 'paused compaign', '2020-02-02 08:29:48', '2020-02-02 08:29:48'),
-(42, 'admin', 'New user is added and need activation', 0, 'new user', '2020-02-03 09:07:58', '2020-02-03 09:07:58'),
-(43, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-03 21:56:14', '2020-02-03 21:56:14'),
-(44, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-03 22:54:17', '2020-02-03 22:54:17'),
-(45, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-03 23:00:10', '2020-02-03 23:00:10'),
-(46, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-03 23:01:05', '2020-02-03 23:01:05'),
-(47, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-03 23:14:01', '2020-02-03 23:14:01'),
-(48, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-03 23:17:43', '2020-02-03 23:17:43'),
-(49, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-03 23:28:23', '2020-02-03 23:28:23'),
-(50, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-03 23:28:38', '2020-02-03 23:28:38'),
-(51, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-03 23:28:42', '2020-02-03 23:28:42'),
-(52, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-03 23:28:44', '2020-02-03 23:28:44'),
-(53, 'admin', 'New compaign is added by mokhtar ghaleband need approvment', 0, 'new compain', '2020-02-03 23:32:47', '2020-02-03 23:32:47'),
-(54, 'admin', 'New compaign is added by ibtehal Fahdand need approvment', 0, 'new compain', '2020-02-04 06:26:52', '2020-02-04 06:26:52'),
-(55, 'admin', 'New compaign is added by ibtehal Fahdand need approvment', 0, 'new compain', '2020-02-04 07:46:09', '2020-02-04 07:46:09'),
-(56, 'admin', 'New compaign is added by ibtehal Fahdand need approvment', 0, 'new compain', '2020-02-04 10:22:04', '2020-02-04 10:22:04'),
-(57, 'admin', 'New compaign is added by ibtehal Fahdand need approvment', 0, 'new compain', '2020-02-04 11:16:22', '2020-02-04 11:16:22'),
-(58, 'admin', 'New compaign is added by lama ibtand need approvment', 0, 'new compain', '2020-02-04 17:12:44', '2020-02-04 17:12:44'),
-(59, 'admin', 'New compaign is added by ibtehal Fahdand need approvment', 0, 'new compain', '2020-02-04 18:28:09', '2020-02-04 18:28:09'),
-(60, 'admin', 'New compaign is added by ibtehal Fahdand need approvment', 0, 'new compain', '2020-02-04 18:31:55', '2020-02-04 18:31:55'),
-(61, 'admin', 'New compaign is added by ibtehal Fahdand need approvment', 0, 'new compain', '2020-02-04 19:10:47', '2020-02-04 19:10:47'),
-(62, 'admin', 'New compaign is added by ibtehal Fahdand need approvment', 0, 'new compain', '2020-02-04 19:15:11', '2020-02-04 19:15:11');
+INSERT INTO `notifications` (`id`, `target_user`, `text`, `status`, `type`, `effected_id`, `created_at`, `updated_at`) VALUES
+(89, '28', 'Admin reject your compaign', 1, 'reject Compaign', 2, '2020-02-09 18:14:23', '2020-02-09 18:14:23'),
+(90, '28', 'Admin approve your compaign', 1, 'approve compaign', 4, '2020-02-09 18:14:27', '2020-02-09 18:14:27'),
+(91, '55', 'Admin reject your compaign', 0, 'reject Compaign', 8, '2020-02-09 18:14:31', '2020-02-09 18:14:31'),
+(92, '55', 'Admin approve your compaign', 0, 'approve compaign', 5, '2020-02-09 18:14:34', '2020-02-09 18:14:34'),
+(93, '28', 'Admin pause your compaign', 1, 'pause compaign', 4, '2020-02-09 18:14:58', '2020-02-09 18:14:58'),
+(94, '55', 'Admin delete your compaign', 0, 'delete compaign', 5, '2020-02-09 18:15:07', '2020-02-09 18:15:07'),
+(95, '28', 'Admin resum your compaign', 1, 'resum compaign', 4, '2020-02-09 18:15:16', '2020-02-09 18:15:16'),
+(96, '28', 'Admin active your compaign', 1, 'active compaign', 1, '2020-02-09 18:15:26', '2020-02-09 18:15:26'),
+(97, '28', 'Admin approve your compaign', 1, 'approve compaign', 3, '2020-02-09 18:16:04', '2020-02-09 18:16:04'),
+(98, '55', 'Admin approve your compaign', 0, 'approve compaign', 9, '2020-02-09 18:16:08', '2020-02-09 18:16:08'),
+(99, '55', 'Admin approve your compaign', 0, 'approve compaign', 10, '2020-02-09 18:16:12', '2020-02-09 18:16:12'),
+(100, '28', 'Admin approve your compaign', 1, 'approve compaign', 18, '2020-02-09 18:16:18', '2020-02-09 18:16:18'),
+(101, '28', 'Admin approve your compaign', 1, 'approve compaign', 17, '2020-02-09 18:16:23', '2020-02-09 18:16:23'),
+(102, '55', 'Admin approve your compaign', 0, 'approve compaign', 16, '2020-02-09 18:16:29', '2020-02-09 18:16:29'),
+(103, '55', 'Admin pause your compaign', 0, 'pause compaign', 16, '2020-02-09 18:16:53', '2020-02-09 18:16:53'),
+(104, '28', 'Admin pause your compaign', 1, 'pause compaign', 18, '2020-02-09 18:16:58', '2020-02-09 18:16:58'),
+(105, '55', 'New donar is added by mokhtar ghalebabout:40$', 0, 'add donation', 16, '2020-02-09 20:01:16', '2020-02-09 20:01:16'),
+(106, '55', 'New donar is added by mokhtar ghalebabout:50$', 0, 'add donation', 16, '2020-02-09 20:01:47', '2020-02-09 20:01:47'),
+(112, '28', 'ibtehal Fahd start following your compaign', 0, 'follow compaign', 3, '2020-02-10 09:10:08', '2020-02-10 09:10:08'),
+(113, '28', 'ibtehal Fahd start following your compaign', 0, 'follow compaign', 3, '2020-02-10 09:38:53', '2020-02-10 09:38:53'),
+(114, '28', 'ibtehal Fahd start following your compaign', 0, 'follow compaign', 3, '2020-02-10 09:44:02', '2020-02-10 09:44:02'),
+(115, '28', 'lama ibt donate 400$ to your compaign', 0, 'add donation', 3, '2020-02-10 18:36:30', '2020-02-10 18:36:30'),
+(116, '28', 'lama ibt donate 300$ to your compaign', 0, 'add donation', 3, '2020-02-10 18:42:21', '2020-02-10 18:42:21'),
+(117, '28', 'lama ibt donate 20$ to your compaign', 0, 'add donation', 3, '2020-02-10 18:44:12', '2020-02-10 18:44:12'),
+(120, '28', 'lama ibt donate 20$ to your compaign', 0, 'add donation', 3, '2020-02-10 18:54:26', '2020-02-10 18:54:26'),
+(121, '28', 'lama ibt donate 20$ to your compaign', 0, 'add donation', 3, '2020-02-10 18:57:00', '2020-02-10 18:57:00'),
+(122, '55', 'new donate to campaign that you follow', 0, 'add donation', 3, '2020-02-10 18:57:00', '2020-02-10 18:57:00'),
+(123, '28', 'new donate to campaign that you follow', 0, 'add donation', 3, '2020-02-10 18:57:00', '2020-02-10 18:57:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `popular_search`
+--
+
+CREATE TABLE `popular_search` (
+  `id` int(11) NOT NULL,
+  `query` varchar(255) NOT NULL,
+  `total_search` int(11) NOT NULL DEFAULT 1
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `popular_search`
+--
+
+INSERT INTO `popular_search` (`id`, `query`, `total_search`) VALUES
+(11, 'compaign', 4),
+(12, 'aaa', 1),
+(13, 'comp', 2),
+(14, 'compaiin', 5);
 
 -- --------------------------------------------------------
 
@@ -293,16 +319,22 @@ INSERT INTO `users` (`id`, `email`, `password`, `status`, `type`, `created_at`) 
 (55, 'mokhtar@gamil.com', 'ab23302011e4974ab3acd57c81f530d9', 1, 'User', '2020-02-02 08:09:11'),
 (56, 'lana@gmail.com', 'ab23302011e4974ab3acd57c81f530d9', 1, 'User', '2020-02-03 09:07:57');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `visits`
+--
+
+CREATE TABLE `visits` (
+  `id` int(11) NOT NULL,
+  `page` varchar(32) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD KEY `fk_users` (`user_id`),
-  ADD KEY `compigan_id` (`compigan_id`);
 
 --
 -- Indexes for table `compigans`
@@ -334,6 +366,12 @@ ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `popular_search`
+--
+ALTER TABLE `popular_search`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `profiles`
 --
 ALTER TABLE `profiles`
@@ -355,6 +393,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `visits`
+--
+ALTER TABLE `visits`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -362,25 +406,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `compigans`
 --
 ALTER TABLE `compigans`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `donations`
 --
 ALTER TABLE `donations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+
+--
+-- AUTO_INCREMENT for table `popular_search`
+--
+ALTER TABLE `popular_search`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `profiles`
@@ -401,15 +451,14 @@ ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT for table `visits`
 --
+ALTER TABLE `visits`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- Constraints for table `comments`
+-- Constraints for dumped tables
 --
-ALTER TABLE `comments`
-  ADD CONSTRAINT `fk_compigans` FOREIGN KEY (`compigan_id`) REFERENCES `compigans` (`id`),
-  ADD CONSTRAINT `fk_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `compigans`

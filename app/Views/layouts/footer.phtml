@@ -94,7 +94,7 @@ function preventSpace(inputText, minSpace, maxSpace)
     return false;
   } else if (field.split(' ').length - 1 < mnChar || field.split(' ').length - 1 > mxChar)
   {
-    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo  '"'.$lang['error2']. '"'; ?> + mnChar + ' , ' + mxChar + ' ';
+    document.getElementById(Errspan).innerHTML ="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo  '"'.$lang['error2']. ' "'; ?> + mnChar + ' , ' + mxChar + ' ';
     return false;
   } else
   {

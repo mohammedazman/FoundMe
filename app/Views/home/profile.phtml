@@ -51,6 +51,7 @@
                                     if (array_key_exists('profiles',$this->view_data)){
                                     $html='';
                                     foreach ($this->view_data['profiles'] as $profile) {
+                                     
                                         $html.='<div class="p-all-20px"><span class="info-icon" title="'.$profile['name'].'">FN </span>';
                                         $html.='</span>  <span class="profile-info-tow">';
                                               $html.=$profile['value'];

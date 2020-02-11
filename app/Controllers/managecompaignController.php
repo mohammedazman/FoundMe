@@ -54,7 +54,7 @@ class managecompaignController extends Controller
       return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
 
     }
-  
+
 
     public function changeCompaigns($ids,$state){
       if($state==4 || $state==7)
@@ -66,7 +66,7 @@ class managecompaignController extends Controller
 
     $compaignID = $this->compaignModel->changeCompaigns([$nState,$ids]);
       $compArray = $this->compaignModel->find([$ids])[0];
-       
+
            $noti_type=array('reject Compaign','','approve compaign','pause compaign','resum compaign','delete compaign','','active compaign');
            $noti_text=array('reject ','','approve ','pause ','resum ','delete ','','active ');
       if($state!=6)
@@ -88,6 +88,7 @@ if 2 is ShowActiveCompaigns
 if 3 is ShowPausedCompaigns
 if 4 is for delete or reject Compaign
 if 5 is for approve or active Compaign
+if 6 is ShowPindingUpdate 
   */
 if(count($_POST)>0){
   $type=$_POST['type'];

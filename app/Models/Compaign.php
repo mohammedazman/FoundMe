@@ -44,9 +44,10 @@ class Compaign
 
   public function update($aData)
   {
+    
           $oStmt = 'UPDATE  compigans
-                   SET   owner_id=? ,title=? ,	galary=? , descrption=? ,	file=? , tags=?	, status=? , cost=?	, duration=? ,	pending=? ,	updates=?
-                  WHERE id=? ';
+                   SET   	pending=:pending ,	updates=:updates
+                  WHERE id=:id ';
           return $this->db->QueryCrud($oStmt,$aData,0);
 
   }

@@ -1,0 +1,284 @@
+<?php
+
+// include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml';
+include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
+$compaign=$this->view_data['compaign'][0];
+ ?>
+
+<body>
+
+  <!-- start pages photo -->
+  <section class="cover-background top-space" style="background-image:url('/images/1(1).jpg');">
+        <div class="opacity-medium bg-dark"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
+                    <div class="vertical-align-middle text-center">
+                        <!-- start sub title -->
+                        <span class="text-white text-shadow-black"><?php echo $lang['item30']?></span>
+                        <!-- end sub title -->
+                        <!-- start page title -->
+                        <h1 class="text-white text-shadow-black"><?php echo $lang['item31']?></h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end pages photo - -->
+
+
+  <!-- profile page start-->
+  <!-- <div class="main main-raised border-50 shadow-div col-md-12"> -->
+	<section>
+			<div class="container register">
+					<div class="row">
+						<div class="col-md-12 register-right shadow-div">
+            <div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+									<h3 class="register-heading"><?php echo $lang['item32']?></h3>
+									<div class="row register-form wow fadeIn">
+                  <form class="col-md-12" action="/manageUserCompaign/uploadFiles" id="addCompign" name="addCompign" method="post" enctype="multipart/form-data">
+                  <!-- <form class="col-md-12" action="" name="addCompign" id="addCompign" method="post" enctype="multipart/form-data"> -->
+                  <input type="hidden" name="id" value="<?php echo $compaign['id']?>">
+										<div>
+											<div class="form-group">
+												<label for="Title" class="laple-forms"><?php echo $lang['item33']?> </label>
+												<input type="text" id="Title" oninput="stringlength(document.addCompign.Title, 10, 50); " name="Title" class="form-control" placeholder="<?php echo $lang['item33']?>" value="<?php echo $compaign['title']; ?>"  />
+                        <span id="TitleError" class="text-danger"></span>
+                      </div>
+											<div class="form-group">
+												<label for="Tags" class="laple-forms"><?php echo $lang['item34']?></label>
+									      <input type="text" id="Tags" name="Tags" oninput=" stringlength(document.addCompign.Tags, 2, 20)"  class="form-control" placeholder="#<?php echo $lang['item34']?>" value="<?php echo $compaign['tags']; ?>"  />
+                        <span id="TagsError" class="text-danger"></span>
+                      </div>
+                      <div class="form-group">
+												<label for="Amount" class="laple-forms"><?php echo $lang['item35']?></label>
+                        <input type="number" id="Amount" name="Amount"   class="form-control"  placeholder="0 $" value="<?php echo $compaign['cost']; ?>" />
+                        <span id="AmountError" class="text-danger"></span>
+                      </div>
+                      <div class="form-group">
+												<label for="Deuration" class="laple-forms"><?php echo $lang['item36']?></label>
+                        <input type="date" class="form-control" id="Deuration" name="Deuration" oninput="validateDate(document.addCompign.Deuration)"  placeholder="Add Deuration" value="" />
+                        <span id="DeurationError" class="text-danger"></span>
+                      </div>
+
+                      <div class="form-group">
+                      <label for="gallery" class="laple-forms"><?php echo $lang['item39']?></label>
+                      <input type="file"  class="form-control img-file-input" require  onchange="preview_image(event)" name="gallery"  id="gallery-photo-add">
+                      <span id="galleryError" class="text-danger"></span>
+                      <div class="container">
+                          <div class="row">
+                            <div class="gallery">
+                              <img class="img-up" src="/uploads/<?php echo $compaign['galary']; ?>" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                      <label for="file" class="laple-forms"><?php echo $lang['item38']?></label>
+                      <input type="file" class="form-control pdf-file-input" name="file">
+                      <span id="fileError" class="text-danger"></span>
+
+                      </div>
+                      <input type="submit"  style="display: none;" id='ajaxSubmit'  value="Add"  name="addComp" onclick="upload_to_db();" />
+                      <div class="form-group">
+                      <label for="file" class="laple-forms"><?php echo $lang['item37']?></label>
+
+                      <textarea rows="4" cols="50" class="form-control" id="mytextarea" value="" name="descrption">
+                        <?php echo $compaign['descrption']; ?>
+                      </textarea>
+                      <span id="descrptionError" class="text-danger"></span>
+
+                      </div>
+
+                      <center>
+                      <button type="button" class="btnadd"  value="Add" id="addComp" name="addComp" onclick="serverSideValidation();" /><?php echo $lang['item30']?></button>
+                      <!-- <input type="submit" class="btnadd"  value="Add" id="addComp" name="addComp"/> -->
+							        <p class="p-login nots-p-reg" style="padding-top:20px"><?php echo $lang['item39a']?><a href="#"> <?php echo $lang['item15']?></a></p>
+
+                      </center>
+
+										</div>
+                  </form>
+
+                  </div>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+  </section>
+
+<!-- Large modal -->
+<button type="button" class="btn btn-primary"  id="loading" style="display: none;"   data-toggle="modal" data-target=".bd-example-modal-lg" data-keyboard="false" data-backdrop="static">loadding</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" style="top:20%;" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+  <div class="modal-content">
+      <div class="modal-header" style="border: none !important;">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="myprogress" id="progress_div">
+          <svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+            <circle class="progress-circle-back"
+                  cx="80" cy="80" r="74"></circle>
+              <circle class="progress-circle-prog"
+                      cx="80" cy="80" r="74"></circle>
+          </svg>
+          <div class="progress-text" data-progress="0">0%</div>
+      </div>
+      <center>
+    <span style="
+    position: absolute;
+    z-index: 1;
+    top: 170px;
+    color: #e4e4e4;
+    font-size:24px;
+    ">Loading...</span>
+    </center>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+    </div>
+  </div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+  <script type="text/javascript" src="/js/home/jquery.form.js"></script>
+  <script type="text/javascript">
+  function preview_image() {
+    $(".gallery").html('');
+  }
+  $(document).ready( function() {
+   var d="<?php echo $compaign['duration']; ?>";
+    $('#Deuration').val(d.split(' ')[0]);
+});
+
+var jQuery_form = $.noConflict(true);
+</script>
+
+  <script type="text/javascript" >
+     function upload_to_db()
+	{
+    tinyMCE.triggerSave();
+
+      jQuery_form('#addCompign').ajaxForm({
+			beforeSubmit: function() {
+
+        document.getElementById("loading").click();
+        progressBar(0,100);
+			},
+			uploadProgress: function(event, position, total, percentComplete) {
+        progressBar(percentComplete,100);
+
+			},
+			success: function() {
+        progressBar(100,100);
+
+			},
+			complete: function(xhr) {
+				if(xhr.responseText)
+				{
+          progressBar(100,100);
+          window.location.replace("/profile/index");
+				}
+			}
+    });
+  // }
+  // else
+  // event.preventDefault();
+
+  }
+
+  Filevalidation = (id) => {
+        const fi = document.getElementById(id);
+        // Check if any file is selected.
+
+        if (fi.files.length > 0) {
+            for (var i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const ftype = fi.files.item(i).type;
+                const fname = fi.files.item(i).name;
+                const error = fi.name+'Error';
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file > 50000) {
+                    document.getElementById(error).innerHTML=
+                    <?php echo "'".$lang['error10']."'" ?>;
+                }
+                else if ((fname=='gallary' &&  ftype !='image/jpeg') || (fname=='file' &&  ftype !='application/pdf')) {
+                  document.getElementById(error).innerHTML=
+                  <?php echo "'".$lang['error11']."'" ?>;
+                } else {
+                  document.getElementById(error).innerHTML='';
+                }
+            }
+        }
+    }
+
+function progressBar(progressVal,totalPercentageVal = 100) {
+		var strokeVal = (4.64 * 100) /  totalPercentageVal;
+		var x = document.querySelector('.progress-circle-prog');
+		x.style.strokeDasharray = progressVal * (strokeVal) + ' 999';
+		var el = document.querySelector('.progress-text');
+		var from = $('.progress-text').data('progress');
+		$('.progress-text').data('progress', progressVal);
+		var start = new Date().getTime();
+
+		setTimeout(function() {
+			var now = (new Date().getTime()) - start;
+			var progress = now / 700;
+			el.innerHTML =Math.round(progressVal / totalPercentageVal * 100) + '%';
+			if (progress < 1) setTimeout(arguments.callee, 10);
+		}, 10);
+
+	}
+  function serverSideValidation(){
+     if(Requirevalidation(document.addCompign.Title)&&Requirevalidation(document.addCompign.Tags)&&
+      Requirevalidation(document.addCompign.Amount)&&Requirevalidation(document.addCompign.Deuration)&&
+      Requirevalidation(document.addCompign.descrption)){
+    jQuery_1_3_2.ajax({
+        url:"/validate",
+        method:"POST",
+             data:{
+           type:"addCompain",
+           formData:jQuery_1_3_2('#addCompign').serialize()}
+        ,
+        success:function(data)
+        {
+      var result=JSON.parse(data);
+
+      if(result.statusCode==200){
+
+        document.getElementById("ajaxSubmit").click();
+
+      }
+      else{
+          var error=JSON.parse(result.message);
+          i=1;
+          jQuery_1_3_2.each( error, function( key, value ) {
+
+
+              if(key=='msgState' || key=='main'|| key=='userID'|| key=='userName'|| key=='type');
+              else
+              document.getElementById(key+'Error').innerHTML=value;
+
+
+            });
+            return false;}
+        }
+
+             });
+            }
+        }
+
+</script>
+
+    <?php include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml'; ?>

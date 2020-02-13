@@ -180,13 +180,15 @@ var jQuery_form = $.noConflict(true);
 			},
 			success: function() {
         progressBar(100,100);
+        window.location.replace("/profile/index");
 
 			},
 			complete: function(xhr) {
 				if(xhr.responseText)
 				{
           progressBar(100,100);
-          window.location.replace("/profile/index");
+          console.log(xhr.responseText);
+
 				}
 			}
     });

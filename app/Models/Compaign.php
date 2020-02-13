@@ -44,7 +44,7 @@ class Compaign
 
   public function update($aData)
   {
-    
+
           $oStmt = 'UPDATE  compigans
                    SET   	pending=:pending ,	updates=:updates
                   WHERE id=:id ';
@@ -80,6 +80,14 @@ public function getCompaigns($args)
   $oStmt ='SELECT * FROM compigans where status=?';
   return  $this->db->QueryCrud($oStmt,$args);
 }
+
+// managecompaign
+public function getUpdateCompaigns()
+{
+
+  return  $this->db->QueryCrud('SELECT * FROM compigans where pending=1');
+}
+
 public function getUSerCompaigns($args)
 {
 
@@ -124,6 +132,21 @@ return $tags;
 public function countCompaigns()
 {
   return $this->db->QueryCrud("SELECT COUNT(*) as count from compigans")[0];
+}
+
+// approve update
+
+public function approveUpdate($aData)
+{
+
+        $oStmt = 'UPDATE  compigans
+                 SET   title=:title ,	galary=:galary ,
+                        descrption=:descrption ,	file=:file ,
+                        tags=:tags, cost=:cost	, duration=:duration ,
+                      	pending=:pending ,	updates=:updates
+                WHERE id=:id ';
+        return $this->db->QueryCrud($oStmt,$aData,0);
+
 }
 
 }

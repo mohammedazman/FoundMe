@@ -7,13 +7,13 @@
       <h2>Fund Me</h2>
       <p class=" text-white-62">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis </p>
     </div>
-    <div class="col-lg-4 col-xs-12 location text-center"> 
+    <div class="col-lg-4 col-xs-12 location text-center">
       <h4 class="mt-lg-0 mt-sm-4">Location</h4>
       <p class="text-white-62">22, Lorem ipsum dolor, consectetur adipiscing</p>
       <p class="mb-0 text-white-62"><i class="fa fa-phone mr-3"></i>(541) 754-3010</p>
       <p class="text-white-62"><i class="fa fa-envelope-o mr-3"></i>info@hsdf.com</p>
     </div>
-    <div class="col-lg-4 col-xs-12 location text-center"> 
+    <div class="col-lg-4 col-xs-12 location text-center">
       <a href="#" class="fab fa-facebook-f fa-sm"></a>
       <a href="#" class="fab fa-twitter fa-sm"></a>
       <a href="#" class="fab fa-youtube fa-sm"></a>
@@ -38,7 +38,7 @@ var jQuery_toast = $.noConflict(true);
 </script>
 <script>
 	new WOW().init();
- 
+
 	function errMsg(msg){
         if(msg!=''){
     jQuery_toast.toast({
@@ -198,7 +198,7 @@ function allLetter(inputText)
                       return false;
                      }
                 }
-  
+
 
    function confirmPassValidation(cpass,opass){
 
@@ -220,8 +220,8 @@ function validateDate(inputText){
 
   var CurrentDate = new Date();
   var GivenDate = new Date(inputText.value);
-  
-      if(GivenDate < CurrentDate){ 
+
+      if(GivenDate < CurrentDate){
               document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo '"'.$lang['error9'].'"'; ?> ;
               return false;
           }
@@ -237,7 +237,7 @@ jQuery_1_3_2(document).ready(function () {
 
         /* Get input value on change */
         var term = jQuery_1_3_2(this).val();
-				
+
         var resultDropdown = jQuery_1_3_2(this).siblings('.result');
         if (term.length) {
           jQuery_1_3_2.get('/search/livesearch/'+term).done(function (data) {
@@ -252,7 +252,7 @@ jQuery_1_3_2(document).ready(function () {
 
     // Set search input value on click of result item
     jQuery_1_3_2(document).on('click', '.result p', function () {
-        jQuery_1_3_2(this).parents('.search-box').find('input[type="text"]').val(jQuery_1_3_2(this).text()).focus();
+        jQuery_1_3_2(this).parents('.search-box').find('input[type="text"]').val(jQuery_1_3_2(this).text().replace(/\s/g, '')).focus();
         jQuery_1_3_2(this).parent('.result').empty();
       });
   });

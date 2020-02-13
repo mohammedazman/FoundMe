@@ -17,11 +17,7 @@ public function __construct()
 
 }
 
-  public function index()
-  {
 
-
-  }
 
 public function uploadFiles(){
   foreach ($_FILES as $key=>$files) {
@@ -32,6 +28,7 @@ public function uploadFiles(){
     $target_dir = ROOT."public".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR;
 
    if ($key=='file') {
+
      $this->pdfFile=Helper::uploadFile($target_dir, $file, $file_tmp, $file_size,$key);
 
    }
@@ -42,6 +39,7 @@ public function uploadFiles(){
 
 
    }
+   }
 
      // check if there submit
      if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -50,9 +48,9 @@ public function uploadFiles(){
 
                 $params=array(':owner_id' => !empty(Session::get('userID'))?Session::get('userID'):1 ,
                 ':title'=> $_REQUEST['Title'],
-                ':galary' =>$this->filename,
+                ':galary' =>!empty($this->filename)?$this->filename:'',
                  ':descrption'=> $_REQUEST['descrption'],
-                 	':file'=> isset($pdfFile)?$this->pdfFile:'',
+                 	':file'=> !empty($this->pdfFile)?$this->pdfFile:'',
                    ':tags'=>$_REQUEST['Tags']	,
                     ':status' =>1,
                      ':cost'=>$_REQUEST['Amount']		,
@@ -72,7 +70,7 @@ public function uploadFiles(){
    exit();
 
 
-}
+
 
 }
   public function addcompaign()

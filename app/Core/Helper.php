@@ -197,7 +197,7 @@
       }
 
 
-      public function back()
+      public static function back()
       {
         header('Location:'.$_SERVER['HTTP_REFERER']);
         exit;

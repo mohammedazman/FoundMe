@@ -37,8 +37,8 @@ class manageUserCompaignController extends Controller
       $id=$_REQUEST['id'];
 
 
-    $this->pdfFile=$this->compaignModel->find([$id])[0]['file'];
-    $this->filename=$this->compaignModel->find([$id])[0]['galary'];
+    $oldcompaign=$this->compaignModel->find([$id])[0];
+
 
       foreach ($_FILES as $key=>$files) {
         $upload = 1;
@@ -58,33 +58,34 @@ class manageUserCompaignController extends Controller
 
 
        }
+     }
+
 
          // check if there submit
 
-
-          if (1==1) {
-
                     $params=array(
 
-                            ':pending'=> 1,
-                              ':updates'=> json_encode(array('title'=> $_REQUEST['Title'],
-                              'galary' =>$this->filename,
-                               'descrption'=> $_REQUEST['descrption'],
-                                'file'=> isset($pdfFile)?$this->pdfFile:'',
-                                 'tags'=>$_REQUEST['Tags']	,
-                                   'cost'=>$_REQUEST['Amount']		,
-                                    'duration'=>$_REQUEST['Deuration']	  )),
-                            ':id'=>$_REQUEST['id'] );
+            ':pending'=> 1,
+              ':updates'=> json_encode(array(':title'=>!empty($_REQUEST['Title'])?$_REQUEST['Title']:$oldcompaign['title'],
+                                            ':galary' =>!empty($this->filename)?$this->filename:$oldcompaign['galary'],
+                                             ':descrption'=>!empty($_REQUEST['descrption'])?$_REQUEST['descrption']:$oldcompaign['descrption'],
+                                              ':file'=> !empty($this->pdfFile)?$this->pdfFile:$oldcompaign['file'],
+                                               ':tags'=>!empty($_REQUEST['Tags'])?$_REQUEST['Tags']:$oldcompaign['tags']	,
+                                                 ':cost'=>!empty($_REQUEST['Amount'])?$_REQUEST['Amount']:$oldcompaign['cost'],
+                                                  ':duration'=>!empty($_REQUEST['Deuration'])?$_REQUEST['Deuration']:$oldcompaign['duration']	  )),
+                                                  ':id'=>$_REQUEST['id'] );
 
                          if ($this->compaignModel->update($params)) {
 
                           Notification::addNoti('Update compaign is require by '.$_SESSION['userName'] .'and need approvment','admin','new compain');
                            Message::setMessage(1,'main',' update your compaing have be done ');
+                             echo 'your compain added successfully';
+                           }else {
+                             echo 'Error ! Pleas Try Again';
+                           }
 
-                                                  }
-                                                }
-    }
-       echo 'your compain added successfully';
+
+
        exit();
 
 

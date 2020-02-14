@@ -70,6 +70,13 @@ class managecompaignController extends Controller
       return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
 
     }
+
+    // show all compaigns with load More
+    public function showAllCompaigns($from,$to){
+    $compaignsArray = $this->compaignModel->getAllCompaigns($from,$to);
+      return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
+
+    }
     public function compare($id='')
     {
       $compaignsArray = $this->compaignModel->find([$id]);
@@ -147,18 +154,43 @@ if 3 is ShowPausedCompaigns
 if 4 is for delete or reject Compaign
 if 5 is for approve or active Compaign
 if 6 is ShowPindingUpdateCompaigns
+if 7 is for ShowActiveCompaigns with load more
   */
-if(count($_POST)>0){
-  $type=$_POST['type'];
-if($type<=3 or $type>=6){
-
+  if(count($_POST)>0){
+    $type=$_POST['type'];
+  switch ($type) {
+    case 0:
     echo $manage->showCompaigns($type);
-    }
+      break;
+    case 1:
+    echo $manage->showCompaigns($type);
+      break;
+    case 2:
+    echo $manage->showCompaigns($type);
+      break;
+    case 3:
+    echo $manage->showCompaigns($type);
+      break;
+    case 4:
+    echo $manage->changeCompaigns($_POST['ids'],$_POST['state']);
+      break;
+    case 5:
+    echo $manage->changeCompaigns($_POST['ids'],$_POST['state']);
+      break;
+    case 6:
+    echo $manage->showCompaigns($type);
+      break;
+    case 7:
+    echo $manage->showAllCompaigns($_POST['from'],$_POST['to']);
+      break;
 
-  elseif($type==4){
-  // print_r($_POST);
-  echo $manage->changeCompaigns($_POST['ids'],$_POST['state']);
+
+    default:
+      // code...
+      break;
   }
+
+
 
 }
  ?>

@@ -40,17 +40,22 @@ class authController extends Controller
 
            Session::loggIn($user);
 
-           Message::setMessage(1,'main','loged in succesfuly');
+           Message::setMessage(1,'main','logged in succesfuly');
+
              if (Session::get('type')=='Admin') {
 
               header('Location:/admin/index');
               return ;
 
              }
-             if($signup==true)
+             if($signup==true){
                header('Location:/auth/welcome');
-             else
-                $this->index();
+               return ;
+              }
+             else{
+                header('Location:/home/index');
+                return ;
+              }
 
             }}
             else{
@@ -92,7 +97,7 @@ class authController extends Controller
                      $profile->add(['First Name',$_REQUEST['first_name'],$this->modelObj->lastID()['id']]);
                      $profile->add(['Last Name',$_REQUEST['last_name'],$this->modelObj->lastID()['id']]);
                      $profile->add(['Phone',$_REQUEST['phone'],$this->modelObj->lastID()['id']]);
-                      
+
                      Message::setMessage(1,'main',' Your account added successfully');
                      $this->login(true);
                     //  header('Location:/home/index');
@@ -100,7 +105,7 @@ class authController extends Controller
 
                                             }
                                           }
-                                            
+
   $this->view('home'.DIRECTORY_SEPARATOR.'singUp');
   $this->view->pageTitle='Sign Up Page';
   $this->view->render();

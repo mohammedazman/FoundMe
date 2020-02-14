@@ -6,17 +6,17 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 <body>
 
   <!-- start pages photo -->
-  <section class="cover-background top-space" style="background-image:url('/images/1(1).jpg');">
+  <section class="cover-background top-space section-img" >
         <div class="opacity-medium bg-dark"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
                     <div class="vertical-align-middle text-center">
                         <!-- start sub title -->
-                        <span class="text-white text-shadow-black"><?php echo $lang['item30']?></span>
+                        <h1 class="text-white text-shadow-black"><?php echo $lang['item30']?></h1>
                         <!-- end sub title -->
                         <!-- start page title -->
-                        <h1 class="text-white text-shadow-black"><?php echo $lang['item31']?></h1>
+                        <!-- <h1 class="text-white text-shadow-black"><?php echo $lang['item31']?></h1> -->
                         <!-- end page title -->
                     </div>
                 </div>
@@ -26,94 +26,118 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
     <!-- end pages photo - -->
 
 
-  <!-- profile page start-->
-  <!-- <div class="main main-raised border-50 shadow-div col-md-12"> -->
-	<section>
-			<div class="container register">
-					<div class="row">
-						<div class="col-md-12 register-right shadow-div">
-            <div class="tab-content" id="myTabContent">
-								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-									<h3 class="register-heading"><?php echo $lang['item32']?></h3>
-									<div class="row register-form wow fadeIn">
-                  <form class="col-md-12" action="/compaign/uploadFiles" id="addCompign" name="addCompign" method="post" enctype="multipart/form-data">
-                  <!-- <form class="col-md-12" action="" name="addCompign" id="addCompign" method="post" enctype="multipart/form-data"> -->
-										<div>
-											<div class="form-group">
-												<label for="Title" class="laple-forms"><?php echo $lang['item33']?> </label>
-												<input type="text" id="Title" oninput="stringlength(document.addCompign.Title, 10, 50); " name="Title" class="form-control" placeholder="<?php echo $lang['item33']?>" value=""  />
-                        <span id="TitleError" class="text-danger"></span>
-                      </div>
-											<div class="form-group">
-												<label for="Tags" class="laple-forms"><?php echo $lang['item34']?></label>
-									      <input type="text" id="Tags" name="Tags" oninput=" stringlength(document.addCompign.Tags, 2, 20)"  class="form-control" placeholder="#<?php echo $lang['item34']?>" value=""  />
-                        <span id="TagsError" class="text-danger"></span>
-                      </div>
-                      <div class="form-group">
-												<label for="Amount" class="laple-forms"><?php echo $lang['item35']?></label>
-                        <input type="number" id="Amount" name="Amount"   class="form-control"  placeholder="0 $" value="" />
-                        <span id="AmountError" class="text-danger"></span>
-                      </div>
-                      <div class="form-group">
-												<label for="Deuration" class="laple-forms"><?php echo $lang['item36']?></label>
-                        <input type="date" class="form-control" id="Deuration" name="Deuration" oninput="validateDate(document.addCompign.Deuration)"  placeholder="Add Deuration" value="" />
-                        <span id="DeurationError" class="text-danger"></span>
-                      </div>
+  <!-- add compaign page start-->
+  
+  <div class="container-login100">
+			<div class="wrap-login100 com1000" >
+				<form class="login100-form validate-form"  action="/compaign/uploadFiles" id="addCompignForm" name="addCompignForm" method="post" enctype="multipart/form-data">
+			
+				<div class="row">
+				<div class="col-md-12">
+				<div class="wrap-input100 " >
+						<input class="input100" type="text" name="Title"  value='<?php if(isset($_POST['Title']))echo$_POST['Title'];?>' oninput="stringlength(document.addCompignForm.Title, 10, 50); " />
+						<span class="focus-input100" data-placeholder="<?php echo $lang['item33']?> "></span>
+						<span class="text-danger text-error" id="TitleError"> </span>
+					</div>
+				</div>
 
-                      <div class="form-group">
-                      <label for="gallery" class="laple-forms"><?php echo $lang['item39']?></label>
-                      <input type="file"  class="form-control img-file-input" require onchange="Filevalidation('gallery-photo-add')" name="gallery"  id="gallery-photo-add">
-                      <span id="galleryError" class="text-danger"></span>
-                      <div class="container">
-                          <div class="row">
-                            <div class="gallery"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                      <label for="file" class="laple-forms"><?php echo $lang['item38']?></label>
-                      <input type="file" class="form-control pdf-file-input" name="file">
-                      <span id="fileError" class="text-danger"></span>
+				 <div class="col-md-6">
+					
 
-                      </div>
-                      <input type="submit"  style="display: none;" id='ajaxSubmit'  value="Add"  name="addComp" onclick="upload_to_db();" />
-                      <div class="form-group">
-                      <label for="file" class="laple-forms"><?php echo $lang['item37']?></label>
-
-                      <textarea rows="4" cols="50" class="form-control" id="mytextarea" value="" name="descrption">
-                      </textarea>
-                      <span id="descrptionError" class="text-danger"></span>
-
-                      </div>
-
-                      <center>
-                      <button type="button" class="btnadd"  value="Add" id="addComp" name="addComp" onclick="serverSideValidation();" /><?php echo $lang['item30']?></button>
-                      <!-- <input type="submit" class="btnadd"  value="Add" id="addComp" name="addComp"/> -->
-							        <p class="p-login nots-p-reg" style="padding-top:20px"><?php echo $lang['item39a']?><a href="#"> <?php echo $lang['item15']?></a></p>
-
-                      </center>
-
-										</div>
-                  </form>
-
-                  </div>
-
-								</div>
-
-							</div>
-						</div>
+					<div class="wrap-input100 " >
+						<input class="input100" type="text" name="Tags"  value='<?php if(isset($_POST['Tags']))echo$_POST['Tags'];?>'  oninput=" stringlength(document.addCompignForm.Tags, 2, 20)" >
+						<span class="focus-input100" data-placeholder="<?php echo $lang['item34']?> "></span>
+						<span class="text-danger text-error" id="TagsError"> </span>
 					</div>
 
+					<div class="wrap-input100 " >
+						<input class="input100" type="number" name="Amount"  value='<?php if(isset($_POST['Amount']))echo$_POST['Amount'];?>'   />
+						<span class="focus-input100" data-placeholder="<?php echo $lang['item35']?>"></span>
+						<span class="text-danger text-error" id="AmountError"> </span>
+					</div>
+
+					<div class="wrap-input100 mb20" >
+						<input class="input100" type="date" name="Deuration"  value='<?php if(isset($_POST['Deuration']))echo$_POST['Deuration'];?>' oninput="validateDate(document.addCompignForm.Deuration)"/>
+						<span class="focus-input100" data-placeholder="<?php echo $lang['item36']?>"></span>
+						<?php echo Message::check('Deuration');  ?>
+						<span class="text-danger text-error" id="DeurationError"> </span>
+					</div>
+					<div  >
+					<label for="files" class='btn-label' >
+					<?php echo $lang['item38']?></label>
+					<div class="container pdf-cont">
+						<div class='pdf-div'    >
+						  <span id="myfile">choose PDF</span> 
+							<input type="file" name="file" id='file'  class='uploader' onchange="$('#myfile').text(this.files[0].name);" />
+						</div>
+						<span class="text-danger text-error" id="fileError"> </span>
+
+						<div class="overlay">
+							<i class="fas fa-pencil-alt text"></i>
+						</div>
+					</div>
+					</div>
 				</div>
-  </section>
+				<div class="col-md-6">
+				
+					<div class="container cont-pdf" >
+						<img src="/images/before.jpg" alt="choose image"   id='image' class="profileImg mt-30">
+						<input type="file"  class='uploader'   require  onchange="Filevalidation('gallary-photo-add');readURL(this)" name="gallary"  id="gallary-photo-add" />
+						</img>
+						<div class="overlay">
+							<i class="fas fa-pencil-alt text"></i>
+						</div>
+					</div>
+					<span class="text-danger text-error" id="gallaryError"> </span>
+
+
+					
+					
+					<!-- <div class="wrap-input100 " >
+						<input class="input100" type="file" name="gallary" value='<?php if(isset($_POST['gallary']))echo$_POST['gallary'];?>'   oninput="stringlength(document.addCompignForm.gallary,8,15);">
+						<span class="focus-input100" data-placeholder="<?php echo $lang['item37']?>"></span>
+						<?php echo Message::check('gallary');  ?>
+						<span class="text-danger text-error" id="gallaryError"> </span>
+					</div> -->
+
+				
+				</div>
+				<div class="col-md-12 mt-3">
+
+				<div class="wrap-input100 " >
+				<label for="descrption" class='btn-label' ><?php echo $lang['item37']?></label>
+						<textarea class="input100" rows="4" cols="50" class="form-control" id="mytextarea" value="" name="descrption">
+						</textarea>
+						<?php echo Message::check('file');  ?>
+						<span class="text-danger text-error" id="descrptionError"> </span>
+					</div>
+					
+				</div>
+				<input type="submit"  style="display: none;" id='ajaxSubmit'  value="Add"  name="addComp" onclick="upload_to_db();" />
+
+					<div class="" style="width: 200px; float:left; margin-left:25px">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button type="button" class="login100-form-btn" id="addComp"name="addComp" onclick="serverSideValidation();" ><?php echo $lang['item30']?></button>
+							
+						</div>
+					</div>
+					
+				
+				</form>
+			</div>
+		</div>
+	
+</div>
+
 
 <!-- Large modal -->
 <button type="button" class="btn btn-primary"  id="loading" style="display: none;"   data-toggle="modal" data-target=".bd-example-modal-lg" data-keyboard="false" data-backdrop="static">loadding</button>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" style="top:20%;" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
-  <div class="modal-content">
-      <div class="modal-header" style="border: none !important;">
+  <div class="modal-content progress-content" >
+      <div class="modal-header progess-header" >
         </button>
       </div>
       <div class="modal-body">
@@ -127,21 +151,16 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
           <div class="progress-text" data-progress="0">0%</div>
       </div>
       <center>
-    <span style="
-    position: absolute;
-    z-index: 1;
-    top: 170px;
-    color: #e4e4e4;
-    font-size:24px;
-    ">Loading...</span>
+    <span class='progress-loading' >Loading...</span>
     </center>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer progress-footer" >
 
     </div>
     </div>
   </div>
 </div>
+
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
   <script type="text/javascript" src="/js/home/jquery.form.js"></script>
@@ -154,7 +173,7 @@ var jQuery_form = $.noConflict(true);
 	{
     tinyMCE.triggerSave();
 
-      jQuery_form('#addCompign').ajaxForm({
+      jQuery_form('#addCompignForm').ajaxForm({
 			beforeSubmit: function() {
 
         document.getElementById("loading").click();
@@ -183,9 +202,9 @@ var jQuery_form = $.noConflict(true);
   }
 
   Filevalidation = (id) => {
+
         const fi = document.getElementById(id);
         // Check if any file is selected.
-
         if (fi.files.length > 0) {
             for (var i = 0; i <= fi.files.length - 1; i++) {
 
@@ -199,8 +218,8 @@ var jQuery_form = $.noConflict(true);
                     document.getElementById(error).innerHTML=
                     <?php echo "'".$lang['error10']."'" ?>;
                 }
-                else if ((fname=='gallary' &&  ftype !='image/jpeg') || (fname=='file' &&  ftype !='application/pdf')) {
-                  document.getElementById(error).innerHTML=
+                else if ((fi.name=='gallary' &&  ftype !='image/jpeg') || (fi.name=='file' &&  ftype !='application/pdf')) {
+				  document.getElementById(error).innerHTML=
                   <?php echo "'".$lang['error11']."'" ?>;
                 } else {
                   document.getElementById(error).innerHTML='';
@@ -227,15 +246,15 @@ function progressBar(progressVal,totalPercentageVal = 100) {
 
 	}
   function serverSideValidation(){
-     if(Requirevalidation(document.addCompign.Title)&&Requirevalidation(document.addCompign.Tags)&&
-      Requirevalidation(document.addCompign.Amount)&&Requirevalidation(document.addCompign.Deuration)&&
-      Requirevalidation(document.addCompign.descrption)){
+     if(Requirevalidation(document.addCompignForm.Title)&&Requirevalidation(document.addCompignForm.Tags)&&
+      Requirevalidation(document.addCompignForm.Amount)&&Requirevalidation(document.addCompignForm.Deuration)&&
+      Requirevalidation(document.addCompignForm.descrption)){
     jQuery_1_3_2.ajax({
         url:"/validate",
         method:"POST",
              data:{
            type:"addCompain",
-           formData:jQuery_1_3_2('#addCompign').serialize()}
+           formData:jQuery_1_3_2('#addCompignForm').serialize()}
         ,
         success:function(data)
         {
@@ -264,7 +283,27 @@ function progressBar(progressVal,totalPercentageVal = 100) {
              });
             }
         }
+		function readURL(input) {
 
+			if($('#gallaryError')!=''){
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image')
+                    .attr('src', e.target.result)
+                    .width(418)
+                    .height(263)
+                    .css("margin-top", "44px");
+
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+			}
+    }
+	
 </script>
 
+    <?php include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer_section.phtml'; ?>
     <?php include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml'; ?>

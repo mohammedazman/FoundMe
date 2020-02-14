@@ -4,9 +4,14 @@ html *{
 html {
     scroll-behavior: smooth;
 }
+/* input[type=date] {
+
+    color: transparent;
+} */
 
 /* fonts */
 @import url('https://fonts.googleapis.com/css?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 body{
     font-family: 'Quicksand', sans-serif;
 }
@@ -133,7 +138,7 @@ header nav {
 }
 .left-menu{
     position: absolute;
-    left: 85px;
+    left: 200px;
 }
 .pic-profile-header{
     border-radius: 50%;
@@ -352,12 +357,12 @@ header nav {
     font-size: 50px;
     padding: 0px 20px 16px 0px;
 }
-.modal-content {
+/* .modal-content {
     background-color: #b9aeae00;
     border: 1px solid #b9aeae00;
     border-radius: 0;
     height: 180px;
-}
+} */
 
 /* profile */
 .h6, h6 {
@@ -891,8 +896,9 @@ img.rounded {
     padding: 0px 10px;
 }
 .text-error{
-    font-size: 12px;
+    font-size: 10px;
     padding: 10px 0px;
+    position: absolute;
 }
 
 .fa-circle{
@@ -1089,18 +1095,7 @@ input[type='file'] {
     font-size: .875rem;
     line-height: 1.21;
 }
-.btndonate{
-    float: right;
-    margin-top: 2%;
-    border: none;
-    border-radius: 6px;
-    padding: 1%;
-    background: #596275;
-    color: #fff;
-    font-weight: 600;
-    width: 80%;
-    font-size: 18px;
-}
+
 .a-donars:hover {
     color: #c2c2c2;
     text-decoration: unset;
@@ -1116,11 +1111,11 @@ input[type='file'] {
     width: auto;
     font-size: 18px;
 }
-
+/* 
 .modal-header ,.modal-footer{
     border-top: unset !important;
     border-bottom: unset !important;
-}
+} */
   .hr-blue-80{
     width: 90%;
     background-color: #7cdfe5;
@@ -1428,8 +1423,7 @@ font-family: 'Droid Arabic Kufi'
     border: none;
     border-radius: 6px;
     padding: 1%;
-    background: #596275;
-    color: #fff;
+    color: #a99e9e;
     font-weight: 600;
     width: 80%;
     font-size: 18px;
@@ -1450,10 +1444,10 @@ font-family: 'Droid Arabic Kufi'
     font-size: 18px;
 }
 
-.modal-header ,.modal-footer{
+/* .modal-header ,.modal-footer{
     border-top: unset !important;
     border-bottom: unset !important;
-}
+} */
   .hr-blue-80{
     width: 90%;
     background-color: #7cdfe5;
@@ -1711,6 +1705,7 @@ font-family: 'Droid Arabic Kufi'
 .btn-big{
     font-size: 16px;
 }
+
 
 .profile-div{
     /* position: absolute; */

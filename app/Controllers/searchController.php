@@ -43,7 +43,7 @@ class searchController extends Controller
         while ($thisIsCounter <= $size - 2) {
             $thisIsCounter++;
 
-            $liveResult .= '<p class="alert alert-info">' . $popular[$thisIsCounter]['query'] . '</p>';
+            $liveResult .= ' <p class="text-white p-2 rounded  m-3 border border-white " >'. $popular[$thisIsCounter]['query'] .' <span class="fas fa-search float-right"></span> </p>';
 
         }
         echo $liveResult;

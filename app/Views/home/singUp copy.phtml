@@ -1,0 +1,141 @@
+<?php
+
+  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml'; ?>
+   <!-- start Sign Up -->
+<body class="bg-blue">
+
+   <section>
+	<div class="container register">
+		<div class="row">
+			<div class="col-md-12 register-left">
+				<a href="/home/index">
+					<img src="/images/home/logo.png" alt=""/>
+				</a>
+				<h3><?php echo $lang['item20']?></h3>
+				<p class="p-login nots-p-reg"><?php echo $lang['item21']?> <a href="/auth/login"><?php echo $lang['item4a']?></a></p>
+
+			</div>
+				<div class="col-md-12 register-right shadow-div">
+
+					<div class="tab-content" id="myTabContent">
+							<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+								<h3 class="register-heading"> <?php echo $lang['item4b']?></h3>
+						     <form class="" action="" method="post" name='signupForm' id="signupForm">
+								<div class="row register-form ">
+								<div class="col-md-6">
+										<div class="form-group">
+											<label for="first_name" class="laple-forms"><?php echo $lang['item22']?></label>
+											<input type="text" class="form-control" placeholder="<?php echo $lang['item22']?> *"  name="first_name" value='<?php if(isset($_POST['first_name']))echo$_POST['first_name'];?>' oninput=" stringlength(document.signupForm.first_name,5,12); allLetter(document.signupForm.first_name);preventSpace(document.signupForm.first_name,0,0)" />
+										<?php echo Message::check('first_name');  ?>
+										<span class="text-danger text-error" id="first_nameError"> </span>
+										</div>
+										<div class="form-group">
+											<label for="last_name" class="laple-forms"><?php echo $lang['item23']?></label>
+											<input type="text" class="form-control" placeholder="<?php echo $lang['item23']?> *" name="last_name" value='<?php if(isset($_POST['last_name']))echo$_POST['last_name'];?>' oninput=" stringlength(document.signupForm.last_name,5,12); allLetter(document.signupForm.last_name);preventSpace(document.signupForm.first_name,0,0)" />
+											<?php echo Message::check('last_name');  ?>
+											<span class="text-danger text-error" id="last_nameError"> </span>
+										</div>
+										<div class="form-group">
+											<label for="email" class="laple-forms"><?php echo $lang['item24']?></label>
+											<input type="email" name="email" class="form-control" placeholder="<?php echo $lang['item24']?> *" value='<?php if(isset($_POST['email']))echo$_POST['email'];?>' oninput=" ValidateEmail(document.signupForm.email);" />
+											<?php echo Message::check('email');  ?>
+											<span class="text-danger text-error" id="emailError"> </span>
+
+										</div>
+										</div>		
+										<div class="col-md-6">
+										<div class="form-group">
+											<label for="password" class="laple-forms"><?php echo $lang['item25']?></label>
+											<input type="password" class="form-control" placeholder="<?php echo $lang['item25']?> *" name="password" value='<?php if(isset($_POST['password']))echo$_POST['password'];?>'  oninput="stringlength(document.signupForm.password,8,15);" />
+											<?php echo Message::check('password');  ?>
+											<span class="text-danger text-error" id="passwordError"> </span>
+
+										</div>
+										<div class="form-group">
+											<label for="confirm_password" class="laple-forms"><?php echo $lang['item26']?></label>
+											<input type="password" class="form-control" name="confirm_password"  placeholder="<?php echo $lang['item26']?> *" value='<?php if(isset($_POST['confirm_password']))echo$_POST['confirm_password'];?>' oninput=" confirmPassValidation(document.signupForm.confirm_password,document.signupForm.password)"; />
+											<?php echo Message::check('confirm_password');  ?>
+											<span class="text-danger text-error" id="confirm_passwordError"> </span>
+
+											</div>
+									
+										<div class="form-group">
+											<label for="phone" class="laple-forms"><?php echo $lang['item27']?></label>
+											<input type="text"  name="phone" class="form-control" placeholder="<?php echo $lang['item27']?> *" value='<?php if(isset($_POST['phone']))echo$_POST['phone'];?>' oninput="phonenumber(document.signupForm.phone)"; />
+											<?php echo Message::check('phone');  ?>
+											<span class="text-danger text-error" id="phoneError"> </span>
+
+										</div>
+										<center>
+										<input id="signuptBtn" type="submit" class="btnRegister float-none"  value="<?php echo $lang['item4b']?>"/>
+										
+										</center>
+
+										</div>
+												
+
+												
+													<!-- <p class="p-login">You have already account! <a href="login.html">LogIn</a></p> -->
+												
+												
+											</div>
+										</div>
+					         </form>
+				            </div>
+				</div>
+		</div>
+	</div>
+	</section>
+	
+    <!-- end Sign Up -->
+	<script>
+$(document).ready(function(){
+    $("#signuptBtn").click(function(){  
+		event.preventDefault();  
+		if(Requirevalidation(document.signupForm.first_name)&&Requirevalidation(document.signupForm.last_name)&&
+		Requirevalidation(document.signupForm.email)&&Requirevalidation(document.signupForm.password)&&
+		Requirevalidation(document.signupForm.confirm_password)&&Requirevalidation(document.signupForm.phone)){
+			serverSideValidate()
+		
+			
+		}    
+    });
+});
+
+
+function serverSideValidate(){
+	
+	jQuery_1_3_2.ajax({
+			url:"/validate",
+			method:"POST",
+     	    data:{
+				 type:"signup",
+				 formData:$('#signupForm').serialize()}
+				 ,
+			success:function(data)
+			{
+		var result=JSON.parse(data);
+	
+		if(result.statusCode==200){
+
+			$("#signupForm").submit(); // Submit the form
+		}
+		else{
+				var error=JSON.parse(result.message);
+				$.each( error, function( key, value ) {
+					if(key=='msgState' || key=='main');
+					else
+					document.getElementById(key+'Error').innerHTML=value;
+
+					});
+					return false;
+
+			}
+      }
+
+        
+			   });
+			}
+	
+</script>
+<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

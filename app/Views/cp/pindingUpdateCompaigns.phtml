@@ -1,0 +1,246 @@
+
+<?php
+require_once   VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'header.phtml';
+require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'fixedBar.phtml';
+require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
+?>
+
+
+
+ <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Manage Compaigns</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Active Compaigns</li>
+            </ol>
+          </div>
+  <div class="user" style="background-color: #fff; padding:50px;border-radius: 40px; " >
+  <div class="select">
+    <select class="form-control" id="locale">
+      <option value="ar-SA">ar-SA</option>
+      <option value="en-US" selected>en-US</option>
+    </select>
+  </div>
+
+  <div id="toolbar">
+    <button id="remove" class="btn btn-danger" disabled>
+      <i class="glyphicon glyphicon-remove"></i> Delete Compaign
+    </button>
+  </div>
+  <table
+  id="table"
+  data-toolbar="#toolbar"
+  data-search="true"
+  data-show-toggle="true"
+  data-show-fullscreen="true"
+  data-show-columns="true"
+  data-show-columns-toggle-all="true"
+  data-detail-view="true"
+  data-show-export="true"
+  data-click-to-select="true"
+  data-detail-formatter="detailFormatter"
+  data-minimum-count-columns="2"
+  data-show-pagination-switch="true"
+  data-pagination="true"
+  data-id-field="id"
+  data-page-list="[10, 25, 50, 100, all]"
+
+  >
+  </table>
+</div>
+
+
+
+
+
+  <script>
+    var $table = $('#table')
+    var $remove = $('#remove')
+    var selections = []
+
+    function getIdSelections() {
+      return $.map($table.bootstrapTable('getSelections'), function (row) {
+        return row.id
+      })
+    }
+
+    function responseHandler(res) {
+      $.each(res.rows, function (i, row) {
+        row.state = $.inArray(row.id, selections) !== -1
+      })
+      return res
+    }
+
+    function detailFormatter(index, row) {
+      var html = []
+      $.each(row, function (key, value) {
+        html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+      })
+      return html.join('')
+    }
+
+    function operateFormatter(value, row, index) {
+
+      return [
+
+        '<a class="add" href="/managecompaign/compare/',
+        row.id,
+        '" title="show update">',
+        '<i class="fas fa-clipboard "></i>',
+        '</a>'
+      ].join('')
+    }
+
+
+
+
+
+
+
+
+        // $table.bootstrapTable('remove', {
+        //   field: 'id',
+        //   values: [row.id]
+
+
+    function totalTextFormatter(data) {
+      return 'Total'
+    }
+
+    function totalNameFormatter(data) {
+      return data.length
+    }
+
+    function totalPriceFormatter(data) {
+      var field = this.field
+      return '$' + data.map(function (row) {
+        return +row[field].substring(1)
+      }).reduce(function (sum, i) {
+        return sum + i
+      }, 0)
+    }
+
+    function initTable(users) {
+      $table.bootstrapTable('destroy').bootstrapTable({
+        height: 550,
+        locale: $('#locale').val(),
+        pagination: true,
+        search: true,
+        columns: [
+          [{
+            field: 'state',
+            checkbox: true,
+            rowspan: 2,
+            align: 'center',
+            valign: 'middle'
+          }, {
+            title: ' ID',
+            field: 'id',
+            rowspan: 2,
+            align: 'center',
+            valign: 'middle',
+            sortable: true,
+            footerFormatter: totalTextFormatter
+          }, {
+            title: 'Compaigns Details',
+            colspan: 5,
+            align: 'center'
+          }],
+          [ {
+            field: 'title',
+            title: 'Compain Title',
+            sortable: true,
+            align: 'center',
+            footerFormatter: totalPriceFormatter
+          }, {
+            field: 'tags',
+            title: 'Tags',
+            sortable: true,
+            align: 'center',
+            footerFormatter: totalPriceFormatter
+          }
+          ,{
+            field: 'cost',
+            title: 'Cost',
+            sortable: true,
+            align: 'center',
+            footerFormatter: totalPriceFormatter
+          }
+          ,
+          {
+            field: 'duration',
+            title: 'Duration',
+            sortable: true,
+            align: 'center',
+            footerFormatter: totalPriceFormatter
+          }
+          , {
+            field: 'operate',
+            title: 'Item Action',
+            align: 'center',
+            clickToSelect: false,
+            events: window.operateEvents,
+            formatter: operateFormatter
+          }]
+        ],
+        data:users
+
+      })
+    }
+      $table.on('check.bs.table uncheck.bs.table ' +
+        'check-all.bs.table uncheck-all.bs.table',
+      function () {
+        $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
+
+        // save your data, here just save the current page
+        selections = getIdSelections()
+        // push or splice the selections if you want to save all data selections
+      })
+      $table.on('all.bs.table', function (e, name, args) {
+        console.log(name, args)
+      })
+      $remove.click(function () {
+        var ids = getIdSelections()
+        $('#id_d').val( ids);
+    $('#changeCompaigns').modal('show');
+
+
+      })
+
+
+    // $(function() {
+    //   initTable()
+
+    //   $('#locale').change(initTable)
+    // })
+
+
+ $(document).ready(function(){
+      	load_data();
+  });
+
+
+ function load_data(){
+		$.ajax({
+			url:"/managecompaign",
+			method:"POST",
+      data:{type:"6"},
+			success:function(data)
+			{
+        var userInfo=JSON.parse(data);
+        // alert(d)
+        initTable(userInfo.data);
+        $('#locale').change(initTable)
+      }
+
+
+		       });
+}
+
+
+
+  </script>
+
+</body>
+</html>

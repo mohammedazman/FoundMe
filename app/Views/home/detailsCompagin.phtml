@@ -38,7 +38,7 @@
 
     <div class="mt-4">
 								<span class="mr-3 tag-title">
-									Tags:
+                <?php echo $lang['item76']; ?>:
 								</span>
 								
 								<span >
@@ -46,33 +46,24 @@
 										#Streetstyle
 									</a>
 
-									<a href="#" class="ml-3">
-										#Crafts
-                  </a>
-                  <a href="#" class="ml-3">
-										#Streetstyle
-									</a>
-
-									<a href="#" class="ml-3">
-										#Crafts
-									</a>
+								
 								</span>
 							
      </div>
      <br>
      <hr>
 
-     <h2 class="mt-4 comm-title">Last Comments</h2> <br>
+     <h2 class="mt-4 comm-title"><?php echo $lang['item73a']; ?></h2> <br>
     <div class="comments  mt-0 mr-5 ml-5" id="comments-show"></div>
   <hr>
-        <div  class="comm" class="p-5" >
-          <h2   class='comm-sub'>Leave a comment</h2> <br>
+        <div  class="comm" class="p-4" >
+          <h2   class='comm-sub'><?php echo $lang['item73b']; ?></h2> <br>
         <form action="#" id="comm_form" >
           <input type="hidden" name="type" value="2">
                       <div class="wrap-input100 comm-length" >
                         <textarea class="input100"     name="Comment" id="Comment" oninput="if($('#Comment').val()!='')$('#submitComment').attr('disabled' , false ); else $('#submitComment').attr('disabled' , 'disabled' );">
                         </textarea>
-                        <span class="focus-input100" data-placeholder="comment"></span>
+                        <span class="focus-input100" data-placeholder="<?php echo $lang['item73']; ?>"></span>
                       </div>
                        
         </form>
@@ -86,7 +77,7 @@
   <div class="col-lg-4 mt-3 side-bar">
    
    <div class="list-group side-title" >
-   <h2 class=" card-title group-title "> Compaign Details</h2>  
+   <h2 class=" card-title group-title "> <?php echo $lang['item71a']; ?></h2>  
    <div>
         <div class='countD donate-count'><i class='fas fa-donate'></i>        <i>300K</i> </div>
         <div class='countD follow-count'><i class='fas fa-eye'></i>        <i>300K</i> </div>
@@ -102,12 +93,12 @@
         </div>
         
                             <center>
-                            <a href="/donate/index/<?php echo $compaign['id'] ?>"><input type="submit" id="donate" class="btndonate float-none"  value="<?php echo $lang['item78']; ?>"/></a>
+                            <a href="/donate/index/<?php echo $compaign['id'] ?>"><input type="submit" id="donate" class="btndonate float-none"  value="<?php echo $lang['item77b']; ?>"/></a>
                             <?php
                              if(!in_array(Session::get('userID'),$this->view_data['followers'])){ ?>
-                              <input type="button" id="follow" onclick="follow('follow')" class="btndonate float-none"  value="متابعة"/>
+                              <input type="button" id="follow" onclick="follow('follow')" class="btndonate float-none"  value="<?php echo $lang['item78b']; ?>"/>
                             <?php } else{ ?>
-                              <input type="button" id="follow" onclick="follow('unfollow')" class="btndonate float-none"  value="الغاء المتابعة"/>
+                              <input type="button" id="follow" onclick="follow('unfollow')" class="btndonate float-none"  value="<?php echo $lang['item78d']; ?>"/>
                               <?php } ?>
                             </center>
        
@@ -130,12 +121,12 @@
          }
 ?>
                      <center>
-                    <button  data-toggle="modal" data-target="#donarsModal" id="donate" class="btndonate float-none"  >View all donars</abutton>
+                    <button  data-toggle="modal" data-target="#donarsModal" id="donate" class="btndonate float-none"  ><?php echo $lang['item77c']; ?></abutton>
                     </center>     
    </div>
 
    <div class="list-group follow-title"  >
-   <h2 class=" card-title group-title "> FOLLOWERs</h2>  
+   <h2 class=" card-title group-title "> <?php echo $lang['item78']; ?></h2>  
    <?php 
                          $followers=$this->view_data['followers'];
                          foreach($followers as $follower){
@@ -150,7 +141,7 @@
          }
          ?>
                 <center>
-                    <button  data-toggle="modal" data-target="#followerModal" id="donate" class="btndonate float-none"  >View all followers</abutton>
+                    <button  data-toggle="modal" data-target="#followerModal" id="donate" class="btndonate float-none"  ><?php echo $lang['item78c']; ?></abutton>
                 </center>   
    </div>
 </div>

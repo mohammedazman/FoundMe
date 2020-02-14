@@ -62,6 +62,29 @@ function checkdate()
 
   }
 
+  // change pending to 2 means that is Request for delete from owner
+
+  public function addDelete($aData)
+  {
+
+          $oStmt = 'UPDATE  compigans
+                   SET   	pending=2
+                  WHERE id=? ';
+          return $this->db->QueryCrud($oStmt,$aData,0);
+
+  }
+
+  // change pending to 2 means that is Request for delete from owner
+
+  public function changePinding($aData)
+  {
+
+          $oStmt = 'UPDATE  compigans
+                   SET   	pending=?
+                  WHERE id=? ';
+          return $this->db->QueryCrud($oStmt,$aData,0);
+
+  }
   //
 
   public function find($aData)
@@ -101,10 +124,10 @@ public function getAllCompaigns($from,$to)
 }
 
 // managecompaign
-public function getUpdateCompaigns()
+public function getPindingCompaigns($aData)
 {
 
-  return  $this->db->QueryCrud('SELECT * FROM compigans where pending=1');
+  return  $this->db->QueryCrud('SELECT * FROM compigans where pending=?',$aData);
 }
 
 public function getUSerCompaigns($args)

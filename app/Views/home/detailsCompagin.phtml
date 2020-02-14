@@ -90,9 +90,9 @@
    <div class="list-group side-title" >
    <h2 class=" card-title group-title "> <?php echo $lang['item71a']; ?></h2>
    <div>
-        <div class='countD donate-count'><i class='fas fa-donate'></i>        <i>300K</i> </div>
-        <div class='countD follow-count'><i class='fas fa-eye'></i>        <i>300K</i> </div>
-        <div class='countD comm-count' ><i class='fas  fa-comment-dots'></i>        <i>300K</i> </div>
+        <div class='countD donate-count'><i class='fas fa-donate'></i>        <i><?php echo Helper::countDonars($compaign['id']); ?></i> </div>
+        <div class='countD follow-count'><i class='fas fa-eye'></i>        <i><?php echo Helper::countViewCompaign($compaign['id']); ?></i> </div>
+        <div class='countD comm-count' ><i class='fas  fa-comment-dots'></i>        <i><?php echo Helper::countComment($compaign['id']); ?></i> </div>
 
 </div>
 <br>
@@ -345,5 +345,5 @@ $( document ).ready(function() {
 </script>
 
 
-<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer_section.phtml' ?>
+
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

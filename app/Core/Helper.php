@@ -61,53 +61,55 @@
 
    }
 
- #return COUNT of news
-   public static function  countNews()
+
+
+   #founction to shorten NumberFormatter
+   public static function NumberFormatter($num)
+   {
+     if ($num>=1000000) {
+       return (round($num/1000000,1)).'M';
+      }
+      elseif ($num>=1000) {
+      return (round($num/1000,1)).'K';
+      }
+      else {
+        return $num;
+      }
+   }
+
+ #return COUNT of compaign view
+   public static function  countViewCompaign($id)
    {
      $db= new DB();
-     $counter =$db->QueryCrud("select count(*) as count from news");
-     return $counter[0]['count'];
+     $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM visits WHERE compaign_id=?",[$id]);
+     return Helper::NumberFormatter($counter[0]['count']);
    }
 
    #return COUNT of comments
-     public static function  countComment()
+     public static function  countComment($id)
      {
        $db= new DB();
-       $counter =$db->QueryCrud("select count(*) as count from comments");
-       return $counter[0]['count'];
+       $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM comments WHERE compigan_id=?",[$id]);
+       return Helper::NumberFormatter($counter[0]['count']);
      }
 
-     #return COUNT of activities
-       public static function  countlikes()
+     #return COUNT of donars
+       public static function  countDonars($id)
        {
-          $db= new DB();
-         $counter =$db->QueryCrud("select count(likes) as count from likes");
-         return $counter[0]['count'];
+         $db= new DB();
+         $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM donations WHERE compigan_id=?",[$id]);
+         return Helper::NumberFormatter($counter[0]['count']);
        }
-       #return COUNT of activities
-         public static function  countdislikes()
-         {
-            $db= new DB();
-           $counter =$db->QueryCrud("select count(dislikes) as count from likes");
-           return $counter[0]['count'];
-         }
 
-       #return COUNT of users
-         public static function  countUsers()
-         {
-            $db= new DB();
-           $counter =$db->QueryCrud("select count(*) as count from users");
-           return $counter[0]['count'];
-         }
 
-         #return COUNT of categories
-           public static function  countCategories()
-           {
-              $db= new DB();
-             $counter =$db->QueryCrud("select count(*) as count from categories");
-             return $counter[0]['count'];
-           }
+     public static function getProgress($id)
+     {
+       $db= new DB();
+       $donations =$db->QueryCrud("SELECT SUM(amount) AS sum FROM donations WHERE compigan_id=?",[$id])[0]['sum'];
+       $compaign=$db->QueryCrud("SELECT cost FROM compigans WHERE id =?",[$id])[0]['cost'];
+       return  floor(($donations/$compaign)*100);
 
+     }
 
    #check if category have posts or news @param is of category from news row
    public static function haveItem($data, $arr)

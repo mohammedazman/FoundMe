@@ -41,7 +41,7 @@
 
                         </div>
 
-                        
+
                         <div>
 
 
@@ -67,14 +67,14 @@
 
 
 
-                        
+
                                 </div>
-                               
+
                                   <?php
                                     // if (array_key_exists('profiles',$this->view_data)){
                                     // $html='';
                                     // foreach ($this->view_data['profiles'] as $profile) {
-                                     
+
                                     //     $html.='<div class="p-all-20px"><span class="info-icon" title="'.$profile['name'].'">FN </span>';
                                     //     $html.='</span>  <span class="profile-info-tow">';
                                     //           $html.=$profile['value'];
@@ -139,7 +139,7 @@
                                     </div>
                                 </div>
                                 <div class="progress">
-                                  <div class="progress-bar progress-bar-style" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">55%</div>
+                                  <div class="progress-bar progress-bar-style" role="progressbar" style="width: <?php echo Helper::getProgress($row['id']); ?>%" aria-valuenow="<?php echo Helper::getProgress($row['id']); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo Helper::getProgress($row['id']); ?>%</div>
                                 </div>
                          </div>
                                     <?php } ?>

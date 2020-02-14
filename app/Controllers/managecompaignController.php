@@ -37,6 +37,15 @@ class managecompaignController extends Controller
 
     }
 
+    public function ShowPindingDeleteCompaigns(){
+
+      $this->view('cp'.DIRECTORY_SEPARATOR.'PindingDeleteCompaigns');
+      $this->view->pageTitle='Pinding Update Users';
+      $this->view->render();
+
+
+    }
+
 
     public function ShowPausedCompaigns(){
 
@@ -60,12 +69,23 @@ class managecompaignController extends Controller
 
     }
     public function showCompaigns($state){
+
+      // if state equal 6 for return pinding Update Compaigns
       if ($state==6) {
-        $compaignsArray = $this->compaignModel->getUpdateCompaigns();
+        $compaignsArray = $this->compaignModel->getPindingCompaigns([1]);
         return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
 
       }
 
+       // if state equal 8 for return pinding Delete Compaigns
+      if ($state==8) {
+
+        $compaignsArray = $this->compaignModel->getPindingCompaigns([2]);
+        return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
+
+      }
+
+     //  return all Compaigns depend on state
       $compaignsArray = $this->compaignModel->getCompaigns([$state]);
       return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
 
@@ -124,12 +144,13 @@ class managecompaignController extends Controller
     public function changeCompaigns($ids,$state){
       if($state==4 || $state==7)
         $nState=2;
-      elseif($state==5 || $state==6)
+      elseif($state==5 || $state==6 )
         $nState=0;
       else
       $nState=$state;
 
     $compaignID = $this->compaignModel->changeCompaigns([$nState,$ids]);
+
       $compArray = $this->compaignModel->find([$ids])[0];
 
            $noti_type=array('reject Compaign','','approve compaign','pause compaign','resum compaign','delete compaign','','active compaign');
@@ -139,6 +160,27 @@ class managecompaignController extends Controller
 
       return  json_encode(array("statusCode"=>200,"message"=>"Process done successfully"));
 
+    }
+
+    public function changePindingCompaigns($ids,$state)
+    {
+      if ($state==0) {
+
+        $this->compaignModel->changePinding([0,$ids]);
+      return  $this->changeCompaigns($ids,5);
+
+      }
+      else {
+        $compArray = $this->compaignModel->find([$ids])[0];
+        if ($this->compaignModel->changePinding([0,$ids])) {
+        Notification::addNoti('Admin Reject your compaign Delete',$compArray['owner_id'],'Reject Delete',$compArray['id']);
+          Message::setMessage(1,'main',' Reject Request for Delete compaing have be done ');
+          return  json_encode(array("statusCode"=>200,"message"=>"Process done successfully"));
+
+
+        }
+
+      }
     }
 
 
@@ -155,6 +197,8 @@ if 4 is for delete or reject Compaign
 if 5 is for approve or active Compaign
 if 6 is ShowPindingUpdateCompaigns
 if 7 is for ShowActiveCompaigns with load more
+if 8 is ShowPindingDeleteCompaigns
+if 9 is for approve or reject Delete Compaign Request
   */
   if(count($_POST)>0){
     $type=$_POST['type'];
@@ -183,11 +227,14 @@ if 7 is for ShowActiveCompaigns with load more
     case 7:
     echo $manage->showAllCompaigns($_POST['from'],$_POST['to']);
       break;
-
-
-    default:
-      // code...
+    case 8:
+   echo $manage->showCompaigns($type);
       break;
+    case 9:
+   echo $manage->changePindingCompaigns($_POST['ids'],$_POST['state']);
+      break;
+
+
   }
 
 

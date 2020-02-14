@@ -24,7 +24,8 @@ public function render()
 
 include VIEW.$this->view_file.'.phtml';
 if ($this->getController()!='cp') {
-  $this->visits->add([$this->view_file,Session::get('userID')]);
+
+    $this->visits->add([$this->view_file,Session::get('userID'),isset($compaign)?$compaign['id']:null]);
 }
 
   }

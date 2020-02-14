@@ -107,11 +107,11 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
     function operateFormatter(value, row, index) {
       return [
-        '<a class="pause" href="javascript:void(0)" title="pause">',
-        '<i class="fa fa-pause"></i>',
-        '</a>  ',
-        '<a class="remove" href="javascript:void(0)" title="Remove">',
+        '<a class="delete" href="javascript:void(0)" title="Delete">',
         '<i class="fa fa-trash"></i>',
+        '</a>  ',
+        '<a class="reject" href="javascript:void(0)" title="Reject">',
+        '<i class="fa fa-times-circle "></i>',
         '</a>'
       ].join('')
     }
@@ -147,17 +147,21 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 
     window.operateEvents = {
-      'click .pause': function (e, value, row, index) {
-        $('#id_d').val(row.id);
-        $('#state_d').val(3);
-        $('#changeCompaigns').modal('show');
+      'click .liks': function (e, value, row, index) {
+        alert('You click like action, row: ' + JSON.stringify(row))
       },
-      'click .remove': function (e, value, row, index) {
+      'click .delete': function (e, value, row, index) {
         // alert (row.id)
 
     $('#id_d').val(row.id);
-    $('#state_d').val(5);
-    $('#changeCompaigns').modal('show');
+    $('#state_d').val(0);
+    $('#changeCompaigns').modal('show');},
+    'click .reject': function (e, value, row, index) {
+      // alert (row.id)
+
+  $('#id_d').val(row.id);
+  $('#state_d').val(1);
+  $('#changeCompaigns').modal('show');
 
   }
 
@@ -293,7 +297,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 		$.ajax({
 			url:"/managecompaign",
 			method:"POST",
-      data:{type:"2"},
+      data:{type:"8"},
 			success:function(data)
 			{
         var userInfo=JSON.parse(data);

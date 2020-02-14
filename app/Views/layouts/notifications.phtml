@@ -27,13 +27,12 @@ $(document).ready(function(){
              else
                 html+=' <li class="notification-box item not_read">';
 
-
-                         
-          html+='<strong class="noti-date">'+row.created_at+'</strong><br>'+
+                html+='<a href="/viewCompaign/show/'+row.effected_id+'" style="text-decoration: none; color:#969696">'+
+                '<strong class="noti-date">'+row.created_at+'</strong><br>'+
                              '<span style="font-size: 13px;" >'+
                              row.text+
                              '</span'+ 
-                      ' </li>';
+                      ' </a></li>';
            }
           
            i++;

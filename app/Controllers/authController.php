@@ -97,7 +97,7 @@ class authController extends Controller
                      $profile->add(['First Name',$_REQUEST['first_name'],$this->modelObj->lastID()['id']]);
                      $profile->add(['Last Name',$_REQUEST['last_name'],$this->modelObj->lastID()['id']]);
                      $profile->add(['Phone',$_REQUEST['phone'],$this->modelObj->lastID()['id']]);
-                      
+
                      Message::setMessage(1,'main',' Your account added successfully');
                      $this->login(true);
                     //  header('Location:/home/index');
@@ -105,7 +105,7 @@ class authController extends Controller
 
                                             }
                                           }
-                                            
+
   $this->view('home'.DIRECTORY_SEPARATOR.'singUp');
   $this->view->pageTitle='Sign Up Page';
   $this->view->render();

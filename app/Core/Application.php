@@ -19,6 +19,7 @@ class Application
             if (file_exists(CONTROLLER.$this->controller.'.php')) {
 
                             if (Privilege::init()->checkCont($this->controller) ) {
+                              
                                   $this->controller=new $this->controller;
                                   if(method_exists($this->controller,$this->action))
                                       call_user_func_array([$this->controller,$this->action],$this->params);
@@ -51,12 +52,13 @@ class Application
 
       $this->controller=isset($url[0])?$url[0].'Controller':'homeController';
       $this->action=isset($url[1])?$url[1]:'index';
-      
+
 
        # delete controller and action from url array
       unset($url[0],$url[1]);
 
       $this->params=!empty($url)?array_values($url):[];
+
     } #end of if statement
 
   } #end of prepareURL function

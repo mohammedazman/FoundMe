@@ -1,6 +1,7 @@
 <?php
 
-  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
+  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
+?>
     <!-- start pages photo -->
     <section class="cover-background top-space" style="background-image:url('/images/home/1(1).jpg');">
         <div class="opacity-medium bg-dark"></div>
@@ -33,11 +34,11 @@
                           <div class="profile-img-size">
                             <img src="/images/home/user.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid profile-pic" width="auto">
                             <i class="fas fa-user-edit upload-button p-image"></i>
-                            <input class="file-upload" type="file" accept="image/*"/> 
+                            <input class="file-upload" type="file" accept="image/*"/>
                           </div>
-                          
+
                         </div>
-                        
+
                         <div class="name">
                           <?php if (array_key_exists('profiles',$this->view_data)){?>
                             <h3 class="title"><?php echo $this->view_data['profiles'][0]['value']; ?></h3>
@@ -104,11 +105,11 @@
                                     <div class="dropdown">
                                     <span class="dropspan"><i class="fa fa-ellipsis-v"></i></span>
                                     <div class="dropspan-content">
-                                    <a href="#">Edit</a>
-                                    <a href="#">Delete</a>
+                                    <a href="/manageUserCompaign/index/<?php echo $row['id']; ?>">Edit</a>
+                                    <a href="/manageUserCompaign/delete/<?php echo $row['id']; ?>">Delete</a>
                                     </div>
                                     </div>
-                                    <div class="text-overlay"> 
+                                    <div class="text-overlay">
                                       <h5 class="card-title"><?php echo $lang['item102'] ?></h5>
                                       <p class="card-text"><?php echo $row['title'] ?></p>
                                       <a href="/viewCompaign/show/<?php echo $row['id']?>" class="btn btn-home-comp">Go somewhere</a>
@@ -140,11 +141,11 @@
 
                 </div>
                 </div>
-               
+
                 <!-- TAPS  -->
-            
-              
-          </div>  
+
+
+          </div>
       </div>
   	</div>
 	<!-- profile page end -->

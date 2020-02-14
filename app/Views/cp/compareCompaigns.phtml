@@ -1,0 +1,73 @@
+
+<?php
+require_once   VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'header.phtml';
+require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'fixedBar.phtml';
+require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
+$compaign=$this->view_data['compaign'][0];
+$newCompaign=json_decode($compaign['updates'],true);
+
+?>
+
+
+
+
+<div class="d-flex  justify-content-between   mb-5">
+
+
+
+
+    <div class="card flex-grow-1 ml-5" style="width: 18rem;">
+      <h4 class="btn  bg-dark text-light p-2 "> new value</h4>
+      <img class="card-img-top h-25" src="/uploads/<?php echo  $newCompaign[':galary']; ?>" alt="Card image cap">
+      <div class="card-body">
+
+        <h5 class="card-title"><?php
+      echo  $newCompaign[':title']; ?></h5>
+        <p class="card-text"><?php
+      echo  substr($newCompaign[':descrption'],0,50); ?>...</p>
+      <ul class="list-group list-group-flush text-muted">
+                <li class="list-group-item"><?php echo $newCompaign[':tags']; ?></li>
+        <li class="list-group-item"><?php echo $newCompaign[':cost']; ?></li>
+        <li class="list-group-item"><?php echo $newCompaign[':duration']; ?></li>
+
+
+          <li class="list-group-item">  <a href="/uploads/<?php echo $newCompaign[':file']; ?>" class="card-link" target="_blank">PDF File link</a></li>
+
+
+
+      </ul>
+      </div>
+
+
+    </div>
+
+  <!-- old value -->
+  <div class="card  flex-grow-1  ml-5  " style="width: 18rem;">
+    <h4 class="btn bg-secondary text-light"> old value</h4>
+    <img class="card-img-top h-25" src="/uploads/<?php echo $compaign['galary']; ?>" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><?php echo $compaign['title']; ?></h5>
+      <p class="card-text"><?php echo substr($compaign['descrption'],0,50); ?> ...</p>
+      <ul class="list-group list-group-flush text-muted">
+        <li class="list-group-item"><?php echo $compaign['tags']; ?></li>
+        <li class="list-group-item"><?php echo $compaign['cost']." $"; ?></li>
+        <li class="list-group-item"><?php echo $compaign['duration']; ?></li>
+        <li class="list-group-item">
+          <a href="/uploads/<?php echo $compaign['file']; ?>" class="card-link" target="_blank">PDF File link</a>
+       </li>
+      </ul>
+    </div>
+
+
+
+  </div>
+
+  <div class="d-flex flex-column flex-fill align-self-center ml-5">
+    <a href="/managecompaign/update/approve/<?php echo $compaign['id']; ?>" class="btn btn-primary m-3 p-2 ">approve <span class=" fa fa-check-circle"></span></a>
+    <a href="/managecompaign/update/reject/<?php echo $compaign['id']; ?>" class="btn btn-danger m-3 p-2">reject <span class="ml-2 fa fa-times-circle"></span></a>
+  </div>
+</div>
+
+
+</body>
+</html>

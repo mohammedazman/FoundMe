@@ -27,6 +27,17 @@ class managecompaignController extends Controller
 
 
     }
+
+    public function ShowPindingUpdateCompaigns(){
+
+      $this->view('cp'.DIRECTORY_SEPARATOR.'pindingUpdateCompaigns');
+      $this->view->pageTitle='Pinding Update Users';
+      $this->view->render();
+
+
+    }
+
+
     public function ShowPausedCompaigns(){
 
       $this->view('cp'.DIRECTORY_SEPARATOR.'pausedCompaigns');
@@ -49,12 +60,59 @@ class managecompaignController extends Controller
 
     }
     public function showCompaigns($state){
+      if ($state==6) {
+        $compaignsArray = $this->compaignModel->getUpdateCompaigns();
+        return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
+
+      }
 
       $compaignsArray = $this->compaignModel->getCompaigns([$state]);
       return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
 
     }
-  
+    public function compare($id='')
+    {
+      $compaignsArray = $this->compaignModel->find([$id]);
+
+      $this->view('cp'.DIRECTORY_SEPARATOR.'compareCompaigns',['compaign'=>$compaignsArray]);
+      $this->view->pageTitle='compare Compaigns';
+      $this->view->render();
+
+    }
+    public function update($action,$id)
+    {
+      $compaign = $this->compaignModel->find([$id])[0];
+      $updateData=json_decode($compaign['updates'],true);
+      $params=array(':pending' =>0 ,
+                    ':updates'=>'',
+                    ':id'=>$compaign['id']);
+      if ($action=='approve') {
+        $params=array_merge($params,$updateData);
+        if ($this->compaignModel->approveUpdate($params)) {
+          Notification::addNoti('Admin Approve your compaign update',$compaign['owner_id'],'Approve Update',$compaign['id']);
+          Message::setMessage(1,'main',' Approve  Compaign Update Done successfully ');
+          header('Location:/managecompaign/ShowPindingUpdateCompaigns');
+
+        }
+        else {
+          Message::setMessage(2,'main',' There is Error pleas Try Again ');
+          Helper::back();
+        }
+
+
+      }elseif ($action=='reject') {
+        if ($this->compaignModel->update($params)) {
+          Notification::addNoti('Admin Reject your compaign update',$compaign['owner_id'],'Reject Update',$compaign['id']);
+            Message::setMessage(1,'main',' Reject  Compaign Update Done successfully ');
+         header('Location:/managecompaign/ShowPindingUpdateCompaigns');
+        }
+        else {
+          Message::setMessage(2,'main',' There is Error pleas Try Again ');
+          Helper::back();
+        }
+      }
+    }
+
 
     public function changeCompaigns($ids,$state){
       if($state==4 || $state==7)
@@ -66,7 +124,7 @@ class managecompaignController extends Controller
 
     $compaignID = $this->compaignModel->changeCompaigns([$nState,$ids]);
       $compArray = $this->compaignModel->find([$ids])[0];
-       
+
            $noti_type=array('reject Compaign','','approve compaign','pause compaign','resum compaign','delete compaign','','active compaign');
            $noti_text=array('reject ','','approve ','pause ','resum ','delete ','','active ');
       if($state!=6)
@@ -88,10 +146,11 @@ if 2 is ShowActiveCompaigns
 if 3 is ShowPausedCompaigns
 if 4 is for delete or reject Compaign
 if 5 is for approve or active Compaign
+if 6 is ShowPindingUpdateCompaigns
   */
 if(count($_POST)>0){
   $type=$_POST['type'];
-if($type<=3){
+if($type<=3 or $type>=6){
 
     echo $manage->showCompaigns($type);
     }

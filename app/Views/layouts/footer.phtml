@@ -1,3 +1,4 @@
+
 <script src="/js/home/js.js"></script>
 <script src="/js/home/wow.min.js"></script>
 <script src="/js/home/main.js"></script>
@@ -7,7 +8,7 @@ var jQuery_toast = $.noConflict(true);
 </script>
 <script>
 	new WOW().init();
- 
+
 	function errMsg(msg){
         if(msg!=''){
     jQuery_toast.toast({
@@ -167,7 +168,7 @@ function allLetter(inputText)
                       return false;
                      }
                 }
-  
+
 
    function confirmPassValidation(cpass,opass){
 
@@ -189,8 +190,8 @@ function validateDate(inputText){
 
   var CurrentDate = new Date();
   var GivenDate = new Date(inputText.value);
-  
-      if(GivenDate < CurrentDate){ 
+
+      if(GivenDate < CurrentDate){
               document.getElementById(Errspan).innerHTML="<i class='fas fa-exclamation-circle error-icon'></i>"+ <?php echo '"'.$lang['error9'].'"'; ?> ;
               return false;
           }
@@ -206,7 +207,7 @@ jQuery_1_3_2(document).ready(function () {
 
         /* Get input value on change */
         var term = jQuery_1_3_2(this).val();
-				
+
         var resultDropdown = jQuery_1_3_2(this).siblings('.result');
         if (term.length) {
           jQuery_1_3_2.get('/search/livesearch/'+term).done(function (data) {
@@ -221,7 +222,7 @@ jQuery_1_3_2(document).ready(function () {
 
     // Set search input value on click of result item
     jQuery_1_3_2(document).on('click', '.result p', function () {
-        jQuery_1_3_2(this).parents('.search-box').find('input[type="text"]').val(jQuery_1_3_2(this).text()).focus();
+        jQuery_1_3_2(this).parents('.search-box').find('input[type="text"]').val(jQuery_1_3_2(this).text().replace(/\s/g, '')).focus();
         jQuery_1_3_2(this).parent('.result').empty();
       });
   });

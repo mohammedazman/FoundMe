@@ -48,7 +48,7 @@ $item=$this->view_data['item'];?>
   <div class="tab-pane active text-center gallery" id="compaigns">
 
   </div>
-  <div class="tab-pane text-center gallery" id="tags">
+  <div class="tab-pane text-center ml-5  mx-auto" id="tags">
 
   </div>
   </div>
@@ -64,8 +64,7 @@ $item=$this->view_data['item'];?>
 <!-- get result with ajax -->
 <script>
       function load_compaign(){
-        var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
-
+        var loading="<span class='spinner-grow spinner-grow'></span>";
         jQuery_1_3_2.ajax({
             url:"/search/find",
             method:"POST",
@@ -79,14 +78,15 @@ $item=$this->view_data['item'];?>
             ,
             success:function(data)
             {
-              html='';
+              html='<div class="row">';
 
               var compaigns=JSON.parse(data);
               // alert(d)
+              var count=1;
 
               $.each( compaigns.data, function( index, row ) {
 
-          html+=    html+=' <div class="col-md-4 img-overlay">'+
+              html+=' <div class="col-md-4 img-overlay">'+
                         '<div class="card">'+
                             '<img class="card-img-top" src="/uploads/'+row.galary+'" alt="Card image cap">'+
                             '<div class="overlay">'+
@@ -97,7 +97,11 @@ $item=$this->view_data['item'];?>
                             '</div>'+
                             '</div>'+
                         '</div>'+
-                    '</div>';;
+                    '</div>';
+                    if (count%3==0 ) {
+                    html+='</div><div class="row">';
+                    }
+                    count++;
 
             });
 
@@ -111,7 +115,7 @@ $item=$this->view_data['item'];?>
 
       // load Tags
       function load_tags(){
-        var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
+        var loading="<span class='spinner-grow spinner-grow'></span>";
 
         jQuery_1_3_2.ajax({
             url:"/search/find",
@@ -126,7 +130,8 @@ $item=$this->view_data['item'];?>
           ,
             success:function(data)
             {
-              html='';
+              html='<div class="row m-2 text-center mx-auto">';
+            var count=1;
 
               var compaigns=JSON.parse(data);
                 // alert(data);
@@ -138,9 +143,14 @@ $item=$this->view_data['item'];?>
               $.each( compaigns.data, function( index, row ) {
 
 
-          html+='<a href="/tags/index/'+row+'" class="btn btn-blue text-info m-2   wow flipInX">'
+
+          html+='<a href="/tags/index/'+row+'" class="btn btn-muted text-secondary border  p-2  col-md-3 ml-5 mb-2 ">'
               +row+
                   '</a>';
+                  if (count%3==0 ) {
+                  html+='</div><div class="row m-2 text-center mx-auto">';
+                  }
+                  count++;
 
             });
 

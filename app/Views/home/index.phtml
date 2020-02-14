@@ -117,18 +117,19 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
     <center>
       <h2 class="title-home">The Last Compagin</h2>
     </center>
-    <div class="container">
+    <div class="container text-center">
     <!-- <div class="row"> -->
-    <div class="tab-pane text-center mx-auto gallery" id="works">
+    <div class="tab-pane  mx-auto gallery" id="works">
 
               <div class="row" id="active-compain">
 
               </div>
 
 
-              <a href="/compaign" class="btn btn-white"><span style="font-size: 30px"></span>  Read More</a>
 
       </div>
+      <a href="" class="btn bg-secondary text-white col-md-3 mt-5 p-2" id="loadMore" num_loaded="0"><span style="font-size: 30px">Load More</span>  </a>
+
     </div>
 
     </div>
@@ -140,21 +141,26 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
 <script>
 
 function load_data(){
-
-  var loading="<button class='btn btn-primary' disabled><span class='spinner-border spinner-border-sm'></span>Loading..</button>";
+  var loaded=parseInt(jQuery_1_3_2('#loadMore').attr('num_loaded'));
+  var loading="<span class='spinner-border spinner-border-sm'></span>";
+  var retry="<span class='spinner-grow text-light'></span>";
   var err="<h1>ther is error pleas try agin</h2>";
 		jQuery_1_3_2.ajax({
 
 			url:"/managecompaign",
 			method:"POST",
-      data:{type:"2"},
+      data:{'type':"7",
+           'from':loaded,
+           'to':loaded+6},
       beforeSend:function () {
-        jQuery_1_3_2('#active-compain').html(loading);
+        jQuery_1_3_2('#loadMore').append(loading);
       },
-      timeout: 10000,
+      timeout:1000,
 			success:function(data)
 			{
-        html='';
+
+        html=jQuery_1_3_2('#active-compain').html();
+
         var userInfo=JSON.parse(data);
         // alert(d)
 
@@ -173,15 +179,19 @@ function load_data(){
               '</div>';
       });
       jQuery_1_3_2('#active-compain').html(html);
+      if (userInfo.statusCode=200) {
+        jQuery_1_3_2('#loadMore').attr('num_loaded',loaded+6).html('Load More');
+      }
+      else {
+        jQuery_1_3_2('#loadMore').append(retry);
+      }
+
 
     },
-    statusCode:{
-      404:function () {
-        jQuery_1_3_2('#active-compain').html(err);
-      }
-    },
-    error:function (xhr,textStatus,errorThrown) {
-      if (textStatus=='timeout') {
+
+     error:function (xhr,textStatus,errorThrown) {
+      jQuery_1_3_2('#loadMore').append(retry);
+      if (xhr.status=='timeout') {
         jQuery_1_3_2('#active-compain').html(err);
 
       }
@@ -190,6 +200,10 @@ function load_data(){
 
 		       });
 }
+jQuery_1_3_2('#loadMore').click(function(event){
+          event.preventDefault();
+         load_data();
+  });
 jQuery_1_3_2(document).ready(function(){
          load_data();
   });

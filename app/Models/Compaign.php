@@ -11,7 +11,17 @@ class Compaign
   function __construct()
   {
     $this->db=new DB();
+    $this->checkdate();
   }
+
+// check if duration is finshed
+function checkdate()
+{
+
+  $this->db->QueryCrud('UPDATE  compigans
+           SET   	status=?
+          WHERE duration <= NOW() ',[3],0);
+}
 
   public function all()
   {
@@ -82,6 +92,15 @@ public function getCompaigns($args)
 }
 
 // managecompaign
+public function getAllCompaigns($from,$to)
+{
+
+
+  $oStmt ="SELECT * FROM compigans where status=2 LIMIT $from,$to";
+  return  $this->db->QueryCrud($oStmt);
+}
+
+// managecompaign
 public function getUpdateCompaigns()
 {
 
@@ -104,7 +123,7 @@ public function searchCompaign($args)
 {
  $arg="%$args%";
 
-  $oStmt ='SELECT * FROM compigans  WHERE title LIKE ? ';
+  $oStmt ='SELECT * FROM compigans  WHERE title LIKE ? and status=2';
   return  $this->db->QueryCrud($oStmt,[$arg]);
 }
 
@@ -113,7 +132,7 @@ public function searchTags($args)
 {
  $arg="%$args%";
 
-  $oStmt ='SELECT * FROM compigans  WHERE  tags LIKE ?';
+  $oStmt ='SELECT * FROM compigans  WHERE  tags LIKE ? and status=2';
   return  $this->db->QueryCrud($oStmt,[$arg]);
 }
 

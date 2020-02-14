@@ -68,9 +68,22 @@
 </section>
 <!-- end pages photo - -->
 
+<!-- alert -->
+  <?php if ($compaign['status']!=2) { ?>
+<div class="alert alert-warning alert-dismissible">
+
+<strong>NOTE ! </strong> This Compaign is finshed and you can't donate.
+<button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+<?php } ?>
+<!-- end of alert -->
+
 <div class="main main-raised border-50">
+
     <div class="details-content">
+
         <div class="container">
+
             <div class="row">
                 <!-- details PHOTO -->
                 <div class="col-md-8 col-xs-12">
@@ -81,7 +94,7 @@
                             <img src='/uploads/<?php echo $compaign["galary"]; ?>' class="img-raised img-fluid" width="auto">
                             </div>
                         <h5 class="text-left by-user">
-                          <a href="/profile/showProfile/<?php echo $compaign['owner_id']; ?>">  <i class="fas fa-pen-alt"></i> <?php echo $lang['item72']; ?>: <span><?php echo Helper::userName( $compaign['owner_id']); ?></span></h5></a>                       
+                          <a href="/profile/showProfile/<?php echo $compaign['owner_id']; ?>">  <i class="fas fa-pen-alt"></i> <?php echo $lang['item72']; ?>: <span><?php echo Helper::userName( $compaign['owner_id']); ?></span></h5></a>
                     <div class="compagin-content">
                             <p class="text-left">
                               <?php echo $compaign['descrption']; ?>
@@ -90,11 +103,11 @@
 
                         <!-- comments -->
                                 <div class="col-sm-10 col-sm-offset-1" id="login">
-                                  
+
                                         <div>
                                             <div class="tab-pane active" id="comments-login">
                                                 <ul class="media-list" id="comments-show">
-                                                  
+
                                                 </ul>
                                             </div>
                                             <div>
@@ -112,7 +125,7 @@
                                                     </div>
                                             </div>
                                         </div>
-                                    
+
                                 </div>
 
                         <!-- comments -->
@@ -120,6 +133,7 @@
                     </div>
                 </div>
                 <!-- details PHOTO -->
+
                 <!-- details PHOTO -->
                 <div class="col-md-4 col-xs-12">
                     <div class="details">
@@ -132,8 +146,9 @@
                             </div>
                          <a href="" class="a-donars" data-toggle="modal" data-target="#exampleModalLong"><h5 class="text-center text-black"><i class="fas fa-donate"></i><?php echo $lang['item77']; ?> <span class="donars-num donars">00</span></h5></a>
                             <center>
+                              <?php if ($compaign['status']==2) { ?>
                             <a href="/donate/index/<?php echo $compaign['id'] ?>"><input type="submit" id="donate" class="btndonate float-none"  value="<?php echo $lang['item78']; ?>"/></a>
-                            <?php
+                            <?php }
                              if(!in_array(Session::get('userID'),$this->view_data['followers'])){ ?>
                               <input type="button" id="follow" onclick="follow('follow')" class="btndonate float-none"  value="متابعة"/>
                             <?php } else{ ?>
@@ -236,13 +251,13 @@ $( document ).ready(function() {
               var comments=JSON.parse(data);
               if(comments.statusCode=='200'){
                 $('#Comment').val('');
-                load_comment()  
+                load_comment()
 
               }
 
           }
       });
-          
+
       }
 
       function follow(method){

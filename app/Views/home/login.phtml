@@ -4,52 +4,67 @@
 <body class="bg-blue">
 
 <section>
-			<div class="container register">
-					<div class="row">
-						<div class="col-md-12 register-left">
-								<a href="/home/index">
-									<img src="/images/home/logo.png" alt=""/>
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form"  action="" method="post"  name="loginForm" id="loginForm">
+					<span class="login100-form-title p-b-26">
+					<?php echo $lang['item10']?>
+					</span>
+					<span class="login100-form-title p-b-48">
+					<a href="/home/index">
+									<img src="/images/home/logo.png" class='logoo' alt=""/>
 								</a>
-							<h3><?php echo $lang['item10']?></h3>
-							<p class="p-login nots-p-reg"><?php echo $lang['item11']?> <a href="/auth/signup"><?php echo $lang['item4b']?></a></p>
-						</div>
-						<div class="col-md-12 register-right shadow-div">
-						<form class="" action="" method="post" name="loginForm" id="loginForm">
+					</span>
 
-							<div class="tab-content" id="myTabContent">
-								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-									<h3 class="register-heading"><?php echo $lang['item4a']?></h3>
-									<div class="row register-form">
-									<div class="col-md-12">
-											<div class="form-group">
-												<label for="email" class="laple-forms"><?php echo $lang['item12']?></label>
-												<input type="email" name="email" class="form-control" placeholder="<?php echo $lang['item12']?> *" value='<?php if(isset($_POST['email']))echo$_POST['email'];?>' />
-												<span class="text-danger text-error" id="emailError"> </span>
-
-											</div>
-											<div class="form-group">
-												<label for="password" class="laple-forms"><?php echo $lang['item13']?></label>
-												<input type="password" name="password" class="form-control" placeholder="<?php echo $lang['item13']?> *" value='<?php if(isset($_POST['email']))echo$_POST['email'];?>' />
-												<span class="text-danger text-error" id="passwordError"> </span>
-
-											</div>
-										</div>
-										<div class="col-md-12">
-											<center>
-											<!-- <input type="submit" class="btnRegister"  value="Log In"/> -->
-											<input type="submit" id="logintBtn" class="btnlogin float-none"  value="Log In"/>
-											<p class="p-login-forget"><?php echo $lang['item14']?> ! <a href="/auth/forgetPass"><?php echo $lang['item15']?> </a></p>
-											</center>
-										</div>
-									</div>
-								</div>
-</form>
-							</div>
-						</div>
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+						<input class="input100" type="text" name="email"  value='<?php if(isset($_POST['email']))echo$_POST['email'];?>' />
+						<span class="focus-input100" data-placeholder="<?php echo $lang['item12']?>"></span>
+						<span class="text-danger text-error" id="emailError"> </span>
 					</div>
 
-				</div>
-    </section>
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<span class="btn-show-pass">
+							<i class="fas fa-eye"></i>
+						</span>
+						<input class="input100" type="password" name="password"  value='<?php if(isset($_POST['password']))echo$_POST['password'];?>'>
+						<span class="focus-input100" data-placeholder="<?php echo $lang['item13']?>"></span>
+						<span class="text-danger text-error" id="passwordError"> </span>
+					</div>
+
+					<div class="mainbtn" >
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" id="logintBtn">
+								Login
+							</button>
+						</div>
+					</div>
+					<div class="extra" >
+						
+							
+					<span class="txt1">
+					<?php echo $lang['item11']?>
+						</span>
+
+						<a class="txt2" href="/auth/signup">
+						<?php echo $lang['item4b']?>
+						</a>						
+					</div>
+					<br>
+					<br>
+					<br>					
+						<a class="txt3" href="/auth/forgetPass" >
+						<?php echo $lang['item14']?>
+						</a>
+					<!-- </div> -->
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+			</div>
+</section>
 	<script>
 $(document).ready(function(){
     $("#logintBtn").click(function(){

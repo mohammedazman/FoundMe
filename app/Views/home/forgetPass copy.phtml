@@ -1,0 +1,221 @@
+<?php   include VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml' ?>
+
+<!-- start login -->
+<body class="bg-blue">
+
+<section id="email">
+			<div class="container register ">
+					<div class="row">
+						<div class="col-md-12 register-left">
+								<a href="/home/index">
+									<img src="/images/home/logo.png" alt=""/>
+								</a>
+							<h3><?php echo $lang['item50']?></h3>
+							<p class="p-login nots-p-reg"><?php echo $lang['item51']?> <a href="/auth/signup"><?php echo $lang['item4b'].'  '?></a></p>
+
+							<!-- <p class="p-login nots-p-reg">You want to go back   <a href="/auth/login">LogIn</a></p> -->
+
+						</div>
+						<div class="col-md-12 register-right shadow-div">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+									<h3 class="register-heading"><?php echo $lang['item52']?></h3>
+
+									<div class="row register-form">
+									<div class="col-md-12">
+											<div class="form-group">
+												<label for="email" class="laple-forms"><?php echo $lang['item53']?></label>
+												<input type="email" name="email" class="form-control" id="emailVal" placeholder="<?php echo $lang['item53']?> *"  />
+												<span class="text-danger text-error" id="emailError"> </span>
+
+											</div>
+										</div>
+										<div class="col-md-12">
+											<center>
+											<!-- <input type="submit" class="btnRegister"  value="Log In"/> -->
+											<input type="button" id="emailSend" class="emailSend btnlogin float-none"  value="<?php echo $lang['item54']?>" onclick="emailValidate()" />
+											<p class="p-login-forget"><?php echo $lang['item55']?></p>
+
+										</center>
+										</div>
+									</div>
+								</div>
+</form>
+							</div>
+						</div>
+					</div>
+</section>
+<section id="code">
+					<div class="container register">
+					<div class="row">
+						<div class="col-md-12 register-left">
+								<a href="/home/index">
+									<img src="/images/home/logo.png" alt=""/>
+								</a>
+							<h3><?php echo $lang['item50']?></h3>
+							<p class="p-login nots-p-reg"><?php echo $lang['item57']?><a href="/auth/forgetPass"><?php echo $lang['item59']?></a></p>
+
+						</div>
+						<div class="col-md-12 register-right shadow-div">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+									<h3 class="register-heading"><?php echo $lang['item56']?></h3>
+									<div class="row register-form">
+									<div class="col-md-12">
+											<div class="form-group">
+												<label for="email" class="laple-forms"><?php echo $lang['item58']?></label>
+												<input type="text" name="code" id="codeval" class="form-control" placeholder="<?php echo $lang['item58']?> *"  />
+												<span class="text-danger text-error" id="codError"> </span>
+
+											</div>
+										</div>
+										<div class="col-md-12">
+											<center>
+											<!-- <input type="submit" class="btnRegister"  value="Log In"/> -->
+											<input type="button" id="codeSend" class="codeSend btnlogin float-none"  value="<?php echo $lang['item54']?>" onclick="codeValidate()" />
+											</center>
+										</div>
+									</div>
+								</div>
+</form>
+							</div>
+						</div>
+					</div>
+</section>	
+	<section id="reset">
+					<div class="container register">
+					<div class="row">
+						<div class="col-md-12 register-left">
+								<a href="/home/index">
+									<img src="/images/home/logo.png" alt=""/>
+								</a>
+								<h3><?php echo $lang['item60']?></h3>
+							<!-- <p class="p-login nots-p-reg">You want to rewrite    <a href="/auth/login">code</a></p> -->
+
+						</div>
+						<div class="col-md-12 register-right shadow-div">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+									<h3 class="register-heading"><?php echo $lang['item61']?></h3>
+									<form class="" action="" method="post" name='changepassForm' id="signupForm">
+
+									<div class="row register-form">
+									<div class="col-md-12">
+									<div class="form-group">
+											<label for="password" class="laple-forms"><?php echo $lang['item62']?></label>
+											<input type="password" class="form-control" placeholder="<?php echo $lang['item62']?> *" name="password" id="password" value='<?php if(isset($_POST['password']))echo$_POST['password'];?>'  oninput="stringlength(document.changepassForm.password,8,15);" />
+											<?php echo Message::check('password');  ?>
+											<span class="text-danger text-error" id="passwordError"> </span>
+										</div>
+
+									<div class="form-group">
+											<label for="confirm_password" class="laple-forms"><?php echo $lang['item63']?></label>
+											<input type="password" class="form-control" name="confirm_password"  placeholder="<?php echo $lang['item63']?> *" value='<?php if(isset($_POST['confirm_password']))echo$_POST['confirm_password'];?>' oninput=" confirmPassValidation(document.changepassForm.confirm_password,document.changepassForm.password)"; />
+											<?php echo Message::check('confirm_password');  ?>
+											<span class="text-danger text-error" id="confirm_passwordError"> </span>
+										</div>
+									
+										</div>
+										<div class="col-md-12">
+											<center>
+											<!-- <input type="submit" class="btnRegister"  value="Log In"/> -->
+											<input type="button" id="" class="btnlogin float-none"  value="<?php echo $lang['item64']?>" onclick="resetPass()"/>
+											</center>
+										</div>
+									</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+    </section>
+	<script>
+$(document).ready(function(){
+	jQuery_1_3_2('#code').hide();
+	jQuery_1_3_2('#reset').hide();
+});
+var code;
+var uid;
+function emailValidate(){
+	jQuery_1_3_2.ajax({
+				url:"/forgetPass",
+				method:"POST",
+				 data:{
+					 type:"email",
+					 email:jQuery_1_3_2('#emailVal').val(),
+					}
+					 ,
+				success:function(data)
+				{
+			var result=JSON.parse(data);
+		
+			if(result.statusCode==200){
+			code=result.code;
+			uid=result.uid;
+	
+				jQuery_1_3_2('#email').hide();
+				jQuery_1_3_2('#code').fadeIn(1500);
+			}
+			else{
+				errMsg(<?php echo '"'.$lang['item66'].'"' ?>);
+			}
+			
+		  }
+			
+				   });
+}
+var i=0;
+function codeValidate(){
+
+	entered=jQuery_1_3_2('#codeval').val();
+	if(i<3){
+		i++;
+	if(code==entered){
+		jQuery_1_3_2('#code').hide();
+				jQuery_1_3_2('#reset').fadeIn(1500);
+	}
+	else{
+		errMsg(<?php echo '"'.$lang['item67'].'"' ?>);
+	}
+}
+	else{
+		errMsg(<?php echo '"'.$lang['item65'].'"' ?>);
+		setTimeout(function(){
+            window.location.href = '/home/index';
+         }, 8000);
+
+	}
+
+				}
+function resetPass(){
+	if(Requirevalidation(document.changepassForm.password)&&
+		Requirevalidation(document.changepassForm.confirm_password)){
+	jQuery_1_3_2.ajax({
+				url:"/forgetPass",
+				method:"POST",
+				 data:{
+					 type:"reset",
+					 uid:uid,
+					 pass:$('#password').val()
+					}
+					 ,
+				success:function(data)
+				{
+			var result=JSON.parse(data);
+		
+			if(result.statusCode==200){
+				errMsg(<?php echo '"'.$lang['item68'].'"' ?>)
+				setTimeout(function(){
+            window.location.href = '/auth/login';
+         }, 4000);
+			}
+			
+		  }
+			
+				   });
+		}
+				}
+</script>
+
+    <!-- end login -->
+	<?php   include VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

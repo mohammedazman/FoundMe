@@ -121,7 +121,7 @@ $lang=array(
     //Profile
     'item100'=>'Profile',
     'item101'=>'Welcome to My Profile',
-    'item102'=>'Compaigns',
+    'item102'=>'My Compaigns',
     'item103'=>'Donations',
    //notification
    'item110'=>'Notifications',

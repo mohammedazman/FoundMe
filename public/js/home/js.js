@@ -2,12 +2,12 @@
 $(document).ready(function(){
     $(window).scroll(function(){
         var scroll = $(window).scrollTop();
-        if (scroll > 700) {
+        if (scroll > 300) {
           $(".chang-color").css("background" , "#596275");
           $(".navbar-collapse ul li a").css("color" , "#fff");
         }
   
-        else if(scroll < 700){
+        else if(scroll < 300){
             $(".chang-color").css("background" , "none");  
           $(".navbar-collapse ul li a").css("color" , "none");
 

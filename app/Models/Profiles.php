@@ -51,8 +51,8 @@ public function delete($id)
 public function update($aData)
 {
         $oStmt = 'UPDATE  profiles
-                 SET   name=:name, value=:value
-                WHERE id=?';
+                 SET   name=?, value=?
+                WHERE user_id=? and name=? ';
         return $this->db->QueryCrud($oStmt,$aData,0);
 
 }
@@ -62,8 +62,22 @@ public function update($aData)
 public function find($aData)
 {
 
-   $oStmt ='SELECT * FROM profiles WHERE id =?';
+   $oStmt ='SELECT * FROM profiles WHERE user_id =?';
     return $this->db->QueryCrud($oStmt,$aData);
+
+}
+
+
+
+public function getBio($aData)
+{
+
+   $oStmt ='SELECT * FROM profiles WHERE user_id =? and name = "bio"';
+     if(sizeof($this->db->QueryCrud($oStmt,$aData))>0){
+       return false;
+     }else
+     
+     return true;
 
 }
 

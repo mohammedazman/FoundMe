@@ -46,7 +46,7 @@
                                         </div>
                                         <!-- PROFILE PHOTO -->
                                                             
-								<div class="col-md-6 mt-80">
+								<div class="col-md-12 mt-80">
 										<div class="form-group">
 											<label for="first_name" class="laple-forms">Your First Name</label>
 											<input type="text" class="form-control" placeholder="First Name *"  name="first_name" value='<?php if(isset($_POST['first_name']))echo$_POST['first_name']; else echo $this->view_data['editeProfile'][0]['value'];?>' oninput=" stringlength(document.editFormProfile.first_name,5,12); allLetter(document.editFormProfile.first_name);preventSpace(document.editFormProfile.first_name,0,0)" />
@@ -64,30 +64,19 @@
 											<input type="text"  name="phone" class="form-control" placeholder="Your Phone *" value='<?php if(isset($_POST['phone']))echo$_POST['phone']; else echo $this->view_data['editeProfile'][2]['value'];?>' oninput="phonenumber(document.editFormProfile.phone)"; />
 											<?php echo Message::check('phone');?>
 											<span class="text-danger text-error" id="phoneError"> </span>
-										</div>
-								</div>		
-								<div class="col-md-6 mt-80">
-										<div class="form-group">
-											<label for="Gender" class="laple-forms">Gender</label>
-											<select type="text"  name="Gender" class="form-control" value=''>
-                                                <option value="Female">Female</option>
-                                                <option value="male">male</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-											<label for="date" class="laple-forms">Birth Day</label>
-											<input type="date"  name="date" class="form-control" placeholder="Your Birthday" value='' />
                                         </div>
                                         <div class="form-group">
 											<label for="bio" class="laple-forms">Bio</label>
-                                            <textarea  rows="4" cols="50" type="text"  name="bio" class="form-control" placeholder="Your Bio" oninput="preventSpace(document.editFormProfile.bio,5,30);"></textarea>
-											<span class="text-danger text-error" id="bioError"> </span>
-                                            
+                                            <textarea  rows="4" cols="50" type="text"  name="bio" class="form-control" placeholder="Your Bio" oninput="preventSpace(document.editFormProfile.bio,2,30);">
+                                            <?php if(isset($_POST['Bio']))echo$_POST['bio']; else echo $this->view_data['editeProfile'][3]['value']; ?>
+                                        </textarea>
+                                            <span class="text-danger text-error" id="bioError"> </span>
+                                         
                                         </div>
-                                </div>
+								</div>		
                                             </div>
                                         <center>
-										<input id="editBtn" type="submit" class="btnEdit float-none" onclick="" value="Edit"/>
+										<input id="editBtn" type="button" class="btnEdit float-none" onclick="editprofileinfo()" value="Edit"/>
 										</center>
 										</div>
 					         </form>     
@@ -102,52 +91,30 @@
 
 <script>
 
-$(document).ready(function(){
-    $("#editBtn").click(function(){  
-		event.preventDefault();  
-        if(Requirevalidation(document.editFormProfile.first_name)&&Requirevalidation(document.editFormProfile.last_name)
+
+
+function editprofileinfo(){
+    if(Requirevalidation(document.editFormProfile.first_name)&&Requirevalidation(document.editFormProfile.last_name)
         &&Requirevalidation(document.editFormProfile.phone)){
-			serverSideValidate()
-		
-			
-		}    
-    });
-});
+        jQuery_1_3_2.ajax({
+            url:"/editeProfile",
+            method:"POST",
+            data:{method:"editProfile",
+            formData: jQuery_1_3_2("#editFormProfile").serialize(),
+            },
+            success:function(data)
+            {
+              var result=JSON.parse(data);
+              if(result.statusCode=='200'){
+                alert('done') ;
 
+              }
 
-function serverSideValidate(){
-	
-    $.ajax({
-                url:"/validate",
-                method:"POST",
-                 data:{
-                     type:"editProfile",
-                     formData:$('#editFormProfile').serialize()}
-                     ,
-                success:function(data)
-                {
-            var result=JSON.parse(data);
-        
-            if(result.statusCode==200){
-    
-                $("#editFormProfile").submit(); // Submit the form
-            }
-            else{
-                    var error=JSON.parse(result.message);
-                    $.each( error, function( key, value ) {
-                        if(key=='msgState' || key=='main');
-                        else
-                        document.getElementById(key+'Error').innerHTML=value;
-    
-                        });
-                        return false;
-    
-                }
           }
-    
-            
-                   });
-                }
+      });
+    }
+          
+      }
 </script>
 
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

@@ -3,7 +3,7 @@ $(document).ready(function(){
     $(window).scroll(function(){
         var scroll = $(window).scrollTop();
         if (scroll > 300) {
-          $(".chang-color").css("background" , "#596275");
+          $(".chang-color").css("background" , "#6c648b");
           $(".navbar-collapse ul li a").css("color" , "#fff");
         }
   

@@ -41,12 +41,16 @@
                 <?php echo $lang['item76']; ?>:
 								</span>
 								
-								<span >
-									<a href="#" class="ml-3">
+								<span class="span-tags ml-3">
+									<a href="#">
 										#Streetstyle
 									</a>
-
-								
+                </span>
+                	
+								<span class="span-tags ml-3">
+									<a href="#">
+										#Streetstyle
+									</a>
 								</span>
 							
      </div>
@@ -61,14 +65,13 @@
         <form action="#" id="comm_form" >
           <input type="hidden" name="type" value="2">
                       <div class="wrap-input100 comm-length" >
-                        <textarea class="input100"     name="Comment" id="Comment" oninput="if($('#Comment').val()!='')$('#submitComment').attr('disabled' , false ); else $('#submitComment').attr('disabled' , 'disabled' );">
-                        </textarea>
+                        <textarea class="input100" name="Comment" id="Comment" oninput="if($('#Comment').val()!='')$('#submitComment').attr('disabled' , false ); else $('#submitComment').attr('disabled' , 'disabled' );"></textarea>
                         <span class="focus-input100" data-placeholder="<?php echo $lang['item73']; ?>"></span>
                       </div>
                        
         </form>
                           <div class="form-group">
-                          <button class="btn btn-dark text-uppercase"  disabled='disabled'  onclick="add_comment()" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> <?php echo $lang['item74']; ?></button>
+                          <button class="btn btn-orange text-uppercase"  disabled='disabled'  onclick="add_comment()" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> <?php echo $lang['item74']; ?></button>
 
                           </div>
         </div>
@@ -79,9 +82,9 @@
    <div class="list-group side-title" >
    <h2 class=" card-title group-title "> <?php echo $lang['item71a']; ?></h2>  
    <div>
-        <div class='countD donate-count'><i class='fas fa-donate'></i>        <i>300K</i> </div>
-        <div class='countD follow-count'><i class='fas fa-eye'></i>        <i>300K</i> </div>
-        <div class='countD comm-count' ><i class='fas  fa-comment-dots'></i>        <i>300K</i> </div>
+        <div class='countD donate-count'><i class='fas fa-donate text-dark'></i>        <i class="count-num">300K</i> </div>
+        <div class='countD follow-count'><i class='fas fa-eye text-dark'></i>        <i class="count-num">300K</i> </div>
+        <div class='countD comm-count' ><i class='fas  fa-comment-dots text-dark'></i>        <i class="count-num">300K</i> </div>
 
 </div>
 <br>
@@ -332,5 +335,4 @@ $( document ).ready(function() {
 </script>
 
 
-<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer_section.phtml' ?>
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

@@ -10,7 +10,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
                     <div class="vertical-align-middle text-center">
                         <!-- start sub title -->
-                        <span class="text-white">Welcome</span>
+                        <span class="text-white"></span>
                         <!-- end sub title -->
                         <!-- start page title -->
                         <?php if (array_key_exists('profiles',$this->view_data)){?>
@@ -45,20 +45,17 @@
                         <div>
 
 
-                        <div class="name">
-                          <?php if (array_key_exists('profiles',$this->view_data)){?>
-                            <h3 class="title"><?php echo $this->view_data['profiles'][0]['value']; ?></h3>
-                          <?php } ?>
+                      
 
                           <div class="description">
                               <div class="container">
                               <div class="row">
                                 <div class="col-md-12 text-center">
                                   <div class="col-md-12 p-all-20px">
-                                    <span class="bio">Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+                                    <span class="bio"><?php echo $this->view_data['profiles'][3]['value']; ?></span>
                                     <div class="text-center">
-                                      <span><i class="fas fa-phone"></i></span>
-                                      <span>+967 777777777</span>
+                                      <span><i class="fas fa-phone text-dark"></i></span>
+                                      <span><?php echo $this->view_data['profiles'][2]['value']; ?></span>
                                     </div>
                                   </div>
                                  <a href="/editeProfile/edit" class="btn btn-white"><span style="font-size: 30px">+</span>  Edit My Profile</a>

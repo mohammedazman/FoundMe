@@ -136,6 +136,11 @@ header nav {
     position: absolute;
     right: 15px;
 }
+
+.nav-link 
+{
+    padding-left :25%;
+}
 .left-menu{
     position: absolute;
     left: 200px;

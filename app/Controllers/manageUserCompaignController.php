@@ -26,6 +26,17 @@ class manageUserCompaignController extends Controller
 
 
     }
+    //delete Compaign
+    public function delete($id)
+    {
+      // code...
+      if ($this->compaignModel->addDelete([$id])) {
+        Notification::addNoti('Request for delete compagin by '.$_SESSION['userName'] .'and need approvment','admin','delete compain');
+        Message::setMessage(1,'main',' delete your compaing have be done ');
+         Helper::back();
+
+      }
+    }
 
 
 

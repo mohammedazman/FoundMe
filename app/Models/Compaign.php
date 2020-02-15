@@ -11,7 +11,17 @@ class Compaign
   function __construct()
   {
     $this->db=new DB();
+    $this->checkdate();
   }
+
+// check if duration is finshed
+function checkdate()
+{
+
+  $this->db->QueryCrud('UPDATE  compigans
+           SET   	status=?
+          WHERE duration <= NOW() ',[3],0);
+}
 
   public function all()
   {
@@ -52,6 +62,29 @@ class Compaign
 
   }
 
+  // change pending to 2 means that is Request for delete from owner
+
+  public function addDelete($aData)
+  {
+
+          $oStmt = 'UPDATE  compigans
+                   SET   	pending=2
+                  WHERE id=? ';
+          return $this->db->QueryCrud($oStmt,$aData,0);
+
+  }
+
+  // change pending to 2 means that is Request for delete from owner
+
+  public function changePinding($aData)
+  {
+
+          $oStmt = 'UPDATE  compigans
+                   SET   	pending=?
+                  WHERE id=? ';
+          return $this->db->QueryCrud($oStmt,$aData,0);
+
+  }
   //
 
   public function find($aData)
@@ -82,10 +115,19 @@ public function getCompaigns($args)
 }
 
 // managecompaign
-public function getUpdateCompaigns()
+public function getAllCompaigns($from,$to)
 {
 
-  return  $this->db->QueryCrud('SELECT * FROM compigans where pending=1');
+
+  $oStmt ="SELECT * FROM compigans where status=2 LIMIT $from,$to";
+  return  $this->db->QueryCrud($oStmt);
+}
+
+// managecompaign
+public function getPindingCompaigns($aData)
+{
+
+  return  $this->db->QueryCrud('SELECT * FROM compigans where pending=?',$aData);
 }
 
 public function getUSerCompaigns($args)
@@ -104,7 +146,7 @@ public function searchCompaign($args)
 {
  $arg="%$args%";
 
-  $oStmt ='SELECT * FROM compigans  WHERE title LIKE ? ';
+  $oStmt ='SELECT * FROM compigans  WHERE title LIKE ? and status=2';
   return  $this->db->QueryCrud($oStmt,[$arg]);
 }
 
@@ -113,7 +155,7 @@ public function searchTags($args)
 {
  $arg="%$args%";
 
-  $oStmt ='SELECT * FROM compigans  WHERE  tags LIKE ?';
+  $oStmt ='SELECT * FROM compigans  WHERE  tags LIKE ? and status=2';
   return  $this->db->QueryCrud($oStmt,[$arg]);
 }
 

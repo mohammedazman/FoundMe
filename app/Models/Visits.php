@@ -22,8 +22,8 @@ public function all()
 public function add(array $aData)
 {
 
-      $oStmt = 'INSERT INTO visits ( page,user_id)
-                VALUES ( ?,?)';
+      $oStmt = 'INSERT INTO visits ( page,user_id,compaign_id)
+                VALUES ( ?,?,?)';
           return $this->db->QueryCrud($oStmt,$aData,0);
 
   }

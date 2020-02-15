@@ -137,6 +137,10 @@ $lang=array(
     'item112'=>'Make as read',
     'item113'=>'Make as unread',
     'item114'=>'Make all as read',
+    //edit compaign
+
+    'item120'=>'Edit compaign',
+
     //notification content
     'approve'=>'Admin approve your compaign',
     'reject'=>'Admin reject your compaign',

@@ -122,20 +122,17 @@
                                       ?>
                           <div class="col-md-4 img-overlay">
                                 <div class="card">
-                                    <img class="card-img-top" src="/uploads/<?php echo $row['galary'] ?>" alt="Card image cap">
-                                    <div class="overlay">
-                                    <div class="dropdown">
-                                    <span class="dropspan"><i class="fa fa-ellipsis-v"></i></span>
-                                    <div class="dropspan-content">
-                                    <a href="/manageUserCompaign/index/<?php echo $row['id']; ?>">Edit</a>
-                                    <a href="/manageUserCompaign/delete/<?php echo $row['id']; ?>">Delete</a>
-                                    </div>
-                                    </div>
-                                    <div class="text-overlay">
+                               <img class="card-img-top" src="/uploads/<?php echo $row['galary'] ?>" alt="Card image cap">
+                                    <div class="overlay" >
+                                    <div >
+                                    <a  class="btn btn-secondary"title="Diteals" href="/viewCompaign/show/<?php echo $row['id'] ?>" ><i class="fa fa-eye"></i> </a>
+                                    <a  class="btn btn-secondary"title="Edit" href="/manageUserCompaign/index/<?php echo $row['id']; ?>"><i class="fa fa-edit"></i> </a>
+                                    <a  class="btn btn-secondary"title="Delete" href="/manageUserCompaign/delete/<?php echo $row['id']; ?>"><i class="fa fa-trash"></i> </a>
+                                  </div>
+                                    <div class="text-overlay"> 
                                       <h5 class="card-title"><?php echo $lang['item102'] ?></h5>
                                       <p class="card-text"><?php echo $row['title'] ?></p>
-                                      <a href="/viewCompaign/show/<?php echo $row['id']?>" class="btn btn-home-comp">Go somewhere</a>
-                                    </div>
+                                     // <a href="/viewCompaign/show/<?php echo $row['id']?>" class="btn btn-home-comp">Go somewhere</a>
                                     </div>
                                 </div>
                                 <div class="progress">

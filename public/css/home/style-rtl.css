@@ -36,7 +36,8 @@ body{
     background-color: black;
 }
 .bg-blue{
-    background: -webkit-linear-gradient(right, #596275, #7c879e);
+   . background: -webkit-linear-gradient(right, #596275, #7c879e);
+   background:-webkit-linear-gray;
 }
 .no-pg-color{
     background-color: none !important;

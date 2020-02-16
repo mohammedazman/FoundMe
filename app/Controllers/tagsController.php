@@ -25,6 +25,7 @@ class tagsController extends Controller
   public function findCompaign($tag='')
   {
     $tag=isset($_POST['item'])?$_POST['item']:'';
+   
     $compaigns=$this->compaign->searchTags($tag);
     echo json_encode(array("statusCode"=>200,"data"=>$compaigns));
 

@@ -163,7 +163,7 @@ function load_data(){
       beforeSend:function () {
         jQuery_1_3_2('#loadMore').append(loading);
       },
-      timeout:1000,
+
 			success:function(data)
 			{
 
@@ -190,17 +190,19 @@ function load_data(){
 
       });
       jQuery_1_3_2('#active-compain').html(html);
-      if (userInfo.statusCode=200) {
+      if (userInfo.statusCode==200) {
         jQuery_1_3_2('#loadMore').attr('num_loaded',loaded+6).html('Load More');
       }
-      
+      if (userInfo.data=='') {
+        jQuery_1_3_2('#loadMore').remove();
+      }
+
 
 
     },
 
      error:function (xhr, status) {
-       console.log(status);
-       console.log(xhr);
+  
 
       if (xhr.status=='timeout') {
         jQuery_1_3_2('#active-compain').html(err);

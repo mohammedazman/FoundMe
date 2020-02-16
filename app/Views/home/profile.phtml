@@ -122,18 +122,18 @@
                                       ?>
                           <div class="col-md-4 img-overlay">
                                 <div class="card">
-                               <img class="card-img-top" src="/uploads/<?php echo $row['galary'] ?>" alt="Card image cap">
-                                    <div class="overlay" >
-                                    <div >
-                                    <a  class="btn btn-secondary"title="Diteals" href="/viewCompaign/show/<?php echo $row['id'] ?>" ><i class="fa fa-eye"></i> </a>
-                                    <a  class="btn btn-secondary"title="Edit" href="/manageUserCompaign/index/<?php echo $row['id']; ?>"><i class="fa fa-edit"></i> </a>
-                                    <a  class="btn btn-secondary"title="Delete" href="/manageUserCompaign/delete/<?php echo $row['id']; ?>"><i class="fa fa-trash"></i> </a>
-                                  </div>
-                                    <div class="text-overlay"> 
-                                      <h5 class="card-title"><?php echo $lang['item102'] ?></h5>
-                                      <p class="card-text"><?php echo $row['title'] ?></p>
-                                     // <a href="/viewCompaign/show/<?php echo $row['id']?>" class="btn btn-home-comp">Go somewhere</a>
-                                    </div>
+                                  <img class="card-img-top" src="/uploads/<?php echo $row['galary'] ?>" alt="Card image cap">
+                                          <div class="overlay">
+                                            <div class="overlay" >
+                                      <div >
+                                      <a  class="btn btn-secondary"title="Diteals" href="/viewCompaign/show/<?php echo $row['id'] ?>" ><i class="fa fa-eye"></i> </a>
+                                      <a  class="btn btn-secondary"title="Edit" href="/manageUserCompaign/index/<?php echo $row['id']; ?>"><i class="fa fa-edit"></i> </a>
+                                      <a  class="btn btn-secondary"title="Delete" href="/manageUserCompaign/delete/<?php echo $row['id']; ?>"><i class="fa fa-trash"></i> </a>
+                                    </div></div>
+                                          <div class="text-overlay">
+
+                                      <p class="card-title " style="font-size: 15px;"><?php echo $row['title'] ?></p>
+                                        </div>  </div>
                                 </div>
                                 <div class="progress">
                                   <div class="progress-bar progress-bar-style" role="progressbar" style="width: <?php echo Helper::getProgress($row['id']); ?>%" aria-valuenow="<?php echo Helper::getProgress($row['id']); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo Helper::getProgress($row['id']); ?>%</div>
@@ -144,33 +144,37 @@
                   </div>
                   <div class="tab-pane text-center gallery" id="favorite">
                           <div class="row">
-                              <div class="col-md-12">
-                                  <div>
-                                    <span class="prof-donate"><i class="fas fa-donate"></i>300$</span>
-                                    <a href="#">Campagin Name</a>
-                                  </div>
-                                   <div class="dropdown-divider"></div>
 
-                              </div>
-                              <div class="col-md-12">
-                                  <div>
-                                    <span class="prof-donate"><i class="fas fa-donate"></i>300$</span>
-                                    <a href="#">Campagin Name</a>
-                                  </div>
-                                   <div class="dropdown-divider"></div>
+                            <?php
+                            $html='';
+                            $total=0;
+                            if (array_key_exists('donations',$this->view_data))
+                             foreach ($this->view_data['donations'] as $row) {
+                               $total+=$row["amount"];
+                          $html.='<div class="col-md-12  m-2 p-2"> ';
+                          $html.='<span class="prof-donate"><i class="fas fa-donate"></i>';
+                          $html.=$row["amount"].'</span>';
+                          $html.='<a href="/viewCompaign/show/'.$row["compigan_id"].'">'.Helper::getCompaignTitle($row["compigan_id"]).'</a>
+                                  <div class="dropdown-divider"></div></div>  ';
 
-                              </div>
+
+                             }
+                             echo $html; ?>
+                             <div class="col-md-12  m-2 p-2">
+                                <strong>Total : </strong>
+                               <span class="prof-donate"> <i class="fas fa-donate"></i><?php echo $total; ?></span>
+                               <div class="dropdown-divider"></div></div>
                           </div>
                   </div>
                   </div>
 
-                </div>
+
                 </div>
 
                 <!-- TAPS  -->
 
 
-          </div>
+          </div></div>
       </div>
   	</div>
 	<!-- profile page end -->

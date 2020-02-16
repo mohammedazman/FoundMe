@@ -13,7 +13,9 @@ private $profile;
    $this->profile=$this->model->getModel();
 
     $username=Helper::userName(Session::get('userID'));
-    $this->view('home'.DIRECTORY_SEPARATOR.'profile',['profiles'=>$this->profile->FindUser([Session::get('userID')]),'compigan'=>$this->getUserCompaigns(Session::get('userID'))]);
+
+    $this->view('home'.DIRECTORY_SEPARATOR.'profile',['profiles'=>$this->profile->FindUser([Session::get('userID')]),'compigan'=>$this->getUserCompaigns(Session::get('userID')),
+                                                      'donations'=>$this->getUserDonations(Session::get('userID'))]);
 
     $this->view->pageTitle='My Profile';
     $this->view->render();
@@ -26,6 +28,15 @@ private $profile;
 
     $compaignsArray = $compaignModel->getUSerCompaigns([$uid]);
     return  $compaignsArray;
+
+  }
+
+  public  function getUserDonations($uid){
+    $this->model('Donations');
+    $donationModel=$this->model->getModel();
+    $donationsArray=$donationModel->UserDonations([Session::get('userID')]);
+
+    return  $donationsArray;
 
   }
 

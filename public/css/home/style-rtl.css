@@ -38,7 +38,8 @@ body{
     background-color: black;
 }
 .bg-blue{
-    background: -webkit-linear-gradient(right, #596275, #7c879e);
+
+   background: -webkit-linear-gradient(right, #596275, #7c879e);
 }
 .no-pg-color{
     background-color: none !important;
@@ -1709,4 +1710,31 @@ font-family: 'Droid Arabic Kufi'
 .btn-big{
     font-size: 16px;
     padding: 10px;
+}
+
+/* Pull up and down  */
+ul .pullUpDown  .a-link:before, .right-menu  ul .pullUpDown .a-link:after
+{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0px;
+    content: '';
+    background: #FFF;
+    opacity: 0.3;
+    transition: all 0.3s;
+}
+
+ul.pullUpDown .a-link:before
+{
+    top: 0px;
+} 
+ul.pullUpDown .a-link:after
+{
+    bottom: 0px;
+}
+
+ul.pullUpDown .a-link:hover:before, ul.pullUpDown .a-link:hover:after
+{
+    height: 100%;
 }

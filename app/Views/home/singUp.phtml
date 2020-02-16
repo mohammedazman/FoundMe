@@ -25,7 +25,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="last_name"  value='<?php if(isset($_POST['last_name']))echo$_POST['last_name'];?>'  oninput=" stringlength(document.signupForm.last_name,5,12); allLetter(document.signupForm.last_name);preventSpace(document.signupForm.Donation,0,0)">
+						<input class="input100" type="text" name="last_name"  value='<?php if(isset($_POST['last_name']))echo$_POST['last_name'];?>'  oninput=" stringlength(document.signupForm.last_name,5,12); allLetter(document.signupForm.last_name);preventSpace(document.signupForm.first_name,0,0)">
 						<span class="focus-input100" data-placeholder="<?php echo $lang['item23']?>"></span>
 						<span class="text-danger text-error" id="last_nameError"> </span>
 					</div>
@@ -101,9 +101,9 @@
     <!-- end Sign Up -->
 	<script>
 $(document).ready(function(){
-    $("#signuptBtn").click(function(){
-		event.preventDefault();
-		if(Requirevalidation(document.signupForm.Donation)&&Requirevalidation(document.signupForm.last_name)&&
+    $("#signuptBtn").click(function(){  
+		event.preventDefault();  
+		if(Requirevalidation(document.signupForm.first_name)&&Requirevalidation(document.signupForm.last_name)&&
 		Requirevalidation(document.signupForm.email)&&Requirevalidation(document.signupForm.phone)
 		&&Requirevalidation(document.signupForm.password)&&
 		Requirevalidation(document.signupForm.confirm_password)){

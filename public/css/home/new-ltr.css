@@ -414,14 +414,14 @@ background-color: #00b5e9;
     border-top: unset !important;
     border-bottom: unset !important;
 }
-.progress-loading{
-    position: absolute;
-    z-index: 1;
-    top: 170px;
-    color: #e4e4e4;
-    font-size:24px;
+.progress-loading {
+  position: absolute;
+  z-index: 1;
+  top: 102px;
+  right: 338px;
+  color: #e4e4e4;
+  font-size: 24px;
 }
-
 
 /* //details  */
 .section-img{
@@ -488,7 +488,7 @@ background-color: #00b5e9;
     background-color: #fff;
     padding: 10px 0px;
 }
-.donard-amount{
+.donars-amount{
     width: 35px;
     position: absolute; 
     left: 20px;     

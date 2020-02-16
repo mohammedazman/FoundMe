@@ -167,6 +167,8 @@ $lang=array(
      'button'=>'Read More',
      'search'=>'Search',
      'singup'=>'Sing up',
+     'slidertitle'=>'Fundraising for the people and Socaity'
+
 
 
 

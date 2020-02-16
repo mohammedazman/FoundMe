@@ -49,9 +49,9 @@
                               <div class="row">
                                 <div class="col-md-12 text-center">
                                   <div class="col-md-12 p-all-20px">
-                                  <a href="/editeProfile/edit"><i class="fas fa-edit text-orange"></i></a>
+                                    <a href="/editeProfile/edit"><i class="fas fa-edit text-orange"></i></a>
+                                    <span class="bio"><?php if(isset($this->view_data['profiles'][3])) echo $this->view_data['profiles'][3]['value']; ?></span>
 
-                                    <span class="bio"><?php echo $this->view_data['profiles'][3]['value']; ?></span>
                                     <div class="text-center">
                                       <!-- <span><i class="fas fa-phone text-dark"></i></span> -->
                                       <span><?php echo $this->view_data['profiles'][2]['value']; ?></span>
@@ -110,6 +110,8 @@
                       <div class="tab-content tab-space">
                   <div class="tab-pane active text-center gallery" id="works">
                       <!-- <a href="/compaign/addCompaign" class="text-gray"><span style="font-size: 20px; color: #fba100;">+</span> New Compigan</a> -->
+
+
                       <div class="row" id="user-compign">
                       <?php
                       // print_r($this->view_data);

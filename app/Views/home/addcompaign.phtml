@@ -52,7 +52,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
 					<div class="wrap-input100 " >
             <label for="Amount" class='btn-label' ><?php echo $lang['item35']?></label>
-						<input class="input100" type="number" name="Amount" placeholder="100 $" style="top:190px"  value='<?php if(isset($_POST['Amount']))echo$_POST['Amount'];?>'   />
+						<input class="input100" type="number" name="Amount" placeholder="100 $"  value='<?php if(isset($_POST['Amount']))echo$_POST['Amount'];?>'   />
 						<span class="text-danger text-error" id="AmountError"> </span>
 					</div>
 
@@ -83,7 +83,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 					<div class="container cont-pdf" >
             <label for="files" class='btn-label' ><?php echo $lang['item37']?></label>
 						<img src="/images/before.jpg" alt="choose image"   id='image' class="profileImg mt-30">
-						<input type="file"  class='uploader'   require  onchange="Filevalidation('gallary-photo-add');readURL(this)" name="gallary"  id="gallary-photo-add" />
+						<input type="file"  class='uploader'   require  style="top:190px"  onchange="Filevalidation('gallary-photo-add');readURL(this)" name="gallary"  id="gallary-photo-add" />
 						</img>
 						<div class="overlay">
 							<i class="fas fa-pencil-alt text"></i>

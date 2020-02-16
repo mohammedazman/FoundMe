@@ -9,10 +9,10 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
                     <div class="vertical-align-middle text-center">
                         <!-- start sub title -->
-                        <span class="text-white">Profile</span>
+                        <!-- <span class="text-white">Profile</span> -->
                         <!-- end sub title -->
                         <!-- start page title -->
-                        <h1 class="text-white">Welcome to My Profile</h1>
+                        <h1 class="text-white"><?php echo $lang['item130']?> </h1>
                         <!-- end page title -->
                     </div>
                 </div>
@@ -22,71 +22,51 @@
     <!-- end pages photo - -->
 
     <!-- profile page start-->
-<div class="main main-raised border-50">
-    <div class="profile-content">
-        <div class="container">
-            <div class="row">
-			    <div class="col-md-12 col-xs-12 ml-auto mr-auto mt-80">
-					<div class="tab-content" id="myTabContent">
-						     <form class="" action="" method="post" name="editFormProfile" id="editFormProfile" enctype="multipart/form-data">
-								<div class="row register-form ">
-                                        <!-- PROFILE PHOTO -->
-                                        <div class="col-md-12 col-xs-12 ml-auto mr-auto">
-                                            <div class="profile">
-                                                <div class="text-center mt-50px">
-                                                    <div class="profile-img-size circle">
-                                                    <img src="/images/home/user.jpg" alt="Circle Image" class="img-raised rounded-circle img-fluid profile-pic" width="auto">
-                                                    
-                                                    <i class="fas fa-user-edit upload-button p-image-edit"></i>
-                                                    <input class="file-upload" type="file" accept="image/*"/> 
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- PROFILE PHOTO -->
-                                                            
-								<div class="col-md-12 mt-80">
-										<div class="form-group">
-											<label for="first_name" class="laple-forms">Your First Name</label>
-											<input type="text" class="form-control" placeholder="First Name *"  name="first_name" value='<?php if(isset($_POST['first_name']))echo$_POST['first_name']; else echo $this->view_data['editeProfile'][0]['value'];?>' oninput=" stringlength(document.editFormProfile.first_name,5,12); allLetter(document.editFormProfile.first_name);preventSpace(document.editFormProfile.first_name,0,0)" />
-										<?php echo Message::check('first_name');?>
-										<span class="text-danger text-error" id="first_nameError"> </span>
-										</div>
-										<div class="form-group">
-											<label for="last_name" class="laple-forms">Your Last Name</label>
-											<input type="text" class="form-control" placeholder="Last Name *" name="last_name" value='<?php if(isset($_POST['last_name']))echo$_POST['last_name']; else echo $this->view_data['editeProfile'][1]['value'];?>' oninput=" stringlength(document.editFormProfile.last_name,5,12); allLetter(document.editFormProfile.last_name);preventSpace(document.editFormProfile.first_name,0,0)" />
-											<?php echo Message::check('last_name');?>
-											<span class="text-danger text-error" id="last_nameError"> </span>
-                                        </div>
-                                        <div class="form-group">
-											<label for="phone" class="laple-forms">Your Phone</label>
-											<input type="text"  name="phone" class="form-control" placeholder="Your Phone *" value='<?php if(isset($_POST['phone']))echo$_POST['phone']; else echo $this->view_data['editeProfile'][2]['value'];?>' oninput="phonenumber(document.editFormProfile.phone)"; />
-											<?php echo Message::check('phone');?>
-											<span class="text-danger text-error" id="phoneError"> </span>
-                                        </div>
-                                        <div class="form-group">
-											<label for="bio" class="laple-forms">Bio</label>
-                                            <textarea  rows="4" cols="50" type="text"  name="bio" class="form-control" placeholder="Your Bio" oninput="preventSpace(document.editFormProfile.bio,2,30);">
-                                            <?php if(isset($_POST['Bio']))echo$_POST['bio']; else echo $this->view_data['editeProfile'][3]['value']; ?>
-                                        </textarea>
-                                            <span class="text-danger text-error" id="bioError"> </span>
-                                         
-                                        </div>
-								</div>		
-                                            </div>
-                                        <center>
-										<input id="editBtn" type="button" class="btnEdit float-none" onclick="editprofileinfo()" value="Edit"/>
-										</center>
-										</div>
-					         </form>     
-				</div>
-                <!-- PROFILE PHOTO -->
-            </div>  
-        </div>
-    </div>
-</div>
-      
+    <section>
+   <div class="container-login100">
+			<div class="wrap-login100 signup700 " style="width: 1000px" >
+				<form class="login100-form validate-form"  action="" method="post"  name="editFormProfile" id="editFormProfile">
+				
+					<div class="wrap-input100 validate-input" >
+                        <label for="first_name" class="laple-forms"><?php echo $lang['item22']?> </label>
+						<input class="input100" type="text" name="first_name"  value='<?php if(isset($_POST['first_name']))echo$_POST['first_name']; else echo $this->view_data['editeProfile'][0]['value'];?>' oninput=" stringlength(document.signupForm.first_name,5,12); allLetter(document.signupForm.first_name);preventSpace(document.signupForm.first_name,0,0)" />
+						<span class="text-danger text-error" id="first_nameError"> </span>
+					</div>
+
+					<div class="wrap-input100 validate-input" >
+                       <label for="last_name" class="laple-forms"><?php echo $lang['item23']?> </label>
+						<input class="input100" type="text" name="last_name"  value='<?php if(isset($_POST['last_name']))echo$_POST['last_name']; else echo $this->view_data['editeProfile'][1]['value'];?>'  oninput=" stringlength(document.signupForm.last_name,5,12); allLetter(document.signupForm.last_name);preventSpace(document.signupForm.first_name,0,0)">
+						<span class="text-danger text-error" id="last_nameError"> </span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input" >
+                       <label for="phone" class="laple-forms"><?php echo $lang['item25']?> </label>
+						<input class="input100" type="text" name="phone"  value='<?php if(isset($_POST['phone']))echo$_POST['phone']; else echo $this->view_data['editeProfile'][2]['value'];?>'  oninput="phonenumber(document.signupForm.phone)">
+						<span class="text-danger text-error" id="phoneError"> </span>
+					</div>
+
+					<div class="wrap-input100 validate-input" >
+                         <label for="bio" class="laple-forms"><?php echo $lang['item132']?> </label>
+                        <textarea  class="input100"  name="bio" placeholder="<?php echo $lang['item133']?>" oninput="preventSpace(document.editFormProfile.bio,2,30);" >
+                        <?php if(isset($_POST['Bio']))echo$_POST['bio']; elseif(isset($this->view_data['editeProfile'][3])) echo $this->view_data['editeProfile'][3]['value']; ?>
+                     </textarea>
+						<span class="text-danger text-error" id="bioError"> </span>
+					</div>
+					<div class="singup-mainb-tn" >
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" id="signuptBtn" onclick="editprofileinfo()">
+							<?php echo $lang['item131']?>
+							</button>
+						</div>
+					</div>
+				
+				</form>
+			</div>
+		</div>
+
+	</section>   
 <!-- profile page end -->
 
 <script>
@@ -96,6 +76,7 @@
 function editprofileinfo(){
     if(Requirevalidation(document.editFormProfile.first_name)&&Requirevalidation(document.editFormProfile.last_name)
         &&Requirevalidation(document.editFormProfile.phone)){
+
         jQuery_1_3_2.ajax({
             url:"/editeProfile",
             method:"POST",
@@ -106,7 +87,7 @@ function editprofileinfo(){
             {
               var result=JSON.parse(data);
               if(result.statusCode=='200'){
-                alert('done') ;
+                window.location.href = '/profile/index';
 
               }
 

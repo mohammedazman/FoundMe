@@ -19,7 +19,7 @@
 				<div class="row">
 				 <div class="col-md-6">
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="first_name"  value='<?php if(isset($_POST['Donation']))echo$_POST['Donation'];?>' oninput=" stringlength(document.signupForm.Donation,5,12); allLetter(document.signupForm.Donation);preventSpace(document.signupForm.Donation,0,0)" />
+						<input class="input100" type="text" name="first_name"  value='<?php if(isset($_POST['first_name']))echo$_POST['first_name'];?>' oninput=" stringlength(document.signupForm.first_name,5,12); allLetter(document.signupForm.first_name);preventSpace(document.signupForm.first_name,0,0)" />
 						<span class="focus-input100" data-placeholder="<?php echo $lang['item22']?>"></span>
 						<span class="text-danger text-error" id="first_nameError"> </span>
 					</div>

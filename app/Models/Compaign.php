@@ -25,7 +25,7 @@ function checkdate()
     }
   $this->db->QueryCrud('UPDATE  compigans
            SET   	status=?
-          WHERE duration <= NOW() ',[4],0);
+          WHERE duration <= NOW() and status=2 ',[4],0);
 }
 
   public function all()

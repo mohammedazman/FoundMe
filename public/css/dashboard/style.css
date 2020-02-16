@@ -120,7 +120,7 @@
 }
 
 .nav-link{
-    color: #3aa3a9;
+    color: #6c648b;
 
 }
 
@@ -130,7 +130,7 @@
   text-align: left;
   padding: 1rem;
   width: 14rem;
-  color: #3aa3a9;
+  color: #6c648b;
 
 }
 
@@ -540,7 +540,7 @@
   /* notification */
 
 .text-blue{
-  color:#3aa3a9;
+  color:#6c648b;
 }
 
 a:hover {
@@ -645,4 +645,10 @@ a:hover {
 
 .font-size-20px{
   font-size: 20px;
+}
+
+.btn-danger.disabled, .btn-danger:disabled {
+  color: #fff;
+  background-color: #959595;
+  border-color: #959595;
 }

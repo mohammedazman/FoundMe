@@ -31,7 +31,7 @@
                     <!-- phone -->
                     <?php  if(!Session::isAdmin() )  { ?>
                     <?php  if(Session::logged() )  { ?>
-                    <ul class="navbar-nav a-link right-menu">
+                    <ul class="navbar-nav a-link right-menu pullUpDown">
                          <!-- notification -->
                         <li class="nav-item dropdown not-mobail">
                             <a class="nav-link text-light dropdown-toggle-user notification" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,10 +39,10 @@
                               <span class="badge wow pulse noti-count"></span>
                             </a>
                               <ul class="dropdown-menu">
-                                <li class="head text-light bg-light">
+                                <li class="head">
                                   <div class="row">
                                     <div class="col-lg-12 col-sm-12 col-12">
-                                      <span class="noti-header" style="color: #52aeb2;" > Last Notification</span>
+                                      <span class="noti-header" style="color: #6c648b;" > Last Notification</span>
                                     </div>
                                 </li>
 
@@ -144,13 +144,17 @@
                         </li>
                         
                         <?php }else{  ?>
-                        <li class="nav-item dropdown right-singup">
+                          <ul class="right-singup">
+                          <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user  padding-left-10 text-size-20px"></i> </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
                             <a class="dropdown-item" href="/auth/login"><?php echo $lang['item4a']?></a>
                             <a class="dropdown-item" href="/auth/signup"><?php echo $lang['item4b']?></a>
                           </div>
                         </li>
+
+                          </ul>
+                        
                         <?php } ?>
                           <!-- <li class="nav-item dropdown right-menu">
                               <button type="button" class="btn btn-white">Start</button>

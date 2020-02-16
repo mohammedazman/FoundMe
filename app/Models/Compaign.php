@@ -17,10 +17,15 @@ class Compaign
 // check if duration is finshed
 function checkdate()
 {
-
+    $compArray=  $this->db->QueryCrud('SELECT *
+               from   compigans
+              WHERE duration <= NOW() and status!=4 ');
+    foreach ($compArray as $comp) {
+        Notification::addNoti('your compaign have be done',$comp['owner_id'],'finshed compaing',$comp['id']);
+    }
   $this->db->QueryCrud('UPDATE  compigans
            SET   	status=?
-          WHERE duration <= NOW() ',[3],0);
+          WHERE duration <= NOW() ',[4],0);
 }
 
   public function all()

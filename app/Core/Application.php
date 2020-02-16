@@ -19,7 +19,7 @@ class Application
             if (file_exists(CONTROLLER.$this->controller.'.php')) {
 
                             if (Privilege::init()->checkCont($this->controller) ) {
-                              
+
                                   $this->controller=new $this->controller;
                                   if(method_exists($this->controller,$this->action))
                                       call_user_func_array([$this->controller,$this->action],$this->params);
@@ -46,6 +46,7 @@ class Application
   protected function prepareURL(){
 
     $request=trim($_SERVER['REQUEST_URI'],'/');
+  
 
     if (!empty($request)) {
       $url=explode('/',$request);  # explode request by / and assign each element to url array
@@ -58,6 +59,7 @@ class Application
       unset($url[0],$url[1]);
 
       $this->params=!empty($url)?array_values($url):[];
+
 
     } #end of if statement
 

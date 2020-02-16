@@ -144,7 +144,7 @@ $item=$this->view_data['item'];?>
 
 
 
-          html+='<a href="/tags/index/'+row+'" class="btn btn-muted text-secondary border  p-2  col-md-3 ml-5 mb-2 ">'
+          html+='<a href="/tags/index/'+row.replace("#", "hash")+'" class="btn btn-muted text-secondary border  p-2  col-md-3 ml-5 mb-2 ">'
               +row+
                   '</a>';
                   if (count%3==0 ) {

@@ -17,6 +17,7 @@ $lang=array(
     'item7'=>'Notifecations',
     'item8a'=>'My Profile',
     'item8b'=>'Logout',
+    'item8c'=>'Search',
     //login
     'item10'=>'Welcome',
     'item11'=>'Don\'t have an account',
@@ -162,7 +163,11 @@ $lang=array(
 
 
 
-    
+     //index
+     'button'=>'Read More',
+     'search'=>'Search',
+     'singup'=>'Sing up',
+
 
 
 

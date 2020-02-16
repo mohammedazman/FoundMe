@@ -55,6 +55,14 @@ class managecompaignController extends Controller
 
 
     }
+    public function ShowFinshedCompaigns(){
+
+      $this->view('cp'.DIRECTORY_SEPARATOR.'FinshedCompaigns');
+      $this->view->pageTitle='Finshed Compaigns';
+      $this->view->render();
+
+
+    }
     public function ShowDeletedCompaigns(){
       $this->view('cp'.DIRECTORY_SEPARATOR.'deletedCompaigns');
       $this->view->pageTitle='Deleted Users';
@@ -200,6 +208,8 @@ if 6 is ShowPindingUpdateCompaigns
 if 7 is for ShowActiveCompaigns with load more
 if 8 is ShowPindingDeleteCompaigns
 if 9 is for approve or reject Delete Compaign Request
+if 10 is ShowFinshedCompaigns
+
   */
   if(count($_POST)>0){
     $type=$_POST['type'];
@@ -234,6 +244,8 @@ if 9 is for approve or reject Delete Compaign Request
     case 9:
    echo $manage->changePindingCompaigns($_POST['ids'],$_POST['state']);
       break;
+   case 10:
+   echo $manage->showCompaigns(4);
 
 
   }

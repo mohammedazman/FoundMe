@@ -5,6 +5,7 @@
   $tags=isset($this->view_data['tags'])?$this->view_data['tags']:'';
 
   $tag=isset($this->view_data['tag'])?$this->view_data['tag']:'';
+   $tag=str_replace("hash","#",$tag);
    ?>
 
 

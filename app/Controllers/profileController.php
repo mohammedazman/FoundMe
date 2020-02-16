@@ -57,22 +57,6 @@ private $profile;
      $this->index();
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
  ?>

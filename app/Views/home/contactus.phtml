@@ -27,9 +27,9 @@
 <section>
 
 <div class="container-login100">
-			<div class="wrap-login100 " style="width: 1000px; margin-top:-170px;">
+			<div class="wrap-login100 row " style="width: 1000px; margin-top:-170px;">
 				<form class="login100-form validate-form"  action="" method="post"  name="contactForm" id="contactForm">
-					
+
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
 						<input class="input100" type="text" name="name"  value='<?php if(isset($_POST['name']))echo$_POST['name'];?>' />
 						<span class="focus-input100" data-placeholder="<?php echo $lang['item43']?>"></span>
@@ -43,7 +43,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						
+
 						<textarea name="msg" class="input100"  id="" cols="30" rows="10"></textarea>
 						<span class="focus-input100" data-placeholder="<?php echo $lang['item45']?>"></span>
 						<span class="text-danger text-error" id="passwordError"> </span>
@@ -60,11 +60,11 @@
 								</form>
 			</div>
 		</div>
-	
+
 </section>
 
 
-	
+
 
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer_section.phtml' ?>
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

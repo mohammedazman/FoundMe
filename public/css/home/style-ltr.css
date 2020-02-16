@@ -28,6 +28,9 @@ body{
 .text-orange {
     color: #fba100;
 }
+.text-gray{
+    color: #baa7a1;
+}
 .text-white-62{
   color:rgba(255, 255, 255, 0.62)!important
 }
@@ -485,7 +488,7 @@ a .material-icons {
     border-radius: 0px;
 }
 .nav-pills .nav-item .nav-link.active {
-    color: #fba100;
+    color: #6c648b;
     font-size: 18px;
     background-color: unset;
     border-bottom: 1px solid #c7c5c5;
@@ -1798,3 +1801,4 @@ hr.new2 {
   .search-content {
     background-color: #fff0 !important;
      border: unset !important;}
+

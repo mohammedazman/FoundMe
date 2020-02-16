@@ -30,7 +30,7 @@
                        $profile->update(['Last Name',$newinfo['last_name'],Session::get('userID'),'Last Name']);
                        $profile->update(['Phone',$newinfo['phone'],Session::get('userID'),'Phone']);
                        if($profile->getBio([Session::get('userID')])){
-                       $profile->add(['Bio',$newinfo['bio'],Session::get('userID'),'Bio']);
+                       $profile->add(['Bio',$newinfo['bio'],Session::get('userID')]);
                        } else
                        {
                        $profile->update(['Bio',$newinfo['bio'],Session::get('userID'),'Bio']);
@@ -57,7 +57,8 @@
     $returnArray =[];
     foreach ($formArray as $val){
         $input=explode('=',$val);
-      $returnArray[$input[0]] = str_replace("%2B","+",$input[1]);
+        $temp = str_replace("+"," ",$input[1]);
+        $returnArray[$input[0]] = str_replace("%2B","+",$temp);
     }
     return $returnArray;
     }

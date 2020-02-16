@@ -42,7 +42,8 @@ body{
     background-color: black;
 }
 .bg-blue{
-    background: -webkit-linear-gradient(left, #6c648b, #7c879e);
+    background: -webkit-linear-gradient(left, #868199, #595274);
+
 }
 .bg-orange{
     background: -webkit-linear-gradient(left, #fba100, #cd8300);
@@ -1802,3 +1803,6 @@ hr.new2 {
     background-color: #fff0 !important;
      border: unset !important;}
 
+     .bg-gray-tow {
+        background: -webkit-linear-gradient(left, #baa7a1, #9b9998);
+    }

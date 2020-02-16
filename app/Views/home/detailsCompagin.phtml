@@ -130,10 +130,10 @@
                          $donars=$this->view_data['donars'];
                          foreach($donars as $donar){
                        ?>
-                       <a class="pull-left" href="#">
-                  <span class="donars-amount" > <?php echo $donar['amount'].'$' ?></span></span>
+                       <a class="pull-left text-center" href="#">
+                  <span class="donars-amount text-dark" > <?php echo $donar['amount'].'$' ?></span></span>
                   </a>
-                  <span  class='donars-name'>
+                  <span  class='donars-name text-center'>
                   <?php echo Helper::userName($donar['user_id']) ?></span><br>
 
          <?php
@@ -231,9 +231,7 @@
               <div class="donar-user">
               <div class="d-inline">
                 <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header follow-img" title="">
-              </div> <div class="d-inline-block"> <h5>
-               <?php echo Helper::userName($follower); ?>
-                </h5></div>
+              </div> <div class="d-inline-block ml-6"> <h5><?php echo Helper::userName($follower); ?></h5></div>
               <hr class="hr-blue-80">
           </div>
             <?php }

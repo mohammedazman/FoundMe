@@ -36,15 +36,13 @@
                           <div class="profile-img-size rounded-circle">
                             <img src="/images/home/user.jpg" alt="Circle Image" class="rounded-circle img-fluid profile-pic" width="auto">
                             <i class="fas fa-user-edit upload-button p-image"></i>
-                            <input class="file-upload" type="file" accept="image/*"/>
+                            <input class="file-upload" type="file" accept="image/*"  name="gallary"  id="gallary-photo-add" />
                           </div>
 
                         </div>
 
 
                         <div>
-
-
 
 
                           <div class="description">
@@ -113,6 +111,9 @@
                       </div>
                       <div class="tab-content tab-space">
                   <div class="tab-pane active text-center gallery" id="works">
+                      <!-- <a href="/compaign/addCompaign" class="text-gray"><span style="font-size: 20px; color: #fba100;">+</span> New Compigan</a> -->
+
+
                       <div class="row" id="user-compign">
                       <?php
                       // print_r($this->view_data);
@@ -182,5 +183,6 @@
   	</div>
 	<!-- profile page end -->
 
-
+  
+  <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer_section.phtml' ?>
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

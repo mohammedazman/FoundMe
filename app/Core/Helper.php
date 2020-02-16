@@ -134,13 +134,13 @@
 
    }
 
-   #return string of category's name @param id of category that come from news row
-   public static function catName($id)
+   #return string of campaign title
+   public static function getCompaignTitle ($id)
    {
 
-     $counter =DB::init()->QueryCrud("SELECT *  FROM categories WHERE id = $id ");
-     if (!empty($counter)) {
-       return $counter[0]['cat_title'];
+     $title =DB::init()->QueryCrud("SELECT *  FROM compigans WHERE id = ? ",[$id]);
+     if (!empty($title)) {
+       return $title[0]['title'];
      }
 
    }

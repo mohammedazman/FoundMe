@@ -28,6 +28,9 @@ body{
 .text-orange {
     color: #fba100;
 }
+.text-gray{
+    color: #baa7a1;
+}
 .text-white-62{
   color:rgba(255, 255, 255, 0.62)!important
 }
@@ -151,11 +154,6 @@ header nav {
 .right-menu{
     position: absolute;
     right: 15px;
-}
-
-.nav-link 
-{
-    padding-left :25%;
 }
 .left-menu{
     position: absolute;
@@ -332,7 +330,7 @@ header nav {
 }
 /* login start */
 .p-login a{
-    color: #f5e720;
+    color: #fba100;
 }
 .p-login a:hover {
     color: #b0c4da;
@@ -490,7 +488,7 @@ a .material-icons {
     border-radius: 0px;
 }
 .nav-pills .nav-item .nav-link.active {
-    color: #fba100;
+    color: #6c648b;
     font-size: 18px;
     background-color: unset;
     border-bottom: 1px solid #c7c5c5;
@@ -844,7 +842,7 @@ img.rounded {
     margin-top: 15px;
     margin-right: 5px;
 }
-.form-control:focus {
+/* .form-control:focus {
     color: #495057;
     background-color: #fff;
     border-color: #6c648b;
@@ -854,11 +852,11 @@ img.rounded {
 .form-control {
     border-radius: 17px;
     /* margin-top: 30px; */
-    color: #495057;
+    /* color: #495057;
     background-color: #a992921a;
     border: 1px solid #ced4da0d;
     padding: 25px;
-}
+} */ 
 .animation-ttp{
     -webkit-animation: mover 2s infinite  alternate;
     animation: mover 1s infinite  alternate;
@@ -1799,3 +1797,7 @@ hr.new2 {
   .bio{
     font-size: larger;
   }
+
+  .search-content {
+    background-color: #fff0 !important;
+     border: unset !important;}

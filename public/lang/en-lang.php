@@ -152,6 +152,15 @@ $lang=array(
     'donateb'=>'to your compaign',
     'follow1'=>'new donate to campaign that you follow',
 
+    //edit language
+
+    'item130'=>'Edit Profile',
+    'item131'=>'Edit',
+    'item132'=>'Bio',
+    'item133'=>'Your bio',
+
+
+
 
     
 

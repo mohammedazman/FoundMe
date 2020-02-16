@@ -209,23 +209,29 @@ function load_data(){
 
       });
       jQuery_1_3_2('#active-compain').html(html);
-      if (userInfo.statusCode=200) {
-        jQuery_1_3_2('#loadMore').attr('num_loaded',loaded+6).html('Load More');
-      }
-      else {
-        jQuery_1_3_2('#loadMore').append(retry);
-      }
+  
 
 
     },
 
-     error:function (xhr,textStatus,errorThrown) {
-      jQuery_1_3_2('#loadMore').append(retry);
+     error:function (xhr, status) {
+       console.log(status);
+       console.log(xhr);
+
       if (xhr.status=='timeout') {
         jQuery_1_3_2('#active-compain').html(err);
 
       }
+    },
+    complete:function (xhr,textStatus,errorThrown) {
+      console.log(textStatus);
+      console.log(errorThrown);
+      console.log(xhr);
+     if (xhr.status=='timeout') {
+       jQuery_1_3_2('#active-compain').html(err);
+
      }
+    }
 
 
 		       });

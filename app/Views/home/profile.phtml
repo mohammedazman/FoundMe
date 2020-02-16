@@ -136,6 +136,7 @@
                                       <a href="/viewCompaign/show/<?php echo $row['id']?>" class="btn btn-home-comp">Go somewhere</a>
                                     </div>
                                     </div>
+
                                 </div>
                                 <div class="progress">
                                   <div class="progress-bar progress-bar-style" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">55%</div>
@@ -146,6 +147,7 @@
                   </div>
                   <div class="tab-pane text-center gallery" id="favorite">
                           <div class="row">
+
                               <div class="col-md-12">
                                   <div>
                                     <span class="prof-donate"><i class="fas fa-donate"></i>300$</span>
@@ -161,18 +163,37 @@
                                   </div>
                                    <div class="dropdown-divider"></div>
 
-                              </div>
+
+                            <?php
+                            $html='';
+                            $total=0;
+                            if (array_key_exists('donations',$this->view_data))
+                             foreach ($this->view_data['donations'] as $row) {
+                               $total+=$row["amount"];
+                          $html.='<div class="col-md-12  m-2 p-2"> ';
+                          $html.='<span class="prof-donate"><i class="fas fa-donate"></i>';
+                          $html.=$row["amount"].'</span>';
+                          $html.='<a href="/viewCompaign/show/'.$row["compigan_id"].'">'.Helper::getCompaignTitle($row["compigan_id"]).'</a>
+                                  <div class="dropdown-divider"></div></div>  ';
+
+
+                             }
+                             echo $html; ?>
+                             <div class="col-md-12  m-2 p-2">
+                                <strong>Total : </strong>
+                               <span class="prof-donate"> <i class="fas fa-donate"></i><?php echo $total; ?></span>
+                               <div class="dropdown-divider"></div></div>
                           </div>
                   </div>
                   </div>
 
-                </div>
+
                 </div>
 
                 <!-- TAPS  -->
 
 
-          </div>
+          </div></div>
       </div>
   	</div>
 	<!-- profile page end -->

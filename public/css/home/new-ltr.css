@@ -373,7 +373,7 @@ background-color: #00b5e9;
     margin-bottom: 20px;
 }
 .btn-label{
-    color: #a69999;
+    color: #464343;
     line-height: 1.2;
     font-family: 'Poppins', sans-serif;
     font-size:15px;
@@ -585,3 +585,15 @@ text-decoration: unset;
   bottom: 60px;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #d2d2c4 !important;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #d2d2c4 !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #d2d2c4 !important;
+}

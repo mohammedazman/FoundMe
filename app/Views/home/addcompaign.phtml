@@ -35,8 +35,8 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 				<div class="row">
 				<div class="col-md-12">
 				<div class="wrap-input100 " >
-						<input class="input100" type="text" name="Title"  value='<?php if(isset($_POST['Title']))echo$_POST['Title'];?>' oninput="stringlength(document.addCompignForm.Title, 10, 50); " />
-						<span class="focus-input100" data-placeholder="<?php echo $lang['item33']?> "></span>
+            <label for="Title" class='btn-label' ><?php echo $lang['item33']?></label>
+						<input class="input100" type="text" name="Title"  placeholder="ex: This is my campaign" value='<?php if(isset($_POST['Title']))echo$_POST['Title'];?>' oninput="stringlength(document.addCompignForm.Title, 10, 50); " />
 						<span class="text-danger text-error" id="TitleError"> </span>
 					</div>
 				</div>
@@ -45,20 +45,20 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 					
 
 					<div class="wrap-input100 " >
-						<input class="input100" type="text" name="Tags"  value='<?php if(isset($_POST['Tags']))echo$_POST['Tags'];?>'  oninput=" stringlength(document.addCompignForm.Tags, 2, 20)" >
-						<span class="focus-input100" data-placeholder="<?php echo $lang['item34']?> "></span>
+            <label for="Tags" class='btn-label' ><?php echo $lang['item34']?></label>
+						<input class="input100" type="text" name="Tags"  placeholder="#exampale"  value='<?php if(isset($_POST['Tags']))echo$_POST['Tags'];?>'  oninput=" stringlength(document.addCompignForm.Tags, 2, 20)" >
 						<span class="text-danger text-error" id="TagsError"> </span>
 					</div>
 
 					<div class="wrap-input100 " >
-						<input class="input100" type="number" name="Amount"  value='<?php if(isset($_POST['Amount']))echo$_POST['Amount'];?>'   />
-						<span class="focus-input100" data-placeholder="<?php echo $lang['item35']?>"></span>
+            <label for="Amount" class='btn-label' ><?php echo $lang['item35']?></label>
+						<input class="input100" type="number" name="Amount" placeholder="100 $" style="top:190px"  value='<?php if(isset($_POST['Amount']))echo$_POST['Amount'];?>'   />
 						<span class="text-danger text-error" id="AmountError"> </span>
 					</div>
 
 					<div class="wrap-input100 mb20" >
+           <label for="Deuration" class='btn-label' ><?php echo $lang['item36']?></label>
 						<input class="input100" type="date" name="Deuration"  value='<?php if(isset($_POST['Deuration']))echo$_POST['Deuration'];?>' oninput="validateDate(document.addCompignForm.Deuration)"/>
-						<span class="focus-input100" data-placeholder="<?php echo $lang['item36']?>"></span>
 						<?php echo Message::check('Deuration');  ?>
 						<span class="text-danger text-error" id="DeurationError"> </span>
 					</div>
@@ -81,6 +81,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 				<div class="col-md-6">
 				
 					<div class="container cont-pdf" >
+            <label for="files" class='btn-label' ><?php echo $lang['item37']?></label>
 						<img src="/images/before.jpg" alt="choose image"   id='image' class="profileImg mt-30">
 						<input type="file"  class='uploader'   require  onchange="Filevalidation('gallary-photo-add');readURL(this)" name="gallary"  id="gallary-photo-add" />
 						</img>

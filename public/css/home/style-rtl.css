@@ -12,8 +12,10 @@ html {
 /* fonts */
 @import url('https://fonts.googleapis.com/css?family=Alata&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:700&display=swap');
+
 body{
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
 }
 /* text color */
 .text-blue{

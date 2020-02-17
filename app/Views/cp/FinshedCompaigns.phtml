@@ -131,7 +131,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             var dataResult = JSON.parse(dataResult);
             if(dataResult.statusCode==200){
                 $('#changeCompaigns').modal('hide');
-                alert($("#state_d").val())
+                alert(dataResult.message)
 
                 // sucMsg(dataResult.message);
                 load_data()

@@ -151,6 +151,8 @@ class managecompaignController extends Controller
 
 
     public function changeCompaigns($ids,$state){
+
+
       if($state==4 || $state==7)
         $nState=2;
       elseif($state==5 || $state==6 )

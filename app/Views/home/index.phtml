@@ -17,11 +17,14 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
                       <div class="carousel-item bg-black active">
                         <img src="/images/home/1(1).jpg" class="d-block w-100 opacity-5" alt="...">
                         <div class="carousel-caption">
-                          <h1 class="h1-slide wow fadeIn">Fundraising for the people and <br>
-                              causes you care about</h1>
+                          <h1 class="h1-slide wow fadeIn"><?php echo $lang['slidertitle']?><br>
+                             </h1>
+                              <?php  if(!Session::logged() )  { ?>
                           <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
+                          <?php }?>
+
                           <button type="button" class="btn btn-orange wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['button']?></button>
-                          <?php  if(Session::logged() )  { ?>
+                          <?php  if(!Session::logged() )  { ?>
                           <button type="button" class="btn btn-dark wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['singup']?></button>
                           <?php }?>
                         </div>
@@ -29,33 +32,46 @@ include VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
                       <div class="carousel-item bg-black">
                         <img src="/images/home/1(2).jpg" class="d-block w-100 opacity-5" alt="...">
                         <div class="carousel-caption">
-                          <h1 class="h1-slide wow fadeIn">Fundraising for the people and <br>
-                            causes you care about</h1>
+                          <h1 class="h1-slide wow fadeIn"><?php echo $lang['slidertitle']?><br>
+                           </h1>
+                          <?php  if(!Session::logged() )  { ?>
+                            
                           <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
+                          <?php }?>
+
                           <button type="button" class="btn btn-orange wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['button']?></button>
+                          <?php  if(!Session::logged() )  { ?>
                           <button type="button" class="btn btn-dark wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['singup']?></button>
-                        </div>
+                          <?php }?>                        </div>
                       </div>
                       <div class="carousel-item bg-black">
                         <img src="/images/home/1(5).jpg" class="d-block w-100 opacity-5" alt="...">
                         <div class="carousel-caption">
-                          <h1 class="h1-slide wow fadeIn">Fundraising for the people and <br>
-                             causes you care about</h1>
+                          <h1 class="h1-slide wow fadeIn"><?php echo $lang['slidertitle']?><br>
+                            </h1>
+                          <?php  if(!Session::logged() )  { ?>
+
                           <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
+                          <?php }?>  
 
                           <button type="button" class="btn btn-orange wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['button']?></button>
+                          <?php  if(!Session::logged() )  { ?>
                           <button type="button" class="btn btn-dark wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['singup']?></button>
-                        </div>
+                          <?php }?>                        </div>
                       </div>
                       <div class="carousel-item bg-black">
                         <img src="/images/home/1(4).jpg" class="d-block w-100 opacity-5" alt="...">
                         <div class="carousel-caption">
                           <h1 class="h1-slide wow fadeIn">Fundraising for the people and <br>
-                               causes you care about</h1>
-                          <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
-                          <button type="button" class="btn btn-orange wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['button']?></button>
-                          <button type="button" class="btn btn-dark wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['singup']?></button>
+                             </h1>
+                          <?php  if(!Session::logged() )  { ?>
 
+                          <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
+                          <?php }?>  
+                          <button type="button" class="btn btn-orange wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['button']?></button>
+                          <?php  if(!Session::logged() )  { ?>
+                          <button type="button" class="btn btn-dark wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['singup']?></button>
+                          <?php }?>
                         </div>
                       </div>
                       <a href="#numone" class="animation-ttp icon-home-arrow demo"><i class="fas fa-angle-down"></i></a>

@@ -49,8 +49,7 @@ class authController extends Controller
 
              }
              if($signup==true){
-               Message::setMessage(1,'main',' Your account added successfully');
-               header('Location:/editeProfile/edit');
+               header('Location:/auth/welcome');
                return ;
               }
              else{
@@ -91,7 +90,7 @@ class authController extends Controller
 
                    if ($this->modelObj->add($params)) {
 
-                      Notification::addNoti('New user is added ','admin','new user');
+                      Notification::addNoti('New user is added','admin','new user',$this->modelObj->lastID()['id']);
                      $this->model('Profiles');
                      $profile=$this->model->getModel();
 

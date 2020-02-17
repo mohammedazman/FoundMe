@@ -6,7 +6,7 @@ class DB {
 
       const DBUSER = 'root';
       const DBPASS = '';
-      const DNS="mysql:host=localhost;dbname=FoundMe;charset=UTF8";
+      const DNS="mysql:host=localhost;dbname=foundMe;charset=UTF8";
 
       public function __construct() {
         try {

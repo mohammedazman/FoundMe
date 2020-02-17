@@ -1,6 +1,6 @@
 <?php
-
   include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
+ 
 ?>
     <!-- start pages photo -->
     <section class="cover-background top-space" style="background-image:url('/images/home/1(1).jpg');">
@@ -136,7 +136,7 @@
                                   </div>  </div>
                           </div>
                           <div class="progress">
-                            <div class="progress-bar progress-bar-style" role="progressbar" style="width: <?php echo Helper::getProgress($row['id']); ?>%" aria-valuenow="<?php echo Helper::getProgress($row['id']); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo Helper::getProgress($row['id']); ?>%</div>
+                            <div class="progress-bar progress-bar-style" role="progressbar" style="width: <?php echo Helper::getProgress($row['id']); ?> %" aria-valuenow="<?php echo Helper::getProgress($row['id']); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo Helper::getProgress($row['id']); ?>%</div>
 
                             </div>
                          </div>

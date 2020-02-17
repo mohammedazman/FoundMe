@@ -1,7 +1,8 @@
 <?php
-
 include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml';
 $compaign=$this->view_data['compaign'][0];
+if(!Session::logged() || Session::get('userID')==$compaign['owner_id'] )
+  header('location:/home/index');
 ?>
 
 <body>

@@ -8,6 +8,9 @@ private $profile;
 
   public function index()
   {
+    if(!Session::logged())
+    header('location:/home/index');
+    
 
    $this->model('Profiles');
    $this->profile=$this->model->getModel();

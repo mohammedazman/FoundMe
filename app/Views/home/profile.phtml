@@ -13,8 +13,9 @@
                         <span class="text-white"></span>
                         <!-- end sub title -->
                         <!-- start page title -->
-                        <?php if (array_key_exists('profiles',$this->view_data)){?>
-                        <h1 class="text-white"><?php echo Helper::userName(Session::get("userID")) ?></h1>
+                        <?php
+                         if (array_key_exists('profiles',$this->view_data)){?>
+                        <h1 class="text-white"><?php echo Helper::userName($this->view_data['profiles'][0]['user_id']) ?></h1>
                         <?php } ?>
                         <!-- end page title -->
                     </div>
@@ -35,7 +36,9 @@
                         <div class="text-center mt-50px">
                           <div class="profile-img-size rounded-circle">
                             <img src="/images/home/user.jpg" alt="Circle Image" class="rounded-circle img-fluid profile-pic" width="auto">
+                            <?php if($this->view_data['profiles'][0]['user_id']==Session::get('userID')){?>
                             <i class="fas fa-user-edit upload-button p-image"></i>
+                            <?php } ?>
                             <input class="file-upload" type="file" accept="image/*"  name="gallary"  id="gallary-photo-add" />
                           </div>
 
@@ -50,7 +53,9 @@
                               <div class="row">
                                 <div class="col-md-12 text-center">
                                   <div class="col-md-12 p-all-20px">
+                                  <?php if($this->view_data['profiles'][0]['user_id']==Session::get('userID')){?>
                                     <a href="/editeProfile/edit"><i class="fas fa-edit text-orange"></i></a>
+                                  <?php }?>
                                     <span class="bio"><?php if(isset($this->view_data['profiles'][3])) echo $this->view_data['profiles'][3]['value']; ?></span>
 
                                     <div class="text-center">
@@ -136,7 +141,7 @@
                                   </div>  </div>
                           </div>
                           <div class="progress">
-                            <div class="progress-bar progress-bar-style" role="progressbar" style="width: <?php echo Helper::getProgress($row['id']); ?> %" aria-valuenow="<?php echo Helper::getProgress($row['id']); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo Helper::getProgress($row['id']); ?>%</div>
+                            <div class="progress-bar progress-bar-style" role="progressbar" style="width: <?php echo Helper::getProgress($row['id']).' %'; ?> " aria-valuenow="<?php echo Helper::getProgress($row['id']); ?>" aria-valuemin="0" aria-valuemax="100"><?php echo Helper::getProgress($row['id']); ?>%</div>
 
                             </div>
                          </div>

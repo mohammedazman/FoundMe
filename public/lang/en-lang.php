@@ -14,6 +14,7 @@ $lang=array(
     'item5b'=>'English',
     'item5c'=>'Current',
     'item6'=>'Add Compaign',
+    'item6a'=>'All Compaigns',
     'item7'=>'Notifecations',
     'item8a'=>'My Profile',
     'item8b'=>'Logout',

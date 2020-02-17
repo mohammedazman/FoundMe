@@ -125,7 +125,15 @@ public function getAllCompaigns($from,$to)
 
 
   $oStmt ="SELECT * FROM compigans where status=2 LIMIT $from,$to";
-  return  $this->db->QueryCrud($oStmt);
+  $campaignWithPRogress=array();
+
+    $copmaigns=$this->db->QueryCrud($oStmt);
+    foreach($copmaigns as $camp){
+      $camp['progress']=Helper::getProgress($camp['id']);
+      $campaignWithPRogress[]=$camp;
+    }
+    return $campaignWithPRogress;
+     
 }
 
 // managecompaign
@@ -161,7 +169,14 @@ public function searchTags($args)
  $arg="%$args%";
 
   $oStmt ='SELECT * FROM compigans  WHERE  tags LIKE ? and status=2';
-  return  $this->db->QueryCrud($oStmt,[$arg]);
+  $campaignWithPRogress=array();
+
+  $copmaigns=$this->db->QueryCrud($oStmt,[$arg]);
+  foreach($copmaigns as $camp){
+    $camp['progress']=Helper::getProgress($camp['id']);
+    $campaignWithPRogress[]=$camp;
+  }
+  return $campaignWithPRogress;
 }
 
 public function allTags()

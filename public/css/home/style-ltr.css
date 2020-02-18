@@ -33,7 +33,7 @@ body{
     color: #baa7a1;
 }
 .text-black-light{
-    color: #555353;
+    color: #868383;
 }
 .text-white-62{
   color:rgba(255, 255, 255, 0.62)!important
@@ -372,7 +372,7 @@ header nav {
     font-size: 18px;
 }
 .p-section {
-    padding: 120px 0px 0px 0px;
+    padding: 120px 0px 75px 0px;
     overflow: hidden;
 }
 .display-table-cell {
@@ -894,6 +894,11 @@ img.rounded {
 
 
 }
+
+@media (min-width: 768px){
+
+}
+
 @media (max-width: 992px){
     .navbar-expand-lg .navbar-nav .dropdown-menu {
         margin-left: -20px;
@@ -948,7 +953,7 @@ img.rounded {
 }
 .title-home{
     color: #6c648b;
-    padding-bottom: 12px;
+    padding-bottom: 50px;
 }
 .error-icon{
     font-size: 12px;
@@ -1730,7 +1735,7 @@ font-family:'Poppins';
 
 .right-singup{
     position: absolute;
-    right: -988px;
+    right: -890px;
 }
 
 .text-fantasy{
@@ -1808,4 +1813,19 @@ hr.new2 {
 
      .bg-gray-tow {
         background: -webkit-linear-gradient(left, #baa7a1, #9b9998);
+    }
+
+.mb-80px{
+    margin-bottom: 80px !important;
+}
+
+@media (max-width: 640px){
+    .w-100-phone {
+        width: 100%!important;
+    }
+    .content-last-comp{
+        padding: 0px 35px;
+        text-align: center;
+    }
+    
     }

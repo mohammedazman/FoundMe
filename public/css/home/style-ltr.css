@@ -11,10 +11,9 @@ html {
 
 /* fonts */
 @import url('https://fonts.googleapis.com/css?family=Alata&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-body{
-    font-family: 'Quicksand', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css?family=display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300&display=swap');
+
 /* text color */
 .text-blue{
     color: #6c648b;
@@ -28,8 +27,14 @@ body{
 .text-orange {
     color: #fba100;
 }
+.text-orange-light {
+    color: #fba100a6;
+}
 .text-gray{
     color: #baa7a1;
+}
+.text-black-light{
+    color: #868383;
 }
 .text-white-62{
   color:rgba(255, 255, 255, 0.62)!important
@@ -43,10 +48,15 @@ body{
 }
 .bg-blue{
     background: -webkit-linear-gradient(left, #868199, #595274);
-
+}
+.bg-purple {
+    background-color: #6c648b;
 }
 .bg-orange{
     background: -webkit-linear-gradient(left, #fba100, #cd8300);
+}
+.bg-orange-light {
+    background-color: #5131025c!important;
 }
 .no-pg-color{
     background-color: none !important;
@@ -62,6 +72,9 @@ body{
 }
 .bg-gray{
     background-color: #eee;
+}
+.bg-all{
+    background-color: #f5f4f4;
 }
 /* opacity */
 .opacity-5{
@@ -110,7 +123,12 @@ body{
     border: 2px solid #FFF;
     border-radius: 8px;
 }
-
+.btn-orange:hover {
+    color: #FFF;
+    background-color: #f8f9fa00;
+    border: 2px solid #FFF;
+    border-radius: 8px;
+}
 /* text size */
 .text-size-22px{
     font-size: 22px;
@@ -163,7 +181,7 @@ header nav {
 .pic-profile-header{
     border-radius: 50%;
     margin-right: 10px;
-    box-shadow: #f0eeee5e 0px 0px 4px 1px;
+    box-shadow: #f1f1f1bf 0px 0px 4px 1px;
 }
 .pic-profile-header:hover{
     box-shadow: 0 0 4px 0 #b2b2b2;
@@ -215,9 +233,13 @@ header nav {
     padding-left: 8px !important;
     font-size: 16px;
 }
-.navbar  a{
-    color: #fff !important;
+.nav-link-color{
+    color: #ffffff;
+
 }
+/* .navbar  a{
+    color: #ffffff !important;
+} */
 .dropdown-menu a{
     color: #6c648b !important;
 }
@@ -363,7 +385,7 @@ header nav {
     font-size: 18px;
 }
 .p-section {
-    padding: 140px 0px;
+    padding: 120px 0px 75px 0px;
     overflow: hidden;
 }
 .display-table-cell {
@@ -388,7 +410,7 @@ header nav {
 .h6, h6 {
     font-size: .75rem !important;
     font-weight: 500;
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    font-family: 'Poppins',Helvetica,Arial,sans-serif;
     line-height: 1.5em;
     text-transform: uppercase;
 }
@@ -463,7 +485,7 @@ a .material-icons {
     min-height: 32px;
     color: #3C4858;
     font-weight: 700;
-    font-family: "Roboto Slab","Times New Roman",serif;
+    font-family: 'Poppins',"Times New Roman",serif;
 }
 .profile-page .description {
     margin: 1.071rem auto 0;
@@ -637,7 +659,10 @@ img.rounded {
     background-repeat: no-repeat !important;
 }
 .top-space{
-    padding-top: 235px;
+    padding-top: 140px;
+}
+.top-space-profile{
+    padding-top: 214px;
 }
 .page-title{
     padding-bottom: 70px;
@@ -885,6 +910,11 @@ img.rounded {
 
 
 }
+
+@media (min-width: 768px){
+
+}
+
 @media (max-width: 992px){
     .navbar-expand-lg .navbar-nav .dropdown-menu {
         margin-left: -20px;
@@ -939,7 +969,7 @@ img.rounded {
 }
 .title-home{
     color: #6c648b;
-    padding-bottom: 12px;
+    padding-bottom: 50px;
 }
 .error-icon{
     font-size: 12px;
@@ -1022,7 +1052,7 @@ input[type='file'] {
     width: 100%;
     opacity: 0;
     transition: .5s ease;
-    background-color: #6c648bad;
+    background-color: #6c648b63;
 }
 
 .img-overlay:hover .overlay {
@@ -1044,16 +1074,10 @@ input[type='file'] {
 }
 
 .btn-home-comp{
-    color: #6c648b;
-    text-decoration: none;
-    background-color: #ffffff;
-    border: 2px solid #ffffff;
+    color: #ffffff;
 }
 .btn-home-comp:hover{
-    color: #ffffff;
-    text-decoration: none;
-    background-color: unset;
-    border: 2px solid #FFF;
+    color: #f0f1f1;
 }
 .text-white{
     color: #FFF;
@@ -1112,9 +1136,9 @@ input[type='file'] {
         left: 42%;
      }
      .right-menu {
-        position: absolute;
+        position: fixed;
         right: 55px;
-        bottom: 13px;;
+        top: -31px;
     }
     .not-mobail{
         top: 46px;
@@ -1303,7 +1327,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     background-color: #5fcf80;
     color: #fff;
 	padding:7px;
-	font-family:'Droid Arabic Kufi';
+	font-family:'Poppins';
 }
 
 .dropdown-menu.extended li a {
@@ -1311,7 +1335,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     font-size: 12px;
     list-style: none;
 	 padding: 5px 10px !important;
-	font-family:'Droid Arabic Kufi';
+	font-family:'Poppins';
 }
 
 
@@ -1424,7 +1448,7 @@ margin-top:-39px;
 .btncolor{
 	background-color:#fff;
 	font-size: 16px;
-font-family: 'Droid Arabic Kufi'
+font-family:'Poppins';
 }
 
 .item:hover {
@@ -1727,7 +1751,7 @@ font-family: 'Droid Arabic Kufi'
 
 .right-singup{
     position: absolute;
-    right: -988px;
+    right: -785px;
 }
 
 .text-fantasy{
@@ -1806,3 +1830,76 @@ hr.new2 {
      .bg-gray-tow {
         background: -webkit-linear-gradient(left, #baa7a1, #9b9998);
     }
+
+.mb-80px{
+    margin-bottom: 80px !important;
+}
+
+@media (max-width: 640px){
+    .w-100-phone {
+        width: 100%!important;
+    }
+    .content-last-comp{
+        padding: 0px 35px;
+        text-align: center;
+    }
+    
+    }
+
+    .btn-secondary {
+        color: #fff;
+        background-color: #6c648b;
+    }
+
+    .btn-secondary:hover {
+        color: #6c648b;
+        background-color: #fff;
+        border-color: #fff;
+    }
+.border-fff-5px{
+    border: 5px solid #f8f9fa;
+    background: #fff;
+}
+.top-form-pages{
+        top: 330px;
+    position: absolute;
+}
+
+.form-all-camp{
+    width: 70%;
+    margin: 0 auto;
+
+}
+
+.border-b-w{
+    border-bottom: 2px solid #ffffff !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #fb9f009a; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #fba100; 
+  }
+  .description{
+    background-color: #fff;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 10px;
+    position: relative;
+    top: 80px;
+
+  }

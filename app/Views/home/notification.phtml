@@ -1,5 +1,8 @@
 <?php
 
+if(!Session::logged())
+  header('location:/home/index');
+  
 // include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml';
 include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 

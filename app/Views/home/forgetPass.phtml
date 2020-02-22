@@ -1,4 +1,8 @@
-<?php   include VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml' ?>
+<?php
+
+if(Session::logged())
+  header('location:/home/index');
+include VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml' ?>
 
 <!-- start login -->
 <body class="bg-blue">

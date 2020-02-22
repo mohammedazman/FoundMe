@@ -2,18 +2,24 @@
 $(document).ready(function(){
     $(window).scroll(function(){
         var scroll = $(window).scrollTop();
-        if (scroll > 300) {
-          $(".chang-color").css("background" , "#6c648b");
-          $(".navbar-collapse ul li a").css("color" , "#fff");
+        if (scroll > 200) {
+          $(".chang-color").css("background" , "#fff");
+          $(".chang-color").css("box-shadow" , "rgba(151, 152, 153, 0.15) 0px -11px 10px 10px");
+          $(".nav-link-color").css("color" , "rgb(116, 116, 116)");
+          $(".fa-bell").css("color" , "rgb(116, 116, 116)");
         }
-  
-        else if(scroll < 300){
+     
+        else if(scroll < 200){
             $(".chang-color").css("background" , "none");  
-          $(".navbar-collapse ul li a").css("color" , "none");
+          $(".chang-color").css("box-shadow" , "unset");
+          $(".nav-link-color").css("color" , "#fff");
+          $(".fa-bell").css("color" , "#fff");
+
 
         }
     })
   })
+
 
 //   //scroll down
 //   $(function() {

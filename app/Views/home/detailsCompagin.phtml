@@ -39,9 +39,12 @@
 <div class="row">
   <div class="col-lg-8 pt-3 pr-5 bg-white"  >
   <h1 class='titleD'><?php echo $compaign['title']; ?></h1>
+  <a href="/profile/showProfile/<?php echo $compaign['owner_id']?>">
     <span class="dateD">
-    By Hopes news - <?php echo $compaign['created_at']; ?>
+    By <?php  echo Helper::userName($compaign['owner_id']) ?></a> -  <span class="dateD">
+      <?php echo $compaign['created_at']; ?>
       </span>
+  
       <img src='/uploads/<?php echo $compaign["galary"]; ?>'  class="img-fluid mt-4 imgD" alt="">
       <p  class="mt-4 discD" >
    <?php echo $compaign['descrption']; ?>
@@ -72,6 +75,7 @@
      <h2 class="mt-4 comm-title"><?php echo $lang['item73a']; ?></h2> <br>
     <div class="comments  mt-0 mr-5 ml-5" id="comments-show"></div>
   <hr>
+    <?php if(Session::logged()){?>
         <div  class="comm" class="p-4" >
           <h2   class='comm-sub'><?php echo $lang['item73b']; ?></h2> <br>
         <form action="#" id="comm_form" >
@@ -87,6 +91,7 @@
 
                           </div>
         </div>
+    <?php }?>
 
     </div>
   <div class="col-lg-4 mt-3 side-bar">
@@ -108,7 +113,7 @@
           </div>
           <h3 class="text-center text-blue"> <span class="goal-num">0.0$ <?php echo $lang['item75']; ?> $<span class="cost"><?php echo $compaign['cost']; ?></span> <?php echo $lang['item76']; ?></span></h3>
         </div>
-
+        <?php if(Session::logged() || Session::get('userID'!=$compaign['owner_id'])){?>
                             <center>
                             <?php if ($compaign['status']==2) { ?>
                             <a href="/donate/index/<?php echo $compaign['id'] ?>"><input type="submit" id="donate" class="btndonate float-none"  value="<?php echo $lang['item77b']; ?>"/></a>
@@ -120,6 +125,8 @@
                               <input type="button" id="follow" onclick="follow('unfollow')" class="btndonate float-none"  value="<?php echo $lang['item78d']; ?>"/>
                               <?php } ?>
                             </center>
+
+                            <?php } ?>
 
    </div>
 
@@ -348,4 +355,5 @@ $( document ).ready(function() {
 
 </script>
 
+<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer_section.phtml' ?>
 <?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

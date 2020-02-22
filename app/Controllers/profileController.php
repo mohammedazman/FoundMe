@@ -8,6 +8,9 @@ private $profile;
 
   public function index()
   {
+    if(!Session::logged())
+    header('location:/home/index');
+    
 
    $this->model('Profiles');
    $this->profile=$this->model->getModel();
@@ -49,8 +52,8 @@ private $profile;
       $this->model('Profiles');
       $this->profile=$this->model->getModel();
 
-    $this->view('home'.DIRECTORY_SEPARATOR.'profile',['profiles'=>$this->profile->FindUser([$uid]),'compigan'=>$this->getUserCompaigns($uid)]);
-    $this->view->pageTitle='My Profile';
+    $this->view('home'.DIRECTORY_SEPARATOR.'profile',['profiles'=>$this->profile->FindUser([$uid]),'compigan'=>$this->getUserCompaigns($uid),'donations'=>$this->getUserDonations($uid)]);
+    $this->view->pageTitle='View Profile';
     $this->view->render();
     }
     else

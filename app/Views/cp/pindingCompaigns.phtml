@@ -79,6 +79,61 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
   </div>
 <!-- model -->
 
+
+<!-- model  -->
+
+<div id="viewCompaigns" class="modal fade">
+		<div class="modal-dialog modal-l">
+			<div class="modal-content">
+        <!-- Modal Header -->
+      <div class="modal-header bg-dark text-light">
+        <h4 class="modal-title" id="compaignTitle"></h4>
+        <button type="button" class="close text-light" data-dismiss="modal">&times;</button>
+      </div>
+
+              <div class="modal-body">
+
+
+                  <img class="card-img-top h-25" src="" alt="Card image cap" id="galary">
+                  <div class="card-body">
+
+                    <h5 class="card-title"></h5>
+
+                    <p class="card-text" id="descrption">...</p>
+                    <input type="hidden" name="" value="" id="compaignID">
+                  <ul class="list-group list-group-flush text-muted">
+
+                   <li class="list-group-item" id="IDcompaign"></li>
+                    <li class="list-group-item" id="duration"></li>
+                    <li class="list-group-item" id="cost"></li>
+
+          <li class="list-group-item">  <a href="" class="card-link" target="_blank" id="file">PDF File link</a></li>
+
+
+
+                  </ul>
+                  </div>
+
+
+                  </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <a class="reject btn btn-warning" href="javascript:void(0)" title="Reject">
+          Reject
+        <i class="fa fa-trash"></i>
+        </a>
+        <a class="add btn btn-primary" href="javascript:void(0)" title="Approve">
+          Approve
+        <i class="fa fa-check-square "></i>
+        </a>
+       </div>
+      </div>
+			</div>
+		</div>
+
+<!-- model -->
+
+
   <script>
     var $table = $('#table')
     var $remove = $('#remove')
@@ -107,11 +162,9 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
     function operateFormatter(value, row, index) {
       return [
-        '<a class="reject" href="javascript:void(0)" title="Reject">',
-        '<i class="fa fa-trash"></i>',
-        '</a>  ',
-        '<a class="add" href="javascript:void(0)" title="Approve">',
-        '<i class="fa fa-check-square "></i>',
+
+        '<a class="view" href="javascript:void(0)" title="Approve">',
+        '<i class="fa fa-eye "></i>',
         '</a>'
       ].join('')
     }
@@ -147,10 +200,41 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 
     window.operateEvents = {
+      'click .view': function (e, value, row, index) {
+
+
+        $('#compaignTitle').text(row.title);
+          $('#descrption').html(row.descrption);
+          $('#duration').text(row.duration);
+
+          $('#IDcompaign').text(" ID : "+row.id);
+          $('#compaignID').val(row.id);
+          $('#cost').text(row.cost+" $");
+          $('#file').attr('href','/uploads/'+row.file)
+        $.ajax({
+          url:"/uploads/"+row.galary+"",
+          xhrFields:{
+            responseType:'blob'
+          },
+          success:function(data)
+          {
+            var img=document.getElementById('galary');
+            var url=window.URL || window.webkitURL;
+            img.src=url.createObjectURL(data);
+          }
+
+
+               });
+
+        $('#viewCompaigns').modal('show');
+
+      },
+
       'click .like': function (e, value, row, index) {
         alert('You click like action, row: ' + JSON.stringify(row))
       },
       'click .add': function (e, value, row, index) {
+
         // alert (row.id)
 
     $('#id_d').val(row.id);
@@ -170,6 +254,21 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 }
 
 
+$(".add").click(function(){
+  var Id=$('#compaignID').val();
+  $('#id_d').val(Id);
+  $('#state_d').val(2);
+  $('#viewCompaigns').modal('hide');
+  $('#changeCompaigns').modal('show');
+});
+
+$(".reject").click(function(){
+  var Id=$('#compaignID').val();
+  $('#id_d').val(Id);
+  $('#state_d').val(0);
+  $('#viewCompaigns').modal('hide');
+  $('#changeCompaigns').modal('show');
+});
 
         // $table.bootstrapTable('remove', {
         //   field: 'id',
@@ -241,8 +340,8 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
           }
           ,
           {
-            field: 'duration',
-            title: 'Duration',
+            field: 'created_at',
+            title: 'Date Created',
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter

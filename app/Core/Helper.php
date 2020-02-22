@@ -111,6 +111,15 @@
 
      }
 
+     public static function checkStatus($id)
+     {
+       // code...
+
+       $db= new DB();
+       $user =$db->QueryCrud("SELECT *  FROM users WHERE id=?",[$id]);
+       return $user[0]['status'];
+     }
+
    #check if category have posts or news @param is of category from news row
    public static function haveItem($data, $arr)
    {
@@ -179,7 +188,7 @@
       {
 
 
-        $username =DB::init()->QueryCrud("SELECT * FROM profiles WHERE (user_id = $id) and (name ='First Name' or name='Last Name')");
+        $username =DB::init()->QueryCrud("SELECT * FROM profiles WHERE user_id = ? and (name ='First Name' or name='Last Name')",[$id]);
 
         if (!empty($username)) {
           return $username[0]['value'].' '.$username[1]['value'];

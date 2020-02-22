@@ -1,7 +1,8 @@
-<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-light accordion bg-primary" id="accordionSidebar">
       <a class="d-flex align-items-center justify-content-center" href="/home/index">
         <div class="sidebar-brand-icon">
           <img src="/images/logo.png" style="width: 60%;margin-top: 22px; margin-left: 32px;" alt="">
+
         </div>
 
       </a>
@@ -16,22 +17,22 @@
       </li>
 
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsCompaign"
+      <li class="nav-item ">
+        <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#collapsCompaign"
           aria-expanded="true" aria-controls="collapsCompaign">
           <i class="far fa-fw fa-window-maximize"></i>
           <span>Compaigns</span>
         </a>
-        <div id="collapsCompaign" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
+        <div id="collapsCompaign" class="collapse show" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded ">
             <h6 class="collapse-header">Compaigns managment</h6>
-            <a class="collapse-item" href="/managecompaign/ShowPindingUpdateCompaigns">Pending Update Compaigns</a>
-            <a class="collapse-item" href="/managecompaign/ShowPindingDeleteCompaigns">Pending Delete Compaigns</a>
-            <a class="collapse-item" href="/managecompaign/ShowPindingCompaigns">Pending Compaigns</a>
-            <a class="collapse-item" href="/managecompaign/ShowActiveCompaigns">Active Compaigns</a>
-            <a class="collapse-item" href="/managecompaign/ShowPausedCompaigns">Paused Compaigns</a>
-            <a class="collapse-item" href="/managecompaign/ShowDeletedCompaigns">Deleted Compaigns</a>
-            <a class="collapse-item" href="/managecompaign/ShowFinshedCompaigns">Finshed Compaigns</a>
+            <a class="collapse-item <?php echo $this->getActionِِ()=='pindingUpdateCompaigns'?'active':''; ?> " href="/managecompaign/ShowPindingUpdateCompaigns" >Pending Update Compaigns</a>
+            <a class="collapse-item <?php echo $this->getActionِِ()=='PindingDeleteCompaigns'?'active':''; ?>" href="/managecompaign/ShowPindingDeleteCompaigns">Pending Delete Compaigns</a>
+            <a class="collapse-item <?php echo $this->getActionِِ()=='pindingCompaigns'?'active':''; ?>" href="/managecompaign/ShowPindingCompaigns">Pending Compaigns</a>
+            <a class="collapse-item <?php echo $this->getActionِِ()=='activeCompaigns'?'active':''; ?>" href="/managecompaign/ShowActiveCompaigns">Active Compaigns</a>
+            <a class="collapse-item <?php echo $this->getActionِِ()=='pausedCompaigns'?'active ':''; ?>" href="/managecompaign/ShowPausedCompaigns">Paused Compaigns</a>
+            <a class="collapse-item <?php echo $this->getActionِِ()=='deletedCompaigns'?'active':''; ?>" href="/managecompaign/ShowDeletedCompaigns">Deleted Compaigns</a>
+            <a class="collapse-item <?php echo $this->getActionِِ()=='FinshedCompaigns'?'active':''; ?>" href="/managecompaign/ShowFinshedCompaigns">Finshed Compaigns</a>
           </div>
         </div>
       </li>
@@ -45,8 +46,9 @@
         <div id="collapsComments" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Comments managment</h6>
-            <a class="collapse-item" href="/managecomment/showActiveComments">Active Comments</a>
-            <a class="collapse-item" href="/managecomment/showDeletedComments">Deleted Comments</a>
+
+            <a class="collapse-item <?php echo $this->getActionِِ()=='activeComments'?'active':''; ?>" href="/managecomment/showActiveComments">Active Comments</a>
+            <a class="collapse-item <?php echo $this->getActionِِ()=='deleteComments'?'active':''; ?>" href="/managecomment/showDeletedComments">Deleted Comments</a>
           </div>
         </div>
       </li>
@@ -61,8 +63,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">User managment</h6>
             <!-- <a class="collapse-item" href="/manageusers/showPendingUsers">Pending Users</a> -->
-            <a class="collapse-item" href="/manageusers/showActiveUsers">Active Users</a>
-            <a class="collapse-item" href="/manageusers/ShowDeletedUsers">Deleted Users</a>
+            <a class="collapse-item <?php echo $this->getActionِِ()=='activeUsers'?'active':''; ?>" href="/manageusers/showActiveUsers">Active Users</a>
+            <a class="collapse-item <?php echo $this->getActionِِ()=='deleteUsers'?'active':''; ?>" href="/manageusers/ShowDeletedUsers">Deleted Users</a>
           </div>
         </div>
       </li>

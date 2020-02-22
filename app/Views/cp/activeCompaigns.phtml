@@ -115,7 +115,58 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
         '</a>'
       ].join('')
     }
+   //
+   //  function getProgress(ids){
+   //    return new Promise((reslove,reject)=>{
+   //      $.ajax({
+   //        url:"/managecompaign",
+   //        method:"POST",
+   //         data:{type:"11",
+   //                id:ids},
+   //        success:function(data)
+   //        {
+   //
+   //           var userInfo=JSON.parse(data);
+   //           // alert(d)
+   //
+   //           reslove(userInfo.data);
+   //
+   //         },
+   //         error:function (error) {
+   //           reject(error);
+   //
+   //         }
+   //
+   //
+   //             });
+   //    });
+   //
+   // }
 
+     function progressFormatter(value, row, index) {
+            // handel Promise function
+       // getProgress(row.id).then(data=>{
+       //   console.log(data);
+       // }).catch(error=>{
+       //   console.log(data);
+       // })
+
+ return    [
+   row.progress,
+   '%',
+    '<div class="progress">',
+    '<div class="progress-bar progress-bar-striped" style="width:',
+       row.progress,
+      '%"></div>',
+
+      '</div',
+
+
+
+
+].join('');
+
+    }
 
   // delete fun
   function deleteU(){
@@ -222,11 +273,11 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             align: 'center',
             footerFormatter: totalPriceFormatter
           }, {
-            field: 'tags',
-            title: 'Tags',
-            sortable: true,
+            field: '',
+            title: 'Progress',
             align: 'center',
-            footerFormatter: totalPriceFormatter
+            sortable: true,
+            formatter: progressFormatter
           }
           ,{
             field: 'cost',
@@ -247,6 +298,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             field: 'operate',
             title: 'Item Action',
             align: 'center',
+
             clickToSelect: false,
             events: window.operateEvents,
             formatter: operateFormatter
@@ -266,7 +318,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
         // push or splice the selections if you want to save all data selections
       })
       $table.on('all.bs.table', function (e, name, args) {
-        console.log(name, args)
+
       })
       $remove.click(function () {
         var ids = getIdSelections()

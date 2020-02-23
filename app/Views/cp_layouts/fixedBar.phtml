@@ -1,79 +1,186 @@
-<ul class="navbar-nav sidebar sidebar-light accordion bg-primary" id="accordionSidebar">
-      <a class="d-flex align-items-center justify-content-center" href="/home/index">
-        <div class="sidebar-brand-icon">
-          <img src="/images/logo.png" style="width: 60%;margin-top: 22px; margin-left: 32px;" alt="">
-
-        </div>
-
-      </a>
-      <li class="nav-item">
-        <a  class="nav-link font-size-18px" href="/admin/index">
-          <i class="fa fa-dashboar"></i>
-
-          <span>DashBoard</span>
-          <!-- <span class="badge float-right" style="background:green;color:#fff;">15</span> -->
-        </a>
-
-      </li>
-
-
-      <li class="nav-item ">
-        <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#collapsCompaign"
-          aria-expanded="true" aria-controls="collapsCompaign">
-          <i class="far fa-fw fa-window-maximize"></i>
-          <span>Compaigns</span>
-        </a>
-        <div id="collapsCompaign" class="collapse show" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded ">
-            <h6 class="collapse-header">Compaigns managment</h6>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='pindingUpdateCompaigns'?'active':''; ?> " href="/managecompaign/ShowPindingUpdateCompaigns" >Pending Update Compaigns</a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='PindingDeleteCompaigns'?'active':''; ?>" href="/managecompaign/ShowPindingDeleteCompaigns">Pending Delete Compaigns</a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='pindingCompaigns'?'active':''; ?>" href="/managecompaign/ShowPindingCompaigns">Pending Compaigns</a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='activeCompaigns'?'active':''; ?>" href="/managecompaign/ShowActiveCompaigns">Active Compaigns</a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='pausedCompaigns'?'active ':''; ?>" href="/managecompaign/ShowPausedCompaigns">Paused Compaigns</a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='deletedCompaigns'?'active':''; ?>" href="/managecompaign/ShowDeletedCompaigns">Deleted Compaigns</a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='FinshedCompaigns'?'active':''; ?>" href="/managecompaign/ShowFinshedCompaigns">Finshed Compaigns</a>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsComments"
-          aria-expanded="true" aria-controls="collapsComments">
-          <i class="fa fa-comments"></i>
-          <span>Comments</span>
-        </a>
-        <div id="collapsComments" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Comments managment</h6>
-
-            <a class="collapse-item <?php echo $this->getActionِِ()=='activeComments'?'active':''; ?>" href="/managecomment/showActiveComments">Active Comments</a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='deleteComments'?'active':''; ?>" href="/managecomment/showDeletedComments">Deleted Comments</a>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsUsers"
-          aria-expanded="true" aria-controls="collapsUsers">
-          <i class="fa fa-users "></i>
-          <span>Users</span>
-        </a>
-        <div id="collapsUsers" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">User managment</h6>
-            <!-- <a class="collapse-item" href="/manageusers/showPendingUsers">Pending Users</a> -->
-            <a class="collapse-item <?php echo $this->getActionِِ()=='activeUsers'?'active':''; ?>" href="/manageusers/showActiveUsers">Active Users</a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='deleteUsers'?'active':''; ?>" href="/manageusers/ShowDeletedUsers">Deleted Users</a>
-          </div>
-        </div>
-      </li>
 
 
 
-      <!-- <li class="nav-item ">
-        <a  class=" nav-link " href="index.php">
-          <i class="fa fa-wrench"></i>
-          <span>Settings</span></a>
-      </li> -->
-    </ul>
+<div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.phtml"><h3><span style="color:aliceblue">FOUN</span><span class="sp2">DME</span></h3></a>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Dashboard</p>
+               
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                         <i class="far fa-fw fa-window-maximize"></i>  compiagns</a> <br>
+
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                        <a class="collapse-item" <?php echo $this->getActionِِ()=='pindingUpdateCompaigns'?'active':''; ?> " href="/managecompaign/ShowPindingUpdateCompaigns">Pending Update Compaigns</a>
+                        </li>
+                        <li>
+                            <a class="collapse-item" <?php echo $this->getActionِِ()=='PindingDeleteCompaigns'?'active':''; ?>" href="/managecompaign/ShowPindingDeleteCompaigns">Pending Delete Compaigns</a>
+                        </li>
+                        <li>
+                            <a class="collapse-item" <?php echo $this->getActionِِ()=='pindingCompaigns'?'active':''; ?>" href="/managecompaign/ShowPindingCompaigns">Pending Compaigns</a>
+                        </li>
+                        <li>
+                            <a class="collapse-item" <?php echo $this->getActionِِ()=='activeCompaigns'?'active':''; ?>" href="/managecompaign/ShowActiveCompaigns">Active Compaigns</a>
+                        </li>
+                        <li>
+                            <a class="collapse-item" <?php echo $this->getActionِِ()=='pausedCompaigns'?'active ':''; ?>" href="/managecompaign/ShowPausedCompaigns">Paused Compaigns</a>
+                        </li>
+                        <li>
+                            <a class="collapse-item" <?php echo $this->getActionِِ()=='deletedCompaigns'?'active':''; ?>" href="/managecompaign/ShowDeletedCompaigns">Deleted Compaigns</a>
+                        </li>
+                        <li>
+                        <a class="collapse-item" <?php echo $this->getActionِِ()=='FinshedCompaigns'?'active':''; ?>" href="/managecompaign/ShowFinshedCompaigns">Finshed Compaigns</a>
+        
+                        </li>
+                    </ul>
+                </li>
+               
+            
+                <li>
+                    <br>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle "> <i class="fa fa-comments"></i> Comments</a>
+                    <br>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                        <a class="collapse-item" <?php echo $this->getActionِِ()=='activeComments'?'active':''; ?>" href="/managecomment/showActiveComments"> Active Comments</a>
+                        </li>
+                        <li>
+                        <a class="collapse-item" <?php echo $this->getActionِِ()=='deleteComments'?'active':''; ?>" href="/managecomment/showDeletedComments">Deleted Comments</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <li>
+                    
+                    <a href="#UsersSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-users"></i> Users</a>
+                    <br>
+                    <ul class="collapse list-unstyled" id="UsersSubmenu">
+                        <li>
+                        <a class="collapse-item <?php echo $this->getActionِِ()=='activeUsers'?'active':''; ?>" href="/manageusers/showActiveUsers">Active Users</a>
+            
+                        </li>
+                        <li>
+                        <a class="collapse-item <?php echo $this->getActionِِ()=='deleteUsers'?'active':''; ?>" href="/manageusers/ShowDeletedUsers">Deleted Users</a>
+                        </li>
+                       
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Page Content Holder -->
+        
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark  align-items-center d-none d-md-flex">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!--
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#"><i class="fa fa-home"></i></a>
+                            </li>
+                           
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+
+                            
+                        </ul>
+
+
+                    -->
+
+                    
+      <li class="nav-item dropdown clnav-n ml-auto" style="margin-left:83% !important;">
+                  <a class="nav-link dropdown dropdown-toggle notification" href="#"   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bell font-size-20px"></i>
+                    <span class="badge wow pulse noti-count"></span>
+                  </a>
+                  <ul class="dropdown-menu " aria-labelledby="dropdown">
+                                <li class="head text-light bg-light">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-12">
+                                      <span class="noti-header"> Last Notification</span>
+                                    </div>
+                                </li>
+
+
+
+                                <div id="noti-body">
+
+                                </div>
+
+
+                   </ul>
+                </li>
+                    <li class="nav-item dropdown ml-auto">
+            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="media align-items-center">
+                <span class="avatar avatar-sm rounded-circle">
+                  <img alt="Image placeholder" src="/layout/assets/img/theme/team-4-800x800.jpg">
+                </span>
+                <div class="media-body ml-2 d-none d-lg-block">
+                  <span class="mb-0 text-sm  font-weight-bold"></span><?php echo Helper::userName(Session::get('userID')); ?>
+                </div>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+              <div class=" dropdown-header noti-title">
+                <h6 class="text-overflow m-0">Welcome!</h6>
+              </div>
+              <a href="#" class="dropdown-item">
+                <i class="ni ni-single-02"></i>
+                <span>My profile</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <i class="ni ni-settings-gear-65"></i>
+                <span>Settings</span>
+              </a>
+              <a href="# "class="dropdown-item">
+                <i class="ni ni-calendar-grid-58"></i>
+                <span>Activity</span>
+              </a>
+              <a href="#" class="dropdown-item">
+                <i class="ni ni-support-16"></i>
+                <span>Support</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="/auth/logout" class="dropdown-item">
+                <i class="ni ni-user-run"></i>
+                <span>Logout</span>
+              </a>
+            </div>
+          </li>
+                    </div>
+                    
+                </div>
+            </nav>
+
+          

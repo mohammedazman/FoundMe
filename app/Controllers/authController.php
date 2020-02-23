@@ -34,6 +34,7 @@ class authController extends Controller
            if ($user[0]['status']==0) {
 
              Message::setMessage(0,'main','failed to log in pleas try agin');
+             Helper::back();
              return;
            }
            else{
@@ -60,6 +61,8 @@ class authController extends Controller
             }}
             else{
               Message::setMessage(0,'main','failed to log in pleas try agin');
+              Helper::back();
+              return;
             }
 
    }
@@ -100,7 +103,7 @@ class authController extends Controller
 
                      Message::setMessage(1,'main',' Your account added successfully');
                      $this->login(true);
-                    //  header('Location:/home/index');
+                    
 
 
                                             }

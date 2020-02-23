@@ -34,16 +34,15 @@
                    </ul>
                 </li>
       	<li class="nav-item dropdown clnav">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link " href="/auth/logout" id="navbarDropdownMenuLink" role="button" >
 
 
-         <i class="fa fa-user font-size-20px"><i>  <?php ECHO Helper::userName(Session::get('userID')); ?></i></i>
+         <i class="fas fa-sign-out-alt font-size-20px"><i>  </i></i>
 
 
         </a>
 
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/auth/logout">Logout</a>
+        
 
       </li>
 
@@ -56,3 +55,15 @@
         <!-- Topbar -->
 
          <!-- notification -->
+<!-- hide menu -->
+<div class="container-fluid" id="container-wrapper">
+         <div class="d-sm-flex cphead align-items-center justify-content-between mb-4">
+           <ol class="breadcrumb">
+
+             <li class="breadcrumb-item"><a href="/admin/index"><?php echo $this->getController(); ?></a></li>
+             <li class="breadcrumb-item  " aria-current="page"><?php echo $this->getActionِِ(); ?></li>
+           </ol>
+           <h1 class="h3 mb-0 text-gray-800 cpcontrol"><?php echo ucfirst($this->getControl()); ?></h1>
+
+         </div>
+<!-- end hide menu -->

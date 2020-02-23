@@ -67,7 +67,7 @@ public function find($aData)
 
 }
 
-public function lastID()
+public static function lastID()
 {
 
   $oStmt ='SELECT MAX(id) as id FROM users ';

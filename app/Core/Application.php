@@ -70,9 +70,10 @@ public function checkSession()
 {
 
   session_start();
-  if (Session::logged()==null) {
+  if (Session::logged()==null or Session::get('Super')) {
         return;
   }
+
 
 
   if (! Helper::checkStatus(Session::get('userID'))) {

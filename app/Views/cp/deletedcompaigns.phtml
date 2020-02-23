@@ -7,14 +7,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 
 
- <div class="container-fluid" id="container-wrapper">
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Manage Compaigns</h1>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="./">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Active Compaigns</li>
-            </ol>
-          </div>
+
   <div class="user" style="background-color: #fff; padding:50px;border-radius: 40px; " >
   <div class="select">
     <select class="form-control" id="locale">
@@ -107,7 +100,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
     function operateFormatter(value, row, index) {
       return [
-        
+
         '<a class="remove" href="javascript:void(0)" title="Active">',
         '<i class="fa fa-check-square "></i>',
         '</a>'

@@ -187,11 +187,11 @@ header nav {
     box-shadow: 0 0 4px 0 #b2b2b2;
 }
 .notification .badge {
-    font-size: 8px;
+    font-size: 9px;
     position: absolute;
     top: 5px;
     right: 22px;
-    padding: 4px 6px;
+    padding: 3px;
     border-radius: 50%;
     background-color: #e96e59;
     color: #ffffff;
@@ -512,9 +512,9 @@ a .material-icons {
 }
 .nav-pills .nav-item .nav-link.active {
     color: #6c648b;
-    font-size: 18px;
+    font-size: 17px;
     background-color: unset;
-    border-bottom: 1px solid #c7c5c5;
+    border-bottom: 1px solid #fba100;
 }
 .nav-pills .nav-item .nav-link {
     line-height: 24px;
@@ -1903,3 +1903,29 @@ hr.new2 {
     top: 80px;
 
   }
+
+  .input-image{
+    height: 171px;
+    width: 300px;
+  }
+
+.edit-profile{
+    position: relative;
+    bottom: 13px;
+    font-size: 12px;
+    color: #fff !important;
+    padding: 12px;
+    background-color: #fba100;
+    border-radius: 50%;
+}
+.pro-tabs{
+        background-color: #fff;
+        width: 50%;
+        margin: 0 auto;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+}
+.dont-profile a:hover {
+    color: #fba100;
+    text-decoration: unset;
+}

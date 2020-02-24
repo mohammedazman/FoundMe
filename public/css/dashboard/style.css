@@ -1,8 +1,11 @@
-
+body{
+font-family: 'Oxygen Mono' ;
+ }
 #wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+
 }
 
 #wrapper #content-wrapper {
@@ -721,6 +724,7 @@ line-height: 2;
       box-sizing: border-box;
       font-family: 'Source Sans Pro', sans-serif;
     -webkit-font-smoothing: antialiased;
+    border-radius: 5px;
 
     background: rgba(0,0,0,0.05);
 

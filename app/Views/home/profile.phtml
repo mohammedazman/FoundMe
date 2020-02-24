@@ -5,7 +5,7 @@
 <body class="bg-all">
      <!-- start pages photo -->
      <section class="cover-background top-space-profile" style="background-image:url('/images/home/wbg.jpg');">
-        <div class="opacity-medium bg-dark"></div>
+        <div class="opacity-medium bg-purple"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
@@ -29,16 +29,19 @@
                         <h4 class="text-white mt-2"><?php echo Helper::userName($this->view_data['profiles'][0]['user_id']) ?></h4>
                         <?php } ?>
                         <div class="description">
+                        <a href="/editeProfile/edit"><i class="fas fa-edit text-white edit-profile"></i></a>
+
                               <div class="container">
                               <div class="row">
                                 <div class="col-md-12 text-center">
                                   <div class="col-md-12 p-all-20px">
+                                    <h5>About Me</h5>
+                                  <div class="dropdown-divider"></div>
                                   <?php if($this->view_data['profiles'][0]['user_id']==Session::get('userID')){?>
-                                    <a href="/editeProfile/edit"><i class="fas fa-edit text-orange"></i></a>
                                   <?php }?>
-                                    <span class="bio"><?php if(isset($this->view_data['profiles'][3])) echo $this->view_data['profiles'][3]['value']; ?></span>
+                                    <span class="bio"><?php if(isset($this->view_data['profiles'][3])) echo $this->view_data['profiles'][3]['value']; ?></span>   
                                     <div class="text-center">
-                                      <span><?php 
+                                      <span class="blue"><?php 
                                        echo $this->view_data['profiles'][2]['value']; ?></span>
                                     </div>
                                   </div>
@@ -80,7 +83,7 @@
 
                 <!-- TAPS  -->
                 <div class="col-md-12 col-xs-12 ml-auto mr-auto prof-tap">
-                      <div class="profile-tabs">
+                      <div class="profile-tabs pro-tabs">
                         <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                           <li class="nav-item">
                               <a class="nav-link active" href="#works" role="tab" data-toggle="tab" >
@@ -143,7 +146,7 @@
                           $html.='<div class="col-md-12 m-2 p-2"> ';
                           $html.='<span class="prof-donate"><i class="fas fa-donate text-orange-light"></i>';
                           $html.=$row["amount"].' $'.'</span>';
-                          $html.='<a class="text-dark" href="/viewCompaign/show/'.$row["compigan_id"].'">'.Helper::getCompaignTitle($row["compigan_id"]).'</a>
+                          $html.='<a class="text-dark dont-profile" href="/viewCompaign/show/'.$row["compigan_id"].'">'.Helper::getCompaignTitle($row["compigan_id"]).'</a>
                                   <div class="dropdown-divider"></div></div>  ';
 
 

@@ -82,6 +82,7 @@ body{
 }
 .navbar-light .navbar-nav .nav-link {
     color: #fff;
+    
 }
 .navbar-top {
     position: fixed;
@@ -93,6 +94,10 @@ body{
     -moz-transition-duration: 0.3s;
     -ms-transition-duration: 0.3s;
     -o-transition-duration: 0.3s;
+}
+.navbar .nav-link
+{
+    text-transform: uppercase;
 }
 header {
     width: 100%;

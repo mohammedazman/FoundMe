@@ -104,7 +104,7 @@ $lang=array(
     'item77c'=>'View all donars',
     'item78'=>'Followers',
     'item78b'=>'Follow',
-    'item78d'=>'Un Follow',
+    'item78d'=>'Unfollow',
     'item78c'=>'View all followers',
     'item79'=>'goal',
     //Donate 

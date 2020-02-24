@@ -511,10 +511,13 @@ a .material-icons {
     border-radius: 0px;
 }
 .nav-pills .nav-item .nav-link.active {
-    color: #6c648b;
+    color: #ffffff;
     font-size: 17px;
-    background-color: unset;
+    background-color: #fba100;
+    border-left: 1px solid #fba100;
     border-bottom: 1px solid #fba100;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
 }
 .nav-pills .nav-item .nav-link {
     line-height: 24px;
@@ -907,8 +910,6 @@ img.rounded {
     .navbar-expand-lg .navbar-nav .dropdown-menu {
         margin-left: -20px;
     }
-
-
 }
 
 @media (min-width: 768px){
@@ -1497,10 +1498,11 @@ font-family:'Poppins';
     border: none;
     border-radius: 6px;
     padding: 1%;
-    color: #a99e9e;
+    color: #ffffff;
     font-weight: 600;
-    width: 80%;
+    width: 40%;
     font-size: 18px;
+    background-color: #9288b8;
 }
 .a-donars:hover {
     color: #c2c2c2;
@@ -1524,7 +1526,7 @@ font-family:'Poppins';
 } */
   .hr-blue-80{
     width: 90%;
-    background-color: #7cdfe5;
+    background-color: #e7e7e7;
   }
 .a-donars h5 i {
     padding: 10px 5px;
@@ -1929,3 +1931,30 @@ hr.new2 {
     color: #fba100;
     text-decoration: unset;
 }
+.m-6{
+    margin:1rem 14rem!important;
+}
+
+.mt-7{
+    margin-top: 7rem!important;
+}
+
+.view-all{
+        color: #9288b8;
+     
+        font-size: 15px;
+        background-color: unset;
+    }
+.m-center{
+   margin: 0 auto;
+}
+
+.m-l-46{
+    margin-left: 46px;
+}
+.btn-h-orange:hover{
+    color: #ffffff;
+    background-color: #fba100;
+    border: 2px solid #fba100;
+    border-radius: 8px;
+    }

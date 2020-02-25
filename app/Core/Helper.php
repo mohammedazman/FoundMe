@@ -102,7 +102,7 @@
    }
 
    #return COUNT of comments
-     public static function  countComments($status)
+     public static function  countComment($status)
      {
        $db= new DB();
        $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM comments WHERE status=?",[$status]);

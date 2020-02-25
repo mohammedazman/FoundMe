@@ -1,21 +1,21 @@
 // scroling js
-$(document).ready(function(){
-    $(window).scroll(function(){
-        var scroll = $(window).scrollTop();
+jQuery_1_3_2(document).ready(function(){
+    jQuery_1_3_2(window).scroll(function(){
+        var scroll = jQuery_1_3_2(window).scrollTop();
         if (scroll > 200) {
-          $(".chang-color").css("background" , "#fff");
-          $(".chang-color").css("box-shadow" , "rgba(151, 152, 153, 0.15) 0px -11px 10px 10px");
-          $(".nav-link-color").css("color" , "rgb(116, 116, 116)");
-          $(".fa-bell").css("color" , "rgb(116, 116, 116)");
-          $(".logo").attr("src","/images/home/fundmee.png");
+          jQuery_1_3_2(".chang-color").css("background" , "#fff");
+          jQuery_1_3_2(".chang-color").css("box-shadow" , "rgba(151, 152, 153, 0.15) 0px -11px 10px 10px");
+          jQuery_1_3_2(".nav-link-color").css("color" , "rgb(116, 116, 116)");
+          jQuery_1_3_2(".fa-bell").css("color" , "rgb(116, 116, 116)");
+          jQuery_1_3_2(".logo").attr("src","/images/home/fundmee.png");
         }
      
         else if(scroll < 200){
-            $(".chang-color").css("background" , "none");  
-          $(".chang-color").css("box-shadow" , "unset");
-          $(".nav-link-color").css("color" , "#fff");
-          $(".fa-bell").css("color" , "#fff");
-          $(".logo").src("/images/home/fundmee.png");
+            jQuery_1_3_2(".chang-color").css("background" , "none");  
+          jQuery_1_3_2(".chang-color").css("box-shadow" , "unset");
+          jQuery_1_3_2(".nav-link-color").css("color" , "#fff");
+          jQuery_1_3_2(".fa-bell").css("color" , "#fff");
+          jQuery_1_3_2(".logo").attr("src","/images/home/fundmee.png");
 
 
 
@@ -25,16 +25,16 @@ $(document).ready(function(){
 
 
 //   //scroll down
-//   $(function() {
-//     $('a[href*=#]').on('click', function(e) {
+//   jQuery_1_3_2(function() {
+//     jQuery_1_3_2('a[href*=#]').on('click', function(e) {
 //       e.preventDefault();
-//       $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+//       jQuery_1_3_2('html, body').animate({ scrollTop: jQuery_1_3_2(jQuery_1_3_2(this).attr('href')).offset().top}, 500, 'linear');
 //     });
 //   });
 
 
   //profile change photo 
-  $(document).ready(function() {
+  jQuery_1_3_2(document).ready(function() {
 
     
     var readURL = function(input) {
@@ -42,7 +42,7 @@ $(document).ready(function(){
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $('.profile-pic').attr('src', e.target.result);
+                jQuery_1_3_2('.profile-pic').attr('src', e.target.result);
             }
     
             reader.readAsDataURL(input.files[0]);
@@ -50,12 +50,12 @@ $(document).ready(function(){
     }
     
 
-    $(".file-upload").on('change', function(){
+    jQuery_1_3_2(".file-upload").on('change', function(){
         readURL(this);
     });
     
-    $(".upload-button").on('click', function() {
-       $(".file-upload").click();
+    jQuery_1_3_2(".upload-button").on('click', function() {
+       jQuery_1_3_2(".file-upload").click();
     });
 });
 
@@ -82,7 +82,7 @@ tinymce.init({
 // tiny
 
 //show img selected start
-$(function() {
+jQuery_1_3_2(function() {
     // Multiple images preview in browser
     var imagesPreview = function(input, placeToInsertImagePreview) {
 
@@ -93,7 +93,7 @@ $(function() {
                 var reader = new FileReader();
 
                 reader.onload = function(event) {
-                    $($.parseHTML('<img class="img-up">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    jQuery_1_3_2(jQuery_1_3_2.parseHTML('<img class="img-up">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
                 }
 
                 reader.readAsDataURL(input.files[i]);
@@ -102,7 +102,7 @@ $(function() {
 
     };
 
-    $('#gallery-photo-add').on('change', function() {
+    jQuery_1_3_2('#gallery-photo-add').on('change', function() {
         imagesPreview(this, 'div.gallery');
     });
 });
@@ -112,19 +112,19 @@ $(function() {
 
 //////////////////////////////
 
-(function ($) {
+(function (jQuery_1_3_2) {
     "use strict";
 
 
     /*==================================================================
     [ Focus input ]*/
-    $('.input100').each(function(){
-        $(this).on('blur', function(){
-            if($(this).val().trim() != "") {
-                $(this).addClass('has-val');
+    jQuery_1_3_2('.input100').each(function(){
+        jQuery_1_3_2(this).on('blur', function(){
+            if(jQuery_1_3_2(this).val().trim() != "") {
+                jQuery_1_3_2(this).addClass('has-val');
             }
             else {
-                $(this).removeClass('has-val');
+                jQuery_1_3_2(this).removeClass('has-val');
             }
         })    
     })
@@ -132,9 +132,9 @@ $(function() {
   
     /*==================================================================
     [ Validate ]*/
-    var input = $('.validate-input .input100');
+    var input = jQuery_1_3_2('.validate-input .input100');
 
-    $('.validate-form').on('submit',function(){
+    jQuery_1_3_2('.validate-form').on('submit',function(){
         var check = true;
 
         for(var i=0; i<input.length; i++) {
@@ -148,51 +148,51 @@ $(function() {
     });
 
 
-    $('.validate-form .input100').each(function(){
-        $(this).focus(function(){
+    jQuery_1_3_2('.validate-form .input100').each(function(){
+        jQuery_1_3_2(this).focus(function(){
            hideValidate(this);
         });
     });
 
     function validate (input) {
-        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+        if(jQuery_1_3_2(input).attr('type') == 'email' || jQuery_1_3_2(input).attr('name') == 'email') {
+            if(jQuery_1_3_2(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)jQuery_1_3_2/) == null) {
                 return false;
             }
         }
         else {
-            if($(input).val().trim() == ''){
+            if(jQuery_1_3_2(input).val().trim() == ''){
                 return false;
             }
         }
     }
 
     function showValidate(input) {
-        var thisAlert = $(input).parent();
+        var thisAlert = jQuery_1_3_2(input).parent();
 
-        $(thisAlert).addClass('alert-validate');
+        jQuery_1_3_2(thisAlert).addClass('alert-validate');
     }
 
     function hideValidate(input) {
-        var thisAlert = $(input).parent();
+        var thisAlert = jQuery_1_3_2(input).parent();
 
-        $(thisAlert).removeClass('alert-validate');
+        jQuery_1_3_2(thisAlert).removeClass('alert-validate');
     }
     
     /*==================================================================
     [ Show pass ]*/
     var showPass = 0;
-    $('.btn-show-pass').on('click', function(){
+    jQuery_1_3_2('.btn-show-pass').on('click', function(){
         if(showPass == 0) {
-            $(this).next('input').attr('type','text');
-            $(this).find('i').removeClass('zmdi-eye');
-            $(this).find('i').addClass('zmdi-eye-off');
+            jQuery_1_3_2(this).next('input').attr('type','text');
+            jQuery_1_3_2(this).find('i').removeClass('zmdi-eye');
+            jQuery_1_3_2(this).find('i').addClass('zmdi-eye-off');
             showPass = 1;
         }
         else {
-            $(this).next('input').attr('type','password');
-            $(this).find('i').addClass('zmdi-eye');
-            $(this).find('i').removeClass('zmdi-eye-off');
+            jQuery_1_3_2(this).next('input').attr('type','password');
+            jQuery_1_3_2(this).find('i').addClass('zmdi-eye');
+            jQuery_1_3_2(this).find('i').removeClass('zmdi-eye-off');
             showPass = 0;
         }
         

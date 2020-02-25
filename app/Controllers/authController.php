@@ -26,7 +26,7 @@ class authController extends Controller
 
   }
 
-  public function login($signup=false)
+  public function login()
     {
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -71,10 +71,6 @@ class authController extends Controller
               return ;
 
              }
-             if($signup==true){
-               header('Location:/auth/welcome');
-               return ;
-              }
              else{
                 header('Location:/home/index');
                 return ;
@@ -119,16 +115,21 @@ class authController extends Controller
                      $profile->add(['Phone',$_REQUEST['phone'],$lastID]);
 
                      Message::setMessage(1,'main',' Your account added successfully');
-                     $this->login(true);
+                     $_SESSION['userID'] = $lastID;
+                     $_SESSION['userName'] = Helper::userName($_SESSION['userID']);
+                     $_SESSION['type'] = 'User';
 
 
 
                                             }
                                           }
-
-  $this->view('home'.DIRECTORY_SEPARATOR.'singUp');
-  $this->view->pageTitle='Sign Up Page';
-  $this->view->render();
+        if(Session::logged())
+            header('location:/editeProfile/edit');     
+        else{                                 
+          $this->view('home'.DIRECTORY_SEPARATOR.'singUp');
+          $this->view->pageTitle='Sign Up Page';
+          $this->view->render();
+        }
 }
  public function welcome()
 {

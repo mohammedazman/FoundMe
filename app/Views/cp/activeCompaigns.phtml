@@ -170,7 +170,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
         type: "POST",
         cache: false,
         data:{
-            type:9,
+            type:4,
             ids: $("#id_d").val(),
             state:$("#state_d").val(),
 
@@ -202,7 +202,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
         // alert (row.id)
 
     $('#id_d').val(row.id);
-    $('#state_d').val(5);
+    $('#state_d').val(0);
     $('#changeCompaigns').modal('show');
 
   }

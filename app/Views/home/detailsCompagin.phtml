@@ -110,9 +110,12 @@
 <br>
         <div class="container">
           <div class="progress progress-details">
-            <div class="progress-bar bg-yellow" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar progress-bar-style" role="progressbar" style="<?php echo 'width:'.Helper::getProgress($compaign['id']).'%'; ?>" aria-valuenow="<?php echo 'width:'.Helper::getProgress($compaign['id']).'%'; ?>" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-          <h4 class="text-center text-blue"> <span class="goal-num"><?php  echo Helper::getDonars($compaign['id']) ?>$ <?php echo $lang['item75']; ?> $<span class="cost"><?php echo $compaign['cost']; ?></span></h4>
+
+          <h3 class="text-center text-blue"> <span class="goal-num font-weight-bold"><?php echo Helper::getDonars($compaign['id']).'$ '  ?> <?php echo $lang['item75']; ?> <span class="cost"><?php echo $compaign['cost'].'$'; ?></span></h3>
+
+
         </div>
         <?php if(Session::logged() || Session::get('userID'!=$compaign['owner_id'])){?>
                             <center>
@@ -137,13 +140,16 @@
    <?php
                          $donars=$this->view_data['donars'];
                          foreach($donars as $donar){
+                          //  print_r($donar);
                        ?>
                        <div class="m-center">
                        <a class="pull-left text-center" href="#">
                   <span class="donars-amount text-orange" > <?php echo $donar['amount'].'$' ?></span></span>
                   </a>
+                  <a href="/profile/showProfile/<?php echo $donar['user_id']?>">
                   <span  class='donars-name text-center'>
                   <?php echo Helper::userName($donar['user_id']) ?></span><br>
+                    </a>
                        </div>
 
 
@@ -162,12 +168,11 @@
                          foreach($followers as $follower){
                        ?>
                        <div class="m-center">
-
-                       <a class="pull-left" href="#">
-                  <img class="media-object rounded-circle follow-img" src="/images/home/user.jpg"  alt="profile">
-                  </a>
-                  <span  class='follow-name'>
-                  <?php echo Helper::userName($follower) ?></span><br>
+                       <a href="/profile/showProfile/<?php echo $follower?>">
+                        <img class="media-object rounded-circle follow-img" src="/images/home/user.jpg"  alt="profile">
+                        <span  class='follow-name'>
+                        <?php echo Helper::userName($follower) ?></span><br>
+                      </a>
                   </div>
 
          <?php
@@ -201,6 +206,7 @@
             if (array_key_exists('donars',$this->view_data)){
             foreach ($this->view_data['donars'] as $donar) {
               ?>
+               <a href="/profile/showProfile/<?php echo $compaign['owner_id']?>">
               <div class="donar-user">
               <div class="d-inline">
                 <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="">
@@ -211,6 +217,7 @@
              $ </span></h5></div>
               <hr class="hr-blue-80">
           </div>
+               </a>
             <?php }
             }
             ?>
@@ -242,12 +249,14 @@
             if (array_key_exists('followers',$this->view_data)){
             foreach ($this->view_data['followers'] as $follower) {
               ?>
-              <div class="donar-user">
-              <div class="d-inline">
-                <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header follow-img" title="">
-              </div> <div class="d-inline-block ml-6"> <h5 class="m-l-46"><?php echo Helper::userName($follower); ?></h5></div>
-              <hr class="hr-blue-80">
-          </div>
+               <a href="/profile/showProfile/<?php echo $compaign['owner_id']?>">
+                <div class="donar-user">
+                <div class="d-inline">
+                  <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header follow-img" title="">
+                </div> <div class="d-inline-block ml-6"> <h5 class="m-l-46"><?php echo Helper::userName($follower); ?></h5></div>
+                <hr class="hr-blue-80">
+            </div>
+               </a>
             <?php }
             }
             ?>

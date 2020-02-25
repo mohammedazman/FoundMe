@@ -112,7 +112,7 @@ $expired=$this->view_data['expireds'];
 
                       <div class="progress-bar progress-bar-style" role="progressbar" style="<?php echo 'width:'.$p['progress'].'%'; ?>" aria-valuenow="<?php echo 'width:'.$p['progress'].'%'; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $p['progress'].'%'; ?></div>
                       </div>
-                      <h3 class="text-center text-blue"> <span class="goal-num font-weight-bold">0.0$ <?php echo $lang['item75']; ?> <span class="cost">000</span></h3>
+                      <h3 class="text-center text-blue"> <span class="goal-num font-weight-bold"><?php echo Helper::getDonars($p['id']).'$ '  ?> <?php echo $lang['item75']; ?> <span class="cost"><?php echo $p['cost'].'$'; ?></span></h3>
 
                   </div>
               </div>
@@ -306,7 +306,9 @@ function load_data(){
                   '</span></h3>'
                   +
                   ' <div class="progress">'+
+
                             '<div class="progress-bar progress-bar-style" role="progressbar" style="width:'+row.progress+'%" aria-valuemin="0" aria-valuemax="100">'+row.progress+'%</div>'+
+
                    '</div>'+
               '</div>';
            i++;

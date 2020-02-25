@@ -137,7 +137,11 @@
        $db= new DB();
        $donations =$db->QueryCrud("SELECT SUM(amount) AS sum FROM donations WHERE compigan_id=?",[$id])[0]['sum'];
        $compaign=$db->QueryCrud("SELECT cost FROM compigans WHERE id =?",[$id])[0]['cost'];
-       return  floor(($donations/$compaign)*100);
+       $p= floor(($donations/$compaign)*100);
+       if($p>100)
+          return 100;
+       else
+         return $p ;
 
      }
 

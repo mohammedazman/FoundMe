@@ -87,10 +87,14 @@
 
    #return COUNT of comments
 <<<<<<< HEAD
+<<<<<<< HEAD
      public static function  countComment($status)
 =======
      public static function  countComment($id)
 >>>>>>> parent of 9cedc8f... Merge branch 'master' of https://github.com/mohammedazman/FoundMe
+=======
+     public static function  countComments($status)
+>>>>>>> parent of 23737e1... edit
      {
        $db= new DB();
        $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM comments WHERE compigan_id=?",[$id]);

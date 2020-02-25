@@ -7,6 +7,7 @@ $(document).ready(function(){
           $(".chang-color").css("box-shadow" , "rgba(151, 152, 153, 0.15) 0px -11px 10px 10px");
           $(".nav-link-color").css("color" , "rgb(116, 116, 116)");
           $(".fa-bell").css("color" , "rgb(116, 116, 116)");
+          $(".logo").attr("src","/images/home/fundmee.png");
         }
      
         else if(scroll < 200){
@@ -14,6 +15,8 @@ $(document).ready(function(){
           $(".chang-color").css("box-shadow" , "unset");
           $(".nav-link-color").css("color" , "#fff");
           $(".fa-bell").css("color" , "#fff");
+          $(".logo").src("/images/home/fundmee.png");
+
 
 
         }

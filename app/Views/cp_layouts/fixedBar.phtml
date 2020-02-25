@@ -85,11 +85,11 @@
 
             <a class="collapse-item <?php echo $this->getActionِِ()=='activeComments'?'active':''; ?>" href="/managecomment/showActiveComments">
               Active Comments
-              <span class="badge badge-pill badge-success"><?php echo Helper::countComments(1); ?></span>
+              <span class="badge badge-pill badge-success"><?php echo Helper::countComment(1); ?></span>
             </a>
             <a class="collapse-item <?php echo $this->getActionِِ()=='deleteComments'?'active':''; ?>" href="/managecomment/showDeletedComments">
               Deleted Comments
-              <span class="badge badge-pill badge-danger"><?php echo Helper::countComments(0); ?></span>
+              <span class="badge badge-pill badge-danger"><?php echo Helper::countComment(0); ?></span>
             </a>
           </div>
         </div>

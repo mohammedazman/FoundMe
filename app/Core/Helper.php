@@ -108,6 +108,14 @@
        $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM comments WHERE status=?",[$status]);
        return Helper::NumberFormatter($counter[0]['count']);
      }
+     #return COUNT of comments
+       public static function  countComments($id)
+       {
+
+         $db= new DB();
+         $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM comments WHERE compigan_id=?",[$id]);
+         return Helper::NumberFormatter($counter[0]['count']);
+       }
      #return COUNT of users
        public static function  countUsers($status)
        {

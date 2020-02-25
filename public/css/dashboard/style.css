@@ -698,20 +698,20 @@ line-height: 2;
 }
 .cpcontrol{
   color: white;
-  background: #fba100;
+  background: #f6a121;
   opacity: 0.7;
   padding: 10px;
   border-radius: 5px;
 
 }
 .bg-warning-our{
-  background: #fba100;
+  background: #f6a121;
 
 }
 .mainActive{
   background: rgba(0, 0, 0, 0.02);
 
-  box-shadow:inset  0px -1px #fba100;
+  box-shadow:inset  0px -1px #f6a121;
 
 }
 .user{
@@ -755,4 +755,17 @@ line-height: 2;
     padding: 5px 5px 5px 15px;
     font-size: 14px;
     line-height: 1;
+}
+
+.badge-warning {
+    color: #212529;
+    background-color: #f6a121;
+}
+.badge{
+  padding-top: .5rem;
+  font-size: .7rem;
+  font-weight: bold;
+
+  width: 1.5rem;
+  height: 1.5rem;
 }

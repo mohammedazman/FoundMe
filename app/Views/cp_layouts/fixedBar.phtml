@@ -1,74 +1,37 @@
-
-<ul class="navbar-nav sidebar sidebar-light accordion bg-primary" id="accordionSidebar">
-      <a class="d-flex align-items-center justify-content-center " href="/home/index">
+<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <a class="d-flex align-items-center justify-content-center" href="/home/index">
         <div class="sidebar-brand-icon">
           <img src="/images/logo.png" style="width: 60%;margin-top: 22px; margin-left: 32px;" alt="">
-
         </div>
 
       </a>
-      <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="/images/dashboard/user.png" class="img-circle" alt="User Image">
-                        </div>
-                        <div class="pull-left info">
-                            <p> <?php echo Helper::userName(Session::get('userID'));?></p>
-
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                        </div>
-                    </div>
       <li class="nav-item">
-        <a  class="nav-link  font-size-18px <?php echo $this->getActionِِ()=='index'?'active':''; ?>" href="/admin/index"
+        <a  class="nav-link font-size-18px" href="/admin/index">
+          <i class="fa fa-dashboar"></i>
 
-             >
-          <i class="fas fa-archive"></i>
-
-          <span class="">DashBoard</span>
+          <span>DashBoard</span>
           <!-- <span class="badge float-right" style="background:green;color:#fff;">15</span> -->
         </a>
 
       </li>
 
 
-      <li class="nav-item ">
-        <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#collapsCompaign"
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsCompaign"
           aria-expanded="true" aria-controls="collapsCompaign">
           <i class="far fa-fw fa-window-maximize"></i>
           <span>Compaigns</span>
         </a>
         <div id="collapsCompaign" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded ">
+          <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Compaigns managment</h6>
-
-
-          <a class="collapse-item  <?php echo $this->getActionِِ()=='pindingUpdateCompaigns'?'active':''; ?> "  href="/managecompaign/ShowPindingUpdateCompaigns" >
-            P_Update Compaigns
-            <span class="badge badge-pill badge-warning"><?php echo Helper::countP_compaign(1); ?></span>
-          </a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='PindingDeleteCompaigns'?'active':''; ?>" href="/managecompaign/ShowPindingDeleteCompaigns">
-              P_Delete Compaigns
-              <span class="badge badge-pill badge-warning"><?php echo Helper::countP_compaign(2); ?></span>
-            </a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='pindingCompaigns'?'active':''; ?>" href="/managecompaign/ShowPindingCompaigns">
-              Pending Compaigns
-              <span class="badge badge-pill badge-warning"><?php echo Helper::countCompaign(1); ?></span>
-            </a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='activeCompaigns'?'active':''; ?>" href="/managecompaign/ShowActiveCompaigns">
-              Active Compaigns
-               <span class="badge badge-pill badge-success"><?php echo Helper::countCompaign(2); ?></span>
-             </a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='pausedCompaigns'?'active ':''; ?>" href="/managecompaign/ShowPausedCompaigns">
-              Paused Compaigns
-              <span class="badge badge-pill badge-secondary"><?php echo Helper::countCompaign(3); ?></span>
-            </a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='deletedCompaigns'?'active':''; ?>" href="/managecompaign/ShowDeletedCompaigns">
-              Deleted Compaigns
-              <span class="badge badge-pill badge-danger"><?php echo Helper::countCompaign(0); ?></span>
-            </a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='FinshedCompaigns'?'active':''; ?>" href="/managecompaign/ShowFinshedCompaigns">
-              Finshed Compaigns
-               <span class="badge badge-pill  badge-success"><?php echo Helper::countCompaign(4); ?></span>
-             </a>
+            <a class="collapse-item" href="/managecompaign/ShowPindingUpdateCompaigns">Pending Update Compaigns</a>
+            <a class="collapse-item" href="/managecompaign/ShowPindingDeleteCompaigns">Pending Delete Compaigns</a>
+            <a class="collapse-item" href="/managecompaign/ShowPindingCompaigns">Pending Compaigns</a>
+            <a class="collapse-item" href="/managecompaign/ShowActiveCompaigns">Active Compaigns</a>
+            <a class="collapse-item" href="/managecompaign/ShowPausedCompaigns">Paused Compaigns</a>
+            <a class="collapse-item" href="/managecompaign/ShowDeletedCompaigns">Deleted Compaigns</a>
+            <a class="collapse-item" href="/managecompaign/ShowFinshedCompaigns">Finshed Compaigns</a>
           </div>
         </div>
       </li>
@@ -82,15 +45,8 @@
         <div id="collapsComments" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Comments managment</h6>
-
-            <a class="collapse-item <?php echo $this->getActionِِ()=='activeComments'?'active':''; ?>" href="/managecomment/showActiveComments">
-              Active Comments
-              <span class="badge badge-pill badge-success"><?php echo Helper::countComments(1); ?></span>
-            </a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='deleteComments'?'active':''; ?>" href="/managecomment/showDeletedComments">
-              Deleted Comments
-              <span class="badge badge-pill badge-danger"><?php echo Helper::countComments(0); ?></span>
-            </a>
+            <a class="collapse-item" href="/managecomment/showActiveComments">Active Comments</a>
+            <a class="collapse-item" href="/managecomment/showDeletedComments">Deleted Comments</a>
           </div>
         </div>
       </li>
@@ -105,14 +61,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">User managment</h6>
             <!-- <a class="collapse-item" href="/manageusers/showPendingUsers">Pending Users</a> -->
-            <a class="collapse-item <?php echo $this->getActionِِ()=='activeUsers'?'active':''; ?>" href="/manageusers/showActiveUsers">
-              Active Users
-              <span class="badge badge-pill badge-success"><?php echo Helper::countUsers(1); ?></span>
-            </a>
-            <a class="collapse-item <?php echo $this->getActionِِ()=='deleteUsers'?'active':''; ?>" href="/manageusers/ShowDeletedUsers">
-              Deleted Users
-              <span class="badge badge-pill badge-danger"><?php echo Helper::countCompaign(0); ?></span>
-            </a>
+            <a class="collapse-item" href="/manageusers/showActiveUsers">Active Users</a>
+            <a class="collapse-item" href="/manageusers/ShowDeletedUsers">Deleted Users</a>
           </div>
         </div>
       </li>

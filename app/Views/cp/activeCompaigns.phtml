@@ -7,7 +7,14 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 
 
-
+ <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Manage Compaigns</h1>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="./">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Active Compaigns</li>
+            </ol>
+          </div>
   <div class="user" style="background-color: #fff; padding:50px;border-radius: 40px; " >
   <div class="select">
     <select class="form-control" id="locale">
@@ -108,60 +115,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
         '</a>'
       ].join('')
     }
-   //
-   //  function getProgress(ids){
-   //    return new Promise((reslove,reject)=>{
-   //      $.ajax({
-   //        url:"/managecompaign",
-   //        method:"POST",
-   //         data:{type:"11",
-   //                id:ids},
-   //        success:function(data)
-   //        {
-   //
-   //           var userInfo=JSON.parse(data);
-   //           // alert(d)
-   //
-   //           reslove(userInfo.data);
-   //
-   //         },
-   //         error:function (error) {
-   //           reject(error);
-   //
-   //         }
-   //
-   //
-   //             });
-   //    });
-   //
-   // }
 
-     function progressFormatter(value, row, index) {
-            // handel Promise function
-       // getProgress(row.id).then(data=>{
-       //   console.log(data);
-       // }).catch(error=>{
-       //   console.log(data);
-       // })
-
- return    [
-
-
-    '<div class="progress">',
-    '<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width:',
-       row.progress,
-      '%"><span class="text-dark">',
-      row.progress,
-      ' %</span></div>',
-
-      '</div',
-
-
-
-
-].join('');
-
-    }
 
   // delete fun
   function deleteU(){
@@ -268,11 +222,11 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             align: 'center',
             footerFormatter: totalPriceFormatter
           }, {
-            field: '',
-            title: 'Progress',
-            align: 'center',
+            field: 'tags',
+            title: 'Tags',
             sortable: true,
-            formatter: progressFormatter
+            align: 'center',
+            footerFormatter: totalPriceFormatter
           }
           ,{
             field: 'cost',
@@ -293,7 +247,6 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             field: 'operate',
             title: 'Item Action',
             align: 'center',
-
             clickToSelect: false,
             events: window.operateEvents,
             formatter: operateFormatter
@@ -313,7 +266,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
         // push or splice the selections if you want to save all data selections
       })
       $table.on('all.bs.table', function (e, name, args) {
-
+        console.log(name, args)
       })
       $remove.click(function () {
         var ids = getIdSelections()

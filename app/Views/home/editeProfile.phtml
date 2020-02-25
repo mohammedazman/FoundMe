@@ -43,7 +43,7 @@ if(!Session::logged())
                     </div>
                     
                     <div class="wrap-input100 validate-input" >
-                       <label for="phone" class="laple-forms"><?php echo $lang['item27']?> </label>
+                       <label for="phone" class="laple-forms"><?php echo $lang['item25']?> </label>
 						<input class="input100" type="text" name="phone"  value='<?php if(isset($_POST['phone']))echo$_POST['phone']; else echo $this->view_data['editeProfile'][2]['value'];?>'  oninput="phonenumber(document.signupForm.phone)">
 						<span class="text-danger text-error" id="phoneError"> </span>
 					</div>

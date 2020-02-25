@@ -24,15 +24,6 @@ abstract class Session
 
     }
 
-    public static function AdminloggIn()
-    {
-            $_SESSION['userID'] = random_int(Helper::getLastUserID(),100000);
-            $_SESSION['userName'] = 'Admin';
-            $_SESSION['type'] = 'Admin';
-            $_SESSION['Super'] = true;
-
-
-    }
     public static function  logged()
     {
 

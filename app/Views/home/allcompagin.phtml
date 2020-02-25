@@ -11,46 +11,18 @@
 
 
     <!-- start pages photo -->
-    <section class="cover-background top-space" style="background-image:url('/images/home/wbg.jpg');">
-        <div class="opacity-medium bg-purple"></div>
+    <section class="cover-background top-space" style="background-image:url('/images/home/1(1).jpg');">
+        <div class="opacity-medium bg-dark"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
                     <div class="vertical-align-middle text-center">
                         <!-- start sub title -->
-                        <span class="text-white"></span>
+                        <span class="text-white">Compagin</span>
                         <!-- end sub title -->
                         <!-- start page title -->
-                      <div class="container">
-
-                        <form class="text-white form-all-camp" action="" method="post" name='' id="">
-                                  
-                                  <div class="border-b-w form-group wrap-input100 validate-input">
-                                      <!-- <label for="country" class="laple-forms">Country</label> -->
-                                      <label for="selectTag text-white"><h2>Search with #tags...</h2></label>
-                                      <select class="input100 border-0 text-white" placeholder="your country" name="selectTag" id="selectTag">
-                                      <option value="" <?php empty($tag)?'selected':''; ?>>All compagin</option>
-                                      <?php
-                                        if (array_key_exists('tags',$this->view_data)){
-
-                                        foreach ($tags as $ta) {
-
-                                        echo "<option class='text-dark' value='$ta'";
-                                        if ($tag==$ta) {
-                                          echo "selected";
-                                        }
-                                        echo" >$ta</option>";
-
-                                        }
-
-                                      }
-                                        ?>
-                                      </select>
-                                  </div>
-                          
-                      </form>
+                        <h1 class="text-white">Welcome to My Compagin</h1>
                         <!-- end page title -->
-                        </div>
                     </div>
                 </div>
             </div>
@@ -59,11 +31,39 @@
     <!-- end pages photo - -->
  <!-- latest compign -->
 <section class="p-section">
+<center>
+  <h2 class="title-home">The Last Compagin</h2>
+</center>
+
     <div class="container">
             <div class="row">
                 <!-- details PHOTO -->
-                <div class="col-md-12">
-                              
+                <div class="col-md-8">
+                                <form class="" action="" method="post" name='' id="">
+                                    <div class="col-md-6">
+                                            <div class="form-group">
+                                                <!-- <label for="country" class="laple-forms">Country</label> -->
+                                                <select class="form-control form-control-allcomp" placeholder="your country" name="selectTag" id="selectTag">
+                                                <option value="" <?php empty($tag)?'selected':''; ?>>All compagin</option>
+                                                <?php
+                                                  if (array_key_exists('tags',$this->view_data)){
+
+                                                  foreach ($tags as $ta) {
+
+                                                  echo "<option value='$ta'";
+                                                  if ($tag==$ta) {
+                                                    echo "selected";
+                                                  }
+                                                  echo" >$ta</option>";
+
+                                                  }
+
+                                                }
+                                                  ?>
+                                                </select>
+                                            </div>
+                                    </div>
+                                </form>
                 </div>
             </div>
     </div>

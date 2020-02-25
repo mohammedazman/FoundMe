@@ -26,6 +26,7 @@ class authController extends Controller
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+<<<<<<< HEAD
             $adminUser=array('email' =>'admin@email.com' ,
                   'password'=>'1d43a95f76d1da7b3c39597ecf00121e',
                   'type'=>'Admin',
@@ -53,10 +54,16 @@ class authController extends Controller
 
 
            }
+=======
+            $password=Hashing::init($_REQUEST['password'])->__toString();
+            $userForm= array($_REQUEST['email'] ,$password);
+            // $this->model('Users');
+           $user=$this->modelObj->checkLogin($userForm);
+           if(sizeof($user)>0){
+>>>>>>> parent of 9cedc8f... Merge branch 'master' of https://github.com/mohammedazman/FoundMe
            if ($user[0]['status']==0) {
 
              Message::setMessage(0,'main','failed to log in pleas try agin');
-             Helper::back();
              return;
            }
            else{
@@ -80,6 +87,9 @@ class authController extends Controller
                 return ;
               }
 
+            }}
+            else{
+              Message::setMessage(0,'main','failed to log in pleas try agin');
             }
 
    }
@@ -121,7 +131,7 @@ class authController extends Controller
 
                      Message::setMessage(1,'main',' Your account added successfully');
                      $this->login(true);
-
+                    //  header('Location:/home/index');
 
 
                                             }

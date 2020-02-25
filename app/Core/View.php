@@ -7,14 +7,12 @@ class View
 protected $view_file;
 protected $view_data;
 protected $visits;
-
 function __construct($view_file,$view_data){
 
   $this->view_file=$view_file;
   $this->view_data=$view_data;
   $visit=new Model('Visits');
   $this->visits=$visit->getModel();
-
 
 
 
@@ -38,15 +36,8 @@ public function getActionِِ()
 }
 public function getController()
 {
-  return (explode('\\',$this->view_file)[0]=='cp'?'DashBoard':explode('\\',$this->view_file)[1]);
+  return (explode('\\',$this->view_file)[0]);
 }
-public function getControl()
-{
-  $request=trim($_SERVER['REQUEST_URI'],'/');
-  return (explode('/',$request)[0]);
-}
-
-
 
 
 }

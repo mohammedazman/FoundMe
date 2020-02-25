@@ -57,6 +57,38 @@ function checkdate()
 
   //
 
+  public function calProgress($campaigns){
+
+    $campaignWithPRogress=array();
+  
+      foreach($campaigns as $camp){
+        $camp['progress']=Helper::getProgress($camp['id']);
+        $campaignWithPRogress[]=$camp;
+      }
+      return $campaignWithPRogress;
+  
+  
+  }
+
+
+  //
+
+
+
+  public function getpopular()
+{
+  $oStmt ="SELECT c.id, owner_id, title, galary, descrption, file, tags,
+   status, cost, duration, pending, updates, c.created_at, c.update_at,
+    count(v.id) as visits from visits v,compigans c where c.id=v.compaign_id 
+    GROUP by compaign_id order by visits desc limit 0,3";
+  return $this->calProgress($this->db->QueryCrud($oStmt));
+}
+//
+public function getExpierd()
+{
+  $oStmt ="SELECT * FROM `compigans` WHERE `duration`LIKE '%2020-02-%' order by duration asc limit 0,3 ";
+  return $this->calProgress($this->db->QueryCrud($oStmt));
+}
   public function update($aData)
   {
 
@@ -125,23 +157,15 @@ public function getAllCompaigns($from,$to)
 
 
   $oStmt ="SELECT * FROM compigans where status=2 LIMIT $from,$to";
-   return $this->calProgress($this->db->QueryCrud($oStmt));
-
-  
-     
-}
-
-public function calProgress($campaigns){
-
   $campaignWithPRogress=array();
 
-    foreach($campaigns as $camp){
+    $copmaigns=$this->db->QueryCrud($oStmt);
+    foreach($copmaigns as $camp){
       $camp['progress']=Helper::getProgress($camp['id']);
       $campaignWithPRogress[]=$camp;
     }
     return $campaignWithPRogress;
-
-
+     
 }
 
 // managecompaign
@@ -162,8 +186,6 @@ public function getUSerCompaigns($args)
 
 
 
-
-
 // search for compaigns by title
 public function searchCompaign($args)
 {
@@ -179,33 +201,15 @@ public function searchTags($args)
  $arg="%$args%";
 
   $oStmt ='SELECT * FROM compigans  WHERE  tags LIKE ? and status=2';
- 
-  return $this->calProgress($this->db->QueryCrud($oStmt));
+  $campaignWithPRogress=array();
 
+  $copmaigns=$this->db->QueryCrud($oStmt,[$arg]);
+  foreach($copmaigns as $camp){
+    $camp['progress']=Helper::getProgress($camp['id']);
+    $campaignWithPRogress[]=$camp;
+  }
+  return $campaignWithPRogress;
 }
-
-
-public function getLast()
-{
-  $oStmt ='SELECT * FROM compigans order by desc ';
-  return $this->calProgress($this->db->QueryCrud($oStmt));
-}
-
-public function getpopular()
-{
-  $oStmt ="SELECT c.id, owner_id, title, galary, descrption, file, tags,
-   status, cost, duration, pending, updates, c.created_at, c.update_at,
-    count(v.id) as visits from visits v,compigans c where c.id=v.compaign_id 
-    GROUP by compaign_id order by visits desc limit 0,3";
-  return $this->calProgress($this->db->QueryCrud($oStmt));
-}
-
-public function getExpierd()
-{
-  $oStmt ="SELECT * FROM `compigans` WHERE `duration`LIKE '%2020-02-%' order by duration asc limit 0,3 ";
-  return $this->calProgress($this->db->QueryCrud($oStmt));
-}
-
 
 public function allTags()
 {

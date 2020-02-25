@@ -49,7 +49,7 @@ class DB {
                return $data;
         }
         else
-            return true;
+            return $this->pdoObject->lastInsertId();
     }
     public function LastID()
     {

@@ -27,7 +27,7 @@ class authController extends Controller
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $adminUser=array('email' =>'admin@email.com' ,
-                  'password'=>Hashing::init('admin')->__toString(),
+                  'password'=>'1d43a95f76d1da7b3c39597ecf00121e',
                   'type'=>'Admin',
                  'status'=>0);
             $password=Hashing::init($_REQUEST['password'])->__toString();
@@ -103,15 +103,15 @@ class authController extends Controller
              $params[]='User';
 
 
-                   if ($this->modelObj->add($params)) {
+                   if ($lastID=$this->modelObj->add($params)) {
 
-                      Notification::addNoti('New user is added','admin','new user',$this->modelObj->lastID()['id']);
+                      Notification::addNoti('New user is added','admin','new user',$lastID);
                      $this->model('Profiles');
                      $profile=$this->model->getModel();
 
-                     $profile->add(['First Name',$_REQUEST['first_name'],$this->modelObj->lastID()['id']]);
-                     $profile->add(['Last Name',$_REQUEST['last_name'],$this->modelObj->lastID()['id']]);
-                     $profile->add(['Phone',$_REQUEST['phone'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['First Name',$_REQUEST['first_name'],$lastID]);
+                     $profile->add(['Last Name',$_REQUEST['last_name'],$lastID]);
+                     $profile->add(['Phone',$_REQUEST['phone'],$lastID]);
 
                      Message::setMessage(1,'main',' Your account added successfully');
                      $this->login(true);

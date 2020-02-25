@@ -27,6 +27,7 @@ class authController extends Controller
   }
 
   public function login()
+
     {
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -37,6 +38,7 @@ class authController extends Controller
                  'status'=>0);
             $password=Hashing::init($_REQUEST['password'])->__toString();
             $userForm= array($_REQUEST['email'] ,$password);
+          
             if ($userForm[0]==$adminUser['email'] ) {
               Session::AdminloggIn();
               Message::setMessage(1,'main','logged in succesfuly');
@@ -66,6 +68,7 @@ class authController extends Controller
            Message::setMessage(1,'main','logged in succesfuly');
 
              if (Session::get('type')=='Admin') {
+
 
               header('Location:/admin/index');
               return ;
@@ -118,6 +121,7 @@ class authController extends Controller
                      $_SESSION['userID'] = $lastID;
                      $_SESSION['userName'] = Helper::userName($_SESSION['userID']);
                      $_SESSION['type'] = 'User';
+
 
 
 

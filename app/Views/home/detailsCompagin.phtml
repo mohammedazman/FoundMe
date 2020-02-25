@@ -60,11 +60,10 @@
                 foreach( Helper::tags($compaign['tags']) as $tags){
                   ?>
 								<span class="span-tags ml-3">
-									<a href="">
+									<a href="/tags/index/<?php echo $compaign['tags'] ?>">
                   <?php  echo $tags ?>
 									</a>
                 </span>
-
                 <?php  }?>
 							
 
@@ -113,7 +112,9 @@
           <div class="progress progress-details">
           <div class="progress-bar progress-bar-style" role="progressbar" style="<?php echo 'width:'.Helper::getProgress($compaign['id']).'%'; ?>" aria-valuenow="<?php echo 'width:'.Helper::getProgress($compaign['id']).'%'; ?>" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
+
           <h3 class="text-center text-blue"> <span class="goal-num font-weight-bold"><?php echo Helper::getDonars($compaign['id']).'$ '  ?> <?php echo $lang['item75']; ?> <span class="cost"><?php echo $compaign['cost'].'$'; ?></span></h3>
+
 
         </div>
         <?php if(Session::logged() || Session::get('userID'!=$compaign['owner_id'])){?>

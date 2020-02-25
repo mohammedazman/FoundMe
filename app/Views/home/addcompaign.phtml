@@ -28,11 +28,11 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
 
   <!-- add compaign page start-->
-  
+
   <div class="container-login100">
 			<div class="wrap-login100 com1000">
 				<form class="login100-form validate-form"  action="/compaign/uploadFiles" id="addCompignForm" name="addCompignForm" method="post" enctype="multipart/form-data">
-			
+
 				<div class="row">
 				<div class="col-md-12">
 				<div class="wrap-input100 " >
@@ -43,7 +43,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 				</div>
 
 				 <div class="col-md-6">
-					
+
 
 					<div class="wrap-input100 " >
             <label for="Tags" class='btn-label' ><?php echo $lang['item34']?></label>
@@ -68,7 +68,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 					<?php echo $lang['item38']?></label>
 					<div class="container pdf-cont">
 						<div class='pdf-div'    >
-						  <span id="myfile">choose PDF</span> 
+						  <span id="myfile">choose PDF</span>
 							<input type="file" name="file" id='file'  class='uploader' onchange="$('#myfile').text(this.files[0].name);" />
 						</div>
 						<span class="text-danger text-error" id="fileError"> </span>
@@ -80,7 +80,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 					</div>
 				</div>
 				<div class="col-md-6">
-				
+
 					<div class="container cont-pdf" >
             <label for="files" class='btn-label' ><?php echo $lang['item37']?></label>
 						<img src="/images/io.jpg" alt="choose image"   id='image' class="profileImg mt-30">
@@ -93,8 +93,8 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 					<span class="text-danger text-error" id="gallaryError"> </span>
 
 
-					
-					
+
+
 					<!-- <div class="wrap-input100 " >
 						<input class="input100" type="file" name="gallary" value='<?php if(isset($_POST['gallary']))echo$_POST['gallary'];?>'   oninput="stringlength(document.addCompignForm.gallary,8,15);">
 						<span class="focus-input100" data-placeholder="<?php echo $lang['item37']?>"></span>
@@ -102,7 +102,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 						<span class="text-danger text-error" id="gallaryError"> </span>
 					</div> -->
 
-				
+
 				</div>
 				<div class="col-md-12 mt-3">
 
@@ -113,7 +113,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 						<?php echo Message::check('file');  ?>
 						<span class="text-danger text-error" id="descrptionError"> </span>
 					</div>
-					
+
 				</div>
 				<input type="submit"  style="display: none;" id='ajaxSubmit'  value="Add"  name="addComp" onclick="upload_to_db();" />
 
@@ -121,15 +121,15 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button type="button" class="login100-form-btn" id="addComp"name="addComp" onclick="serverSideValidation();" ><?php echo $lang['item30']?></button>
-							
+
 						</div>
 					</div>
-					
-				
+
+
 				</form>
 			</div>
 		</div>
-	
+
 </div>
 
 
@@ -173,12 +173,14 @@ var jQuery_form = $.noConflict(true);
   <script type="text/javascript" >
      function upload_to_db()
 	{
+
     tinyMCE.triggerSave();
 
       jQuery_form('#addCompignForm').ajaxForm({
 			beforeSubmit: function() {
 
         document.getElementById("loading").click();
+        alert("aaaaaa");
         progressBar(0,100);
 			},
 			uploadProgress: function(event, position, total, percentComplete) {
@@ -304,7 +306,7 @@ function progressBar(progressVal,totalPercentageVal = 100) {
         }
 			}
     }
-	
+
 </script>
 
     <?php include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer_section.phtml'; ?>

@@ -44,7 +44,7 @@
     <i class="fas fa-pen-fancy text-orange"></i> By <?php  echo Helper::userName($compaign['owner_id']) ?></a> -  <span class="dateD text-blue">
       <?php echo $compaign['created_at']; ?>
       </span>
-  
+
       <img src='/uploads/<?php echo $compaign["galary"]; ?>'  class="img-fluid mt-4 imgD" alt="">
       <p  class="mt-4 discD" >
    <?php echo $compaign['descrption']; ?>
@@ -56,13 +56,13 @@
                 <?php echo $lang['item76']; ?>:
 								</span>
 
-								
+
 								<span class="span-tags ml-3">
 									<a href="#">
 										#Streetstyle
 									</a>
                 </span>
-                	
+
 								<span class="span-tags ml-3">
 									<a href="#">
 										#Streetstyle
@@ -75,7 +75,7 @@
 
      <h2 class="mt-4 comm-title"><?php echo $lang['item73a']; ?></h2> <br>
     <div class="comments  mt-0 mr-2 ml-2" id="comments-show"></div>
- 
+
     <?php if(Session::logged()){?>
         <div>
           <h2   class='comm-sub'><?php echo $lang['item73b']; ?></h2> <br>
@@ -103,7 +103,8 @@
 
         <div class='countD donate-count' title="Donars"><i class='fas fa-donate text-orange'></i>        <i class="count-num"><?php echo Helper::countDonars($compaign['id']); ?></i> </div>
         <div class='countD follow-count' title="Views"><i class='fas fa-eye text-orange'></i>        <i class="count-num"><?php echo Helper::countViewCompaign($compaign['id']); ?></i> </div>
-        <div class='countD comm-count' title="Comments" ><i class='fas  fa-comment-dots text-orange'></i>        <i class="count-num"><?php echo Helper::countComment($compaign['id']); ?></i> </div>
+      
+        <div class='countD comm-count' title="Comments" ><i class='fas  fa-comment-dots text-orange'></i>        <i class="count-num"><?php echo Helper::countComments($compaign['id']); ?></i> </div>
 
 
 </div>
@@ -145,7 +146,7 @@
                   <span  class='donars-name text-center'>
                   <?php echo Helper::userName($donar['user_id']) ?></span><br>
                        </div>
-                      
+
 
          <?php
          }

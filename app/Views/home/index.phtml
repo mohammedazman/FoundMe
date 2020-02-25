@@ -97,7 +97,7 @@ $expired=$this->view_data['expireds'];
                         <div class="overlay">
                         <div class="text-overlay">
                          
-                          <a href="/viewCompaign/show/'+row.id+'" class="btn btn-home-comp"><?php echo $lang['button']?></a>
+                          <a href="/viewCompaign/show/<?php echo $p['id'] ?>" class="btn btn-home-comp"><?php echo $lang['button']?></a>
                         </div>
                       </div>
                   </div>
@@ -185,7 +185,7 @@ $expired=$this->view_data['expireds'];
                        <img src="/uploads/<?php echo $e['galary']?>" class="w-100 w-100-phone" alt="...">
                     </div>
                     <div class="col-md-5 content-last-comp">
-                      <h3 class="text-orange"><?php echo $e['title']?> </h3>
+                      <h3 class="text-orange"><?php echo $e['descrption']?></h3>
                       <p><?php echo $e['descrption']?></p>
                       <div class="campgin-home-slider">
                     <p class="text-black-light"><?php echo $e['descrption']?></p>

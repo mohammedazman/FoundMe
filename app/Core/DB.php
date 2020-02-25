@@ -49,7 +49,7 @@ class DB {
                return $data;
         }
         else
-            return $this->LastID();
+            return true;
     }
     public function LastID()
     {

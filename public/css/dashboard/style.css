@@ -1,14 +1,17 @@
-
+body{
+font-family: 'Oxygen Mono' ;
+ }
 #wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+
 }
 
 #wrapper #content-wrapper {
   background-color: #FAFDFB;
   width: 100%;
-  overflow-x: hidden;  
+  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
@@ -18,8 +21,8 @@
 }
 .container,
 .container-fluid {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding: 1.5rem;
+
 }
 
 .sidebar .nav-item .nav-link,
@@ -105,7 +108,7 @@
 
 .sidebar {
   min-height: 100vh;
-  width: 14rem !important;  
+  width: 18rem !important;
   background-color: #ffffff !important;
   /* -webkit-box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important; */
   /* box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important; */
@@ -114,9 +117,9 @@
 
 .sidebar .nav-item {
   position: relative;
-  margin-bottom: -3px;  
+  margin-bottom: -3px;
   border-bottom: 1px #e5e5e5  solid;
-      
+
 }
 
 .nav-link{
@@ -129,7 +132,7 @@
   width: 100%;
   text-align: left;
   padding: 1rem;
-  width: 14rem;
+
   color: #6c648b;
 
 }
@@ -200,7 +203,7 @@
 }
 
 .sidebar.toggled .nav-item {
-  margin-bottom: 0px;    
+  margin-bottom: 0px;
 }
 
 
@@ -294,7 +297,7 @@
   display: block;
   color: #3a3b45;
   text-decoration: none;
-  border-radius: .35rem;
+  border-radius: .1rem;
   white-space: nowrap;
 }
 .sidebar.toggled .nav-item .collapse {
@@ -436,7 +439,7 @@
 
   /* notification */
 
-  
+
   /* notification */
 
   .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
@@ -465,10 +468,10 @@
   }
   .footer{
     padding:5px 15px;
-    border-radius: 0px 0px 3px 3px; 
+    border-radius: 0px 0px 3px 3px;
   }
   .notification-box{
-    padding: 4px 12px; 
+    padding: 4px 12px;
     border-bottom: 1px solid #eeeaea;
   }
   .bg-gray{
@@ -490,9 +493,9 @@
   @media (max-width: 640px) {
       .dropdown-menu{
         top: 50px;
-        left: -16px;  
+        left: -16px;
         width: 290px;
-      } 
+      }
       .nav{
         display: block;
       }
@@ -536,7 +539,7 @@
     color: #ffffff;
     font-weight: bold;
   }
-  
+
   /* notification */
 
 .text-blue{
@@ -571,6 +574,8 @@ a:hover {
   HEIGHT: 180px;
   /* margin: 1px; */
   border-radius: 10px;
+  ;
+
 }
 
 .pg-color-blue{
@@ -652,7 +657,6 @@ a:hover {
   color: #fff;
   background-color: #959595;
   border-color: #959595;
-<<<<<<< HEAD
 }
 .active{
   color: #000 !important;
@@ -689,19 +693,19 @@ line-height: 2;
   background: white;
   opacity: 0.8;
   padding:   0 20px  0 20px;
-  box-shadow:inset 0px -2px #f1a22b;
+  box-shadow:inset 0px -2px #fba100;
 
 }
 .cpcontrol{
   color: white;
-  background: #f1a22b;
+  background: #fba100;
   opacity: 0.7;
   padding: 10px;
   border-radius: 5px;
 
 }
 .bg-warning-our{
-  background: #f1a22b;
+  background: #fba100;
 
 }
 .mainActive{
@@ -752,14 +756,3 @@ line-height: 2;
     font-size: 14px;
     line-height: 1;
 }
-.badge {
-    display: inline-block;
-    padding: .6em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    width: 2rem;}
-=======
-}
->>>>>>> parent of 9cedc8f... Merge branch 'master' of https://github.com/mohammedazman/FoundMe

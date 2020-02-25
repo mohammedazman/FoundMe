@@ -35,7 +35,6 @@ public function checkLogin(array $aData)
 
 {
   $oStmt ='SELECT * FROM users WHERE email =? AND password =? ';
-
   return  $this->db->QueryCrud($oStmt,$aData);
 }
 
@@ -68,7 +67,7 @@ public function find($aData)
 
 }
 
-public function lastID()
+public static function lastID()
 {
 
   $oStmt ='SELECT MAX(id) as id FROM users ';

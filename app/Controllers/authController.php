@@ -26,17 +26,13 @@ class authController extends Controller
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-<<<<<<< HEAD
             $adminUser=array('email' =>'admin@email.com' ,
-                  'password'=>'1d43a95f76d1da7b3c39597ecf00121e',
+                  'password'=>Hashing::init('admin')->__toString(),
                   'type'=>'Admin',
                  'status'=>0);
             $password=Hashing::init($_REQUEST['password'])->__toString();
             $userForm= array($_REQUEST['email'] ,$password);
-
-            if ($userForm[0]==$adminUser['email'] and  $userForm[1]==$adminUser['password'] ) {
-
-
+            if ($userForm[0]==$adminUser['email'] ) {
               Session::AdminloggIn();
               Message::setMessage(1,'main','logged in succesfuly');
               header('Location:/admin/index');
@@ -46,24 +42,16 @@ class authController extends Controller
             // $this->model('Users');
            $user=$this->modelObj->checkLogin($userForm);
 
-           if(!sizeof($user)>0){
+           if(sizeof($user)<=0){
              Message::setMessage(0,'main','failed to log in pleas try agin');
-             // Helper::back();
-
+             Helper::back();
              return;
 
-
            }
-=======
-            $password=Hashing::init($_REQUEST['password'])->__toString();
-            $userForm= array($_REQUEST['email'] ,$password);
-            // $this->model('Users');
-           $user=$this->modelObj->checkLogin($userForm);
-           if(sizeof($user)>0){
->>>>>>> parent of 9cedc8f... Merge branch 'master' of https://github.com/mohammedazman/FoundMe
            if ($user[0]['status']==0) {
 
              Message::setMessage(0,'main','failed to log in pleas try agin');
+             Helper::back();
              return;
            }
            else{
@@ -87,9 +75,6 @@ class authController extends Controller
                 return ;
               }
 
-            }}
-            else{
-              Message::setMessage(0,'main','failed to log in pleas try agin');
             }
 
    }
@@ -118,20 +103,19 @@ class authController extends Controller
              $params[]='User';
 
 
-                   if ( $LastID=$this->modelObj->add($params)) {
+                   if ($this->modelObj->add($params)) {
 
-
-                      Notification::addNoti('New user is added','admin','new user',$LastID);
+                      Notification::addNoti('New user is added','admin','new user',$this->modelObj->lastID()['id']);
                      $this->model('Profiles');
                      $profile=$this->model->getModel();
 
-                     $profile->add(['First Name',$_REQUEST['first_name'],$LastID]);
-                     $profile->add(['Last Name',$_REQUEST['last_name'],$LastID]);
-                     $profile->add(['Phone',$_REQUEST['phone'],$LastID]);
+                     $profile->add(['First Name',$_REQUEST['first_name'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['Last Name',$_REQUEST['last_name'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['Phone',$_REQUEST['phone'],$this->modelObj->lastID()['id']]);
 
                      Message::setMessage(1,'main',' Your account added successfully');
                      $this->login(true);
-                    //  header('Location:/home/index');
+
 
 
                                             }

@@ -12,7 +12,7 @@ class Application
   protected $params=[];
   public function __construct()
   {
-            session_start();
+             $this->checkSession();
 
             $this->prepareURL();
 
@@ -46,7 +46,7 @@ class Application
   protected function prepareURL(){
 
     $request=trim($_SERVER['REQUEST_URI'],'/');
-  
+
 
     if (!empty($request)) {
       $url=explode('/',$request);  # explode request by / and assign each element to url array
@@ -65,6 +65,23 @@ class Application
 
   } #end of prepareURL function
 
+// for check if the user active
+public function checkSession()
+{
+
+  session_start();
+  if (Session::logged()==null or Session::get('Super')) {
+        return;
+  }
+
+
+
+  if (! Helper::checkStatus(Session::get('userID'))) {
+    Session::destroy();
+    return;
+      }
+
+}
 
 }#end of Application class
 

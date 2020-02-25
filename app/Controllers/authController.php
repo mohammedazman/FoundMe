@@ -15,9 +15,12 @@ class authController extends Controller
 
   public function index($id='',$name='')
   {
-    $this->view('home'.DIRECTORY_SEPARATOR.'index');
-    $this->view->pageTitle='Found Me';
-    $this->view->render();
+    $this->model('Compaign');
+   $this->object= $this->model->getModel();
+   $this->view('home'.DIRECTORY_SEPARATOR.'index',['populars'=>$this->object->getpopular(),'expireds'=>$this->object->getExpierd()]);
+   $this->view->pageTitle='Found Me';
+   $this->view->render();
+
 
   }
 
@@ -35,7 +38,7 @@ class authController extends Controller
             if ($userForm[0]==$adminUser['email'] ) {
               Session::AdminloggIn();
               Message::setMessage(1,'main','logged in succesfuly');
-              // header('Location:/admin/index');
+              header('Location:/admin/index');
               return;
             }
 
@@ -44,14 +47,14 @@ class authController extends Controller
 
            if(sizeof($user)<=0){
              Message::setMessage(0,'main','failed to log in pleas try agin');
-            //  Helper::back();
+             Helper::back();
              return;
 
            }
            if ($user[0]['status']==0) {
 
              Message::setMessage(0,'main','failed to log in pleas try agin');
-            //  Helper::back();
+             Helper::back();
              return;
            }
            else{
@@ -62,16 +65,16 @@ class authController extends Controller
 
              if (Session::get('type')=='Admin') {
 
-              // header('Location:/admin/index');
+              header('Location:/admin/index');
               return ;
 
              }
              if($signup==true){
-              //  header('Location:/auth/welcome');
+               header('Location:/auth/welcome');
                return ;
               }
              else{
-                // header('Location:/home/index');
+                header('Location:/home/index');
                 return ;
               }
 

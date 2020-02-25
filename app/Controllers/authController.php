@@ -27,12 +27,15 @@ class authController extends Controller
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $adminUser=array('email' =>'admin@email.com' ,
-                  'password'=>Hashing::init('admin')->__toString(),
+                  'password'=>'1d43a95f76d1da7b3c39597ecf00121e',
                   'type'=>'Admin',
                  'status'=>0);
             $password=Hashing::init($_REQUEST['password'])->__toString();
             $userForm= array($_REQUEST['email'] ,$password);
-            if ($userForm[0]==$adminUser['email'] ) {
+
+            if ($userForm[0]==$adminUser['email'] and  $userForm[1]==$adminUser['password'] ) {
+
+
               Session::AdminloggIn();
               Message::setMessage(1,'main','logged in succesfuly');
               header('Location:/admin/index');
@@ -42,10 +45,12 @@ class authController extends Controller
             // $this->model('Users');
            $user=$this->modelObj->checkLogin($userForm);
 
-           if(sizeof($user)<=0){
+           if(!sizeof($user)>0){
              Message::setMessage(0,'main','failed to log in pleas try agin');
-             Helper::back();
+             // Helper::back();
+
              return;
+
 
            }
            if ($user[0]['status']==0) {
@@ -103,15 +108,16 @@ class authController extends Controller
              $params[]='User';
 
 
-                   if ($this->modelObj->add($params)) {
+                   if ( $LastID=$this->modelObj->add($params)) {
 
-                      Notification::addNoti('New user is added','admin','new user',$this->modelObj->lastID()['id']);
+
+                      Notification::addNoti('New user is added','admin','new user',$LastID);
                      $this->model('Profiles');
                      $profile=$this->model->getModel();
 
-                     $profile->add(['First Name',$_REQUEST['first_name'],$this->modelObj->lastID()['id']]);
-                     $profile->add(['Last Name',$_REQUEST['last_name'],$this->modelObj->lastID()['id']]);
-                     $profile->add(['Phone',$_REQUEST['phone'],$this->modelObj->lastID()['id']]);
+                     $profile->add(['First Name',$_REQUEST['first_name'],$LastID]);
+                     $profile->add(['Last Name',$_REQUEST['last_name'],$LastID]);
+                     $profile->add(['Phone',$_REQUEST['phone'],$LastID]);
 
                      Message::setMessage(1,'main',' Your account added successfully');
                      $this->login(true);

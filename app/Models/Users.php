@@ -35,6 +35,7 @@ public function checkLogin(array $aData)
 
 {
   $oStmt ='SELECT * FROM users WHERE email =? AND password =? ';
+
   return  $this->db->QueryCrud($oStmt,$aData);
 }
 

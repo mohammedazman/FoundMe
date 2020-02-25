@@ -693,19 +693,19 @@ line-height: 2;
   background: white;
   opacity: 0.8;
   padding:   0 20px  0 20px;
-  box-shadow:inset 0px -2px #fba100;
+  box-shadow:inset 0px -2px #f1a22b;
 
 }
 .cpcontrol{
   color: white;
-  background: #fba100;
+  background: #f1a22b;
   opacity: 0.7;
   padding: 10px;
   border-radius: 5px;
 
 }
 .bg-warning-our{
-  background: #fba100;
+  background: #f1a22b;
 
 }
 .mainActive{
@@ -756,3 +756,11 @@ line-height: 2;
     font-size: 14px;
     line-height: 1;
 }
+.badge {
+    display: inline-block;
+    padding: .6em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    width: 2rem;}

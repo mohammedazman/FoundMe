@@ -32,4 +32,6 @@ class Hashing
           }
           return self::$instance;
         }
+
+      
 }

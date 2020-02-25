@@ -41,7 +41,8 @@ function checkdate()
                   VALUES ( :owner_id ,:title ,:galary , :descrption ,	:file , :tags	, :status , :cost	, :duration ,	:pending ,	:updates)';
 
 
-            return $this->db->QueryCrud($oStmt,$aData,0);
+            if ($this->db->QueryCrud($oStmt,$aData,0))
+                  return $this->db->QueryCrud('select max(id) as  idd from compigans ');
 
     }
 

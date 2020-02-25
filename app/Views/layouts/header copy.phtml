@@ -1,0 +1,176 @@
+<?php include VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml'; ?>
+<!-- Modals -->
+<!-- Modal search start -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form class="" action="/search/index" method="post">
+            <div class="wrap-input100 validate-input search-box">
+              <input type="text" class="input100" placeholder="Search About what you went*"  name="item" />
+                <div class="result text-dark">
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modal search end-->
+
+
+
+<!-- start header -->
+<header>
+      <nav class="navbar navbar-expand-lg navbar-top chang-color">
+              <a class="navbar-brand" href="/home/index">
+                  <img src="/images/home/fundmee.png" width="40" height="40" class=" logo  " alt="fund Me" title="fund Me">
+                  <!-- <a class="navbar-brand" href="#">fundMe</a> -->
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars text-white"></i></span>
+              </button>
+              <!-- phone -->
+              <?php  if(!Session::isAdmin() )  { ?>
+              <?php  if(Session::logged() )  { ?>
+              <ul class="navbar-nav a-link right-menu pullUpDown">
+                    <!-- notification -->
+                  <li class="nav-item dropdown not-mobail">
+                      <a class="nav-link text-light dropdown-toggle-user notification nav-link-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge wow pulse noti-count"></span>
+                      </a>
+                        <ul class="dropdown-menu">
+                          <li class="head">
+                            <div class="row">
+                              <div class="col-lg-12 col-sm-12 col-12">
+                                <span class="noti-header" style="color: #6c648b;"> Last Notification</span>
+                              </div>
+                          </li>
+
+                          <div id="noti-body">
+
+                          </div>
+                        </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle-user nav-link-color" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span><img src="/images/home/user.png" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>"></span></a>
+                    <div class="dropdown-menu dropdown-menu-pic-pro" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/profile/index"><?php echo $lang['item8a']?></a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/auth/logout"><?php echo $lang['item8b']?></a>
+                    </div>
+                  </li>
+                  <?php }else{  ?>
+                  <?php } ?>
+                    <!-- <li class="nav-item dropdown right-menu">
+                        <button type="button" class="btn btn-white">Start</button>
+                    </li> -->
+                    <?php } ?>
+              </ul>
+              <!-- phone -->
+              <div class="collapse navbar-collapse justify-content-center order-2" id="navbarSupportedContent">
+                <ul class="navbar-nav a-link left-menu">
+                  <li class="nav-item active">
+                    <a class="nav-link nav-link-color" href="/home/index"><?php echo $lang['item1']?> <span class="sr-only">(current)</span></a>
+                  </li>
+                  <?php  if(Session::isAdmin())  { ?>
+                  <li class="nav-item">
+                    <a class="nav-link nav-link-color" href="/admin"><?php echo $lang['item0']?></a>
+                  </li>
+                  <?php }?>
+                  <?php  if(Session::logged() && !Session::isAdmin() ) { ?>
+                  <li class="nav-item">
+                    <a class="nav-link nav-link-color" href="/compaign/addcompaign"><?php echo $lang['item6']?></a>
+                  </li>
+                  <?php }?>
+                  <li class="nav-item">
+                    <a class="nav-link nav-link-color" href="/tags/index"><?php echo $lang['item6a']?></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link nav-link-color" href="/contactus"><?php echo $lang['item2']?></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link nav-link-color" href="/faqs"><?php echo $lang['faqs']?></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link nav-link-color" href="/aboutus"><?php echo $lang['item3']?></a>
+                  </li>
+                  <li class="nav-item">
+                    <?php if($_COOKIE['lang']=='ar-lang') {?>
+                    <a class="nav-link nav-link-color" href="#" onclick="converLanguage('en-lang','ltr')">
+                      EN
+                    </a>
+                    <?php }?>
+
+                    <?php if($_COOKIE['lang']=='en-lang') {?>
+                    <a class="nav-link nav-link-color" href="#" onclick="converLanguage('ar-lang','rtl')">
+                      AR
+                    </a>
+                    <?php }?>
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
+                      <!-- <buttun class="dropdown-item">Arabic</button> -->
+                      <button class="dropdown-item" id='arabic' onclick="converLanguage('ar-lang','rtl')"><?php echo $lang['item5a']?> <?php if($_COOKIE['lang']=='ar-lang') echo '  ('.$lang['item5c'].')  ';?></button>
+                      <button class="dropdown-item" id='english' onclick="converLanguage('en-lang','ltr')"><?php echo $lang['item5b']?><?php if($_COOKIE['lang']=='en-lang') echo '  ('.$lang['item5c'].')  ';?></button>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link nav-link-color" href="#"  data-toggle="modal" data-target="#exampleModal"><?php echo $lang['item8c']?></a>
+
+                  </li>
+                    <?php  if(!Session::isAdmin() )  { ?>
+                    <?php  if(Session::logged() )  { ?>
+                </ul>
+                <ul class="navbar-nav a-link right-menu d-none d-md-block d-lg-none">
+                    <!-- notification -->
+                  <li class="nav-item dropdown">
+                      <a class="nav-link nav-link-color text-light dropdown-toggle-user notification" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge wow pulse noti-count"></span>
+                      </a>
+                        <ul class="dropdown-menu">
+                          <li class="head">
+                            <div class="row">
+                              <div class="col-lg-12 col-sm-12 col-12">
+                                <span class="text-black"><?php echo $lang['item7']?></span>
+                              </div>
+                          </li>
+                          <div id="noti-body">
+
+                          </div>
+
+                        </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link nav-link-color dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span><img src="/images/home/1(2).jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="<?php  echo Session::get('userName');?>"></span><?php  echo Session::get('userName');?> </a>
+                    <div class="dropdown-menu dropdown-menu-pic-pro" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/profile/index"><?php echo $lang['item8a']?></a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/auth/logout"><?php echo $lang['item8b']?></a>
+                    </div>
+                  </li>
+
+                  <?php }else{  ?>
+                    <ul class="right-singup">
+                    <li class="nav-item dropdown">
+                    <a class="nav-link nav-link-color dropdown-toggle-user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="fas fa-user padding-left-10 text-size-20px"></i> </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:0px !important">
+                      <a class="dropdown-item" href="/auth/login"><?php echo $lang['item4a']?></a>
+                      <a class="dropdown-item" href="/auth/signup"><?php echo $lang['item4b']?></a>
+                    </div>
+                  </li>
+
+                    </ul>
+
+                  <?php } ?>
+                    <!-- <li class="nav-item dropdown right-menu">
+                        <button type="button" class="btn btn-white">Start</button>
+                    </li> -->
+                    <?php } ?>
+
+                </ul>
+              </div>
+      </nav>
+    </header>
+    <!-- end header -->

@@ -23,16 +23,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-
+   <script src="/js/home/jquery.toast.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
 
 
-       $(".active").parent().parent().addClass('show');
+       $(".active").parent().parent().addClass('show showControl');
        $(".active").closest('.nav-item').find('.nav-link').removeClass('collapsed').addClass('mainActive');
+       $("#sidebarToggleTop").click(function(){
+  $(".sidebar-toggled").find('.showControl').removeClass('show');
+});
+
+
 
 });
+function errMsg(msg){
+        if(msg!=''){
+    $.toast({
+        text: msg, // Text that is to be shown in the toast
+        heading: 'Note', // Optional heading to be shown on the toast
+        icon: 'info', // Type of toast icon
+        showHideTransition: 'fade', // fade, slide or plain
+        allowToastClose: true, // Boolean value true or false
+        hideAfter: 6000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+        stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+        position: 'bottom-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+
+
+
+        textAlign: 'left',  // Text alignment i.e. left, right or center
+        loader: true,  // Whether to show loader or not. True by default
+        loaderBg: '#ffffff',  // Background color of the toast loader
+        beforeShow: function () {}, // will be triggered before the toast is shown
+        afterShown: function () {}, // will be triggered after the toat has been shown
+        beforeHide: function () {}, // will be triggered before the toast gets hidden
+        afterHidden: function () {}  // will be triggered after the toast has been hidden
+    });
+        }
+}
+
 </script>
 
 </head>

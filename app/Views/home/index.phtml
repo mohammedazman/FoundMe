@@ -36,7 +36,7 @@ $expired=$this->view_data['expireds'];
                           <h1 class="h1-slide wow fadeIn"><?php echo $lang['slidertitle']?><br>
                            </h1>
                           <?php  if(!Session::logged() )  { ?>
-                            
+
                           <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
                           <?php }?>
 
@@ -53,7 +53,7 @@ $expired=$this->view_data['expireds'];
                           <?php  if(!Session::logged() )  { ?>
 
                           <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
-                          <?php }?>  
+                          <?php }?>
 
                           <button type="button" class="btn btn-orange wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['button']?></button>
                           <?php  if(!Session::logged() )  { ?>
@@ -68,7 +68,7 @@ $expired=$this->view_data['expireds'];
                           <?php  if(!Session::logged() )  { ?>
 
                           <p class="wow fadeInUp p-slide" data-wow-delay="0.5s">You Can Start Now!</p>
-                          <?php }?>  
+                          <?php }?>
                           <button type="button" class="btn btn-orange wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['button']?></button>
                           <?php  if(!Session::logged() )  { ?>
                           <button type="button" class="btn btn-dark wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['singup']?></button>
@@ -82,7 +82,7 @@ $expired=$this->view_data['expireds'];
             </div>
     </section>
     <!-- end slider -->
-    
+
 <!-- latest compign -->
 <section class="p-section">
     <center>
@@ -100,7 +100,7 @@ $expired=$this->view_data['expireds'];
                       <img class="card-img-top" src="/uploads/<?php echo $p['galary'] ?>/1(1).jpg" alt="Card image cap">
                         <div class="overlay">
                         <div class="text-overlay">
-                         
+
                           <a href="/viewCompaign/show/<?php echo $p['id'] ?>" class="btn btn-home-comp"><?php echo $lang['button']?></a>
                         </div>
                       </div>
@@ -109,7 +109,7 @@ $expired=$this->view_data['expireds'];
                     <h5 class="card-title text-dark"><?php echo $p['title'] ?></h5>
                     <p class="card-text text-black-light"><?php echo $p['descrption'] ?></p>
                     <div class="progress">
-                    
+
                       <div class="progress-bar progress-bar-style" role="progressbar" style="<?php echo 'width:'.$p['progress'].'%'; ?>" aria-valuenow="<?php echo 'width:'.$p['progress'].'%'; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $p['progress'].'%'; ?></div>
                       </div>
                       <h3 class="text-center text-blue"> <span class="goal-num font-weight-bold">0.0$ <?php echo $lang['item75']; ?> <span class="cost">000</span></h3>
@@ -117,7 +117,7 @@ $expired=$this->view_data['expireds'];
                   </div>
               </div>
                 <?php }?>
-    
+
               </div>
 
       </div>
@@ -131,7 +131,7 @@ $expired=$this->view_data['expireds'];
 
 
 <!-- service start -->
-<section id="numone" class="wow fadeIn p-section" style="visibility: visible; animation-name: fadeIn; 
+<section id="numone" class="wow fadeIn p-section" style="visibility: visible; animation-name: fadeIn;
     background-color: #f9f9f9;">
   <center>
     <h2 class="title-home">Our Services</h2>
@@ -181,7 +181,7 @@ $expired=$this->view_data['expireds'];
             <div class="carousel-inner">
               <?php $i=0;
                foreach($expired as $e){?>
-               
+
               <div class="carousel-item <?php if($i==0) echo'active'?> ">
                 <div class="container">
                   <div class="row">
@@ -206,7 +206,7 @@ $expired=$this->view_data['expireds'];
               <?php
               $i++;
              }?>
-          
+
             </div>
             <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-arrow-circle-left text-dark"></i></span>
@@ -243,8 +243,8 @@ $expired=$this->view_data['expireds'];
     <div class="tab-pane  mx-auto gallery" id="works">
 
               <div class="row" id="active-compain">
-              
-              
+
+
               </div>
 
       </div>
@@ -262,6 +262,8 @@ $expired=$this->view_data['expireds'];
 
 function load_data(){
   var loaded=parseInt(jQuery_1_3_2('#loadMore').attr('num_loaded'));
+  var loadedto=loaded+3;
+
   var loading="<span class='spinner-border spinner-border-sm'></span>";
   var retry="<span class='spinner-grow text-light'></span>";
   var err="<h1>ther is error pleas try agin</h2>";
@@ -271,7 +273,7 @@ function load_data(){
 			method:"POST",
       data:{'type':"7",
            'from':loaded,
-           'to':loaded+6},
+           'to':loadedto},
       beforeSend:function () {
         jQuery_1_3_2('#loadMore').append(loading);
       },
@@ -285,28 +287,34 @@ function load_data(){
         // alert(data)
         i=0;
         jQuery_1_3_2.each( userInfo.data, function( index, row ) {
-          if(i<3){
+
             html+=' <div class="col-md-4 img-overlay">'+
                   '<div class="card">'+
                       '<img class="card-img-top" src="/uploads/'+row.galary+'" alt="Card image cap">'+
                       '<div class="overlay">'+
                       '<div class="text-overlay"> '+
-                        '<h5 class="card-title">compagin</h5>'+
+                        '<h5 class="card-title">'+row.created_at+'</h5>'+
                         '<p class="card-text">'+row.title+'</p>'+
-                        '<a href="/viewCompaign/show/'+row.id+'" class="btn btn-home-comp">Go somewhere</a>'+
+                        '<a href="/viewCompaign/show/'+row.id+'" class="btn btn-home-comp">See More</a>'+
                       '</div>'+
                       '</div>'+
                   '</div>'+
+                  +'<h3 class="text-blue"> <span class="goal-num font-weight-bold">'
+                  +row.cost +
+                  '<span class="cost">'
+                  +row.donars+
+                  '</span></h3>'
+                  +
                   ' <div class="progress">'+
-                            '<div class="progress-bar progress-bar-style" role="progressbar" style="width:'+row.progress+'" aria-valuemin="0" aria-valuemax="100">'+row.progress+'%</div>'+
+                            '<div class="progress-bar progress-bar-style" role="progressbar" style="width:'+row.progress+'%" aria-valuemin="0" aria-valuemax="100">'+row.progress+'%</div>'+
                    '</div>'+
               '</div>';
-          } i++;
+           i++;
 
       });
       jQuery_1_3_2('#active-compain').html(html);
       if (userInfo.statusCode==200) {
-        jQuery_1_3_2('#loadMore').attr('num_loaded',loaded+6).html('Load More');
+        jQuery_1_3_2('#loadMore').attr('num_loaded',loadedto+1).html('Load More');
       }
       if (userInfo.data=='') {
         jQuery_1_3_2('#loadMore').remove();

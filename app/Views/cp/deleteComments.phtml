@@ -2,6 +2,7 @@
 <?php
 require_once   VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'header.phtml';
 require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'fixedBar.phtml';
+require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 ?>
 
@@ -127,12 +128,12 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'fixedBar.phtml';
             var dataResult = JSON.parse(dataResult);
             if(dataResult.statusCode==200){
                 $('#deleteComments').modal('hide');
-                alert(dataResult.message)
+                errMsg(dataResult.message);
                 // sucMsg(dataResult.message);
                 load_data()
             }
             else if(dataResult.statusCode==201){
-               alert(dataResult);
+               errMsg(dataResult);
             }
     }
     });
@@ -302,3 +303,6 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'fixedBar.phtml';
 
 </body>
 </html>
+<?php
+require_once VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'footer.phtml';
+?>

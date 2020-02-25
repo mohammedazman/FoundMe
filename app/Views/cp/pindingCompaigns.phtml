@@ -179,12 +179,12 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             var dataResult = JSON.parse(dataResult);
             if(dataResult.statusCode==200){
                 $('#changeCompaigns').modal('hide');
-                alert(dataResult.message)
+                errMsg(dataResult.message);
                 // sucMsg(dataResult.message);
                 load_data()
             }
             else if(dataResult.statusCode==201){
-               alert(dataResult);
+               errMsg(dataResult);
             }
     }
     });
@@ -408,3 +408,7 @@ $(".reject").click(function(){
 
 </body>
 </html>
+
+<?php
+require_once VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'footer.phtml';
+?>

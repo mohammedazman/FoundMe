@@ -12,49 +12,155 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 <div class="panel-body mx-auto row home-stats text-center">
 
+  <div class="col-md-4 mt-3 ">
+                <div class="card card-stats mb-4 mb-xl-0">
+                  <div class="card-body" style="border-radius:20px;box-shadow:1px 0px  30px #ccc;border-top:3px solid #f6a121;border-bottom:3px solid ;">
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Total Users</h5>
+                        <span class="h2 font-weight-bold mb-0"><?php echo Helper::NumberFormatter($this->view_data['users']);?></span>
+                      </div>
+                      <div class="col-auto">
+                        <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                          <i class="fas fa-users"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="mt-3 mb-0 text-muted text-sm">
+                      <span class="text-danger mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                      <span class="text-nowrap">Since last month</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+  <!-- end card 1 -->
 
-  <div class="col-md-3   m-4 stat" style="background-color: rgba(0, 0, 0, 0.3);">
+  <div class="col-md-4 mt-3 ">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body" style="border-radius:20px;box-shadow:1px 0px  30px #ccc;border-top:3px solid #f6a121;border-bottom:3px solid orange;">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total Compains</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo Helper::NumberFormatter($this->view_data['compaigns']);?></span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                        <i class="fas fa-wallet"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last week</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+  <!-- end card 2 -->
 
-    <div class="title-db">Total Users</div>
-    <span class="fa fa-users"></span>
-    <span class="f-28px"><?php echo $this->view_data['users'];?></span>
-</div>
-<div class="col-md-3   m-4 stat" style="background-color: #fba100";>
+  <div class="col-md-4 mt-3 ">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body" style="border-radius:20px;box-shadow:1px 0px  30px #ccc;border-top:3px solid #f6a121;border-bottom:3px solid #6c757e;">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total Comments</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo Helper::NumberFormatter($this->view_data['comments']);?></span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-secondary text-white rounded-circle shadow">
+                        <i class="fas fa-comments"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-secondary mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                    <span class="text-nowrap">Since yesterday</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+  <!-- end card 3 -->
 
-    <div class="title-db">Total Compains</div>
-    <span class="fas fa-wallet"></span>
-    <span class="f-28px"><?php echo $this->view_data['compaigns'];?></span>
 </div>
-<div class="col-md-3  pg-color-yellow m-4 stat">
 
-    <div class="title-db">Total Comments</div>
-    <span class="fas fa-comment"></span>
-    <span class="f-28px"><?php echo $this->view_data['comments'];?></span>
-</div>
-</div>
 <div class="panel-body mx-auto row home-stats text-center">
-<div class="col-md-3  pg-color-pink m-4  stat">
 
-      <div class="title-db">Total Visits</div>
-      <span class="fas fa-inbox"></span>
-      <span class="f-28px"><?php echo $this->view_data['visits'];?></span>
-  </div>
+  <div class="col-md-4 mt-3  ">
+                <div class="card card-stats mb-4 mb-xl-0">
+                  <div class="card-body" style="border-radius:20px;box-shadow:1px 0px  30px #ccc;border-top:3px solid #f6a121;border-bottom:3px solid #8898aa;">
+                    <div class="row">
+                      <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Total Visits</h5>
+                        <span class="h2 font-weight-bold mb-0"><?php echo Helper::NumberFormatter($this->view_data['visits']);?></span>
+                      </div>
+                      <div class="col-auto">
+                        <div class="icon icon-shape bg-gray text-black rounded-circle shadow">
+                          <i class="fas fa-inbox"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="mt-3 mb-0 text-muted text-sm">
+                      <span class="text-gray mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                      <span class="text-nowrap">Since last month</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+  <!-- end card 1 -->
 
-  <div class="col-md-3  pg-color-blue m-4 stat">
+  <div class="col-md-4 mt-3 ">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body" style="border-radius:20px;box-shadow:1px 0px  30px #ccc;border-top:3px solid #f6a121;border-bottom:3px solid #2dce89;">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Total Donars</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo Helper::NumberFormatter($this->view_data['donarsCount']);?></span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-success text-white rounded-circle shadow">
+                        <i class="fas fa-donate"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last week</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+  <!-- end card 2 -->
 
-    <div class="title-db">Total Donars</div>
-    <span class="	fas fa-donate"></span>
-    <span class="f-28px"><?php echo $this->view_data['donarsCount'];?></span>
+  <div class="col-md-4 mt-3 ">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body" style="border-radius:20px;box-shadow:1px 0px  30px #ccc;border-top:3px solid #f6a121;border-bottom:3px solid #11cdef;">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Donars Amount</h5>
+                      <span class="h2 font-weight-bold mb-0"><?php echo Helper::NumberFormatter($this->view_data['donarsSum']);?> $</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-info text-white pr-3 pl-3 rounded-circle shadow">
+                        <i class="fas fa-dollar-sign"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-info mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                    <span class="text-nowrap">Since yesterday</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+  <!-- end card 3 -->
+
 </div>
-<div class="col-md-3 pg-color-green m-4 stat">
-
-    <div class="title-db">Amount of Donars</div>
-    <span class="fas fa-dollar-sign"></span>
-    <span class="f-28px"><?php echo $this->view_data['donarsSum'];?></span>
-</div>
 
 
-</div>
+
+
+
+
 
 
 

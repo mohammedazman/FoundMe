@@ -61,14 +61,14 @@ function checkdate()
   public function calProgress($campaigns){
 
     $campaignWithPRogress=array();
-  
+
       foreach($campaigns as $camp){
         $camp['progress']=Helper::getProgress($camp['id']);
         $campaignWithPRogress[]=$camp;
       }
       return $campaignWithPRogress;
-  
-  
+
+
   }
 
 
@@ -80,7 +80,7 @@ function checkdate()
 {
   $oStmt ="SELECT c.id, owner_id, title, galary, descrption, file, tags,
    status, cost, duration, pending, updates, c.created_at, c.update_at,
-    count(v.id) as visits from visits v,compigans c where c.id=v.compaign_id 
+    count(v.id) as visits from visits v,compigans c where c.id=v.compaign_id
     GROUP by compaign_id order by visits desc limit 0,3";
   return $this->calProgress($this->db->QueryCrud($oStmt));
 }
@@ -157,16 +157,22 @@ public function getAllCompaigns($from,$to)
 {
 
 
-  $oStmt ="SELECT * FROM compigans where status=2 LIMIT $from,$to";
-  $campaignWithPRogress=array();
+
+  $oStmt ="SELECT * FROM compigans where status=2  ORDER BY created_at DESC LIMIT $from,$to";
+  $campaignWithPRogress=[];
 
     $copmaigns=$this->db->QueryCrud($oStmt);
-    foreach($copmaigns as $camp){
-      $camp['progress']=Helper::getProgress($camp['id']);
-      $campaignWithPRogress[]=$camp;
-    }
+
+    foreach ($copmaigns as $key ) {
+      $temp=array_merge($key,array('progress' =>Helper::getProgress($key['id'])  ));
+      $campaignWithPRogress[]=$temp;
+      $temps=array_merge($key,array('donars' =>Helper::getDonars($key['id'])  ));
+      $campaignWithPRogress[]=$temps;
+      }
+
+
     return $campaignWithPRogress;
-     
+
 }
 
 // managecompaign

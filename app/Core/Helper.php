@@ -77,6 +77,22 @@
       }
    }
 
+   #return COUNT of compaign
+     public static function  countCompaign($status)
+     {
+       $db= new DB();
+       $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM compigans WHERE status=?",[$status]);
+       return Helper::NumberFormatter($counter[0]['count']);
+     }
+     #return COUNT of pendingcompaign
+       public static function  countP_compaign($status)
+       {
+         $db= new DB();
+         $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM compigans WHERE pending=?",[$status]);
+         return Helper::NumberFormatter($counter[0]['count']);
+       }
+
+
  #return COUNT of compaign view
    public static function  countViewCompaign($id)
    {
@@ -86,13 +102,19 @@
    }
 
    #return COUNT of comments
-     public static function  countComment($id)
+     public static function  countComments($status)
      {
        $db= new DB();
-       $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM comments WHERE compigan_id=?",[$id]);
+       $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM comments WHERE status=?",[$status]);
        return Helper::NumberFormatter($counter[0]['count']);
      }
-
+     #return COUNT of users
+       public static function  countUsers($status)
+       {
+         $db= new DB();
+         $counter =$db->QueryCrud("SELECT COUNT(*) AS count FROM users WHERE status=?",[$status]);
+         return Helper::NumberFormatter($counter[0]['count']);
+       }
      #return COUNT of donars
        public static function  countDonars($id)
        {
@@ -109,6 +131,15 @@
        $compaign=$db->QueryCrud("SELECT cost FROM compigans WHERE id =?",[$id])[0]['cost'];
        return  floor(($donations/$compaign)*100);
 
+     }
+
+     public static function checkStatus($id)
+     {
+       // code...
+
+       $db= new DB();
+       $user =$db->QueryCrud("SELECT *  FROM users WHERE id=?",[$id]);
+       return $user[0]['status'];
      }
 
    #check if category have posts or news @param is of category from news row
@@ -144,18 +175,19 @@
      }
 
    }
-
-
-#return COUNT of comments for post @param is id of post
-   public static function countComments($id)
+   #return last ID for Users
+   public static function getLastUserID ()
    {
 
-     $counter =DB::init()->QueryCrud("SELECT COUNT(*) AS count FROM comments WHERE news_id= $id ");
-
-       return $counter[0]['count'];
-
+     $title =DB::init()->QueryCrud("SELECT MAX(id) as id FROM users ");
+     if (!empty($title)) {
+       return $title[0]['id'];
+     }
 
    }
+
+
+
 
    public static function goHome()
    {
@@ -177,13 +209,16 @@
       #return string of user's name @param id of usernaem that come from comments or athor action row
       public static function userName($id)
       {
+          if (Session::get('Super') and $id==Session::get('userID')) {
+          return Session::get('userName');
+          }
 
-
-        $username =DB::init()->QueryCrud("SELECT * FROM profiles WHERE (user_id = $id) and (name ='First Name' or name='Last Name')");
+        $username =DB::init()->QueryCrud("SELECT * FROM profiles WHERE user_id = ? and (name ='First Name' or name='Last Name')",[$id]);
 
         if (!empty($username)) {
           return $username[0]['value'].' '.$username[1]['value'];
         }
+
 
       }
 

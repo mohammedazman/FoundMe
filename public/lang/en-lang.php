@@ -104,7 +104,7 @@ $lang=array(
     'item77c'=>'View all donars',
     'item78'=>'Followers',
     'item78b'=>'Follow',
-    'item78d'=>'Un Follow',
+    'item78d'=>'Unfollow',
     'item78c'=>'View all followers',
     'item79'=>'goal',
     //Donate 
@@ -168,7 +168,8 @@ $lang=array(
      'button'=>'Read More',
      'search'=>'Search',
      'singup'=>'Sing up',
-     'slidertitle'=>'Fundraising for the people and Socaity'
+     'slidertitle'=>'Fundraising for the people and Socaity',
+     'faqs'=>'Faqs'
 
 
 

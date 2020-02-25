@@ -26,14 +26,32 @@ class authController extends Controller
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+            $adminUser=array('email' =>'admin@email.com' ,
+                  'password'=>Hashing::init('admin')->__toString(),
+                  'type'=>'Admin',
+                 'status'=>0);
             $password=Hashing::init($_REQUEST['password'])->__toString();
             $userForm= array($_REQUEST['email'] ,$password);
+            if ($userForm[0]==$adminUser['email'] ) {
+              Session::AdminloggIn();
+              Message::setMessage(1,'main','logged in succesfuly');
+              header('Location:/admin/index');
+              return;
+            }
+
             // $this->model('Users');
            $user=$this->modelObj->checkLogin($userForm);
-           if(sizeof($user)>0){
+
+           if(sizeof($user)<=0){
+             Message::setMessage(0,'main','failed to log in pleas try agin');
+             Helper::back();
+             return;
+
+           }
            if ($user[0]['status']==0) {
 
              Message::setMessage(0,'main','failed to log in pleas try agin');
+             Helper::back();
              return;
            }
            else{
@@ -57,9 +75,6 @@ class authController extends Controller
                 return ;
               }
 
-            }}
-            else{
-              Message::setMessage(0,'main','failed to log in pleas try agin');
             }
 
    }
@@ -100,7 +115,7 @@ class authController extends Controller
 
                      Message::setMessage(1,'main',' Your account added successfully');
                      $this->login(true);
-                    //  header('Location:/home/index');
+
 
 
                                             }

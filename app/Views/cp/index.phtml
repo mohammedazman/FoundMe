@@ -5,52 +5,48 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'fixedBar.phtml';
 require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 ?>
- <div class="container-fluid" id="container-wrapper">
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"></h1>
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="./">analytics</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-            </ol>
-          </div>
+
+
           <div class="panel panel-default">
 
 
 <div class="panel-body mx-auto row home-stats text-center">
 
 
-  <div class="col-md-2  pg-color-blue stat">
+  <div class="col-md-3   m-4 stat" style="background-color: rgba(0, 0, 0, 0.3);">
 
     <div class="title-db">Total Users</div>
     <span class="fa fa-users"></span>
     <span class="f-28px"><?php echo $this->view_data['users'];?></span>
 </div>
-<div class="col-md-2  pg-color-green stat">
+<div class="col-md-3   m-4 stat" style="background-color: #fba100";>
 
     <div class="title-db">Total Compains</div>
     <span class="fas fa-wallet"></span>
     <span class="f-28px"><?php echo $this->view_data['compaigns'];?></span>
 </div>
-<div class="col-md-2  pg-color-yellow stat">
+<div class="col-md-3  pg-color-yellow m-4 stat">
 
     <div class="title-db">Total Comments</div>
     <span class="fas fa-comment"></span>
     <span class="f-28px"><?php echo $this->view_data['comments'];?></span>
 </div>
-<div class="col-md-2  pg-color-pink stat">
+</div>
+<div class="panel-body mx-auto row home-stats text-center">
+<div class="col-md-3  pg-color-pink m-4  stat">
 
       <div class="title-db">Total Visits</div>
       <span class="fas fa-inbox"></span>
       <span class="f-28px"><?php echo $this->view_data['visits'];?></span>
   </div>
 
-  <div class="col-md-2  pg-color-blue stat">
+  <div class="col-md-3  pg-color-blue m-4 stat">
 
     <div class="title-db">Total Donars</div>
     <span class="	fas fa-donate"></span>
     <span class="f-28px"><?php echo $this->view_data['donarsCount'];?></span>
 </div>
-<div class="col-md-2 pg-color-green stat">
+<div class="col-md-3 pg-color-green m-4 stat">
 
     <div class="title-db">Amount of Donars</div>
     <span class="fas fa-dollar-sign"></span>
@@ -62,42 +58,12 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 
 
-<!-- <div class="panel-body mx-auto row home-stats text-center">
-  <div class="col-md-2  pg-color-pink stat">
-
-      <div class="title-db">Total Visits</div>
-      <span class="fas fa-inbox"></span>
-      <span class="f-28px"><?php echo $this->view_data['visits'];?></span>
-  </div>
-
-  <div class="col-md-2  pg-color-blue stat">
-
-    <div class="title-db">Total Donars</div>
-    <span class="	fas fa-donate"></span>
-    <span class="f-28px"><?php echo $this->view_data['donarsCount'];?></span>
-</div>
-<div class="col-md-2 pg-color-green stat">
-
-    <div class="title-db">Amount of Donars</div>
-    <span class="fas fa-dollar-sign"></span>
-    <span class="f-28px"><?php echo $this->view_data['donarsSum'];?></span>
-</div> -->
 
 
-</div>
 
 
-</div>
-
-<table class="table table-striped mt-3">
-
-</table>
-
-</div>
 
 
-</div>
-</div>
 <?php
 require_once VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'footer.phtml';
 ?>

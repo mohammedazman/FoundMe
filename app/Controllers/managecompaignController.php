@@ -95,14 +95,20 @@ class managecompaignController extends Controller
 
      //  return all Compaigns depend on state
       $compaignsArray = $this->compaignModel->getCompaigns([$state]);
-      return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
+
+      $array=[];
+      foreach ($compaignsArray as $key ) {
+        $temp=array_merge($key,array('progress' =>Helper::getProgress($key['id'])  ));
+        $array[]=$temp;
+      }
+
+      return  json_encode(array("statusCode"=>200,"data"=>$array));
 
     }
 
     // show all compaigns with load More
     public function showAllCompaigns($from,$to){
     $compaignsArray = $this->compaignModel->getAllCompaigns($from,$to);
-    // print_r($compaignsArray);
       return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
 
     }
@@ -149,6 +155,12 @@ class managecompaignController extends Controller
       }
     }
 
+public function getProgress($id)
+{
+  return  json_encode(array("statusCode"=>200,"data"=>Helper::getProgress($id)));
+
+
+}
 
     public function changeCompaigns($ids,$state){
 
@@ -211,6 +223,7 @@ if 7 is for ShowActiveCompaigns with load more
 if 8 is ShowPindingDeleteCompaigns
 if 9 is for approve or reject Delete Compaign Request
 if 10 is ShowFinshedCompaigns
+if 11 is to get progress
 
   */
   if(count($_POST)>0){
@@ -248,6 +261,10 @@ if 10 is ShowFinshedCompaigns
       break;
    case 10:
    echo $manage->showCompaigns(4);
+   break;
+   case 11:
+   echo $manage->getProgress($_POST['id']);
+   break;
 
 
   }

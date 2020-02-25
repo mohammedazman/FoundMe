@@ -15,10 +15,11 @@ class authController extends Controller
 
   public function index($id='',$name='')
   {
-    $this->view('home'.DIRECTORY_SEPARATOR.'index');
+    $this->model('Compaign');
+    $this->modelObj= $this->model->getModel();
+    $this->view('home'.DIRECTORY_SEPARATOR.'index',['populars'=>$this->modelObj->getpopular(),'expireds'=>$this->modelObj->getExpierd()]);
     $this->view->pageTitle='Found Me';
     $this->view->render();
-
   }
 
   public function login($signup=false)

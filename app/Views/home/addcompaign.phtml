@@ -193,7 +193,8 @@ var jQuery_form = $.noConflict(true);
 				if(xhr.responseText)
 				{
           progressBar(100,100);
-          window.location.replace("/home/index");
+          // alert(xhr.responseText);
+          window.location.replace("/viewCompaign/show/"+xhr.responseText);
 				}
 			}
     });

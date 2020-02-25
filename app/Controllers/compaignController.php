@@ -56,9 +56,10 @@ public function uploadFiles(){
                      ':cost'=>$_REQUEST['Amount']		,
                       ':duration'=>$_REQUEST['Deuration']	 ,
                       	':pending'=> 0,
-                        	':updates'=>null );
+                          ':updates'=>null );
+                          $idd=$this->compaign->add($params);
 
-                     if ($this->compaign->add($params)) {
+                     if ($idd) {
 
                       Notification::addNoti('New compaign is added by '.$_SESSION['userName'] .'and need approvment','admin','new compain');
                        Message::setMessage(1,'main',' add your compaing have be done ');
@@ -66,7 +67,7 @@ public function uploadFiles(){
                                               }
                                             }
 }
-   echo 'your compain added successfully';
+   echo $idd[0]['idd'];
    exit();
 
 

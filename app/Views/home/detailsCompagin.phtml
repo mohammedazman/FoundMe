@@ -173,7 +173,7 @@ else echo"This Compaign is finished so and you can't donate." ?>
                             ?>
                             <div class="m-center">
                             <a href="/profile/showProfile/<?php echo $follower?>">
-                            <img class="media-object rounded-circle follow-img" src="/images/home/user.jpg"  alt="profile">
+                            <img class="media-object rounded-circle follow-img"  src="<?php echo !empty(Helper::getImage(Session::get('userID')))?"/uploads/".Helper::getImage(Session::get('userID')):"/images/home/user.jpg" ?>"  alt="profile">
                             <span  class='follow-name'>
                             <?php echo Helper::userName($follower) ?></span><br>
                           </a>
@@ -210,7 +210,7 @@ else echo"This Compaign is finished so and you can't donate." ?>
                <a href="/profile/showProfile/<?php echo $compaign['owner_id']?>">
               <div class="donar-user">
               <div class="d-inline">
-                <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="">
+                <img src="<?php echo !empty(Helper::getImage(Session::get('userID')))?"/uploads/".Helper::getImage(Session::get('userID')):"/images/home/user.jpg" ?>" alt="Profile img" height="30" width="30" class="pic-profile-header" title="">
               </div> <div class="d-inline-block"> <h5>
                <?php echo Helper::userName($donar['user_id']); ?>
                 <span class="amount text-orange">
@@ -253,7 +253,7 @@ else echo"This Compaign is finished so and you can't donate." ?>
                <a href="/profile/showProfile/<?php echo $compaign['owner_id']?>">
                 <div class="donar-user">
                 <div class="d-inline">
-                  <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header follow-img" title="">
+                  <img  src="<?php echo !empty(Helper::getImage(Session::get('userID')))?"/uploads/".Helper::getImage(Session::get('userID')):"/images/home/user.jpg" ?>" alt="Profile img" height="30" width="30" class="pic-profile-header follow-img" title="">
                 </div> <div class="d-inline-block ml-6"> <h5 class="m-l-46"><?php echo Helper::userName($follower); ?></h5></div>
                 <hr class="hr-blue-80">
             </div>
@@ -315,7 +315,7 @@ $( document ).ready(function() {
               $.each( comments.data, function( index, row ) {
           html+='<div>'+
                 '<a class="pull-left" href="#">'+
-                  '<img class="media-object rounded-circle comm-img" src="/images/home/user.jpg"  alt="profile">'+
+                  '<img class="media-object rounded-circle comm-img"  src="<?php echo !empty(Helper::getImage(Session::get('userID')))?"/uploads/".Helper::getImage(Session::get('userID')):"/images/home/user.jpg" ?>"  alt="profile">'+
                   '</a>'+
                   '<span class="comm-name">'+
                   row.name+'</span><br>'+

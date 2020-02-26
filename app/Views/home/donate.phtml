@@ -162,7 +162,7 @@
               ?>
               <div class="donar-user">
               <div class="d-inline">
-                <img src="/images/home/user.jpg" alt="Profile img" height="30" width="30" class="pic-profile-header" title="">
+                <img  src="<?php echo !empty(Helper::getImage(Session::get('userID')))?"/uploads/".Helper::getImage(Session::get('userID')):"/images/home/user.jpg" ?>" alt="Profile img" height="30" width="30" class="pic-profile-header" title="">
               </div> <div class="d-inline-block"> <h5>
                <?php echo Helper::userName($donar['user_id']); ?>
                 <span class="amount">

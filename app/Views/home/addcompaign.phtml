@@ -254,7 +254,7 @@ function progressBar(progressVal,totalPercentageVal = 100) {
 	}
   function serverSideValidation(){
      if(Requirevalidation(document.addCompignForm.Title)&&Requirevalidation(document.addCompignForm.Tags)&&
-      Requirevalidation(document.Amount)&&Requirevalidation(document.addCompignForm.Deuration)&&
+      Requirevalidation(document.addCompignForm.Amount)&&Requirevalidation(document.addCompignForm.Deuration)&&
       Requirevalidation(document.addCompignForm.descrption)){
     jQuery_1_3_2.ajax({
         url:"/validate",

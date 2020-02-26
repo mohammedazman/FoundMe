@@ -28,7 +28,8 @@
   <?php if ($compaign['status']!=2) { ?>
 <div class="alert alert-warning alert-dismissible">
 
-<strong>NOTE ! </strong> This Compaign is finshed and you can't donate.
+<strong>NOTE ! </strong><?php if($compaign['status']==1) echo"This Compaign is not approved yet so and you can't donate."; 
+else echo"This Compaign is finished so and you can't donate." ?> 
 <button type="button" class="close" data-dismiss="alert">&times;</button>
 </div>
 <?php } ?>
@@ -122,15 +123,18 @@
                                 <?php if ($compaign['status']==2) { ?>
                                 <a href="/donate/index/<?php echo $compaign['id'] ?>"><input type="submit" id="donate" class="btndonate float-none donate-color"  value="<?php echo $lang['item77b']; ?>"/></a>
                                 <?php }
+                               if($compaign['owner_id']!=Session::get('userID')){
 
-                                  if(!in_array(Session::get('userID'),$this->view_data['followers'])){ ?>
+                                  if(!in_array(Session::get('userID'),$this->view_data['followers']) ) {
+                                    echo $compaign['owner_id'].'  '.Session::get('userID')
+                                    ?>
                                   <input type="button" id="follow" onclick="follow('follow')" class="btndonate float-none"  value="<?php echo $lang['item78b']; ?>"/>
                                 <?php } else{ ?>
                                   <input type="button" id="follow" onclick="follow('unfollow')" class="btndonate float-none"  value="<?php echo $lang['item78d']; ?>"/>
                                   <?php } ?>
                                 </center>
 
-                                <?php } ?>
+                                <?php }} ?>
 
         </div>
 

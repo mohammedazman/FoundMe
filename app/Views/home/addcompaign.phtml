@@ -37,7 +37,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 				<div class="col-md-12">
 				<div class="wrap-input100 " >
             <label for="Title" class='btn-label' ><?php echo $lang['item33']?></label>
-						<input class="input100" type="text" name="Title"  placeholder="ex: This is my campaign" value='<?php if(isset($_POST['Title']))echo$_POST['Title'];?>' oninput="preventSpace(document.addCompignForm.Title, 10, 50); " />
+						<input class="input100" type="text" name="Title"  placeholder="ex: This is my campaign" value='<?php if(isset($_POST['Title']))echo$_POST['Title'];?>' oninput="preventSpace(document.addCompignForm.Title, 4, 50); " />
 						<span class="text-danger text-error" id="TitleError"> </span>
 					</div>
 				</div>
@@ -47,7 +47,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
 					<div class="wrap-input100 " >
             <label for="Tags" class='btn-label' ><?php echo $lang['item34']?></label>
-						<input class="input100" type="text" name="Tags"  placeholder="#exampale"  value='<?php if(isset($_POST['Tags']))echo$_POST['Tags'];?>'  oninput=" wordlength(document.addCompignForm.Tags, 2, 20)" >
+						<input class="input100" type="text" name="Tags"  placeholder="#exampale"  value='<?php if(isset($_POST['Tags']))echo$_POST['Tags'];?>'  oninput="preventSpace(document.addCompignForm.Tags, 1, 20)" >
 						<span class="text-danger text-error" id="TagsError"> </span>
 					</div>
 

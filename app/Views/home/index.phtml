@@ -98,7 +98,7 @@ $expired=$this->view_data['expireds'];
                 <div class="col-md-4 img-overlay wow fadeIn" data-wow-delay="0.4s">
                   <div class="card">
                   <div class="img-card">
-                  <img class="card-img-top" src="/uploads/<?php echo $p['galary'] ?>/1(1).jpg" alt="Card image cap" >
+                  <img class="card-img-top" src="/uploads/<?php echo $p['galary'] ?>/1(1).jpg" alt="Card image cap"  style="max-height: 232px;" >
                   </div>
                         <div class="overlay">
                         <div class="text-overlay">
@@ -109,7 +109,7 @@ $expired=$this->view_data['expireds'];
                   </div>
                   <div class="card-body">
                     <h5 class="card-title text-dark"><?php echo $p['title'] ?></h5>
-                    <p class="card-text text-black-light"><?php echo $p['descrption'] ?></p>
+                    <!-- <p class="card-text text-black-light"><?php echo $p['descrption'] ?></p> -->
                     <div class="progress">
 
                       <div class="progress-bar progress-bar-style" role="progressbar" style="<?php echo 'width:'.$p['progress'].'%'; ?>" aria-valuenow="<?php echo 'width:'.$p['progress'].'%'; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $p['progress'].'%'; ?></div>

@@ -8,14 +8,16 @@ jQuery_1_3_2(document).ready(function(){
           jQuery_1_3_2(".nav-link-color").css("color" , "rgb(116, 116, 116)");
           jQuery_1_3_2(".fa-bell").css("color" , "rgb(116, 116, 116)");
           jQuery_1_3_2(".logo").attr("src","/images/home/fundmee.png");
+          jQuery_1_3_2(".fa-bars").css("color","#605f61");
         }
      
         else if(scroll < 200){
             jQuery_1_3_2(".chang-color").css("background" , "none");  
           jQuery_1_3_2(".chang-color").css("box-shadow" , "unset");
           jQuery_1_3_2(".nav-link-color").css("color" , "#fff");
-          jQuery_1_3_2(".fa-bell").css("color" , "#fff");
-          jQuery_1_3_2(".logo").attr("src","/images/home/fundmee.png");
+          jQuery_1_3_2(".fa-bell").css("color" , "#fff");  
+          jQuery_1_3_2(".logo").attr("src","/images/home/logo.png");
+          
 
 
 

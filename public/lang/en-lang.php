@@ -169,7 +169,22 @@ $lang=array(
      'search'=>'Search',
      'singup'=>'Sing up',
      'slidertitle'=>'Fundraising for the people and Socaity',
-     'faqs'=>'Faqs'
+     'faqs'=>'Faqs',
+     'popular'=>'The most popular',
+     'load'=>'load more',
+     'services'=>'Our Services',
+     'servOne'=>'FUNDME GUARANTEE',
+     'servTow'=>'EXPERT ADVICE',
+     'servThree'=>'Achived Your Goal',
+     'servOneCon'=>'In the rare case that something isn’t right, we will refund your donation.',
+     'servTowCon'=>'Contact us with your questions and we’ll answer, day or night.',
+     'servThreeCon'=>'Your Dreams Will come true.',
+     'Expired'=>'Expired soon Compagin',
+     'support'=>'We will always Support you',
+     'we'=>'How we are!',
+     'last'=>'The Last Campagin',
+     'location'=>'Sanaa , Yemen',
+
 
 
 

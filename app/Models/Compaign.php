@@ -11,7 +11,7 @@ class Compaign
   function __construct()
   {
     $this->db=new DB();
-    $this->checkdate();
+    // $this->checkdate();
   }
 
 // check if duration is finshed
@@ -24,8 +24,8 @@ function checkdate()
         Notification::addNoti('your compaign have be done',$comp['owner_id'],'finshed compaing',$comp['id']);
     }
   $this->db->QueryCrud('UPDATE  compigans
-           SET   	status=?
-          WHERE duration <= NOW() and status=2 ',[4],0);
+           SET   	status=4
+          WHERE duration <= NOW() and status=2    ',[],0);
 }
 
   public function all()

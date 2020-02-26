@@ -136,6 +136,9 @@ html {
 .text-size-20px{
     font-size: 20px;
 }
+.text-size-12px{
+    font-size: 12px;
+}
 /* header start */
 .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
     color: #fff;
@@ -252,7 +255,7 @@ header nav {
     background-color: unset;
 }
 /* slider strat */
-.carousel-item {
+.carousel-item-slider {
     height: 760px;
 }
 .carousel-caption {
@@ -957,7 +960,10 @@ img.rounded {
        
     }
     .p-image {
-        right: 66px;        
+        right: 88px;        
+    }
+    .description {
+        width: 90%;
     }
     .container-faq {
         padding: 40px;
@@ -1760,8 +1766,9 @@ font-family:'Poppins';
 }
 
 .text-fantasy{
-    font-family: fantasy;
-    letter-spacing: 6px;
+    
+    letter-spacing: 2px;
+    font-weight: 900;
 }
 
 .fa-sm{
@@ -2086,9 +2093,25 @@ html {
 }
 
 @media (max-width: 992px){
+    
     .container-faq {
         padding: 40px;
     }
+    .description {
+   
+        width: 90%;}
+        .nav-pills .nav-item .nav-link.active {
+            font-size: 12px;}
+            .prof-donate {
+                margin-right: 22px;
+            }
+            .m-6 {
+                margin:unset!important;
+            }
+            .padding-phone-details{
+                padding: 47px;
+            }
+           
   
 }
 
@@ -2099,3 +2122,37 @@ html {
 .donate-color{
     background-color: #f9dc42;
 }
+
+.img-card{
+
+}
+
+.width-10px{
+    width: 100px;
+}
+
+
+.btn-dark-h-d:hover {
+    color: #FFF;
+    background-color: #6c648bde;
+    border: 2px solid #6c648bde;
+    border-radius: 8px;
+    }
+
+
+.collapse ul li a:focus,
+    .collapse ul li a:hover{
+    color: #ffe8c0;
+
+    }
+
+    .phone-profile {
+        font-size: 14px;
+        font-family: inherit;
+        color: #7d7d7d;
+    }
+
+
+    .ll{
+        color: #fba100;
+    }

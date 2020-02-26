@@ -29,7 +29,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
   <!-- add compaign page start-->
 
-  <div class="container-login100">
+  <div class="container-login100 wow fadeIn">
 			<div class="wrap-login100 com1000">
 				<form class="login100-form validate-form"  action="/compaign/uploadFiles" id="addCompignForm" name="addCompignForm" method="post" enctype="multipart/form-data">
 
@@ -37,7 +37,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 				<div class="col-md-12">
 				<div class="wrap-input100 " >
             <label for="Title" class='btn-label' ><?php echo $lang['item33']?></label>
-						<input class="input100" type="text" name="Title"  placeholder="ex: This is my campaign" value='<?php if(isset($_POST['Title']))echo$_POST['Title'];?>' oninput="stringlength(document.addCompignForm.Title, 10, 50); " />
+						<input class="input100" type="text" name="Title"  placeholder="ex: This is my campaign" value='<?php if(isset($_POST['Title']))echo$_POST['Title'];?>' oninput="preventSpace(document.addCompignForm.Title, 4, 50); " />
 						<span class="text-danger text-error" id="TitleError"> </span>
 					</div>
 				</div>
@@ -47,7 +47,8 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
 					<div class="wrap-input100 " >
             <label for="Tags" class='btn-label' ><?php echo $lang['item34']?></label>
-						<input class="input100" type="text" name="Tags"  placeholder="#exampale"  value='<?php if(isset($_POST['Tags']))echo$_POST['Tags'];?>'  oninput=" stringlength(document.addCompignForm.Tags, 2, 20)" >
+
+						<input class="input100" type="text" name="Tags"  placeholder="#exampale"  value='<?php if(isset($_POST['Tags']))echo$_POST['Tags'];?>'  oninput="preventSpace(document.addCompignForm.Tags, 1, 20)" >
 						<span class="text-danger text-error" id="TagsError"> </span>
 					</div>
 
@@ -83,7 +84,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
 					<div class="container cont-pdf" >
             <label for="files" class='btn-label' ><?php echo $lang['item37']?></label>
-						<img src="/images/io.jpg" alt="choose image"   id='image' class="profileImg mt-30">
+						<img src="/images/io.jpg" alt="choose image"   id='image' class="profileImg mt-30 pic-upload">
 						<input type="file"  class='uploader input-image'   require  style="top:190px"  onchange="Filevalidation('gallary-photo-add');readURL(this)" name="gallary"  id="gallary-photo-add" />
 						</img>
 						<div class="overlay">
@@ -214,16 +215,18 @@ var jQuery_form = $.noConflict(true);
             for (var i = 0; i <= fi.files.length - 1; i++) {
 
                 const fsize = fi.files.item(i).size;
-                const ftype = fi.files.item(i).type;
+                const ftype =  fi.files.item(i).type;
+                const type=ftype.split('/');
                 const fname = fi.files.item(i).name;
                 const error = fi.name+'Error';
                 const file = Math.round((fsize / 1024));
+                // alert(type);
                 // The size of the file.
                 if (file > 50000) {
                     document.getElementById(error).innerHTML=
                     <?php echo "'".$lang['error10']."'" ?>;
                 }
-                else if ((fi.name=='gallary' &&  ftype !='image/jpeg') || (fi.name=='file' &&  ftype !='application/pdf')) {
+                else if ((fi.name=='gallary' &&  type[0] !='image') || (fi.name=='file' &&  ftype !='application/pdf')) {
 				  document.getElementById(error).innerHTML=
                   <?php echo "'".$lang['error11']."'" ?>;
                 } else {
@@ -252,7 +255,7 @@ function progressBar(progressVal,totalPercentageVal = 100) {
 	}
   function serverSideValidation(){
      if(Requirevalidation(document.addCompignForm.Title)&&Requirevalidation(document.addCompignForm.Tags)&&
-      Requirevalidation(document. .Amount)&&Requirevalidation(document.addCompignForm.Deuration)&&
+      Requirevalidation(document.addCompignForm.Amount)&&Requirevalidation(document.addCompignForm.Deuration)&&
       Requirevalidation(document.addCompignForm.descrption)){
     jQuery_1_3_2.ajax({
         url:"/validate",

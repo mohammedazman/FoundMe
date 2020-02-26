@@ -23,9 +23,8 @@
          $(".active").addClass('show');
   });
 
-
 	function load_notification(){
- 		$.ajax({
+    jQuery_1_3_2.ajax({
  			url:"/notification",
  			method:"POST",
        data:{method:"user"},
@@ -34,7 +33,7 @@
          var notiInfo=JSON.parse(data);
          var html='';
          i=1;
-          if(notiInfo.count>0)
+         if(notiInfo.count>0)
             $('.noti-count').text(notiInfo.count);
          $.each(notiInfo.noti, function( index, row ) {
            if(i<4){
@@ -43,15 +42,14 @@
              else
                 html+=' <li class="notification-box item not_read">';
 
-
-
-          html+='<strong class="noti-date">'+row.created_at+'</strong><br>'+
-                             '<span style="font-size: 15px;" >'+
+                html+='<a href="/viewCompaign/show/'+row.effected_id+'" style="text-decoration: none; color:#969696">'+
+                '<strong class="noti-date">'+row.created_at+'</strong><br>'+
+                             '<span style="font-size: 13px;" >'+
                              row.text+
-                             '</span'+
-                      ' </li>';
+                             '</span'+ 
+                      ' </a></li>';
            }
-
+          
            i++;
          });
          if(i==1){
@@ -63,7 +61,7 @@
          }
          else{
           html+='<li class="footer text-center">'+
-                                   '<a href="" class="text-blue">View All</a>'+
+                                   '<a href="/notification/viewNotification" class="text-blue">View All</a>'+
                                '</li>';
          }
          $('#noti-body').html(html);

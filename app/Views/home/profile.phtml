@@ -42,7 +42,7 @@
                                   <div class="dropdown-divider"></div>
                                   <?php if($this->view_data['profiles'][0]['user_id']==Session::get('userID')){?>
                                   <?php }?>
-                                    <span class="bio"><?php if(isset($this->view_data['profiles'][3])) echo $this->view_data['profiles'][3]['value']; ?></span>
+                                    <span class="bio"><?php if(isset($this->view_data['profiles'][0])) echo $this->view_data['profiles'][0]['value']; ?></span>
                                     <div class="text-center">
 
                                       <span class="blue phone-profile"><?php

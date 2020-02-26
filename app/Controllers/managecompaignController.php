@@ -165,7 +165,7 @@ public function getProgress($id)
 }
 
     public function changeCompaigns($ids,$state){
-      print_r($_POST);
+      // print_r($_POST);
 
 
       if($state==4 || $state==7)

@@ -11,7 +11,7 @@ class Compaign
   function __construct()
   {
     $this->db=new DB();
-    $this->checkdate();
+    // $this->checkdate();
   }
 
 // check if duration is finshed

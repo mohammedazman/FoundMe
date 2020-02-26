@@ -24,7 +24,7 @@
   });
 
 	function load_notification(){
-    jQuery_1_3_2.ajax({
+    $.ajax({
  			url:"/notification",
  			method:"POST",
        data:{method:"user"},
@@ -61,7 +61,7 @@
          }
          else{
           html+='<li class="footer text-center">'+
-                                   '<a href="/notification/viewNotification" class="text-blue">View All</a>'+
+                                   '<a href="/notification/viewAminNotification" class="text-blue">View All</a>'+
                                '</li>';
          }
          $('#noti-body').html(html);
@@ -73,17 +73,7 @@
 
 errMsg(<?php echo'"'.Message::check('main').'"'; ?>);
 </script>
-<script src="/layout/js/jquery-3.4.1.min.js"></script>
-    <script src="/layout/js/popper.min.js"></script>
-    <script src="/layout/js/bootstrap.min.js"></script>
-    <script src="/layout/js/jquery-ui.min.js"></script>
-    <script src="/layout/js/iconify.min.js"></script>
-    <script src="/layout/assets/js/plugins/chart.js/dist/Chart.min.js"></script>
-    <script src="/layout/assets/js/plugins/chart.js/dist/Chart.extension.js"></script>
-    <script src="/layout/assets/js/argon-dashboard.min.js?v=1.1.0"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-    <script src="/layout/js/main.js"></script>
-    <script src="/layout/js/new.js"></script>
+   
 
 
 

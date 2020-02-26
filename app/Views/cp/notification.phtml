@@ -1,0 +1,149 @@
+<?php
+
+if(!Session::logged())
+  header('location:/home/index');
+  
+// include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'head.phtml';
+include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
+
+<body>
+
+  <!-- start pages photo -->
+  <section class="cover-background top-space" style="background-image:url('/images/1(1).jpg');">
+        <div class="opacity-medium bg-dark"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title">
+                    <div class="vertical-align-middle text-center">
+                        <!-- start sub title -->
+                        <span class="text-white text-shadow-black"><?php echo $lang['item110'] ?></span>
+                        <!-- end sub title -->
+                        <!-- start page title -->
+                        <h1 class="text-white text-shadow-black"><?php echo $lang['item111'] ?></h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end pages photo - -->
+
+
+  <!-- Notification page start-->
+  <section>
+			<div class="container register" style="    padding: 3% 3%;">
+  
+        <div class="row" >
+		
+          <div class="col-md-12">
+		  
+ <button class='btn btn-block btncolor all_read_btn' name='chang_state' onclick="readAll()"><?php echo $lang['item114'] ?>  </button>
+</h4>
+			
+            <hr>
+          </div>
+          <?php $notification= $this->view_data['notifications'];
+          // print_r($notification);
+           ?>
+<?php foreach($notification as $row){  
+  // print_r($row);
+  ?>
+ <div class='col-lg-12' id='singleNoti' >  <!-- من هانا يبدا الاشعار الواحد -->
+		  
+    <?php   if($row['status']==0){ ?>
+     
+      <div class='notificatio_bottom_border item not_read'  >
+    <?php }
+		   else
+		   {
+         ?>
+				 <div class='notificatio_bottom_border item'>	
+		  <?php } ?>
+
+
+<div class='navbar noti_more'> 
+    <ul>   
+    <li>
+	<?php	if($row['status']==0){
+             $state=  $lang['item112'];
+    ?>
+        <a data-toggle='dropdown'class='noti_state fas fa-circle'   title='<?php echo $lang['item112'] ?>'></a>
+        <?php }
+          else{
+            $state=$lang['item113'];
+             ?>
+         <a data-toggle='dropdown'class='noti_state far fa-circle '   title='<?php echo $lang['item113'] ?>' ></a>
+         <?php } ?>
+<section >
+		   <div class='dropdown-menu noti_dropdown-menu text-center '>
+		   <button class='btn btn-block btncolor' name='chang_state' onclick="changeNotiState(<?php  echo $row['id']?>,<?php  echo '\''.!$row['status'].'\''?>)"><?php echo $state ?></button>
+           </div>
+</section>
+    </li>
+    </ul>
+
+</div> <!--  هنا ينتهي السهم حق اخفاء و تحديد ك مقروئة-->
+<div> 
+  <?php if($row['type']=='new compain'){?>
+            <a href="/managecompaign/ShowPindingCompaigns" onclick="changeNotiState(<?php  echo $row['id']?>,<?php  echo '\''.!$row['status'].'\''?>,1)"  style="text-decoration: none; color:#969696">
+  <?php } else{
+    ?>
+    <a href="/manageusers/showActiveUsers/" onclick="changeNotiState(<?php  echo $row['id']?>,<?php  echo '\''.!$row['status'].'\''?>,1)"  style="text-decoration: none; color:#969696">
+<?php }?>
+    	  <span class="noti-text">	<?php echo $row['text'] ; ?></span> <!-- نص الاشعار -->
+        <br><span class='noti_page_time' data-icon="typcn-arrow-forward"><?php echo $row['created_at'] ?></span>  <!-- وقت الاشعار -->  </a>
+        </div>  
+      </a>
+      </div>
+	 
+						   </div>  <!-- من هانا ينتهي  الاشعار الواحد -->
+<?php						  
+}
+	  //  }
+?>
+	
+	
+ </div>
+
+	</div>
+  </div>
+    </section>
+	
+	<!-- Notification page end -->
+  <script>
+    	function changeNotiState(nid,state,neww=0){
+      
+        if(neww==1)
+         if(state==0)
+            exit();
+        jQuery_1_3_2.ajax({
+          url:"/notification",
+          method:"POST",
+          data:{method:"changState",id:nid,state:state},
+          success:function(data)
+          {
+            var result=JSON.parse(data);
+            if(neww!=1)
+            if(result.statusCode==200)
+                location.reload();
+          }
+              });
+ }
+ function readAll(){
+      
+  jQuery_1_3_2.ajax({
+        url:"/notification",
+        method:"POST",
+        data:{method:"readAll"},
+        success:function(data)
+        {
+          var result=JSON.parse(data);
+          if(result.statusCode==200)
+              location.reload();
+        }
+            });
+}
+  </script>
+
+<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer_section.phtml' ?>
+<?php  include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'footer.phtml' ?>

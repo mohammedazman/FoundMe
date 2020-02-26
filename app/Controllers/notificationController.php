@@ -24,6 +24,13 @@ class NotificationController extends Controller
     $this->view->render();
 
   }
+  public function viewAminNotification(){
+   
+    $this->view('cp'.DIRECTORY_SEPARATOR.'notification',['notifications'=>$this->noti->getNoti('admin')]);
+    $this->view->pageTitle='Notifications';
+    $this->view->render();
+
+  }
   public function getAdminNotification()
   {
     $this->model('Notification');

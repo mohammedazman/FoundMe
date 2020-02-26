@@ -137,6 +137,10 @@
        $db= new DB();
        $donations =$db->QueryCrud("SELECT SUM(amount) AS sum FROM donations WHERE compigan_id=?",[$id])[0]['sum'];
        $compaign=$db->QueryCrud("SELECT cost FROM compigans WHERE id =?",[$id])[0]['cost'];
+       if($donations==0)
+       $donations=1;
+       if($compaign==0)
+       $compaign=1;
        $p= floor(($donations/$compaign)*100);
        if($p>100)
           return 100;
@@ -159,7 +163,9 @@
 
        $db= new DB();
        $user =$db->QueryCrud("SELECT * FROM profiles WHERE user_id =? and name='image'",[$id]);
+       if(!empty($user[0]['value']))
        return $user[0]['value'];
+       return ;
      }
 
    #check if category have posts or news @param is of category from news row

@@ -2145,3 +2145,9 @@ html {
     color: #ffe8c0;
 
     }
+
+    .phone-profile {
+        font-size: 14px;
+        font-family: inherit;
+        color: #7d7d7d;
+    }

@@ -165,6 +165,7 @@ public function getProgress($id)
 }
 
     public function changeCompaigns($ids,$state){
+      print_r($_POST);
 
 
       if($state==4 || $state==7)
@@ -182,7 +183,7 @@ public function getProgress($id)
            $noti_text=array('reject ','','approve ','pause ','resum ','delete ','','active ');
       if($state!=6)
            Notification::addNoti('Admin '.$noti_text[$state].'your compaign',$compArray['owner_id'],$noti_type[$state],$compArray['id']);
-
+            // echo 'Admin '.$noti_text[$state].'your compaign'.$compArray['owner_id'].$noti_type[$state],$compArray['id'];
       return  json_encode(array("statusCode"=>200,"message"=>"Process done successfully"));
 
     }

@@ -29,7 +29,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
   <!-- add compaign page start-->
 
-  <div class="container-login100">
+  <div class="container-login100 wow fadeIn">
 			<div class="wrap-login100 com1000">
 				<form class="login100-form validate-form"  action="/compaign/uploadFiles" id="addCompignForm" name="addCompignForm" method="post" enctype="multipart/form-data">
 
@@ -83,7 +83,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
 					<div class="container cont-pdf" >
             <label for="files" class='btn-label' ><?php echo $lang['item37']?></label>
-						<img src="/images/io.jpg" alt="choose image"   id='image' class="profileImg mt-30">
+						<img src="/images/io.jpg" alt="choose image"   id='image' class="profileImg mt-30 pic-upload">
 						<input type="file"  class='uploader input-image'   require  style="top:190px"  onchange="Filevalidation('gallary-photo-add');readURL(this)" name="gallary"  id="gallary-photo-add" />
 						</img>
 						<div class="overlay">

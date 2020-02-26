@@ -463,10 +463,10 @@ background-color: #00b5e9;
     line-height: 1.3;
 }
 .comm-length{
-    width:350px;
+    width:auto;
 }
 .side-bar{
-    box-shadow: 0 0 4px 0 #b2b2b254;
+    /* box-shadow: 0 0 4px 0 #b2b2b254; */
     height:auto;
 }
 .side-title{
@@ -600,3 +600,16 @@ text-decoration: unset;
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: #d2d2c4 !important;
 }
+.fa-bars{
+  color: #fff;
+}
+
+@media (max-width: 992px){
+  .pdf-div {
+      width: 298px;
+      padding: 10px 105px;
+     }
+     .pic-upload{
+      width: 280px;
+     }
+    }

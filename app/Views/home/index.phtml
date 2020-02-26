@@ -15,7 +15,7 @@ $expired=$this->view_data['expireds'];
                       <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                     </ol> -->
                     <div class="carousel-inner">
-                      <div class="carousel-item bg-black active">
+                      <div class="carousel-item carousel-item-slider bg-black active">
                         <img src="/images/home/1(1).jpg" class="d-block w-100 opacity-5" alt="...">
                         <div class="carousel-caption">
                           <h1 class="h1-slide wow fadeIn"><?php echo $lang['slidertitle']?><br>
@@ -30,7 +30,7 @@ $expired=$this->view_data['expireds'];
                           <?php }?>
                         </div>
                       </div>
-                      <div class="carousel-item bg-black">
+                      <div class="carousel-item carousel-item-slider bg-black">
                         <img src="/images/home/1(2).jpg" class="d-block w-100 opacity-5" alt="...">
                         <div class="carousel-caption">
                           <h1 class="h1-slide wow fadeIn"><?php echo $lang['slidertitle']?><br>
@@ -45,7 +45,7 @@ $expired=$this->view_data['expireds'];
                           <button type="button" class="btn btn-dark wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['singup']?></button>
                           <?php }?>                        </div>
                       </div>
-                      <div class="carousel-item bg-black">
+                      <div class="carousel-item carousel-item-slider bg-black">
                         <img src="/images/home/1(5).jpg" class="d-block w-100 opacity-5" alt="...">
                         <div class="carousel-caption">
                           <h1 class="h1-slide wow fadeIn"><?php echo $lang['slidertitle']?><br>
@@ -60,7 +60,7 @@ $expired=$this->view_data['expireds'];
                           <button type="button" class="btn btn-dark wow flipInX btn-big" data-wow-delay="0.9s"><?php echo $lang['singup']?></button>
                           <?php }?>                        </div>
                       </div>
-                      <div class="carousel-item bg-black">
+                      <div class="carousel-item carousel-item-slider bg-black">
                         <img src="/images/home/1(4).jpg" class="d-block w-100 opacity-5" alt="...">
                         <div class="carousel-caption">
                           <h1 class="h1-slide wow fadeIn">Fundraising for the people and <br>
@@ -86,7 +86,7 @@ $expired=$this->view_data['expireds'];
 <!-- latest compign -->
 <section class="p-section">
     <center>
-      <h2 class="title-home">The most popular</h2>
+      <h2 class="title-home"><?php echo $lang['popular']; ?></h2>
     </center>
     <div class="container text-center">
     <!-- <div class="row"> -->
@@ -95,9 +95,11 @@ $expired=$this->view_data['expireds'];
               <div class="row" >
                 <?php foreach ($popular as $p){
                   ?>
-                <div class="col-md-4 img-overlay">
+                <div class="col-md-4 img-overlay wow fadeIn" data-wow-delay="0.4s">
                   <div class="card">
-                      <img class="card-img-top" src="/uploads/<?php echo $p['galary'] ?>/1(1).jpg" alt="Card image cap">
+                  <div class="img-card">
+                  <img class="card-img-top" src="/uploads/<?php echo $p['galary'] ?>/1(1).jpg" alt="Card image cap" >
+                  </div>
                         <div class="overlay">
                         <div class="text-overlay">
                          
@@ -121,7 +123,7 @@ $expired=$this->view_data['expireds'];
               </div>
 
       </div>
-      <a href="#" class="btn bg-secondary text-white col-md-3 mt-5 p-2" id="loadPopularMore" num_loaded="0"><span style="font-size: 30px">Load More</span>  </a>
+      <a href="#" class="btn bg-purple text-white col-md-3 mt-5 p-2 width-10px" id="loadPopularMore" num_loaded="0"><span class="text-size-12px"><?php echo $lang['load']; ?></span>  </a>
 
     </div>
 
@@ -134,8 +136,8 @@ $expired=$this->view_data['expireds'];
 <section id="numone" class="wow fadeIn p-section" style="visibility: visible; animation-name: fadeIn; 
     background-color: #f9f9f9;">
   <center>
-    <h2 class="title-home">Our Services</h2>
-    <hr class="new2">
+    <h2 class="title-home"><?php echo $lang['services']?></h2>
+    <!-- <hr class="new2"> -->
   </center>
     <div class="container">
         <div class="row mb-80px">
@@ -143,27 +145,27 @@ $expired=$this->view_data['expireds'];
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 feature-box-1 xs-margin-30px-bottom wow fadeIn last-paragraph-no-margin" style="visibility: visible; animation-name: fadeIn;">
                 <div class="col-md-12 col-sm-12 no-padding margin-15px-bottom alt-font text-center">
                     <h3 class="text-blue letter-spacing-minus-1 font-weight-600 servic-num"><i class="far fa-handshake text-orange"></i></h3>
-                    <p class="text-large text-extra-dark-gray line-height-22 padding-20px-left sm-padding-15px width-100 vertical-align-middle text-size-20px">FUNDME GUARANTEE</p>
+                    <p class="text-large text-extra-dark-gray line-height-22 padding-20px-left sm-padding-15px width-100 vertical-align-middle text-size-20px"><?php echo $lang['servOne']?></p>
                 </div>
-                <p class="width-90 sm-width-100 text-center font-14">In the rare case that something isn’t right, we will refund your donation.</p>
+                <p class="width-90 sm-width-100 text-center font-14"><?php echo $lang['servOneCon']?></p>
             </div>
             <!-- end feature box item -->
             <!-- start feature box item -->
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 feature-box-1 xs-margin-30px-bottom wow fadeIn last-paragraph-no-margin" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;">
                 <div class="col-md-12 col-sm-12 no-padding margin-15px-bottom alt-font text-center">
                     <h3 class="text-blue letter-spacing-minus-1 font-weight-600 servic-num"><i class="far fa-clock text-orange"></i></h3>
-                    <p class="text-large text-extra-dark-gray line-height-22 padding-20px-left width-100 vertical-align-middle text-size-20px">EXPERT ADVICE</p>
+                    <p class="text-large text-extra-dark-gray line-height-22 padding-20px-left width-100 vertical-align-middle text-size-20px"><?php echo $lang['servTow']?></p>
                 </div>
-                <p class="width-90 sm-width-100 text-center font-14">Contact us with your questions and we’ll answer, day or night.</p>
+                <p class="width-90 sm-width-100 text-center font-14"><?php echo $lang['servTowCon']?></p>
             </div>
             <!-- end feature box item -->
             <!-- start feature box item -->
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 feature-box-1 wow fadeIn last-paragraph-no-margin" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeIn;">
                 <div class="col-md-12 col-sm-12 no-padding margin-15px-bottom alt-font text-center">
                     <h3 class="text-blue letter-spacing-minus-1 font-weight-600 servic-num"><i class="fas fa-bullseye text-orange"></i></h3>
-                    <p class="text-large text-extra-dark-gray line-height-22 padding-20px-left width-100 vertical-align-middle text-size-20px">Achived Your Goal.</p>
+                    <p class="text-large text-extra-dark-gray line-height-22 padding-20px-left width-100 vertical-align-middle text-size-20px"><?php echo $lang['servThree']?></p>
                 </div>
-                <p class="width-90 sm-width-100 text-center font-14">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+                <p class="width-90 sm-width-100 text-center font-14"><?php echo $lang['servThreeCon']?></p>
             </div>
             <!-- end feature box item -->
         </div>
@@ -173,9 +175,9 @@ $expired=$this->view_data['expireds'];
 
 
 <!-- latest compign -->
-<section class="p-section">
+<section class="p-section" style="padding: 155px 0px;">
     <center>
-      <h2 class="title-home">Expired soon Compagin</h2>
+      <h2 class="title-home"><?php echo $lang['Expired']?></h2>
     </center>
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
@@ -185,10 +187,10 @@ $expired=$this->view_data['expireds'];
               <div class="carousel-item <?php if($i==0) echo'active'?> ">
                 <div class="container">
                   <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-7 wow fadeInLeft" data-wow-delay="0.4s">
                        <img src="/uploads/<?php echo $e['galary']?>"  class="w-100 w-100-phone" alt="<?php echo $e['galary']?>">
                     </div>
-                    <div class="col-md-5 content-last-comp">
+                    <div class="col-md-5 content-last-comp  wow fadeInRight" data-wow-delay="0.4s">
                       <h3 class="text-orange"><?php echo $e['title']?></h3>
                       <p><?php echo $e['descrption']?></p>
                       <div class="campgin-home-slider">
@@ -197,7 +199,7 @@ $expired=$this->view_data['expireds'];
                     <div class="progress">
                         <div class="progress-bar progress-bar-style" role="progressbar" style="<?php echo 'width:'.$e['progress'].'%'; ?>" aria-valuenow="<?php echo 'width:'.$e['progress'].'%'; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $e['progress'].'%'; ?></div>
                     </div>
-                    <button type="button" class="btn btn-dark btn-big"><?php echo $lang['button']?></button>
+                    <button type="button" class="btn btn-dark btn-dark-h-d btn-big"><?php echo $lang['button']?></button>
                   </div>
                     </div>
                   </div>
@@ -224,10 +226,10 @@ $expired=$this->view_data['expireds'];
 <!-- service start -->
 <section id="compignhome" class="bg-blue p-section">
 
-<h1 class="text-center text-white text-fantasy">Fund Me</h1>
-<h1 class="text-center text-white">we'll always support you </h1>
+<h1 class="text-center text-white text-fantasy wow fadeIn" data-wow-delay="0.4s">Fund Me</h1>
+<h1 class="text-center text-white wow fadeIn" data-wow-delay="0.4s"><?php echo $lang['support']?></h1>
 <center>
-<button type="button" class="btn btn-orange">How We Are</button>
+<button type="button" class="btn btn-orange wow fadeInDown" data-wow-delay="0.4s"><?php echo $lang['we']?></button>
 
 </center>
 </section>
@@ -236,19 +238,19 @@ $expired=$this->view_data['expireds'];
 <!-- latest compign -->
 <section class="p-section">
     <center>
-      <h2 class="title-home">Last Campaign</h2>
+      <h2 class="title-home"><?php echo $lang['last']?></h2>
     </center>
     <div class="container text-center">
     <!-- <div class="row"> -->
     <div class="tab-pane  mx-auto gallery" id="works">
 
-              <div class="row" id="active-compain">
+              <div class="row wow fadeIn" data-wow-delay="0.4s" id="active-compain">
               
               
               </div>
 
       </div>
-      <a href="" class="btn bg-secondary text-white col-md-3 mt-5 p-2" id="loadMore" num_loaded="0"><span style="font-size: 30px">Load More</span>  </a>
+      <a href="" class="btn bg-purple text-white col-md-3 mt-5 p-2 width-10px" id="loadMore" num_loaded="0"><span class="text-size-12px"><?php echo $lang['load']; ?></span> </a>
 
     </div>
 

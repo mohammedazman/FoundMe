@@ -12,7 +12,7 @@
                     <div class="vertical-align-middle text-center">
                         <!-- start sub title -->
                          <div class="profile">
-                          <div class="text-center mt-50px">
+                          <div class="text-center mt-50px wow fadeIn" >
                           <!-- <div class="profile-img-size rounded-circle"> -->
                             <img src="/images/home/user.jpg" alt="Circle Image" class="rounded-circle profile-pic border-fff-5px" width="150" height="150">
                             <?php if($this->view_data['profiles'][0]['user_id']==Session::get('userID')){?>
@@ -28,7 +28,7 @@
                          if (array_key_exists('profiles',$this->view_data)){?>
                         <h4 class="text-white mt-2"><?php echo Helper::userName($this->view_data['profiles'][0]['user_id']) ?></h4>
                         <?php } ?>
-                        <div class="description">
+                        <div class="description wow fadeIn">
                         <a href="/editeProfile/edit"><i class="fas fa-edit text-white edit-profile"></i></a>
 
                               <div class="container">
@@ -76,7 +76,7 @@
 
   <!-- profile page start-->
   <div>
-    <div class="main main-raised">
+    <div class="main main-raised wow fadeIn">
       <div class="profile-content">
           <div class="container">
               <div class="row">
@@ -154,7 +154,7 @@
                              echo $html; ?>
                              <div class="col-md-12  m-2 p-2">
                                 <strong>Total : </strong>
-                               <span class="prof-donate"> <i class="fas fa-donate text-orange-light"></i><?php echo $total; ?> $</span>
+                               <span> <i class="fas fa-donate text-orange-light"></i><?php echo $total; ?> $</span>
                                <div class="dropdown-divider"></div></div>
                           </div>
                   </div>

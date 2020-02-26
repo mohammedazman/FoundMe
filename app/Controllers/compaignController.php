@@ -58,10 +58,11 @@ public function uploadFiles(){
                       	':pending'=> 0,
                           ':updates'=>null );
                           $idd=$this->compaign->add($params);
+                          // print_r($params);
 
                      if ($idd) {
 
-                      Notification::addNoti('New compaign is added by '.$_SESSION['userName'] .'and need approvment','admin','new compain');
+                      Notification::addNoti('New compaign is added by '.$_SESSION['userName'] .'and need approvment','admin','new compain',$idd[0]['idd']);
                        Message::setMessage(1,'main',' add your compaing have be done ');
 
                                               }

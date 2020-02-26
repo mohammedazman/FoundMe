@@ -214,16 +214,18 @@ var jQuery_form = $.noConflict(true);
             for (var i = 0; i <= fi.files.length - 1; i++) {
 
                 const fsize = fi.files.item(i).size;
-                const ftype = fi.files.item(i).type;
+                const ftype =  fi.files.item(i).type;
+                const type=ftype.split('/');
                 const fname = fi.files.item(i).name;
                 const error = fi.name+'Error';
                 const file = Math.round((fsize / 1024));
+                // alert(type);
                 // The size of the file.
                 if (file > 50000) {
                     document.getElementById(error).innerHTML=
                     <?php echo "'".$lang['error10']."'" ?>;
                 }
-                else if ((fi.name=='gallary' &&  ftype !='image/jpeg') || (fi.name=='file' &&  ftype !='application/pdf')) {
+                else if ((fi.name=='gallary' &&  type[0] !='image') || (fi.name=='file' &&  ftype !='application/pdf')) {
 				  document.getElementById(error).innerHTML=
                   <?php echo "'".$lang['error11']."'" ?>;
                 } else {
@@ -252,7 +254,7 @@ function progressBar(progressVal,totalPercentageVal = 100) {
 	}
   function serverSideValidation(){
      if(Requirevalidation(document.addCompignForm.Title)&&Requirevalidation(document.addCompignForm.Tags)&&
-      Requirevalidation(document. .Amount)&&Requirevalidation(document.addCompignForm.Deuration)&&
+      Requirevalidation(document.addCompignForm.Amount)&&Requirevalidation(document.addCompignForm.Deuration)&&
       Requirevalidation(document.addCompignForm.descrption)){
     jQuery_1_3_2.ajax({
         url:"/validate",

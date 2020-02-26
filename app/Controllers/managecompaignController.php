@@ -109,7 +109,7 @@ class managecompaignController extends Controller
     // show all compaigns with load More
     public function showAllCompaigns($from,$to){
     $compaignsArray = $this->compaignModel->getAllCompaigns($from,$to);
-    print_r($compaignsArray);
+  
 
       return  json_encode(array("statusCode"=>200,"data"=>$compaignsArray));
 

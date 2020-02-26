@@ -164,10 +164,10 @@ public function getAllCompaigns($from,$to)
     $copmaigns=$this->db->QueryCrud($oStmt);
 
     foreach ($copmaigns as $key ) {
-      $temp=array_merge($key,array('progress' =>Helper::getProgress($key['id'])  ));
+
+      $temp=array_merge($key,array('progress' =>Helper::getProgress($key['id']),
+       'donars'=> Helper::getDonars($key['id']),'Fcost'=>Helper::NumberFormatter($key['cost'])));
       $campaignWithPRogress[]=$temp;
-      $temps=array_merge($key,array('donars' =>Helper::getDonars($key['id'])  ));
-      $campaignWithPRogress[]=$temps;
       }
 
 

@@ -90,7 +90,7 @@ $expired=$this->view_data['expireds'];
     </center>
     <div class="container text-center">
     <!-- <div class="row"> -->
-    <div class="tab-pane  mx-auto gallery" id="works">
+    <div class="tab-pane mx-auto gallery" id="works">
 
               <div class="row" >
                 <?php foreach ($popular as $p){
@@ -98,7 +98,7 @@ $expired=$this->view_data['expireds'];
                 <div class="col-md-4 img-overlay wow fadeIn" data-wow-delay="0.4s">
                   <div class="card">
                   <div class="img-card">
-                  <img class="card-img-top" src="/uploads/<?php echo $p['galary'] ?>/1(1).jpg" alt="Card image cap"  style="max-height: 232px;" >
+                  <img class="card-img-top" src="/uploads/<?php echo $p['galary'] ?>/1(1).jpg" alt="Card image cap" style="height: 245px;" >
                   </div>
                         <div class="overlay">
                         <div class="text-overlay">
@@ -123,7 +123,7 @@ $expired=$this->view_data['expireds'];
               </div>
 
       </div>
-      <a href="#" class="btn bg-purple text-white col-md-3 mt-5 p-2 width-10px" id="loadPopularMore" num_loaded="0"><span class="text-size-12px"><?php echo $lang['load']; ?></span>  </a>
+      <a href="/tags/index/" class="btn bg-purple text-white col-md-3 mt-5 p-2 width-10px" id="loadPopularMore" num_loaded="0"><span class="text-size-12px"><?php echo $lang['load']; ?></span>  </a>
 
     </div>
 
@@ -292,7 +292,7 @@ function load_data(){
 
             html+=' <div class="col-md-4 img-overlay">'+
                   '<div class="card">'+
-                      '<img class="card-img-top" src="/uploads/'+row.galary+'" alt="Card image cap">'+
+                      '<img class="card-img-top" style="height: 245px;" src="/uploads/'+row.galary+'" alt="Card image cap">'+
                       '<div class="overlay">'+
                       '<div class="text-overlay"> '+
                         '<h5 class="card-title">'+row.created_at+'</h5>'+

@@ -121,12 +121,12 @@ else echo"This Compaign is finished so and you can't donate." ?>
             <?php if(Session::logged() || Session::get('userID'!=$compaign['owner_id'])){?>
                                 <center>
                                 <?php if ($compaign['status']==2) { ?>
-                                <a href="/donate/index/<?php echo $compaign['id'] ?>"><input type="submit" id="donate" class="btndonate float-none donate-color"  value="<?php echo $lang['item77b']; ?>"/></a>
-                                <?php }
+                                <a href="/donate/index/<?php echo $compaign['id'] ?>"><input type="submit" id="donate" class="btndonate float-none donate-color" value="<?php echo $lang['item77b'];?>"/></a>
+                          <?php }
                                if($compaign['owner_id']!=Session::get('userID')){
 
                                   if(!in_array(Session::get('userID'),$this->view_data['followers']) ) {
-                                    echo $compaign['owner_id'].'  '.Session::get('userID')
+                                    // echo $compaign['owner_id'].'  '.Session::get('userID')
                                     ?>
                                   <input type="button" id="follow" onclick="follow('follow')" class="btndonate float-none"  value="<?php echo $lang['item78b']; ?>"/>
                                 <?php } else{ ?>

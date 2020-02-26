@@ -153,6 +153,14 @@
        $user =$db->QueryCrud("SELECT *  FROM users WHERE id=?",[$id]);
        return $user[0]['status'];
      }
+     public static function getImage($id)
+     {
+       // code...
+
+       $db= new DB();
+       $user =$db->QueryCrud("SELECT * FROM profiles WHERE user_id =? and name='image'",[$id]);
+       return $user[0]['value'];
+     }
 
    #check if category have posts or news @param is of category from news row
    public static function haveItem($data, $arr)

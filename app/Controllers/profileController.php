@@ -10,7 +10,7 @@ private $profile;
   {
     if(!Session::logged())
     header('location:/home/index');
-    
+
 
    $this->model('Profiles');
    $this->profile=$this->model->getModel();
@@ -58,6 +58,29 @@ private $profile;
     }
     else
      $this->index();
+
+  }
+  public function changeImage($value='')
+  {
+    $this->model('Profiles');
+    $this->profile=$this->model->getModel();
+    print_r($_FILES);
+    if (!empty($_FILES)) {
+      $upload = 1;
+      $file = $_FILES["gallary"]["name"];
+      $file_tmp = $_FILES["gallary"]["tmp_name"];
+      $file_size = $_FILES["gallary"]["size"];
+      $target_dir = ROOT."public".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR;
+
+
+
+       $imageFile=Helper::uploadFile($target_dir, $file, $file_tmp, $file_size,"gallary");
+
+       $arrayImage = array(':image' =>$imageFile ,':id'=>Session::get('userID'));
+       $this->profile->addImage($arrayImage);
+       Message::setMessage(1,'main',' update your image have done ');
+       Helper::Back();
+     }
 
   }
 }

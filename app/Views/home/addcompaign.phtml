@@ -47,6 +47,7 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 
 					<div class="wrap-input100 " >
             <label for="Tags" class='btn-label' ><?php echo $lang['item34']?></label>
+
 						<input class="input100" type="text" name="Tags"  placeholder="#exampale"  value='<?php if(isset($_POST['Tags']))echo$_POST['Tags'];?>'  oninput="preventSpace(document.addCompignForm.Tags, 1, 20)" >
 						<span class="text-danger text-error" id="TagsError"> </span>
 					</div>

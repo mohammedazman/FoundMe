@@ -41,9 +41,12 @@
                 html+=' <li class="notification-box item ">';
              else
                 html+=' <li class="notification-box item not_read">';
-
-                html+='<a href="/viewCompaign/show/'+row.effected_id+'" style="text-decoration: none; color:#969696">'+
-                '<strong class="noti-date">'+row.created_at+'</strong><br>'+
+               if(row.type=='new compain')
+               html+='<a href="/managecompaign/ShowPindingCompaigns" style="text-decoration: none; color:#969696">';
+               else
+               html+='<a href="/manageusers/showActiveUsers/" style="text-decoration: none; color:#969696">';
+                
+                html+='<strong class="noti-date">'+row.created_at+'</strong><br>'+
                              '<span style="font-size: 13px;" >'+
                              row.text+
                              '</span'+ 

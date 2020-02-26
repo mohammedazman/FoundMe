@@ -67,12 +67,12 @@ include  VIEW.'layouts'.DIRECTORY_SEPARATOR.'header.phtml'; ?>
 	<?php	if($row['status']==0){
              $state=  $lang['item112'];
     ?>
-        <a data-toggle='dropdown'class='noti_state iconify' data-icon='typcn-media-record-outline'  title='<?php echo $lang['item112'] ?>'></a>
+        <a data-toggle='dropdown'class='noti_state fas fa-circle'   title='<?php echo $lang['item112'] ?>'></a>
         <?php }
           else{
             $state=$lang['item113'];
              ?>
-         <a data-toggle='dropdown'class='noti_state iconify '  data-icon='typcn-media-record' title='<?php echo $lang['item113'] ?>' ></a>
+         <a data-toggle='dropdown'class='noti_state far fa-circle '  title='<?php echo $lang['item113'] ?>' ></a>
          <?php } ?>
 <section >
 		   <div class='dropdown-menu noti_dropdown-menu text-center '>

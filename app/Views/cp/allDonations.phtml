@@ -7,7 +7,8 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 
 
-  <div class="user" style="background-color: #fff; padding:50px;border-radius: 40px; " >
+
+  <div class="user" style="background-color: #fff; padding:50px;border-radius: 5px; " >
   <div class="select">
     <select class="form-control" id="locale">
       <option value="ar-SA">ar-SA</option>
@@ -16,9 +17,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
   </div>
 
   <div id="toolbar">
-    <button id="remove" class="btn btn-danger" disabled>
-      <i class="glyphicon glyphicon-remove"></i> Delete Users
-    </button>
+
   </div>
   <table
   id="table"
@@ -46,13 +45,13 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
 <!-- model  -->
 
-<div id="deleteUsers" class="modal fade">
+<div id="deleteComments" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
 
 					<div class="modal-header">
-						<h4 class="modal-title "> Change user status</h4>
+						<h4 class="modal-title "> Change Comments status</h4>
 						<button type="button" class="close mr-5" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
 					<div class="modal-body">
@@ -101,7 +100,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
       return [
         '<a class="like" href="javascript:void(0)" title="Like">',
         '<i class="fa fa-edit"></i>',
-        '</a>  ',
+        '</a>',
         '<a class="remove" href="javascript:void(0)" title="Remove">',
         '<i class="fa fa-trash"></i>',
         '</a>'
@@ -111,8 +110,9 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
   // delete fun
   function deleteU(){
+    // alert($("#id_d").val())
     $.ajax({
-      url: "/manageusers",
+      url: "/managedonations",
         type: "POST",
         cache: false,
         data:{
@@ -124,13 +124,15 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
         success: function(dataResult){
             var dataResult = JSON.parse(dataResult);
             if(dataResult.statusCode==200){
-                $('#deleteUsers').modal('hide');
+                $('#deleteComments').modal('hide');
                 errMsg(dataResult.message);
+
                 // sucMsg(dataResult.message);
                 load_data()
             }
             else if(dataResult.statusCode==201){
-               errMsg(dataResult);
+              errMsg(dataResult);
+
             }
     }
     });
@@ -147,7 +149,8 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
 
     $('#id_d').val(row.id);
     $('#state_d').val(row.status);
-    $('#deleteUsers').modal('show');
+    // alert(row.id);
+    $('#deleteComments').modal('show');
 
   }
 
@@ -179,21 +182,15 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
       }, 0)
     }
 
-    function initTable(users) {
+    function initTable(comments) {
       $table.bootstrapTable('destroy').bootstrapTable({
         height: 550,
         locale: $('#locale').val(),
         pagination: true,
         search: true,
         columns: [
-          [{
-            field: 'state',
-            checkbox: true,
-            rowspan: 2,
-            align: 'center',
-            valign: 'middle'
-          }, {
-            title: 'User ID',
+          [ {
+            title: 'Donations ID',
             field: 'id',
             rowspan: 2,
             align: 'center',
@@ -201,31 +198,31 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             sortable: true,
             footerFormatter: totalTextFormatter
           }, {
-            title: 'User Details',
+            title: 'Donations Details',
             colspan: 5,
             align: 'center'
           }],
           [{
-            field: 'name',
-            title: 'Full Name',
+            field: 'compigan_id',
+            title: 'Compaign',
             sortable: true,
             footerFormatter: totalNameFormatter,
             align: 'center'
           }, {
-            field: 'email',
-            title: 'User Email',
+            field: 'user_id',
+            title: 'Donars',
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter
           }, {
-            field: 'status',
-            title: 'User State',
+            field: 'amount',
+            title: 'Amount of Donate',
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter
           },{
-            field: 'type',
-            title: 'User Type',
+            field: "created_at",
+            title: "Donate's Date",
             sortable: true,
             align: 'center',
             footerFormatter: totalPriceFormatter
@@ -239,7 +236,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
             formatter: operateFormatter
           }]
         ],
-        data:users
+        data:comments
 
       })
     }
@@ -258,7 +255,7 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
       $remove.click(function () {
         var ids = getIdSelections()
         $('#id_d').val( ids);
-    $('#deleteUsers').modal('show');
+    $('#deleteComments').modal('show');
 
 
       })
@@ -280,16 +277,19 @@ require_once  VIEW.'cp_layouts'.DIRECTORY_SEPARATOR.'navBar.phtml';
  function load_data(){
 
 		$.ajax({
-			url:"/manageusers",
+			url:"/managedonations",
 			method:"POST",
       data:{type:"1"},
 			success:function(data)
 			{
-        
-        var userInfo=JSON.parse(data);
-        // alert(d)
+       console.log(data);
 
-        initTable(userInfo.data);
+      var Info=JSON.parse(data);
+
+
+
+
+        initTable(Info.data);
         $('#locale').change(initTable)
       }
 

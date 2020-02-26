@@ -12,9 +12,9 @@
                             <img src="/images/dashboard/user.png" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
-                            <p> <?php echo Helper::userName(Session::get('userID'));?></p>
+                            <p class="userName"> <?php echo Helper::userName(Session::get('userID'));?></p>
 
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                            <i class="fa fa-circle text-success icOnlin"></i><a href="#" class="onlin"> Online</a>
                         </div>
                     </div>
       <li class="nav-item">
@@ -118,6 +118,17 @@
       </li>
 
 
+      <li class="nav-item">
+        <a  class="nav-link  font-size-18px <?php echo $this->getActionِِ()=='allDonations'?'active':''; ?>" href="/managedonations/showDonates"
+
+             >
+          <i class="fas fa-donate"></i>
+
+          <span class="">Donations</span>
+          <!-- <span class="badge float-right" style="background:green;color:#fff;">15</span> -->
+        </a>
+
+      </li>
 
       <!-- <li class="nav-item ">
         <a  class=" nav-link " href="index.php">

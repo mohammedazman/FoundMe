@@ -180,7 +180,7 @@ var jQuery_form = $.noConflict(true);
 			beforeSubmit: function() {
 
         document.getElementById("loading").click();
-        alert("aaaaaa");
+    
         progressBar(0,100);
 			},
 			uploadProgress: function(event, position, total, percentComplete) {
@@ -252,7 +252,7 @@ function progressBar(progressVal,totalPercentageVal = 100) {
 	}
   function serverSideValidation(){
      if(Requirevalidation(document.addCompignForm.Title)&&Requirevalidation(document.addCompignForm.Tags)&&
-      Requirevalidation(document.addCompignForm.Amount)&&Requirevalidation(document.addCompignForm.Deuration)&&
+      Requirevalidation(document. .Amount)&&Requirevalidation(document.addCompignForm.Deuration)&&
       Requirevalidation(document.addCompignForm.descrption)){
     jQuery_1_3_2.ajax({
         url:"/validate",

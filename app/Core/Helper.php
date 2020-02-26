@@ -273,8 +273,11 @@
       public static function getDonars($id='')
       {
         $counter =DB::init()->QueryCrud("SELECT SUM(amount) AS sum FROM donations WHERE compigan_id= $id ");
+             if ($counter[0]['sum']>0) {
+               return Helper::NumberFormatter($counter[0]['sum']);
+             }
+             return 0;
 
-          return $counter[0]['sum'];
       }
 
       public static function getUsersId()
